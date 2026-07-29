@@ -282,7 +282,7 @@
                       </div>
                     {% endif %}
 
-                    <div class="cw-card-price-row">
+                    <div class="cw-card-price-row" style="{% unless has_multiple_variants %} justify-content: end !important; {% endunless %}">
                       {% if has_multiple_variants %}
                         <div class="cw-card-colors" role="listbox" aria-label="Select variant" data-cw-card-colors>
                           {% for variant in product_variants %}
@@ -1697,120 +1697,107 @@
   </script>
 
   <script>
-    (function () {
-      const root = document.querySelector('[data-cw-filter-section="{{ section.id }}"]');
-      if (!root) return;
+  (function () {
+    const root = document.querySelector('[data-cw-filter-section="{{ section.id }}"]');
+    if (!root) return;
 
-      const buttons = Array.from(root.querySelectorAll('[data-cw-card-add-to-cart]'));
+    const buttons = Array.from(root.querySelectorAll('[data-cw-card-add-to-cart]'));
 
-      function dispatchCartEvents(cart, item) {
-        const detail = { cart: cart, item: item };
-        document.dispatchEvent(new CustomEvent('cart:updated', { detail: detail }));
-        document.dispatchEvent(new CustomEvent('cart:refresh', { detail: detail }));
-        document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: detail }));
-        window.dispatchEvent(new CustomEvent('cart:updated', { detail: detail }));
+    // Force the drawer out of its "empty" visual state (needed right after the
+    // first item is added, before the theme finishes re-rendering).
+    function forceVisibleCart() {
+      const cartForm = document.querySelector('.cart-drawer.cart-drawer--empty');
+      const content = document.querySelector('.cart-drawer__content');
+
+      if (cartForm) {
+        cartForm.classList.remove('cart-drawer--empty');
+      }
+      if (content) {
+        content.style.display = 'block';
+        content.style.height = 'auto';
+      }
+    }
+
+    // Open the cart drawer using this theme's native API, with a safe fallback
+    // to clicking the header cart toggle.
+    async function openThemeCartDrawer() {
+      if (window.theme && window.theme.sections) {
+        try {
+          const instances = await window.theme.sections.getInstances('cart-drawer');
+          const cartDrawer = instances[0];
+
+          if (cartDrawer) {
+            const cartData = await fetch('/cart.js').then((r) => r.json());
+
+            if (cartData.item_count > 0) {
+              forceVisibleCart();
+              await cartDrawer.refresh();
+              forceVisibleCart();
+            }
+
+            cartDrawer._openCartDrawer({
+              preventDefault: function () {}
+            });
+            return;
+          }
+        } catch (err) {
+          console.error('Cart drawer open error:', err);
+        }
       }
 
-      async function refreshCartDrawerMarkup() {
-        const drawerSection = document.querySelector('#shopify-section-cart-drawer, [id^="shopify-section"][id*="cart-drawer"]');
-        if (!drawerSection || !drawerSection.id) return;
+      // Fallback: click the header cart toggle so the theme opens it for us.
+      const toggle = document.querySelector('.ajax-cart__toggle');
+      if (toggle) toggle.click();
+    }
 
-        const sectionId = drawerSection.id.replace('shopify-section-', '');
-        const rootPath = window.Shopify && window.Shopify.routes ? window.Shopify.routes.root : '/';
-        const response = await fetch(rootPath + '?sections=' + encodeURIComponent(sectionId), {
-          headers: { 'Accept': 'application/json' }
-        });
+    buttons.forEach((button) => {
+      button.addEventListener('click', async function (event) {
+        event.preventDefault();
+        event.stopPropagation();
 
-        if (!response.ok) return;
+        if (button.getAttribute('aria-disabled') === 'true' || button.classList.contains('is-loading')) return;
 
-        const sections = await response.json();
-        const html = sections && sections[sectionId];
-        if (!html) return;
+        const variantId = button.getAttribute('data-variant-id');
+        const quantity = Number(button.getAttribute('data-quantity') || 1);
+        const sellingPlanId = button.getAttribute('data-selling-plan-id');
 
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const nextSection = doc.getElementById(drawerSection.id);
-
-        drawerSection.innerHTML = nextSection ? nextSection.innerHTML : html;
-      }
-
-      function openCartDrawer() {
-        const triggerSelectors = [
-          '[data-cart-drawer-open]',
-          '[data-drawer-trigger="cart"]',
-          '[aria-controls="CartDrawer"]',
-          '.js-drawer-open-cart'
-        ];
-
-        const trigger = triggerSelectors
-          .map((selector) => document.querySelector(selector))
-          .find(Boolean);
-
-        if (trigger && typeof trigger.click === 'function') {
-          trigger.click();
+        if (!variantId) {
+          console.error('Variant ID not found');
           return;
         }
 
-        const drawer = document.querySelector('#CartDrawer, .cart-drawer, [data-cart-drawer]');
-        if (drawer) {
-          drawer.removeAttribute('hidden');
-          drawer.setAttribute('aria-hidden', 'false');
-          drawer.classList.add('is-open', 'drawer--is-open', 'active');
-        }
+        const originalText = button.textContent;
+        button.classList.add('is-loading');
+        button.textContent = 'Adding...';
 
-        document.documentElement.classList.add('js-drawer-open', 'js-drawer-open-cart');
-        document.body.classList.add('js-drawer-open', 'js-drawer-open-cart', 'drawer-open');
-      }
+        try {
+          const item = { id: Number(variantId), quantity: quantity };
+          if (sellingPlanId) item.selling_plan = Number(sellingPlanId);
 
-      buttons.forEach((button) => {
-        button.addEventListener('click', async function (event) {
-          event.preventDefault();
-          event.stopPropagation();
+          const addResponse = await fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart/add.js' : '/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ items: [item] })
+          });
 
-          if (button.getAttribute('aria-disabled') === 'true' || button.classList.contains('is-loading')) return;
-
-          const variantId = button.getAttribute('data-variant-id');
-          const quantity = Number(button.getAttribute('data-quantity') || 1);
-
-          if (!variantId) return;
-
-          const originalText = button.textContent;
-          button.classList.add('is-loading');
-          button.textContent = 'Adding...';
-
-          try {
-            const addResponse = await fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart/add.js' : '/cart/add.js', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({ id: Number(variantId), quantity: quantity })
-            });
-
-            if (!addResponse.ok) {
-              throw new Error('Add to cart failed');
-            }
-
-            const item = await addResponse.json();
-            const cartResponse = await fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart.js' : '/cart.js', {
-              headers: { 'Accept': 'application/json' }
-            });
-            const cart = await cartResponse.json();
-
-            await refreshCartDrawerMarkup();
-            dispatchCartEvents(cart, item);
-            openCartDrawer();
-          } catch (error) {
-            console.error(error);
-          } finally {
-            button.classList.remove('is-loading');
-            button.textContent = originalText;
+          if (!addResponse.ok) {
+            throw new Error('Add to cart failed');
           }
-        });
+
+          await openThemeCartDrawer();
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+        } finally {
+          button.classList.remove('is-loading');
+          button.textContent = originalText;
+        }
       });
-    })();
-  </script>
+    });
+  })();
+</script>
 
   <script>
     (function () {
