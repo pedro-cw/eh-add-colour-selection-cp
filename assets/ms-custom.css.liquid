@@ -1,0 +1,351 @@
+
+:root{
+  --junipStarColor: #977E57 !important;
+}
+@font-face {
+    font-family: "Botanica";
+    src: url({{ 'botanica-webfont.woff2' | asset_url }}) format("woff2"),
+    url({{ 'botanica-webfont.otf' | asset_url }}) format("otf"),
+    url({{ 'botanica-webfont.woff' | asset_url }}) format("woff");
+    font-display: swap;
+  }
+  
+  .h1, .h2, .h3, .h4, h1, h2, h3, h4 {
+      letter-spacing: inherit;
+      text-transform: lowercase;
+      font-family: 'Botanica', serif;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.2;
+  }
+
+
+  .is-mobile-os.is-ios{
+    padding-bottom: 0 !important;
+  }
+  
+  .index-section--gallery .text-title {
+      font-size: 30px; /* if you change font size as you like */
+  }
+  
+  #shopify-section-video-learn {
+    margin-top: 50px;
+  }
+  
+  html{
+    scroll-behavior: smooth;
+  }
+  
+  .burger-icon{
+    background-color: #977E57!important;
+  }
+  
+  .site-header__wrapper svg{
+    fill: #977E57!important;
+  }
+  
+  #MainContent{
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  @media only screen and (min-width: 750px) {
+    .page__default #MainContent.content-for-layout {
+        padding-bottom: 120px !important;
+    }
+  }
+  .page__default #MainContent.content-for-layout {
+      padding-bottom: 60px !important;
+  }
+
+/* HEADER */
+.announcement-bar__message{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.navigation__links .navigation__expand-sublinks svg, .site-header__wrapper .navigation__link svg {
+    fill: transparent !important;
+}
+
+
+
+.icon.icon-header-bag {
+    fill: transparent !important;
+    stroke: currentColor;
+    margin-right: -30px;
+}
+
+.site-header__wrapper .btn--square{
+  margin-left: 0;
+  margin-left: -30px;
+}
+
+.site-header__wrapper .burger-icon{
+  margin-left: 0 !important;
+}
+
+/* HOMEPAGE REVIEW */
+.homepage__reviews .junip-product-review-summary-wrapper:before{
+    content: "CUSTOMER REVIEWS";
+    font-size: 26px;
+    margin-bottom: 16px;
+    font-family: 'Botanica', serif;
+    text-transform: lowercase;
+      font-style: normal;
+      font-weight: 400;
+      display: block;
+}
+
+
+@media screen and (min-width: 769px){
+    .homepage__reviews .junip-product-review-summary-wrapper:before{
+        font-size: 30px;
+    }
+
+    p.announcement-bar__message.newslettertrigger-true{
+  cursor: pointer;
+}
+}
+
+/* FOOTER */
+.locale-selectors__container{
+  padding: 1em 0 !important;
+  display: flex;
+  justify-content: center;
+}
+.locale-selectors__container .locale-selectors__selector{
+  background-color: transparent !important;
+}
+.locale-selectors__container  option{
+  color:#695450 !important;
+}
+
+.site-footer--hidden .site-footer{
+  display: block !important;
+}
+
+
+
+/* HEADING */
+.section-header h1, .section-header .h1{
+  margin-top: 0px;
+}
+
+ h1, .h1{
+  margin-top: 60px;
+}
+
+@media screen and (min-width: 750px){
+  h1, .h1{
+    font-size: 40px;
+  }
+
+  h2, .h2{
+    font-size: 26px;
+  }
+}
+
+/* COLLECTION PAGE */
+
+.ms__collections-list{
+  padding: 40px 0;
+}
+
+.ms__collections-inner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ms__collections-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  background-color: #fff;
+
+  & .ms__collections-nav-item{
+    padding: 20px 0px;
+    margin: 0 10px;
+    text-decoration: none;
+    text-transform: UPPERCASE;
+    letter-spacing: 2px;
+    color: inherit;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    text-align: center;
+  }
+
+  
+  & .ms__collections-nav-item:not(:last-child):after{
+    content: "";
+    width: 1px;
+    height: 50%;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  & .ms__colcurrent{
+    border-bottom: 2px solid #333;
+  }
+}
+
+
+
+.ms__collections-products-container{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  & .ms__collections-products-items{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    & .ms__collections-products-items-banner{
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-transform: UPPERCASE;
+      font-weight: bold;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      letter-spacing: 2px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    & .cc__collection-grid-items {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 24px;
+    }
+  }
+}
+
+.ms__collections-products-items-banner p{
+  z-index: 1;
+  position: relative;
+  margin: 0;
+}
+
+
+.ms__collections-products-items-banner:after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(151,126,87,0.7);
+  display: block;
+  z-index: 0;
+}
+
+@media screen and (min-width: 768px){
+  .ms__collections-products-container{
+    & .ms__collections-products-items{
+      & .ms__collections-products-items-banner{
+        height: 125px;
+      }
+
+      & .cc__collection-grid-items {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 475px){
+  .ms__collections-nav-container {
+  
+    & .ms__collections-nav-item{
+      font-size: 14px;
+    }
+  }
+}
+
+
+.collection-filter-list .ms__collections-list {padding: 31px 0;}
+.collection-filter-list .collection-title-ms-block {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #695450;
+    margin-bottom: 17px;
+}
+.collection-filter-list .ms__collections-nav--container {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding-bottom: 11px;
+}
+.collection-filter-list .ms__collections-nav--container .ms__collections-filter {margin-right: -12px;}
+/* .collection-filter-list .ms__collections-nav--container::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+} */
+
+.collection-filter-list .ms__collections-nav--container::-webkit-scrollbar {
+	height: 0;
+	background-color: #F5F5F5;
+}
+
+/* .collection-filter-list .ms__collections-nav--container::-webkit-scrollbar-thumb {
+	background-color: #000000;
+} */
+.collection-filter-list .ms__collections-filter svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.collection-filter-list .ms__collection-nav-inner {
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 19px;
+    padding: 10px 15px;
+    background: #977E57;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: #fff;
+    width: 100%;
+    min-width: 192px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.collection-filter-list .ms__colcurrent .ms__collection-nav-inner {background: #695450;}
+.collection-filter-list .ms__collections-list .page-width {
+    max-width: 990px;
+}
+.template-collection .ms__collections-list .btn .btnsep,
+.template-collection .ms__collections-list .btn .cc__productprice {
+  display: none;
+}
+@media screen and (max-width: 749px) {
+    .collection-filter-list .ms__collection-nav-inner {
+        font-size: 10px;
+        line-height: 12px;
+        min-width: 90px;
+        padding: 8px 15px;
+    }
+    .collection-filter-list .ms__collections-nav--container {
+        gap: 16px;
+        padding-bottom: 11px;
+    }
+}

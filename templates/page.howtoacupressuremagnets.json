@@ -1,0 +1,415 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ms_richtext_6RbWBP": {
+      "type": "ms-richtext",
+      "settings": {
+        "uppertitle": "how to",
+        "hide_pagebreadcrumbs": false,
+        "dspacebot": 30,
+        "mspacebot": 30,
+        "uppertitlecolor": "#695450",
+        "upperborder": "#dad4c5",
+        "upperborderopacity": 100,
+        "section_title": "",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "text": "",
+        "dcsize": 16,
+        "mcsize": 16,
+        "heading_width": 665,
+        "contents_width": 621,
+        "bgcolor": "rgba(0,0,0,0)",
+        "textcolor": "#000000",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_video_EBJpWa": {
+      "type": "ms-video",
+      "custom_css": [
+        ".cc__dualbgimage-contents {width: 100% !important; max-width: 100% !important;}",
+        ".cc__dualbgimage-contents ul li {text-align: left !important;}"
+      ],
+      "settings": {
+        "video_url": "https://www.youtube.com/watch?v=f3Xe6tS7gZA",
+        "cover_image": "shopify://shop_images/Copy_of_4_ebf9471d-1973-4291-8b13-b31ddb166798.png",
+        "cover_image_position": "center center",
+        "show_overlay": false,
+        "overlay_color": "#000000",
+        "overlay_text": "#ffffff",
+        "overlay_opacity": 30,
+        "title": "How to apply acupressure magnets",
+        "htags": "h1",
+        "dhsize": 48,
+        "mhsize": 32,
+        "content": "",
+        "linklabel": "",
+        "link": "",
+        "dlink_top": 30,
+        "mlink_top": 30,
+        "bgimage1": "shopify://shop_images/Group_11.jpg",
+        "bgimage2": "shopify://shop_images/Group_10.jpg",
+        "bgcolor": "#f7f8f4",
+        "tcolor": "#695450",
+        "dpadtop": 50,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 50
+      }
+    },
+    "cc_slider_content_FdWaadsd7Pe": {
+      "type": "cc-slider-content",
+      "blocks": {
+        "content_3b7twg": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/East-Healing_7047_2ece76e2-de62-4348-9c83-bcadab4aebad.jpg",
+            "preheading": "STEP 1",
+            "heading": "Choose a protocol",
+            "content": "<p>Choose one protocol and find acu-points on the body maps</p>"
+          }
+        },
+        "content_ybQBK9": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_4_ebf9471d-1973-4291-8b13-b31ddb166798.png",
+            "preheading": "STEP 2",
+            "heading": "Get Prepared",
+            "content": "<p>Clean and dry the application area. Peel the magnet patch and place on acu-point</p>"
+          }
+        },
+        "content_ipNpUD": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_8_6bb7f995-47dd-4b9f-ae67-fd0329ccf59f.png",
+            "preheading": "STEP 3",
+            "heading": "Apply the patch",
+            "content": "<p>Hold onto plaster for a few seconds and repeat on other side of the body </p>"
+          }
+        },
+        "content_aywWJf": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-29_at_12.53.24.png",
+            "preheading": "STEP 4",
+            "heading": "Reuse Magnet",
+            "content": "<p>Leave for up to 3 days. Reuse magnet up to 3 times by attaching to a new plaster.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_3b7twg",
+        "content_ybQBK9",
+        "content_ipNpUD",
+        "content_aywWJf"
+      ],
+      "settings": {
+        "arrowalignment": "align-position",
+        "title": "step by step guide",
+        "htags": "h2",
+        "bgcolor": "#f7f8f4",
+        "cardbgcolor": "#ffffff",
+        "cardtcolor": "#695450",
+        "dhsize": 64,
+        "mhsize": 32,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "acu_points_wzXBDq": {
+      "type": "acu-points",
+      "blocks": {
+        "acu_point_M4i8KP": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=tMUuTn1aelk",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-3.jpg",
+            "image_label": "",
+            "additional_info": "Centre of the inner forearm, three finger widths down from the wrist crease, between the two tendons."
+          }
+        },
+        "acu_point_jJGbRc": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=UmD_ssB5Mog",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-28.jpg",
+            "image_label": "",
+            "additional_info": "Run finger along bottom of collar bone from middle outward. Two finger-widths from centre, place magnet in the slight hollow dip."
+          }
+        },
+        "acu_point_3JaERN": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=eA15VxpmKxU",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-29.jpg",
+            "image_label": "",
+            "additional_info": "This point is on the sternum (breastbone) in the centre of the chest, in line with the nipples."
+          }
+        },
+        "acu_point_i6EnBk": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=WjDjaS88X9M",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-9.jpg",
+            "image_label": "",
+            "additional_info": "Located on the back of your hand, between the base of your thumb and index finger. Gently press and squeeze the area to identify a tender point."
+          }
+        },
+        "acu_point_hK4PwH": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=6YBBIg-us2E",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-36.jpg",
+            "image_label": "",
+            "additional_info": "On the top of the foot, in the hollow where the big toe and second toe bones meet. Trace from between the toes toward the ankle to find a tender spot between the bones."
+          }
+        },
+        "acu_point_UCg4m7": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=3GzsHQDZoTE",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-13.jpg",
+            "image_label": "",
+            "additional_info": "Located on the inside of the wrist, trace a line from your pinky finger to the heel of your palm. The point is on the wrist crease, just past the bone."
+          }
+        },
+        "acu_point_rcV7GT": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=HctkbHUuoI8",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-19.jpg",
+            "image_label": "",
+            "additional_info": "This point is located on the outer side of your forearm, in line with your middle finger, and positioned between the two main forearm bones. To find it, place the ring finger of your opposite hand at the crease of your wrist. Your index finger will naturally land on the correct spot."
+          }
+        },
+        "acu_point_7LxGCL": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=esj536-ZT6E",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-30.jpg",
+            "image_label": "",
+            "additional_info": "This point is located on your lower back, level with the top of your pelvic bone, approximately two finger widths away from the spine. Look for a tender or stiff spot, often found at the highest part of the muscle's bulge."
+          }
+        },
+        "acu_point_qK8G8g": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=I8Y0NCBEqPU",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-38.jpg",
+            "image_label": "",
+            "additional_info": "This point is situated halfway between the knee crease and the ankle, at the centre of the back of the calf. It lies in the valley between the two calf muscles."
+          }
+        },
+        "acu_point_3WwBcD": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=YzGUfajAFoY",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-33.jpg",
+            "image_label": "",
+            "additional_info": "This point is located at the highest part of the trapezius muscle—the spot you instinctively massage at the top of your shoulders."
+          }
+        },
+        "acu_point_DDFD84": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=uz9BSX7WhKY",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-25.jpg",
+            "image_label": "",
+            "additional_info": "Bend your arm to 90 degrees at your elbow. The point is located three fingers below the elbow crease, on the outer surface of the forearm."
+          }
+        },
+        "acu_point_CGJ6j4": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=8KTfQjwSNtM",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-42.jpg",
+            "image_label": "",
+            "additional_info": "This point is located in the inner thigh, three finger widths above the knee cap in the muscle depression."
+          }
+        },
+        "acu_point_KxUjtW": {
+          "type": "acu_point",
+          "settings": {
+            "video": "https://www.youtube.com/watch?v=r-02ZCY8gXA",
+            "video_label": "",
+            "image": "shopify://shop_images/Copy_of_East_Healing_-_Magnet_Patches-40.jpg",
+            "image_label": "",
+            "additional_info": "Find the point by measuring four finger widths down from the bottom of the knee cap. Then move towards the outside of the leg, on the point in between the two bones."
+          }
+        }
+      },
+      "block_order": [
+        "acu_point_M4i8KP",
+        "acu_point_jJGbRc",
+        "acu_point_3JaERN",
+        "acu_point_i6EnBk",
+        "acu_point_hK4PwH",
+        "acu_point_UCg4m7",
+        "acu_point_rcV7GT",
+        "acu_point_7LxGCL",
+        "acu_point_qK8G8g",
+        "acu_point_3WwBcD",
+        "acu_point_DDFD84",
+        "acu_point_CGJ6j4",
+        "acu_point_KxUjtW"
+      ],
+      "custom_css": [
+        ".acu-container {padding-top: 50px; padding-bottom: 50px;}"
+      ],
+      "settings": {
+        "heading": "Find Your Acu Points",
+        "heading_color": "#695450",
+        "heading_font_size": 48,
+        "heading_font_size_mobile": 30,
+        "heading_text_alignment": "center",
+        "paragraph_color": "#695450",
+        "paragraph_font_size": 18,
+        "paragraph_font_size_mobile": 14,
+        "intro_text": "",
+        "intro_text_alignment": "center",
+        "modal_bg_color": "#ffffff",
+        "modal_text_color": "#695450"
+      }
+    },
+    "cc_faq_wPHYzdsdasddx": {
+      "type": "cc-faq",
+      "blocks": {
+        "faq_FH8UT7": {
+          "type": "faq",
+          "settings": {
+            "question": "What are acupressure magnet patches made of?",
+            "content": "<p>Acupressure magnet patches consist of a small, 1000 gauss ferrite magnet adhered to the skin with latex-free, medical grade adhesive patches.</p>"
+          }
+        },
+        "faq_WGNh8e": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I use acupressure magnet patches?",
+            "content": "<p>To use the patches:</p><ul><li>Clean and dry the area of skin where you'll apply the patch.</li><li>Identify the acupressure point you want to target in our instruction guide.</li><li>Peel the backing and stick the patch directly onto the acupressure point.</li><li>Leave it on for up to 3 days. </li></ul>"
+          }
+        },
+        "faq_yfJE9Q": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I wear acupressure magnet patches all day?",
+            "content": "<p>You can typically wear them for up to 3 days. Note that heavy sweating or showering may affect the adhesive. Replace the plaster should it come away from the skin before 3 days. </p>"
+          }
+        },
+        "faq_VVbqyd": {
+          "type": "faq",
+          "settings": {
+            "question": "What conditions can they help with?",
+            "content": "<p>Acupressure magnet patches are often used to:<br/><br/>Ease tension (head, back, neck, shoulders and knees)<br/>Encourage a sense of calm and relaxation<br/>Support restful sleep</p>"
+          }
+        },
+        "faq_KbX3TF": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does it take to feel the effects?",
+            "content": "<p>This varies by individual. Some people experience relief within minutes, while others may need consistent use over a few days or weeks to notice significant benefits.</p>"
+          }
+        },
+        "faq_dd69Ti": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I reuse acupressure magnet patches?",
+            "content": "<p>The adhesive plasters are one-use only, but our product contains 20 replacement plasters so you can reuse the magnets. You can reuse the magnet 3 times before disposing of it. </p>"
+          }
+        },
+        "faq_tFp4wj": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use acupressure magnet patches during pregnancy?",
+            "content": "<p>We do not recommend using our magnet patches if you are pregnant, as there are some points which may induce early labour. </p>"
+          }
+        },
+        "faq_6YGiMd": {
+          "type": "faq",
+          "settings": {
+            "question": "How many magnet patches can I wear at once?",
+            "content": "<p>We recommend using patches on all points on the chosen body map. Do not mix and match points from different maps. </p>"
+          }
+        },
+        "faq_BQerHq": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the difference between acupressure magnet patches and ear seeds?",
+            "content": "<p>Both stimulate acupressure points, but acupressure magnet patches use magnets and are applied to various parts of the body, while ear seeds are small seeds or beads placed on acupressure points on the ear.</p>"
+          }
+        },
+        "faq_ma88R6": {
+          "type": "faq",
+          "settings": {
+            "question": "Can anyone use magnet patches?",
+            "content": "<p>Magnet patches should not be used if pregnant or allergic to metal or adhesive. They are not for people with heart problems, a pacemaker or any medical device or condition affected by magnets. </p>"
+          }
+        },
+        "faq_Jz63kU": {
+          "type": "faq",
+          "settings": {
+            "question": "Can children use magnet patches?",
+            "content": "<p>Please keep the magnet patches away from children, as ingesting them can cause severe health issues. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_FH8UT7",
+        "faq_WGNh8e",
+        "faq_yfJE9Q",
+        "faq_VVbqyd",
+        "faq_KbX3TF",
+        "faq_dd69Ti",
+        "faq_tFp4wj",
+        "faq_6YGiMd",
+        "faq_BQerHq",
+        "faq_ma88R6",
+        "faq_Jz63kU"
+      ],
+      "settings": {
+        "title": "frequently asked questions",
+        "htags": "h2",
+        "tcolor": "#f3eeea",
+        "bgcolor": "#695450",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    }
+  },
+  "order": [
+    "ms_richtext_6RbWBP",
+    "ms_video_EBJpWa",
+    "cc_slider_content_FdWaadsd7Pe",
+    "acu_points_wzXBDq",
+    "cc_faq_wPHYzdsdasddx"
+  ]
+}

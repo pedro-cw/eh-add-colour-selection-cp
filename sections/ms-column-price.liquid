@@ -1,0 +1,350 @@
+<div class="ms__columnprice-outer-container">
+    <div class="page-width">
+        <div class="ms__columnprice-inner-itemscontainer">
+            {% if section.settings.heading != blank %}
+            <{{ section.settings.htags }} class="ms__columnprice-heading">{{ section.settings.heading }}</{{ section.settings.htags }}>
+            {% endif %}
+            {% if section.blocks.size > 0 %}
+            <div class="ms__columnprice-columns">
+                {% for block in section.blocks %}
+                <div class="ms__columnprice-column-items">
+                    <div class="ms__columnprice-inner-items">
+                        {% if block.settings.badgeinfo != blank %}
+                        <div style="background-color: {{ block.settings.badgebg }}; color: {{ block.settings.badgetext }};" class="ms__columnprice-badge">{{ block.settings.badgeinfo }}</div>
+                        {% endif %}
+                        {% if block.settings.title != blank %}
+                        <h3>{{ block.settings.title }}</h3>
+                        {% endif %}
+                        {% if block.settings.contents != blank %}
+                        <div class="ms__columnprice-rte">
+                            {{ block.settings.contents }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>  
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if section.settings.linklabel != blank %}
+            <div class="ms__columnprice-cta">
+                <a class="ms__columnprice-link" href="{{ section.settings.linkurl }}">
+                    <span class="ms__columnprice-span">{{ section.settings.linklabel }}</span>
+                    <svg
+                    width="29"
+                    height="11"
+                    viewBox="0 0 29 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M28.3309 6.09117H0.669335C0.340296 6.09117 0.0744629 5.82534 0.0744629 5.4963C0.0744629 5.16726 0.340296 4.90142 0.669335 4.90142H26.8939L23.2838 1.2913C23.0514 1.05892 23.0514 0.681553 23.2838 0.449181C23.5161 0.216809 23.8935 0.216809 24.1259 0.449181L28.7529 5.07617C28.9239 5.24719 28.9741 5.50187 28.8811 5.72495C28.7882 5.94617 28.5707 6.09117 28.3309 6.09117Z" fill="currentColor" />
+                    <path d="M23.6984 10.7237C23.546 10.7237 23.3935 10.6661 23.2783 10.549C23.0459 10.3166 23.0459 9.93924 23.2783 9.70687L27.9108 5.0743C28.1432 4.84193 28.5206 4.84193 28.753 5.0743C28.9853 5.30668 28.9853 5.68405 28.753 5.91642L24.1204 10.549C24.0033 10.6661 23.8508 10.7237 23.6984 10.7237Z" fill="currentColor" />
+                    </svg>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<style>
+    #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.mpadtop | append: 'px' }};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+    background-color: {{ section.settings.bgcolor }};
+  }
+
+    #shopify-section-{{ section.id }} .ms__columnprice-link {
+    color: {{ section.settings.tcolor }};
+    font-size: {{ section.settings.masize | append: 'px' }};
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: fit-content;
+    text-decoration: unset;
+    font-weight: 600;
+    position: relative;
+    background: linear-gradient(to right, currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 0 1px;
+    transition: all 0.3s ease;
+    text-transform: UPPERCASE;
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-link:hover {
+    background-size: 100% 1px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-span {
+    width: calc(100% - 40px);
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-heading{
+    margin: 0;
+    text-align: center;
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    color: {{ section.settings.tcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-badge {
+    width: fit-content;
+    padding: 4px 20px;
+    border-radius: 60px;
+    font-size: 11px;
+    line-height: 1.1;
+    text-transform: UPPERCASE;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+ }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-inner-items{
+    padding: 30px 20px;
+    border-radius: 15px;
+    background-color: {{ section.settings.columnbg }};
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-inner-items h3{
+    margin-bottom: 14px;
+    color: {{ section.settings.columntext }};
+    font-size: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-rte{
+    color: {{ section.settings.columntext }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-rte p:only-child,
+  #shopify-section-{{ section.id }} .ms__columnprice-rte p:last-child{
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-columns{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__columnprice-inner-itemscontainer{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.dpadtop | append: 'px' }};
+      padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__columnprice-heading{
+        font-size: {{ section.settings.dhsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__columnprice-inner-items h3{
+        font-size: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__columnprice-columns{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #shopify-section-{{ section.id }} .ms__columnprice-inner-itemscontainer{
+        gap: 40px;
+    }
+  }
+
+  @media screen and (min-width: 990px){
+    #shopify-section-{{ section.id }} .ms__columnprice-columns{
+        grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+{% schema %}
+    {
+        "name": "MS Column Price",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Column Price"
+            },
+            {
+                "type": "select",
+                "id": "htags",
+                "label": "Heading Tag",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "H6"
+                    }
+                ]
+            },
+            {
+                "type": "number",
+                "id": "dhsize",
+                "label": "Heading size (desktop)",
+                "default": 96,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mhsize",
+                "label": "Heading size (mobile)",
+                "default": 48,
+                "info": "Unit in px"
+            },
+            {
+                "type": "text",
+                "id": "linklabel",
+                "label": "Link label",
+                "default": "Link"
+            },
+            {
+                "type": "url",
+                "id": "linkurl",
+                "label": "Link url"
+            },
+            {
+                "type": "header",
+                "content": "Styles"
+            },
+            {
+                "type": "color",
+                "id": "bgcolor",
+                "label": "Background",
+                "default": "#977E57"
+            },
+            {
+                "type": "color",
+                "id": "tcolor",
+                "label": "Content",
+                "default": "#fff"
+            },
+            {
+                "type": "color",
+                "id": "columnbg",
+                "label": "Column Background",
+                "default": "#fff"
+            },
+            {
+                "type": "color",
+                "id": "columntext",
+                "label": "Column Text",
+                "default": "#977E57"
+            },
+            {
+                "type": "number",
+                "id": "dpadtop",
+                "label": "Padding top(desktop)",
+                "default": 100,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "dpadbot",
+                "label": "Padding bottom(desktop)",
+                "default": 100,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mpadtop",
+                "label": "Padding top(mobile)",
+                "default": 50,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mpadbot",
+                "label": "Padding bottom(mobile)",
+                "default": 50,
+                "info": "Unit in px"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Column",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "badgeinfo",
+                        "label": "Badge info"
+                    },
+                    {
+                        "type": "color",
+                        "id": "badgebg",
+                        "label": "Badge Background",
+                        "default": "#EAE8E3"
+                    },
+                    {
+                        "type": "color",
+                        "id": "badgetext",
+                        "label": "Badge text",
+                        "default": "#977E57"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label" :"Title",
+                        "default": "Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "contents",
+                        "label": "Content",
+                        "default": "<p>Pricing information goes here</p>"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "MS Column Price",
+                "blocks": [
+                    {
+                        "type": "column"
+                    },
+                    {
+                        "type": "column"
+                    },
+                    {
+                        "type": "column"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

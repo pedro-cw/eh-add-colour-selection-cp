@@ -1,0 +1,318 @@
+<style>
+    #shopify-section-{{ section.id }} .cw-newsletter-wrapper
+    {
+        display: flex;
+        line-height: 1;
+        padding: 0px;
+        margin: 0px;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-column
+    {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-desktop-image
+    {
+        line-height: 1;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-desktop-image img
+    {
+        line-height: 1;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-mobile-image
+    {
+        line-height: 1;
+        display: none;
+        width: 100%;
+        max-width: 100%;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-mobile-image img
+    {
+        line-height: 1;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-column.right-column
+    {
+        background-image: url("{{ 'cw-newsletter-desktop-bg.png' | file_url }}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        padding: 20px;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-column-inner
+    {
+        display: block;
+        max-width: 560px;
+        margin: 0px auto;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-form-title
+    {
+        display: block;
+        margin-bottom: 25px;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-form-title h2
+    {
+        font-family: 'Botanica', serif;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 100%;
+        letter-spacing: 1px;
+        text-align: center;
+        color: #977E57;
+        padding: 0px;
+        margin: 0px;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-form-sub-title
+    {
+        display: block;
+        margin-bottom: 30px;
+    }
+    #shopify-section-{{ section.id }} .cw-newsletter-form-sub-title p
+    {
+        font-family: 'Montserrat';
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 150%;
+        letter-spacing: 0px;
+        text-align: center;
+        color: #695450;
+        padding: 0px;
+        margin: 0px;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form form
+    {
+        max-width: 100% !important;
+        margin: auto;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form [data-testid="form-row"] 
+    {
+        display: block !important;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form .kl-private-reset-css-Xuajs1 input[type=email] {
+        border: 1px solid rgb(105 84 80 / 30%) !important;
+        background: transparent !important;
+        border-radius: 0px !important;
+        font-size: 14px !important;
+        line-height: 24px;
+        height: 50px !important;
+        padding: 0 15px !important;
+        font-family: Montserrat, " sans-serif" !important;
+        min-width: 100% !important;
+        /* min-width: 280px !important; */
+        width: 100% !important;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form .kl-private-reset-css-Xuajs1 input[type=email]::placeholder{
+        color:rgba(105,84,80,0.5) !important;
+        font-family: Montserrat, " sans-serif" !important;
+        opacity:1 !important;
+        font-size: 14px !important;
+        line-height: 24px;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form .kl-private-reset-css-Xuajs1 input[type=email]:focus-visible{
+        outline:none !important;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form .kl-private-reset-css-Xuajs1 input[type=email]:hover {
+        border-color:rgb(105 84 80 / 30%) !important;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form input:focus-visible{
+        outline:none !important;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form [data-testid="form-component"]{
+        padding:0px !important;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form [data-testid="form-component"] button{
+        width: 100% !important;
+        height: 62px !important;
+        background:#695450 !important;
+        color:#ffffff !important;
+        font-family: Montserrat, " sans-serif" !important;
+        font-size:18px !important;
+        font-weight:700 !important;
+        line-height:20px !important;
+        letter-spacing:0.05rem !important;
+        text-transform:uppercase !important;
+        border-radius:0px !important;
+        transition:all 0.3s ease !important;
+        padding: 0px 20px !important;
+        margin-top: 21px;   
+    }
+    #shopify-section-{{ section.id }} .newsletter-form [data-testid="form-component"] button:hover{
+        background:#323232 !important;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 991px)
+    {
+        #shopify-section-{{ section.id }} .cw-newsletter-form-title h2
+        {
+            font-size: 32px;
+        }
+        #shopify-section-{{ section.id }} .cw-newsletter-form-sub-title p
+        {
+            font-size: 16px;
+        }
+    }
+    @media only screen and (max-width: 767px)
+    {
+        #shopify-section-{{ section.id }} .cw-newsletter-wrapper
+        {
+            flex-direction: column;
+        }
+        #shopify-section-{{ section.id }} .cw-newsletter-column
+        {
+            width: 100%;
+        }
+        #shopify-section-{{ section.id }} .cw-newsletter-desktop-image
+        {
+            display: none;
+        }
+        #shopify-section-{{ section.id }} .cw-newsletter-mobile-image
+        {
+            display: block;
+            padding: 0px 20px;
+        }
+        #shopify-section-{{ section.id }} .cw-newsletter-column.right-column
+        {
+            background-image: url("{{ 'cw-newsletter-mobile-bg.png' | file_url }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            padding: 40px 20px;
+        }
+        #shopify-section-{{ section.id }} .cw-newsletter-column-inner
+        {
+            max-width: 330px;
+        }
+        #shopify-section-{{ section.id }} .cw-newsletter-form-title h2
+        {
+            font-size: 25px;
+        }
+        #shopify-section-{{ section.id }} .cw-newsletter-form-sub-title p
+        {
+            font-size: 14px;
+        }
+        #shopify-section-{{ section.id }} .newsletter-form .needsclick.kl-private-reset-css-Xuajs1 {
+            display: block !important;
+        }
+        #shopify-section-{{ section.id }} .newsletter-form .kl-private-reset-css-Xuajs1 input[type=email] {
+            min-width:330px !important;
+            height: 45px !important;
+        }
+        #shopify-section-{{ section.id }} .newsletter-form [data-testid="form-component"] button{
+            min-width:290px !important;
+            height: 45px !important;
+            margin-top:10px !important;
+            width: 290px !important;
+            max-width: 290px !important;
+        }
+        #shopify-section-{{ section.id }} .newsletter-form [data-testid="form-row"] {
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }  
+    }
+    @media only screen and (max-width: 335px) 
+    {
+        #shopify-section-{{ section.id }} .newsletter-form .kl-private-reset-css-Xuajs1 input[type=email],
+        #shopify-section-{{ section.id }} .newsletter-form [data-testid="form-component"] button {
+            min-width:280px !important;
+        }
+    }
+</style>
+<div class="cw-newsletter-wrapper">
+    <div class="cw-newsletter-column">
+        {% if section.settings.desktop_image != blank %}
+        <div class="cw-newsletter-desktop-image">
+            {% comment %} <img src="{{ section.settings.desktop_image | image_url: width: 1080 }}" width="1080" height="1080" /> {% endcomment %}
+            {{ section.settings.desktop_image
+            | image_url: width: 800
+            | image_tag:
+                loading: 'lazy',
+                sizes: '668px',
+                widths: '400, 600, 750, 800'
+            }}
+        </div>
+        {% endif %}
+        {% if section.settings.mobile_image != blank %}
+            <div class="cw-newsletter-mobile-image">
+                {% comment %} <img src="{{ section.settings.desktop_image | image_url: width: 727 }}" width="727" height="337" /> {% endcomment %}
+                {{ section.settings.desktop_image
+                | image_url: width: 800
+                | image_tag:
+                loading: 'lazy',
+                sizes: '651px',
+                widths: '500, 651, 727, 800'
+                }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="cw-newsletter-column right-column">
+        <div class="cw-newsletter-column-inner">
+            {% if section.settings.title != blank %}
+            <div class="cw-newsletter-form-title">
+                <h2>{{ section.settings.title }}</h2>
+            </div>
+            {% endif %}
+            {% if section.settings.sub_title != blank %}
+            <div class="cw-newsletter-form-sub-title">
+                <p>{{ section.settings.sub_title }}</p>
+            </div>
+            {% endif %}
+            {% if section.settings.klaviyo_form_id != blank %}
+            <div class="newsletter-form">
+                {{ section.settings.klaviyo_form_id }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "CW Newsletter",
+    "settings": [
+        {
+            "type" : "image_picker",
+            "id" : "desktop_image",
+            "label": "Desktop image"
+        },
+        {
+            "type" : "image_picker",
+            "id" : "mobile_image",
+            "label": "Mobile image"
+        },
+        {
+            "type" : "text",
+            "id" : "title",
+            "label": "Title"
+        },
+        {
+            "type" : "text",
+            "id" : "sub_title",
+            "label": "Sub title"
+        },
+        {
+            "type" : "liquid",
+            "id" : "klaviyo_form_id",
+            "label": "Klaviyo form id"
+        }
+    ],
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "presets": [
+        {
+            "name": "CW Newsletter"
+        }
+    ]
+}
+{% endschema %}

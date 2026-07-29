@@ -1,0 +1,358 @@
+<div class="ms__blog-posts-outer-container">
+  <div class="page-width">
+    <div
+      id="msbp{{ section.id }}"
+      class="swiper swipes"
+      data-swiper="msbp{{ section.id }}">
+      <div class="cc__blog-header{% if section.settings.heading != blank %} cc__withheading{% endif %}">
+        {% if section.settings.heading != blank %}
+          <div class="cc__blog-heading">
+            <h2>{{ section.settings.heading }}</h2>
+          </div>
+        {% endif %}
+        <div class="cc__msbp-navigation">
+          <div class="sp-button-prev-msbp{{ section.id }} fcswipes-button">
+            <svg
+              width="26"
+              height="14"
+              viewBox="0 0 26 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.926495 7.39212L6.48786 12.9535C6.68764 13.1868 7.03873 13.214 7.27201 13.0142C7.50529 12.8144 7.53248 12.4633 7.33266 12.23C7.31402 12.2083 7.29375 12.188 7.27201 12.1694L2.66163 7.55343L24.6792 7.55343C24.9863 7.55343 25.2354 7.30443 25.2354 6.99726C25.2354 6.69009 24.9863 6.44114 24.6792 6.44114L2.66163 6.44113L7.27201 1.83076C7.50529 1.63098 7.53248 1.27989 7.33266 1.04661C7.13283 0.813332 6.78179 0.786138 6.54851 0.985962C6.52677 1.0046 6.50646 1.02486 6.48786 1.04661L0.926447 6.60803C0.710852 6.82487 0.710852 7.17519 0.926495 7.39212Z" fill="#977E57" />
+            </svg>
+          </div>
+          <div class="sp-button-next-msbp{{ section.id }} fcswipes-button">
+            <svg
+              width="26"
+              height="14"
+              viewBox="0 0 26 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M25.0735 6.60788L19.5121 1.04646C19.3124 0.813181 18.9613 0.785987 18.728 0.98581C18.4947 1.18559 18.4675 1.53668 18.6673 1.76995C18.686 1.7917 18.7062 1.81201 18.728 1.8306L23.3384 6.44658L1.32077 6.44657C1.01365 6.44657 0.764647 6.69557 0.764647 7.00274C0.764647 7.30991 1.01365 7.55886 1.32077 7.55886L23.3384 7.55887L18.728 12.1692C18.4947 12.369 18.4675 12.7201 18.6673 12.9534C18.8672 13.1867 19.2182 13.2139 19.4515 13.014C19.4732 12.9954 19.4935 12.9751 19.5121 12.9534L25.0736 7.39197C25.2891 7.17514 25.2891 6.82481 25.0735 6.60788Z" fill="#977E57" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-wrapper">
+        {% if section.settings.blog == blank %}
+          {% for placeholder in (1..6) %}
+            <div class="swiper-slide">
+              <div class="cc__inner-blog-details">
+                <div class="cc__blog-featured-image cc__blog-imageplaceholder">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+                <div class="cc__blog-details">
+                  <h3>Example Product Title</h3>
+                  <p class="cc__excerpt_content">LLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <p class="cc__blog-readmore">Read More
+                    <svg
+                      width="29"
+                      height="11"
+                      viewBox="0 0 29 11"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M28.3309 6.09115H0.669335C0.340296 6.09115 0.0744629 5.82532 0.0744629 5.49628C0.0744629 5.16724 0.340296 4.90141 0.669335 4.90141H26.8939L23.2838 1.29128C23.0514 1.05891 23.0514 0.681538 23.2838 0.449166C23.5161 0.216794 23.8935 0.216794 24.1259 0.449166L28.7529 5.07615C28.9239 5.24718 28.9741 5.50186 28.8811 5.72494C28.7882 5.94615 28.5707 6.09115 28.3309 6.09115Z" fill="currentColor" />
+                      <path d="M23.6984 10.7237C23.546 10.7237 23.3935 10.6661 23.2783 10.549C23.0459 10.3166 23.0459 9.93923 23.2783 9.70686L27.9108 5.0743C28.1432 4.84192 28.5206 4.84192 28.753 5.0743C28.9853 5.30667 28.9853 5.68404 28.753 5.91641L24.1204 10.549C24.0033 10.6661 23.8508 10.7237 23.6984 10.7237Z" fill="currentColor" />
+                    </svg>
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for article in section.settings.blog.articles limit: limit %}
+            <div class="swiper-slide">
+              <div class="cc__inner-blog-details">
+                <a class="cc__blog-link" href="{{ article.url }}"></a>
+                {% if article.image != blank %}
+                  <div class="cc__blog-featured-image">
+                    <img src="{{ article.image | img_url: 'master' }}" alt="{{ article.image.alt | default: article.title }}" />
+                  </div>
+                {% endif %}
+                <div class="cc__blog-details">
+                  <h3>{{ article.title }}</h3>
+                  {% if article.excerpt != blank %}
+                    <div class="cc__excerpt_content">{{ article.excerpt }}</div>
+                  {% endif %}
+                  <p class="cc__blog-readmore">Read More
+                    <svg
+                      width="29"
+                      height="11"
+                      viewBox="0 0 29 11"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M28.3309 6.09115H0.669335C0.340296 6.09115 0.0744629 5.82532 0.0744629 5.49628C0.0744629 5.16724 0.340296 4.90141 0.669335 4.90141H26.8939L23.2838 1.29128C23.0514 1.05891 23.0514 0.681538 23.2838 0.449166C23.5161 0.216794 23.8935 0.216794 24.1259 0.449166L28.7529 5.07615C28.9239 5.24718 28.9741 5.50186 28.8811 5.72494C28.7882 5.94615 28.5707 6.09115 28.3309 6.09115Z" fill="currentColor" />
+                      <path d="M23.6984 10.7237C23.546 10.7237 23.3935 10.6661 23.2783 10.549C23.0459 10.3166 23.0459 9.93923 23.2783 9.70686L27.9108 5.0743C28.1432 4.84192 28.5206 4.84192 28.753 5.0743C28.9853 5.30667 28.9853 5.68404 28.753 5.91641L24.1204 10.549C24.0033 10.6661 23.8508 10.7237 23.6984 10.7237Z" fill="currentColor" />
+                    </svg>
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bgcolor }};
+    padding-top: {{ section.settings.mpadtop | append: 'px'}};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px'}};
+        overflow: hidden;
+        position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .cc__blog-header {
+      margin-bottom: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__blog-header.cc__withheading {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .cc__blog-header .cc__blog-heading h2 {
+      margin: 0;
+      font-size: {{ section.settings.mhsize | append: 'px' }};
+      color: {{ section.settings.hcolor }};
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .cc__msbp-navigation {
+      width: auto;
+      display: none;
+      align-items: center;
+      gap: 16px;
+      justify-content: space-between;
+      margin-left: auto;
+    }
+
+
+    #shopify-section-{{ section.id }} .fcswipes-button {
+      background-color: {{ section.settings.arrowcolor }};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+
+    #shopify-section-{{ section.id }} .swiper-button-disabled {
+      opacity: 50%;
+    }
+
+
+    #shopify-section-{{ section.id }} .swiper-slide {
+      width: 70%;
+    }
+
+    #shopify-section-{{ section.id }} .cc__inner-blog-details {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .cc__inner-blog-details a.cc__blog-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+    }
+
+    #shopify-section-{{ section.id }} .cc__blog-readmore {
+      text-transform: UPPERCASE;
+      margin-top: 33px;
+      color: {{ section.settings.blogreadmorecolor }};
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      position: relative;
+      background: linear-gradient(to right, currentColor, currentColor);
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: 0 1px;
+      transition: all 0.3s ease;
+      width: fit-content;
+    }
+
+    #shopify-section-{{ section.id }} .cc__inner-blog-details:hover .cc__blog-readmore {
+      background-size: 100% 1px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__blog-featured-image svg {
+      aspect-ratio: 4 / 3;
+      background-color: #f3f3f3;
+      width: 100%;
+      height: 250px;
+      display: block;
+      margin-bottom: 16px;
+      object-fit: cover;
+    }
+
+    #shopify-section-{{ section.id }} .cc__blog-featured-image img {
+      aspect-ratio: 4 / 3;
+      display: block;
+      margin-bottom: 16px;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    #shopify-section-{{ section.id }} .cc__blog-details h3 {
+      font-family: var(--FONT-STACK-BODY);
+      font-size: 20px;
+      text-transform: inherit;
+      margin-bottom: 10px;
+      margin-top: 0;
+      color: {{ section.settings.blogtitlecolor }};
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    #shopify-section-{{ section.id }} .cc__excerpt_content {
+      color: {{ section.settings.blogexcerptcolor }};
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+
+
+    @media screen and (min-width: 750px) {
+      #shopify-section-{{ section.id }} {
+        padding-top: {{ section.settings.dpadtop | append: 'px' }};
+        padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+      }
+
+      #shopify-section-{{ section.id }} .cc__blog-header.cc__withheading {
+        flex-direction: row;
+      }
+
+      #shopify-section-{{ section.id }} .cc__msbp-navigation {
+        width: 178px;
+        display: flex;
+      }
+
+      #shopify-section-{{ section.id }} .cc__blog-header.cc__withheading .cc__blog-heading {
+        width: calc(100% - 200px);
+      }
+
+      #shopify-section-{{ section.id }} .cc__blog-header .cc__blog-heading h2 {
+        font-size: {{ section.settings.dhsize | append: 'px' }};
+        text-align: left;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide {
+        width: 50%;
+      }
+
+      #shopify-section-{{ section.id }} .cc__blog-details h3 {
+        font-size: 24px;
+      }
+
+      #shopify-section-{{ section.id }} .cc__blog-featured-image svg, #shopify-section-{{ section.id }} .cc__blog-featured-image img {
+        margin-bottom: 26px;
+        height: 334px;
+      }
+
+    }
+  </style>
+{% schema %}
+    {
+      "name": "MS Blog Posts",
+      "settings": [
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "Blog"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Blog"
+        },
+        {
+          "type": "number",
+          "id": "dhsize",
+          "label": "Heading size (desktop)",
+          "default": 64,
+          "info": "Unit in px"
+        },
+        {
+          "type": "number",
+          "id": "mhsize",
+          "label": "Heading size (mobile)",
+          "default": 32,
+          "info": "Unit in px"
+        }, {
+          "type": "header",
+          "content": "Styles"
+        }, {
+          "type": "color",
+          "id": "bgcolor",
+          "label": "Background color",
+          "default": "transparent"
+        }, {
+          "type": "color",
+          "id": "hcolor",
+          "label": "Heading",
+          "default": "#000"
+        }, {
+          "type": "color",
+          "id": "arrowcolor",
+          "label": "Arrow",
+          "default": "#000"
+        }, {
+          "type": "color",
+          "id": "blogtitlecolor",
+          "label": "Blog title",
+          "default": "#000"
+        }, {
+          "type": "color",
+          "id": "blogexcerptcolor",
+          "label": "Blog excerpt",
+          "default": "#000"
+        }, {
+          "type": "color",
+          "id": "blogreadmorecolor",
+          "label": "Blog read more",
+          "default": "#000"
+        }, {
+          "type": "number",
+          "id": "dpadtop",
+          "label": "Padding top(desktop)",
+          "default": 70,
+          "info": "Unit in px"
+        }, {
+          "type": "number",
+          "id": "dpadbot",
+          "label": "Padding bottom(desktop)",
+          "default": 70,
+          "info": "Unit in px"
+        }, {
+          "type": "number",
+          "id": "mpadtop",
+          "label": "Padding top(mobile)",
+          "default": 35,
+          "info": "Unit in px"
+        }, {
+          "type": "number",
+          "id": "mpadbot",
+          "label": "Padding bottom(mobile)",
+          "default": 35,
+          "info": "Unit in px"
+        }
+      ],
+      "presets": [
+        {
+          "name": "MS Blog Posts"
+        }
+      ]
+    }
+  {% endschema %}

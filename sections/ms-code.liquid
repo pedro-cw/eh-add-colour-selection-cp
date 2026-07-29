@@ -1,0 +1,80 @@
+<div class="ms__code-outer-container">
+    <div class="page-width">
+         {{ section.settings.code }}
+    </div>
+</div>
+<style>
+    #shopify-section-{{ section.id }}{
+        {% if section.settings.code != blank %}
+        {% else %}
+        display: none;
+        {% endif %}
+        background-color: {{ section.settings.bgcolor }};
+        padding-top: {{ section.settings.mpadtop | append: 'px'}};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px'}};
+        overflow: hidden;
+        position: relative;
+    }
+
+    @media screen and (min-width: 750px) {
+        #shopify-section-{{ section.id }}{
+          padding-top: {{ section.settings.dpadtop | append: 'px' }};
+          padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+        }
+    }
+</style>
+{% schema %}
+    {
+        "name": "MS Code",
+        "settings": [
+            {
+                "type": "liquid",
+                "id": "code",
+                "label": "Custom Liquid / HTML"
+            },
+            {
+                "type": "header",
+                "content": "Styles"
+            }, 
+            {
+                "type": "color",
+                "id": "bgcolor",
+                "label": "Background color",
+                "default": "#F7F8F4"
+            }, 
+            {
+                "type": "number",
+                "id": "dpadtop",
+                "label": "Padding top(desktop)",
+                "default": 70,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "dpadbot",
+                "label": "Padding bottom(desktop)",
+                "default": 70,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mpadtop",
+                "label": "Padding top(mobile)",
+                "default": 35,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mpadbot",
+                "label": "Padding bottom(mobile)",
+                "default": 35,
+                "info": "Unit in px"
+            }
+        ],
+        "presets": [
+            {
+                "name": "MS Code"
+            }
+        ]
+    }
+{% endschema %}

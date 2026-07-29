@@ -1,0 +1,419 @@
+{% liquid
+    assign st = section.settings
+
+    assign cols = section.blocks
+%}
+
+{% if cols.size > 0 %}
+<div class="ms__collections-list">
+    <div class="page-width">
+        <div class="ms__collections-inner-container">
+            <div class="ms__collections-nav-container">
+                {% for ct in cols %}
+                {% liquid
+                    assign icon = ct.settings.icon
+                    assign colitem = ct.settings.collist
+                    assign title = ct.settings.customtitle
+
+                    assign coltitlenav = ct.settings.coltitlenav
+
+                    if coltitlenav != blank
+                        assign colhandle = coltitlenav | handleize
+                    else
+                        assign colhandle = title | handleize
+                    endif
+
+                    assign current = collection.handle
+
+                   assign coltitle = collection.title | handleize
+                %}
+                <div class="ms__collections-nav-item{% if coltitle == 'products' and forloop.first %} ms__colcurrent{% else %}{% if current == colhandle %} ms__colcurrent{% endif %}{% endif %}" data-target="tab{{ forloop.index0 }}{{ title | handleize }}">
+                    <div class="ms__collection-nav-inner">
+                        {% if icon != blank %}
+                        <img width="{{ icon.width }}" height="{{ icon.height }}" src="{{ icon |  image_url: width: icon.width, height: icon.height  }}" alt="{{ icon.alt }}" />
+                        {% endif %}
+                        {{ title }}
+                    </div>
+                </div>
+                {% endfor %} 
+            </div> 
+            <div class="ms__collections-products-container">
+                {% for ctprod in cols %}
+                {% liquid
+                    assign titles = ctprod.settings.customtitle
+                    assign colitem = ctprod.settings.collist
+
+                    assign coltitlenavs = ctprod.settings.coltitlenav
+
+                    if coltitlenavs != blank
+                        assign colhandle = coltitlenavs | handleize
+                    else
+                        assign colhandle = titles | handleize
+                    endif
+
+                    assign current = collection.handle
+                %}
+                <div id="tab{{ forloop.index0 }}{{ titles |  handleize }}" class="ms__collections-products-items{% if coltitle == 'products' and forloop.first %} ms__coltabactive{% else %}{% if current == colhandle %} ms__coltabactive{% endif %}{% endif %}">
+                    {% for cols in colitem %}
+                        {% liquid
+                            assign proditems = cols.products
+                            assign colbanner = cols.metafields.custom.colbanner.value
+                        %}
+                        {% if colbanner != blank %}
+                            <div class="ms__collections-products-items-banner" style="background-image: url({{ colbanner.background_image | image_url: width: colbanner.background_image.width, height: colbanner.background_image.height }});"><p>{{ colbanner.title }}</p></div>
+                            {% endif %}
+                            {% if proditems.size > 0  %}
+                            <div class="cc__collection-grid-items">
+                                {% for product in proditems %}
+                                    {%- capture wlm_check -%}{%- render 'wlm-product' with product , wlm_is_render:'yes' -%}{%- endcapture -%}{%- if wlm_check == blank -%}{%continue%}{%- endif -%}
+                                    {% liquid
+                                        assign current_variant = product.selected_or_first_available_variant
+                                        assign product_badges = product.metafields.custom.badges.value
+                                    %}
+                    
+                                    <div class="cc__inner-product-details">
+                                        <div class="cc__inner-product-details-content" >
+                                            <a href="{{ product.url }}"></a>
+                                            {% if product_badges != blank %}
+                                            <div class="ms__inner-badges-list">
+                                                {% for item in product_badges %}
+                                                <div class="ms__inner-badges">{{ item}}</div>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            <div class="cc__product-featured-image">
+                                                <img width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}" src="{{ product.featured_image | image_url: width: product.featured_media.width, height: product.featured_media.height }}" alt="{{ product.title | append: ' image' }}" loading="lazy"/>
+                                            </div>
+                                            <div class="cc__product-details">
+                                                <h3>{{ product.title }}</h3>
+                                                <div class="cc__fc_product-price">
+                                                    {% if product.price_varies %}
+                                                    <p class="cc__product-price"
+                                                    data-wpd-product-handle="{{ product.handle }}"         
+                                                    data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+                                                    data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+                                                    data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+                                                    data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+                                                    data-wpd-product-id="{{ product.id }}">
+                                                        <span class="cc__product-price-varies-info">From</span> {{ product.price | money }}
+                                                    </p>
+                                                    {% else %}
+                                                    {% if product.compare_at_price > product.price %}
+                                                    <p class="cc__product-price">
+                                                        <span class="cc__product-orig-price data-wpd-hide">{{ product.compare_at_price | money }}</span>
+                                                        <span class="cc__product-sale-price"
+                                                        data-wpd-product-handle="{{ product.handle }}"         
+                                                    data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+                                                    data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+                                                    data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+                                                    data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+                                                    data-wpd-product-id="{{ product.id }}">{{ product.price | money }}</span>
+                                                    </p>
+                                                    {% else %}
+                                                    <p class="cc__product-price"
+                                                    data-wpd-product-handle="{{ product.handle }}"         
+                                                    data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+                                                    data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+                                                    data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+                                                    data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+                                                    data-wpd-product-id="{{ product.id }}">{{ product.price | money }}</p>
+                                                    {% endif %}
+                                                    {% endif %}
+                                                    {% if product.metafields.custom.quantity != blank %}
+                                                    | <p class="cc__productquantity-info">{{ product.metafields.custom.quantity }}</p>
+                                                    {% endif %}
+                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if product.available %}
+                                        {% if product.variants.size > 1 %}
+                                        <a class="btn btn--to-secondary btn--full btn__multiplevariants" href="{{ product.url }}">Shop Now</a>
+                                        {% else %}
+                                        <div data-section-type="featured-collection" data-section-id="{{ section.id }}{{ block.id }}" data-variant-id="{{ current_variant.id }}">
+                                            <div class="product__form-container" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                                <div class="product__form-wrapper">
+                                                <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                                                <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+                                                <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+                    
+                                                {% include 'cc-product-form' %}
+                                                <script type="application/json" data-product-json>
+                                                {{ product | json }}
+                                                </script>
+                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% else %}
+                                        <button class="btn btn--to-secondary btn--full" disabled>{{ 'products.product.sold_out' | t }}</button>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #shopify-section-{{ section.id }} .cc__inner-product-details-content{
+        position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .cc__inner-product-details .cc__inner-product-details-content a{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        z-index: 5;
+    }
+
+    #shopify-section-{{ section.id }} .ms__collections-nav-item{
+        cursor: pointer;
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-featured-image{
+        margin-bottom: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__collections-products-items{
+        display: none;
+    }
+
+    #shopify-section-{{ section.id }} .ms__collections-products-items.ms__coltabactive{
+        display: flex;
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-featured-image svg{
+        width: 100%;
+        height: 294px;
+        object-fit: cover;
+        background-color: #f3f3f3;
+        display: block;
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-featured-image img{
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        display: block;
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-details h3{
+        margin-bottom: 14px;
+        /**font-size: clamp(1.125rem, 0.804vw + 0.964rem, 1.688rem);**/
+        font-size: clamp(1.25rem, 2vw + 1rem, 1.75rem);
+        line-height: 1.2;
+        font-weight: 400;
+        color: {{ section.settings.tcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-price{
+        font-size: 18px;
+        font-weight: 600;
+        color: {{ section.settings.tcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-orig-price {
+        text-decoration: line-through;
+        opacity: 0.75;
+    }
+
+    #shopify-section-{{ section.id }} .cc__fc_product-price{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__fc_product-price p{
+        margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cc__productquantity-info,
+    #shopify-section-{{ section.id }} .cc__product-price-varies-info{
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: {{ section.settings.tcolor }};
+    }
+
+
+    #shopify-section-{{ section.id }} .product__form-container{
+        width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .btn{
+        font-size: 12px;
+        text-transform: UPPERCASE;
+        background-color: #695450;
+        border: 2px solid #695450;
+        transition: all 0.3s ease;
+        line-height: 1.2;
+        padding: 10px;
+        font-weight: 600;
+        margin-top: 16px;
+    }
+
+
+
+    #shopify-section-{{ section.id }} .btn:after{
+        outline: unset !important;
+    }
+
+    #shopify-section-{{ section.id }} .btn:hover{
+        background-color: #977e57;
+        border: 2px solid #977e57;
+    }
+
+
+    #shopify-section-{{ section.id }} .cc__inner-product-details {
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+    }
+
+    #shopify-section-{{ section.id }} .product__notification:empty {
+        margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cc__collection-grid-items {
+        display: grid;
+        grid-template-columns: repeat(2, calc(50% - 10px));
+        gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__inner-badges-list{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .ms__inner-badges{
+        padding: 4px 10px;
+        border-radius: 40px;
+        text-transform: uppercase;
+        border: 2px solid #977e57;
+        color: inherit;
+        background-color: #fff;
+        font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__collection-nav-inner{
+        display: flex;
+        align-items:center;
+        gap: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__collection-nav-inner img{
+        width: 20px;
+        height: 20px;
+        display: block;
+    }
+     #shopify-section-{{ section.id }} .cc__product-featured-image img{
+        padding: 16px;
+    }
+    #shopify-section-{{ section.id }} .cc__product-featured-image {
+        background: #fff;
+    }
+
+    @media screen and (min-width: 750px){
+
+        #shopify-section-{{ section.id }} .cc__product-details h3{
+            font-size: clamp(1.125rem, 0.804vw + 0.964rem, 1.688rem);
+        }
+
+        #shopify-section-{{ section.id }} .cc__featured-collection-header.cc__withheading{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        #shopify-section-{{ section.id }} .cc__collection-grid-items {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 44px 30px;
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-featured-image img{
+        width: 100%;
+        height: 100%;
+        }
+    }
+</style>
+{% endif %}
+{% schema %}
+{
+    "name": "Collections List",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Styles"  
+        },
+        {
+            "type" : "color",
+            "id" : "bgcolor",
+            "label": "Background color",
+            "default": "transparent"
+        },
+        {
+            "type" : "color",
+            "id" : "tcolor",
+            "label": "Text color",
+            "default": "#695450"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "collection",
+            "name": "Collection",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "customtitle",
+                    "label": "Custom Navigation Title",
+                    "info": "If empty will use the default collection title.",
+                    "default": "Navigation"
+                },
+                {
+                    "type": "text",
+                    "id": "coltitlenav",
+                    "label": "Navigation",
+                    "info": "This will set the tab active when it is equal to the current collection slug. You can make it equal to the custom navigation title or leave it blank to use it."
+                },
+                {
+                    "type": "collection_list",
+                    "id": "collist",
+                    "label": "Collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

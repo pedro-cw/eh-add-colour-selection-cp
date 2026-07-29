@@ -1,0 +1,206 @@
+<div class="page-width">
+    <div class="cc__instafeed-header">
+        {% if section.settings.title != blank %}
+        <{{ section.settings.htags }} class="cc__instafeed-heading">{{ section.settings.title }}</{{ section.settings.htags }}>
+        {% endif %}
+        <div class="cc__instafeedsocial">
+            <div class="cc__instafeedsociallinks">
+                {% if settings.social_instagram_link != blank %}
+                <a href="{{ settings.social_instagram_link }}" target="_blank">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9297 31.8593C24.7278 31.8593 31.8593 24.7278 31.8593 15.9297C31.8593 7.13151 24.7278 0 15.9297 0C7.13151 0 0 7.13151 0 15.9297C0 24.7278 7.13151 31.8593 15.9297 31.8593ZM15.9297 2.18137C23.5221 2.18137 29.6779 8.33619 29.6779 15.9297C29.6779 23.5231 23.5221 29.6779 15.9297 29.6779C8.33718 29.6779 2.18137 23.5221 2.18137 15.9297C2.18137 8.33718 8.33718 2.18137 15.9297 2.18137Z" fill="#695450"/>
+                    <path d="M11.3556 20.9196H20.5042C20.7949 20.9196 20.9204 20.7951 20.9204 20.5034V14.6821L19.9039 14.9071C20.0154 15.2685 20.0751 15.6518 20.0751 16.0481C20.0751 18.2603 18.2243 20.0544 15.9404 20.0544C13.6574 20.0544 11.8056 18.2593 11.8056 16.0481C11.8056 15.6509 11.8663 15.2685 11.9769 14.9071L10.9404 14.6821V20.5034C10.9394 20.7951 11.0649 20.9196 11.3556 20.9196Z" fill="#695450"/>
+                    <path d="M18.841 13.4349H20.5046C20.7346 13.4349 20.9208 13.2488 20.9208 13.0188V11.3551C20.9208 11.1251 20.7346 10.939 20.5046 10.939H18.841C18.611 10.939 18.4248 11.1251 18.4248 11.3551V13.0188C18.4248 13.2488 18.611 13.4349 18.841 13.4349Z" fill="#695450"/>
+                    <path d="M15.9395 18.4931C17.4148 18.4931 18.6107 17.3341 18.6107 15.9045C18.6107 14.4749 17.4148 13.3159 15.9395 13.3159C14.4643 13.3159 13.2683 14.4749 13.2683 15.9045C13.2683 17.3341 14.4643 18.4931 15.9395 18.4931Z" fill="#695450"/>
+                    <path d="M15.9298 27.4753C22.3066 27.4753 27.4758 22.3062 27.4758 15.9293C27.4758 9.55247 22.3066 4.3833 15.9298 4.3833C9.55296 4.3833 4.38379 9.55247 4.38379 15.9293C4.38379 22.3062 9.55296 27.4753 15.9298 27.4753ZM9.27619 10.9394C9.27619 9.9995 9.99999 9.2757 10.9398 9.2757H20.9198C21.8586 9.2757 22.5834 9.9995 22.5834 10.9394V20.9193C22.5834 21.8581 21.8586 22.5829 20.9198 22.5829H10.9398C9.99999 22.5829 9.27619 21.8581 9.27619 20.9193V10.9394Z" fill="#695450"/>
+                    </svg>
+                </a>
+                {% endif %}
+                {% if settings.social_facebook_link != blank %}
+                <a href="{{ settings.social_facebook_link }}" target="_blank">
+                    <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.8066 31.8593C25.6048 31.8593 32.7363 24.7278 32.7363 15.9297C32.7363 7.13151 25.6048 0 16.8066 0C8.00846 0 0.876953 7.13151 0.876953 15.9297C0.876953 24.7278 8.00846 31.8593 16.8066 31.8593ZM16.8066 2.18137C24.3991 2.18137 30.5549 8.33619 30.5549 15.9297C30.5549 23.5231 24.3991 29.6779 16.8066 29.6779C9.21414 29.6779 3.05832 23.5221 3.05832 15.9297C3.05832 8.33718 9.21414 2.18137 16.8066 2.18137Z" fill="#695450"/>
+                    <path d="M16.8068 27.4753C23.1836 27.4753 28.3528 22.3062 28.3528 15.9293C28.3528 9.55247 23.1836 4.3833 16.8068 4.3833C10.4299 4.3833 5.26074 9.55247 5.26074 15.9293C5.26074 22.3062 10.4299 27.4753 16.8068 27.4753ZM13.4337 13.4333H14.9281V11.935C14.9281 9.89895 15.7723 8.68829 18.1697 8.68829H20.1659V11.1843H18.9184C17.9846 11.1843 17.9228 11.5337 17.9228 12.1839L17.9198 13.4333H20.1799L19.915 15.9283H17.9188V23.1693H14.9271V15.9293H13.4327V13.4333H13.4337Z" fill="#695450"/>
+                    </svg>
+                </a>
+                {% endif %}
+            </div>
+            {% if section.settings.insta_handle != blank %}
+            <a class="cc__instagramhandle" href="https://www.instagram.com/{{ section.settings.insta_handle | remove: '@' | escape }}" target="_blank">{{ section.settings.insta_handle }}</a>
+            {% endif %}
+        </div>
+    </div>
+    <div id="insta-feed"></div>
+</div>
+<style>
+     #shopify-section-{{ section.id }}{
+        background-color: {{ section.settings.bgcolor }};
+        padding-top: {{ section.settings.mpadtop | append: 'px'}};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px'}};
+        overflow: hidden;
+    }
+
+    #shopify-section-{{ section.id }} .cc__instafeedsociallinks{
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__instagramhandle{
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: UPPERCASE;
+        color: {{ section.settings.tcolor }};
+        text-decoration: none;
+    }
+
+    #shopify-section-{{ section.id }} .cc__instafeed-header{
+        margin-bottom: 30px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__instafeed-heading{
+        margin: 0;
+        margin-bottom: 16px;
+         font-size: {{ section.settings.mhsize | append: 'px' }};
+         color: {{ section.settings.tcolor }};
+     }
+
+    @media screen and (min-width: 750px){
+        #shopify-section-{{ section.id }}{
+            padding-top: {{ section.settings.dpadtop | append: 'px' }};
+            padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+        }
+
+        #shopify-section-{{ section.id }} .cc__instafeed-heading{
+            font-size: {{ section.settings.dhsize | append: 'px' }};
+            margin: 0;
+        }
+
+        #shopify-section-{{ section.id }} .cc__instafeed-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        #shopify-section-{{ section.id }} .cc__instafeedsocial {
+            margin-bottom: 19px;
+            text-align: right;
+        }
+
+    }
+</style>
+{% schema %}
+    {
+        "name" : "MS Instafeed",
+        "settings": [
+            {
+                "type" : "text",
+                "id" : "title",
+                "label" : "Title",
+                "default": "Follow us on Social Media"
+            },
+            {
+                "type": "select",
+                "id": "htags",
+                "label": "Heading Tag",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "H6"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "id": "insta_handle",
+                "label": "Handle",
+                "default": "@instahandle"
+            },
+            {
+                "type" : "header",
+                "content" : "Styles"
+            },
+            {
+                "type" : "color",
+                "id" : "tcolor",
+                "label": "Text color",
+                "default": "#695450"
+            },
+            {
+                "type" : "color",
+                "id" : "bgcolor",
+                "label": "Background color",
+                "default": "#F7F8F4"
+            },
+            {
+                "type" : "number",
+                "id" : "dhsize",
+                "label" : "Heading size (desktop)",
+                "default": 96,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mhsize",
+                "label" : "Heading size (desktop)",
+                "default": 45,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadtop",
+                "label" : "Padding top(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadbot",
+                "label" : "Padding bottom(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadtop",
+                "label" : "Padding top(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadbot",
+                "label" : "Padding bottom(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            }
+        ],
+        "presets": [
+            {
+                "name" : "MS Instafeed"
+            }
+        ]
+    }
+{% endschema %}

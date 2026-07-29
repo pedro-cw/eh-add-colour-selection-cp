@@ -1,0 +1,65 @@
+<style>
+
+.cw-easthealing-atf-upadte{
+	display: none !important;
+}
+
+@media screen and (max-width: 767px){
+	
+	.r-10n5r0r , .r-cm7631 ,
+	.r-1v9ra2z , .r-15v35t4
+	{
+		display: none !important;
+	}
+
+	.cw-easthealing-atf-upadte{
+		display: block !important;
+	}
+
+.cw-easthealing-atf-upadte > div {
+    display: flex !important;
+}
+ 
+.cw-easthealing-atf-upadte .r-10n5r0r ,
+.cw-easthealing-atf-upadte .r-1v9ra2z 
+{
+    justify-content: center !important;
+    align-items: center !important;
+    margin-bottom: 16px !important;
+}
+ 
+}
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  if (window.innerWidth < 767) {
+
+    const handle = window.location.pathname;
+
+    if (
+      handle.includes('24k-gold-plated-ear-seed-kit') ||
+      handle.includes('womens-health-gold-ear-seed-kit-bundle')
+    ) {
+
+      let seedkit_instalment = document.querySelector('.r-10n5r0r, .r-1v9ra2z')?.outerHTML || '';
+      let seedkit = document.querySelector('.r-cm7631, .r-15v35t4')?.outerHTML || '';
+      let seedkit_atc = document.querySelector('.r-16ozr5f, .r-16yaned');
+
+      if (seedkit_atc && !document.querySelector('.cw-easthealing-atf-upadte')) {
+        seedkit_atc.insertAdjacentHTML('afterend', `
+          <div class="cw-easthealing-atf-upadte">
+            ${seedkit_instalment}
+            ${seedkit}
+          </div>
+        `);
+      }
+
+    }
+
+  }
+
+});
+</script>

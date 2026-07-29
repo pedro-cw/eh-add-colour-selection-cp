@@ -1,0 +1,358 @@
+<style>
+  @font-face {
+    font-family: 'Botanica';
+    src: url('https://cdn.shopify.com/s/files/1/0588/4742/8796/files/botanica.woff2?v=1759557561') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .cw-how-it-works {
+    padding: 80px 20px;
+    background-color: {{ section.settings.background_color }};
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .cw-how-it-works__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cw-how-it-works__title {
+    font-family: 'Botanica', serif;
+    font-size: {{ section.settings.title_size }}px;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 60px 0;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+
+  .cw-how-it-works__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+       max-width: 750px;
+       gap:40px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+  }
+
+  .cw-how-it-works__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cw-how-it-works__icon {
+    width: 60px;
+    height: 60px;
+    background-color: {{ section.settings.icon_bg_color }};
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    padding: 15px;
+  }
+
+  .cw-how-it-works__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .cw-how-it-works__step-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    line-height: 125%;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 8px 0;
+    text-transform: none !important;
+  }
+
+  .cw-how-it-works__step-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    line-height: 125%;
+    color: #000000;
+    margin: 0;
+    max-width: 280px;
+    font-weight: 400;
+}
+
+  .cw-how-it-works__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cw-how-it-works__button {
+    display: inline-block;
+    padding: 10px 80px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    letter-spacing: 1px;
+  }
+
+  .cw-how-it-works__button:hover {
+    opacity: 0.9;
+  }
+
+  .cw-how-it-works__disclaimer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: {{ section.settings.disclaimer_color }};
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  span.cw-how-it-works__disclaimer span {
+    color: #000000;
+}
+
+  @media (max-width: 768px) {
+    .cw-how-it-works {
+      padding: 40px 0px;
+    }
+
+    .cw-how-it-works__title {
+      font-size: 32px !important;
+      margin-bottom: 40px;
+    }
+
+    .cw-how-it-works__steps {
+      grid-template-columns: 1fr;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    .cw-how-it-works__button {
+      padding: 14px 40px;
+      width: 100%;
+      max-width: 346px;
+    }
+     .cw-how-it-works__step-text {
+    max-width: 310px;
+  }
+  span.cw-how-it-works__disclaimer {
+    font-size: 9px;
+}
+    
+}
+</style>
+
+<section class="cw-how-it-works">
+  <div class="cw-how-it-works__container">
+    <!-- Title -->
+    {% if section.settings.title != blank %}
+      <h2 class="cw-how-it-works__title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    <!-- Steps Grid -->
+    {% if section.blocks.size > 0 %}
+      <div class="cw-how-it-works__steps">
+        {% for block in section.blocks %}
+          <div class="cw-how-it-works__step" {{ block.shopify_attributes }}>
+            <!-- Icon -->
+            {% if block.settings.icon != blank %}
+              <div class="cw-how-it-works__icon">
+                <img 
+                  src="{{ block.settings.icon | image_url: width: 60 }}" 
+                  alt="{{ block.settings.step_title | escape }}"
+                  width="60"
+                  height="60"
+                  loading="lazy">
+              </div>
+            {% endif %}
+
+            <!-- Step Title -->
+            {% if block.settings.step_title != blank %}
+              <h3 class="cw-how-it-works__step-title">{{ block.settings.step_title }}</h3>
+            {% endif %}
+
+            <!-- Step Text -->
+            {% if block.settings.step_text != blank %}
+              <p class="cw-how-it-works__step-text">{{ block.settings.step_text }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- CTA Button & Disclaimer -->
+    <div class="cw-how-it-works__cta">
+      {% if section.settings.button_text != blank %}
+        <a 
+          href="{{ section.settings.button_link }}" 
+          class="cw-how-it-works__button"
+          style="background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.disclaimer_text != blank %}
+        <span class="cw-how-it-works__disclaimer">{{ section.settings.disclaimer_text }}</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "HOW IT WORKS"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#8B6F47"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title Size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Step Icons"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color",
+      "label": "Icon Background Color",
+      "default": "#8B6F47"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "GIVE £5 OFF"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#8B6F47"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Disclaimer"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer_text",
+      "label": "Disclaimer Text",
+      "default": "By accepting this offer you agree to the Terms and Conditions"
+    },
+    {
+      "type": "color",
+      "id": "disclaimer_color",
+      "label": "Disclaimer Text Color",
+      "default": "#999999"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Step Icon"
+        },
+        {
+          "type": "text",
+          "id": "step_title",
+          "label": "Step Title",
+          "default": "Step 1"
+        },
+        {
+          "type": "textarea",
+          "id": "step_text",
+          "label": "Step Description",
+          "default": "Share your unique referral link with friends and family"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Step 1",
+            "step_text": "Share your unique referral link with friends and family"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Step 2",
+            "step_text": "Your friend makes a purchase using your link"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Step 3",
+            "step_text": "You both get £5 off your order!"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

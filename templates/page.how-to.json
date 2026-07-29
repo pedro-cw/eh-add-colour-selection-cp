@@ -1,0 +1,413 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ms_richtext_6RbWBP": {
+      "type": "ms-richtext",
+      "settings": {
+        "uppertitle": "how to",
+        "hide_pagebreadcrumbs": false,
+        "dspacebot": 30,
+        "mspacebot": 30,
+        "uppertitlecolor": "#695450",
+        "upperborder": "#dad4c5",
+        "upperborderopacity": 100,
+        "section_title": "",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "text": "",
+        "dcsize": 16,
+        "mcsize": 16,
+        "heading_width": 665,
+        "contents_width": 621,
+        "bgcolor": "rgba(0,0,0,0)",
+        "textcolor": "#000000",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_video_EBJpWa": {
+      "type": "ms-video",
+      "settings": {
+        "video_url": "https://www.youtube.com/watch?v=C-_zZ0v-pa8&t=1s",
+        "cover_image": "shopify://shop_images/how_to_image.jpg",
+        "cover_image_position": "center center",
+        "show_overlay": false,
+        "overlay_color": "#000000",
+        "overlay_text": "#ffffff",
+        "overlay_opacity": 30,
+        "title": "how to apply ear seeds",
+        "htags": "h1",
+        "dhsize": 48,
+        "mhsize": 32,
+        "content": "",
+        "linklabel": "",
+        "link": "",
+        "dlink_top": 30,
+        "mlink_top": 30,
+        "bgimage1": "shopify://shop_images/Group_11.jpg",
+        "bgimage2": "shopify://shop_images/Group_10.jpg",
+        "bgcolor": "#f7f8f4",
+        "tcolor": "#695450",
+        "dpadtop": 50,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 50
+      }
+    },
+    "cc_slider_content_FdWaadsd7Pe": {
+      "type": "cc-slider-content",
+      "blocks": {
+        "content_3b7twg": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12740.jpg",
+            "preheading": "STEP 1",
+            "heading": "Choose the ear map",
+            "content": "<p>Focus on one protocol and identify acupoints by referencing the ear maps in your ear seed kit.</p>"
+          }
+        },
+        "content_ybQBK9": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12719_ea3c3b7b-e5cf-45fe-9d08-4e1388b6386d.jpg",
+            "preheading": "STEP 2",
+            "heading": "Get Prepared",
+            "content": "<p>Clean your ear and let it dry. Using tweezers, carefully lift the edge of clear seed adhesive.</p>"
+          }
+        },
+        "content_ipNpUD": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12722.png",
+            "preheading": "STEP 3",
+            "heading": "Apply the seeds",
+            "content": "<p>Hover over the desired area of application, and firmly press down with a finger to adhere. Massage the seeds 3-5 times a day.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_3b7twg",
+        "content_ybQBK9",
+        "content_ipNpUD"
+      ],
+      "settings": {
+        "arrowalignment": "align-position",
+        "title": "step by step guide",
+        "htags": "h2",
+        "bgcolor": "#f7f8f4",
+        "cardbgcolor": "#ffffff",
+        "cardtcolor": "#695450",
+        "dhsize": 64,
+        "mhsize": 32,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_featured_collection_X7PVEf": {
+      "type": "cc-featured-collection",
+      "settings": {
+        "layout": "slider",
+        "collection": "ear-seeds",
+        "productlimit": 10,
+        "heading": "Our Products",
+        "htags": "h2",
+        "dhsize": 64,
+        "mhsize": 32,
+        "bgcolor": "#f3eeea",
+        "tcolor": "#695450",
+        "arrowcolor": "#695450",
+        "dpadtop": 96,
+        "dpadbot": 96,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_faq_wPHYzdsdasddx": {
+      "type": "cc-faq",
+      "blocks": {
+        "faq_bBK86k": {
+          "type": "faq",
+          "settings": {
+            "question": "What are ear seeds?",
+            "content": "<p>Rooted in the principles of Chinese medicine, ear seeds are an acupressure tool which may support physical and mental well-being. They are tiny metal balls which can be attached to points on the ear with a small clear adhesive sticker.</p>"
+          }
+        },
+        "faq_Jz9hVT": {
+          "type": "faq",
+          "settings": {
+            "question": "How do ear seeds work?",
+            "content": "<p>Ear seeds are a form of auriculotherapy, which is the stimulation of specific points of the ear to support physical and emotional health concerns. They are a form of acupressure that has been used in Traditional Chinese Medicine (TCM) for thousands of years. TCM teaches that the ear is a microsystem of the whole body, where certain points on the ear correspond to different organs or body parts. Energy pathways (or ‘qi’ or vital life energy) pass through the ear and ear seeds stimulate specific points which send an abundant flow of energy to the related organ or area that needs attention. Think of it like reflexology, but for the ears instead of feet.</p><p>Ear seeds create continual, gentle pressure on nerve impulses in the ear which send messages to the brain that certain organs or systems need support. The brain will then send signals and chemicals to the nervous system helping you relax, heal, or focus, as well as releasing endorphins into the bloodstream, naturally soothing tension and discomfort.</p>"
+          }
+        },
+        "faq_XzNY3t": {
+          "type": "faq",
+          "settings": {
+            "question": "What may ear seeds help with?",
+            "content": "<p>Ear seeds are an ancient wellness tool rooted in Traditional Chinese Medicine, used to support calm, balance and everyday wellbeing.</p><p>Our <a href=\"https://acuseeds.co.uk/products/24k-gold-plated-ear-seed-kit\">ear seed kits</a> include 8 protocol ear maps covering: sleep, emotional balance, relaxation, immunity, focus, natural energy and digestion.</p><p>Our <a href=\"https://acuseeds.co.uk/products/womens-health-guide\">women's health guide</a> and<a href=\"https://acuseeds.co.uk/products/womens-health-gold-ear-seed-kit-bundle\" title=\"https://acuseeds.co.uk/products/womens-health-gold-ear-seed-kit-bundle\"> bundles</a> include 8 protocol ear maps covering: monthly discomfort, your conception journey, the fourth trimester, life after 40, inflammation and appetite. </p>"
+          }
+        },
+        "faq_ktNcYe": {
+          "type": "faq",
+          "settings": {
+            "question": "Are ear seeds safe?",
+            "content": "<p>Ear seeds are a non invasive treatment which is safe and effective. The tiny beads apply pressure onto points on the ear and there are no needles involved.</p>"
+          }
+        },
+        "faq_QpM8Kh": {
+          "type": "faq",
+          "settings": {
+            "question": "How are ear seeds applied?",
+            "content": "<p>- Clean ear thoroughly with facial cleanser or an alcohol swab - this removes natural oils, ensuring proper adhesion. Ensure the ear is dry before application.</p><p>- Focus on one protocol and identify acupoints by referencing the ear maps in your ear seed kit. You will be applying the seeds to one ear only.</p><p>- Using tweezers, carefully lift the edge of clear seed adhesive, hover over the desired area of application, and firmly press down with a finger to adhere.</p><p>- Seeds may be stimulated a few times a day by gently massaging in a circular motion. Seeds may be worn for a maximum of 5 days and cannot be reused. Remove with tweezers or fingernails. You can apply a new set on the other ear immediately or if applying to the same ear, please wait for 2 days.</p>"
+          }
+        },
+        "faq_cHYBb7": {
+          "type": "faq",
+          "settings": {
+            "question": "How long do they last?",
+            "content": "<p>Ear seeds are single-use only and can be worn up to 5 days depending on the area of the ear where they’ve been placed. Before application, we suggest cleaning the area thoroughly with an alcohol swab or facial cleanser and allowing to dry completely for maximum adhesion. When applying, avoid touching the sticky side of the ear seed as it will not adhere properly. After 5 days of wear, remove seeds with your fingers or tweezers and allow the skin to heal for 2 days before applying a new set of seeds on the same ear. Alternatively, you can reapply immediately on the other ear.</p>"
+          }
+        },
+        "faq_iLmEMp": {
+          "type": "faq",
+          "settings": {
+            "question": "Is there any research to show that they work?",
+            "content": "<p>Visit our blog post '<a href=\"https://acuseeds.co.uk/blogs/articles/what-are-ear-seeds-and-how-do-they-work\">What are Ear Seeds and do they really work?' </a>for links to studies that suggest the effectiveness of auricular acupressure and acupuncture. You can also check out our product pages on our website for reviews, as well as our Instagram page. </p>"
+          }
+        },
+        "faq_mjg3Q7": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the difference between gold and silver?",
+            "content": "<p>There is no noticeable difference in the way that gold and silver ear seeds work. Many people match them to their jewellery, or our male customers usually prefer using silver ear seeds as they are less \"jewellery like\" than gold.</p>"
+          }
+        },
+        "faq_3x3EWd": {
+          "type": "faq",
+          "settings": {
+            "question": "What do ear seeds contain?",
+            "content": "<p>Our gold, silver, crystal or pearl ear seeds are made with a nickel base metal, coated in either 24k gold or silver plating. They are attached to a clear sticker using medical-grade adhesive and do not contain latex. </p><p>Our nickel-free ear seeds are made from 100% titanium and are attached to a clear sticker using medical-grade adhesive, with no latex. </p><p>If you have any questions or need further assistance, please feel free to reach out. We're here to help!</p>"
+          }
+        },
+        "faq_8NNMbY": {
+          "type": "faq",
+          "settings": {
+            "question": "what does the kit contain?",
+            "content": "<p>Our ear seed kits include 20 ear seeds, which can be used across 3 to 5 treatments. If you were to use them consecutively, one pack will last you around a month. Our kits also include instructions on how to apply the seeds and information about how they work. They also contain a wellness guide with 8 protocol ear maps to show you where to place ear seeds to assist with restful sleep, emotional well-being, relaxation, vitality, focus, energy levels, and digestive function.</p><p>For women's health issues, see our <a href=\"https://acuseeds.co.uk/products/womens-health-gold-ear-seed-kit-bundle\">women's health ear seed kit bundles</a>. </p>"
+          }
+        },
+        "faq_YFF9Xw": {
+          "type": "faq",
+          "settings": {
+            "question": "what is the women's health ear seed kit bundle?",
+            "content": "<p>The <a href=\"http://acuseeds.co.uk/products/womens-health-gold-ear-seed-kit-bundle\">women's health ear seed kit bundle</a> in silver or gold includes:</p><p>- 20pc ear seeds</p><p>- instruction guide</p><p>- wellness guide with 8 protocol ear maps to show you where to place ear seeds to assist with restful sleep, emotional well-being, relaxation, vitality, focus, energy levels, and digestive function.</p><p>- women's health guide with 8 protocol ear maps to show you where to place ear seeds to assist with<strong> </strong>menstruation, libido, fertility, postpartum support, symptoms during the menopausal transition, inflammation, and appetite control.</p>"
+          }
+        },
+        "faq_RjCRbr": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I apply ear seeds myself?",
+            "content": "<p>Of course! With our easy to follow instructions and protocol ear maps, you just need a pair of tweezers and a mirror to apply your ear seeds.</p>"
+          }
+        },
+        "faq_B6xEb9": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I know they are in the right place?",
+            "content": "<p>Although you do want to get very close to the designated point, the location of the point shown in each protocol ear map is indicative of that general area. If the point is tender, this usually means that you've hit the right spot.</p>"
+          }
+        },
+        "faq_MKipL4": {
+          "type": "faq",
+          "settings": {
+            "question": "Are there any side effects?",
+            "content": "<p>Ear seeds should always be placed externally - never inside the ear canal. They are not recommended for use in pregnancy or for people with nickel or adhesive allergies. Avoid use of seeds on irritated skin or open lesions. Redness, swelling, skin irritation, or small sores may occur. Sometimes, when a point is “active” the ear seed will make the ear feel sore, tender and sensitive to touch. However, if your symptoms persist, please contact your doctor. This product is not used to diagnose, treat, cure or prevent any disease. Always seek the advice of a physician or other qualified healthcare provider with any questions regarding a medical condition. Please keep in mind that reactions and results may vary from each individual due to differences in state of health.</p>"
+          }
+        },
+        "faq_tkgbwn": {
+          "type": "faq",
+          "settings": {
+            "question": "Can everyone use ear seeds?",
+            "content": "<p>Do not use ear seeds if you are allergic to nickel, metal, gold, silver or adhesive. For those with a nickel allergy, please use our nickel free, 100% titanium ear seeds. Do not use ear seeds if you are pregnant or if you have a fever. We also do not recommend children under 8 using our ear seeds, and we recommend that they are supervised. Please keep out of reach from small children.</p>"
+          }
+        },
+        "faq_hVihfd": {
+          "type": "faq",
+          "settings": {
+            "question": "Are they suitable during pregnancy?",
+            "content": "<p>We do not recommend ear seed during pregnancy as there are some points which may induce early labour.</p>"
+          }
+        },
+        "faq_FJbdaA": {
+          "type": "faq",
+          "settings": {
+            "question": "Are ear seeds waterproof? Can I shower/swim with ear seeds?",
+            "content": "<p>With the correct application, ear seeds can be worn in the shower, swimming pool, whilst exercising and sweating. They should stay in place for up to 5 days. </p>"
+          }
+        },
+        "faq_BqDRkb": {
+          "type": "faq",
+          "settings": {
+            "question": "Can men use ear seeds?",
+            "content": "<p>Men can absolutely use ear seeds! You can buy the <a href=\"https://acuseeds.co.uk/products/24k-gold-plated-ear-seed-kit\">gold or silver kit</a>, but the silver are slightly more subtle and less jewellery like.</p>"
+          }
+        },
+        "faq_Hrtdyc": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I see results?",
+            "content": "<p>Our ear seed kits are for educational use only. We are teaching you the points that are commonly associated with particular conditions but we can not and do not make claims to individual results if you experiment with auriculotherapy with ear seeds.<br/><br/>Historically and in studies, with proper placement, ear seeds have been shown to work immediately for certain conditions, and take longer – up to a few weeks with multiple sessions – with others. Ear seeding is a holistic treatment that can support healing but they are not a magic pill.</p><p>Please keep in mind that reactions and results may vary from each individual due to differences in state of health.</p>"
+          }
+        },
+        "faq_T8hmLq": {
+          "type": "faq",
+          "settings": {
+            "question": "Why are my ear seeds not sticking properly?",
+            "content": "<p>Firstly, it's imperative that you clean your ear with an alcohol swab or facial cleanser to remove any wax or oil from the ear. Your ear must be completely dry before application. Secondly, use tweezers to pinch the corner of the ear seeds and try to avoid touching the tape too much with your fingers.</p><p>When the seed is first applied, hold in place for 10 seconds with your finger. The adhesive should become stronger after a few hours. Store your seeds in a cool dry place and in their original packaging to avoid the adhesive from breaking down.</p><p>Please note that due to the delicate nature of our seeds, extra care must be taken when removing from their backing, otherwise they can dislodge from the adhesive.</p><p>Watch the video at the top of this page for application tips. </p>"
+          }
+        },
+        "faq_cYWrkK": {
+          "type": "faq",
+          "settings": {
+            "question": "does the placement have to be perfect for them to work?",
+            "content": "<p>If the placement is slightly off, do not worry as although you do want to get very close to the specific point, ear seeds will still be effective if they are placed in the general area.</p><p>If your ear feels slightly sensitive when you press on the ear seed, then you've found the correct point!</p>"
+          }
+        },
+        "faq_zpgLjV": {
+          "type": "faq",
+          "settings": {
+            "question": "Are these offered as a wholesale item?",
+            "content": "<p>Yes! If you're interested in purchasing our ear seeds wholesale, apply via our <a href=\"https://acuseeds.co.uk/apps/wpdapp/wholesale\" title=\"https://acuseeds.co.uk/apps/wpdapp/wholesale\">form</a>.</p>"
+          }
+        },
+        "faq_FH8UT7": {
+          "type": "faq",
+          "settings": {
+            "question": "Where are your products made?",
+            "content": "<p>They are made in Japan.</p>"
+          }
+        },
+        "faq_yfJE9Q": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you accept refunds?",
+            "content": "<p>If you are not happy with your purchase, please contact us at <a href=\"mailto:contact@easthealing.com\" title=\"mailto:contact@easthealing.com\">contact@easthealing.com </a>for our returns address. Please return the <strong>unopened and unused </strong>package within 30 days of receipt and we will issue a refund, minus the original shipping costs. You will also be responsible for the shipping costs to return the item.</p><p>Please read the information on allergies and side effects on our website, as we cannot offer a return and refund if side effects are experienced.<br/><br/>Please note that due to the delicate nature of our seeds, extra care must be taken when removing from their backing, otherwise they can dislodge from the adhesive. For issues with application, we recommend using the resources on our website or social channels. We do not accept returns and refunds for issues with application.<br/><br/>Finally, our ear seed kits are for educational use only. We are teaching you the points that are commonly associated with particular conditions but we can not and do not make claims to individual results if you experiment with auriculotherapy with ear seeds. Historically and in studies, with proper placement, ear seeds have been shown to work immediately for certain conditions, and take longer – up to a few weeks with multiple sessions – with others. Ear seeding is a holistic treatment that can support healing but they are not a magic pill. We therefore do not offer returns and refunds if you do not see results from ear seeds.</p>"
+          }
+        },
+        "faq_VVbqyd": {
+          "type": "faq",
+          "settings": {
+            "question": "Where do you ship to?",
+            "content": "<p>We ship to UK, US, Canada and Europe.</p><p>All international orders are DDU (delivered duty unpaid) and the customer will be responsible for any customs fees. Should an international parcel be returned due to unpaid fees or failure to receive or pick up the parcel, the shipping costs will not be refundable and any return fees will be deducted from your refund. Should the return fees be greater than the value of the order, no refund will be applicable. </p>"
+          }
+        },
+        "faq_dd69Ti": {
+          "type": "faq",
+          "settings": {
+            "question": "How much is shipping?",
+            "content": "<p>Please add the item that you wish to purchase to the basket, and enter the shipping address to find out the shipping cost. Please also bear in mind that international orders are sent DDU, which means that the customer is responsible for custom fees.</p>"
+          }
+        },
+        "faq_fCaU8g": {
+          "type": "faq",
+          "settings": {
+            "question": "Are you stocked in any major retailers?",
+            "content": "<p>We are not currently stocked in any major retailers so if you wish to purchase, please buy from our website. </p>"
+          }
+        },
+        "faq_7RR6q4": {
+          "type": "faq",
+          "settings": {
+            "question": "When will my order arrive?",
+            "content": "<p>UK orders are dispatched 1-2 days after purchase (excluding pre-orders) via 2nd class tracked post. If you have not recieved your order by 7 days after purchase, please contact us.<br/><br/>International orders may take up to 4 weeks to arrive and are tracked.</p>"
+          }
+        },
+        "faq_QXwPcd": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I track my order?",
+            "content": "<p>Orders in the UK are sent 2nd class via tracked post, and should arrive between 2-4 business days. International orders are tracked and you should have received a tracking number via email after the order was dispatched. Please check your junk mail for emails from Acu Seeds.</p>"
+          }
+        },
+        "faq_7RM6MA": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I cancel/change my monthly subscription?",
+            "content": "<p>Please email us at <a href=\"mailto:contact@easthealing.com\" title=\"mailto:contact@easthealing.com\">contact@easthealing.com </a>and let us know the email associated with your monthly subscription and we can amend it/cancel it.</p>"
+          }
+        },
+        "faq_UiAQza": {
+          "type": "faq",
+          "settings": {
+            "question": "I have feedback about Acu Seeds. Who should I contact?",
+            "content": "<p>Please email us on <a href=\"mailto:contact@easthealing.com\" title=\"mailto:contact@easthealing.com\">contact@easthealing.com </a> with any concerns, queries or feedback and you will receive a response within 2-3 business days.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_bBK86k",
+        "faq_Jz9hVT",
+        "faq_XzNY3t",
+        "faq_ktNcYe",
+        "faq_QpM8Kh",
+        "faq_cHYBb7",
+        "faq_iLmEMp",
+        "faq_mjg3Q7",
+        "faq_3x3EWd",
+        "faq_8NNMbY",
+        "faq_YFF9Xw",
+        "faq_RjCRbr",
+        "faq_B6xEb9",
+        "faq_MKipL4",
+        "faq_tkgbwn",
+        "faq_hVihfd",
+        "faq_FJbdaA",
+        "faq_BqDRkb",
+        "faq_Hrtdyc",
+        "faq_T8hmLq",
+        "faq_cYWrkK",
+        "faq_zpgLjV",
+        "faq_FH8UT7",
+        "faq_yfJE9Q",
+        "faq_VVbqyd",
+        "faq_dd69Ti",
+        "faq_fCaU8g",
+        "faq_7RR6q4",
+        "faq_QXwPcd",
+        "faq_7RM6MA",
+        "faq_UiAQza"
+      ],
+      "settings": {
+        "title": "frequently asked questions",
+        "htags": "h2",
+        "tcolor": "#f3eeea",
+        "bgcolor": "#695450",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    }
+  },
+  "order": [
+    "ms_richtext_6RbWBP",
+    "ms_video_EBJpWa",
+    "cc_slider_content_FdWaadsd7Pe",
+    "cc_featured_collection_X7PVEf",
+    "cc_faq_wPHYzdsdasddx"
+  ]
+}

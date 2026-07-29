@@ -1,0 +1,433 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ms_richtext_h9drcE": {
+      "type": "ms-richtext",
+      "settings": {
+        "uppertitle": "our course",
+        "hide_pagebreadcrumbs": false,
+        "dspacebot": 30,
+        "mspacebot": 30,
+        "uppertitlecolor": "#695450",
+        "upperborder": "#dad4c5",
+        "upperborderopacity": 100,
+        "section_title": "",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "text": "",
+        "dcsize": 16,
+        "mcsize": 16,
+        "heading_width": 665,
+        "contents_width": 621,
+        "bgcolor": "rgba(0,0,0,0)",
+        "textcolor": "#000000",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_video_EBJpWa": {
+      "type": "ms-video",
+      "settings": {
+        "video_url": "https://www.youtube.com/watch?v=uiYcPz58tNU",
+        "cover_image": "shopify://shop_images/how_to_image.jpg",
+        "cover_image_position": "center center",
+        "show_overlay": true,
+        "overlay_color": "#000000",
+        "overlay_text": "#ffffff",
+        "overlay_opacity": 30,
+        "title": "acupressure ear seeds online certification",
+        "htags": "h1",
+        "dhsize": 48,
+        "mhsize": 32,
+        "content": "",
+        "linklabel": "enroll now",
+        "link": "https://acuseeds.thinkific.com/courses/acupressureearseedscertification",
+        "dlink_top": 30,
+        "mlink_top": 30,
+        "bgimage1": "shopify://shop_images/Group_11.jpg",
+        "bgimage2": "shopify://shop_images/Group_10.jpg",
+        "bgcolor": "#f7f8f4",
+        "tcolor": "#695450",
+        "dpadtop": 50,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 50
+      }
+    },
+    "ms_richtext_yheak8": {
+      "type": "ms-richtext",
+      "settings": {
+        "uppertitle": "",
+        "hide_pagebreadcrumbs": true,
+        "dspacebot": 0,
+        "mspacebot": 0,
+        "uppertitlecolor": "#000000",
+        "upperborder": "#000000",
+        "upperborderopacity": 100,
+        "section_title": "become a certified practitioner",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "text": "<p>The Acupressure Ear Seeds Online Certification will teach you everything you need to know about ear seeds, with the objective of becoming a certified ear seeds practitioner.</p>",
+        "dcsize": 16,
+        "mcsize": 16,
+        "heading_width": 900,
+        "contents_width": 490,
+        "bgcolor": "rgba(0,0,0,0)",
+        "textcolor": "#695450",
+        "dpadtop": 80,
+        "dpadbot": 80,
+        "mpadtop": 40,
+        "mpadbot": 40
+      }
+    },
+    "ms_image_list_icon_6VcwUQ": {
+      "type": "ms-image-list-icon",
+      "blocks": {
+        "listtext_4BqK4i": {
+          "type": "listtext",
+          "settings": {
+            "icon": "shopify://shop_images/monitor-icon.svg",
+            "listext": "100% online learning"
+          }
+        },
+        "listtext_YUcAMK": {
+          "type": "listtext",
+          "settings": {
+            "icon": "shopify://shop_images/recording-icon.svg",
+            "listext": "prerecorded videos to study at your own pace"
+          }
+        },
+        "listtext_Tqadrc": {
+          "type": "listtext",
+          "settings": {
+            "icon": "shopify://shop_images/book-icon.svg",
+            "listext": "5 modules, 12 hours study time"
+          }
+        },
+        "listtext_78aBXk": {
+          "type": "listtext",
+          "settings": {
+            "icon": "shopify://shop_images/lifetime-icon.svg",
+            "listext": "Lifetime access"
+          }
+        }
+      },
+      "block_order": [
+        "listtext_4BqK4i",
+        "listtext_YUcAMK",
+        "listtext_Tqadrc",
+        "listtext_78aBXk"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/acuseeds-course.jpg",
+        "title": "about the course",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "content": "<p>You will learn about the history of ear seeds, how they work, their benefits and how to use them on your clients. You will also learn how to add ear seeding into your business, with marketing tips and downloadable resources.</p><p>There are no prerequisites to the course, meaning that it is suitable for both complete beginners and experienced practitioners wanting to expand their treatment menu.</p>",
+        "dcsize": 16,
+        "mcsize": 16,
+        "bgcolor": "#695450",
+        "tcolor": "#eae8e3",
+        "listtextcolor": "#695450",
+        "dpadtop": 46,
+        "dpadbot": 46,
+        "mpadtop": 30,
+        "mpadbot": 30
+      }
+    },
+    "cc_multirowdasd_PtgDLK": {
+      "type": "cc-multirow",
+      "blocks": {
+        "image_HKRQFF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12629.jpg",
+            "content": "<p>East Healing (formerly Acu Seeds) was founded by <strong>Giselle Boxer</strong>, who was diagnosed with Chronic Fatigue Syndrome or M.E at the age of 26. <br/><br/>When her GP told her that she would never recover from the condition, Giselle went on a personal healing journey using a holistic approach of diet, supplementation but most importantly Traditional Chinese Medicine (TCM). </p>",
+            "linklabel": "",
+            "link": "",
+            "image_position": "row-reverse"
+          }
+        },
+        "image_6Qw96t": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12873.jpg",
+            "content": "<p>Giselle believes that acupuncture, Chinese herbs and ear seeds played a huge role in reducing her symptoms. TCM has also been hugely beneficial for her during pregnancy and post-partum.</p><p><strong>It is now her mission to share the benefits of auricular acupressure with the world.</strong></p>",
+            "linklabel": "",
+            "link": "",
+            "image_position": "row"
+          }
+        }
+      },
+      "block_order": [
+        "image_HKRQFF",
+        "image_6Qw96t"
+      ],
+      "settings": {
+        "title": "the woman behind east healing",
+        "htags": "h2",
+        "dhsize": 96,
+        "mhsize": 28,
+        "subtitle": "meet your teacher",
+        "dshsize": 10,
+        "mshsize": 10,
+        "tcolor": "#695450",
+        "bgcolor": "#f7f8f4",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_tab_contents_6YPjQF": {
+      "type": "ms-tab-contents",
+      "blocks": {
+        "tabitems_Xan3Dx": {
+          "type": "tabitems",
+          "settings": {
+            "tabtitle": "acupressure ear seeds 101",
+            "tabcontent": "<ol><li>What are ear seeds?</li><li>What is auriculotherapy & how do ear seeds work?</li><li>The history of auriculotherapy</li><li>Ear seed benefits</li></ol>"
+          }
+        },
+        "tabitems_hyrg44": {
+          "type": "tabitems",
+          "settings": {
+            "tabtitle": "using acupressure ear seeds on clients",
+            "tabcontent": "<ol><li>How to apply ear seeds</li><li>Who can't use ear seeds, side effects & contraindications</li><li>Client consultation & putting together a protocol</li><li>Tools for a treatment & aftercare</li><li>Ear seed tips and FAQs</li></ol>"
+          }
+        },
+        "tabitems_Nk7NPk": {
+          "type": "tabitems",
+          "settings": {
+            "tabtitle": "anatomy of the ear",
+            "tabcontent": "<ol><li>The ear is a microsystem of the body</li><li>Parts of the ear & what they correspond to</li></ol>"
+          }
+        },
+        "tabitems_jr393i": {
+          "type": "tabitems",
+          "settings": {
+            "tabtitle": "treatment protocols",
+            "tabcontent": "<ol><li>Treatment protocols for where to place ear seeds for anxiety, weight loss, tinnitus, addiction, pain & more</li></ol>"
+          }
+        },
+        "tabitems_MU9bn8": {
+          "type": "tabitems",
+          "settings": {
+            "tabtitle": "your ear seeding business",
+            "tabcontent": "<ol><li>Charging for a treatment</li><li>Marketing tips</li><li>Marketing material downloads</li><li>Consent forms & insurance</li><li>Wholesale offering</li><li>Support group</li></ol>"
+          }
+        }
+      },
+      "block_order": [
+        "tabitems_Xan3Dx",
+        "tabitems_hyrg44",
+        "tabitems_Nk7NPk",
+        "tabitems_jr393i",
+        "tabitems_MU9bn8"
+      ],
+      "settings": {
+        "title": "course content",
+        "htags": "h2",
+        "dhsize": 96,
+        "mhsize": 48,
+        "bgcolor": "rgba(0,0,0,0)",
+        "textcolor": "#695450",
+        "dpadtop": 100,
+        "dpadbot": 100,
+        "mpadtop": 50,
+        "mpadbot": 50
+      }
+    },
+    "ms_column_price_jdPYaM": {
+      "type": "ms-column-price",
+      "blocks": {
+        "column_ByMJxP": {
+          "type": "column",
+          "settings": {
+            "badgeinfo": "",
+            "badgebg": "#eae8e3",
+            "badgetext": "#977e57",
+            "title": "pay in full",
+            "contents": "<p>One-off payment of £300 (inc VAT)</p>"
+          }
+        },
+        "column_eAqWtT": {
+          "type": "column",
+          "settings": {
+            "badgeinfo": "best seller",
+            "badgebg": "#eae8e3",
+            "badgetext": "#977e57",
+            "title": "pay over 2 months",
+            "contents": "<p>2 monthly payments of £160 (inc VAT)</p>"
+          }
+        },
+        "column_GRGPH6": {
+          "type": "column",
+          "settings": {
+            "badgeinfo": "",
+            "badgebg": "#eae8e3",
+            "badgetext": "#977e57",
+            "title": "pay over 3 months",
+            "contents": "<p>3 monthly payments of £110 (inc VAT)</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_ByMJxP",
+        "column_eAqWtT",
+        "column_GRGPH6"
+      ],
+      "settings": {
+        "heading": "investment",
+        "htags": "h2",
+        "dhsize": 96,
+        "mhsize": 48,
+        "linklabel": "find out more",
+        "linkurl": "https://acuseeds.thinkific.com/courses/acupressureearseedscertification",
+        "bgcolor": "#977e57",
+        "tcolor": "#ffffff",
+        "columnbg": "#ffffff",
+        "columntext": "#977e57",
+        "dpadtop": 100,
+        "dpadbot": 100,
+        "mpadtop": 50,
+        "mpadbot": 50
+      }
+    },
+    "ms_richtext_JARcwK": {
+      "type": "ms-richtext",
+      "settings": {
+        "image": "shopify://shop_images/worldwide_IPHM_training_provider.png",
+        "uppertitle": "",
+        "hide_pagebreadcrumbs": true,
+        "dspacebot": 0,
+        "mspacebot": 0,
+        "uppertitlecolor": "#000000",
+        "upperborder": "#000000",
+        "upperborderopacity": 100,
+        "section_title": "accreditation",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "text": "<p>There are no prerequisites for this course.</p><p>This certification is internationally accredited with IPHM – the International Practitioners of Holistic Medicine UK.</p><p>Once complete, you will be able to take out insurance to start treating clients.</p>",
+        "dcsize": 16,
+        "mcsize": 16,
+        "heading_width": 665,
+        "contents_width": 621,
+        "bgcolor": "#eae8e3",
+        "textcolor": "#695450",
+        "dpadtop": 100,
+        "dpadbot": 100,
+        "mpadtop": 50,
+        "mpadbot": 50
+      }
+    },
+    "cc_faq_wPHYzdsdasddx": {
+      "type": "cc-faq",
+      "blocks": {
+        "faq_bBK86k": {
+          "type": "faq",
+          "settings": {
+            "question": "Will I be able to access the course materials after I finish the course?",
+            "content": "<p>Yes, you'll be able to access the course for life. </p>"
+          }
+        },
+        "faq_Jz9hVT": {
+          "type": "faq",
+          "settings": {
+            "question": "Is the course Live or Pre-recorded?",
+            "content": "<p>The course is made up of pre recorded videos. Some are presentations with voiceover and some are videos of your teacher Giselle talking.</p>"
+          }
+        },
+        "faq_XzNY3t": {
+          "type": "faq",
+          "settings": {
+            "question": "Is the course accredited?",
+            "content": "<p>Yes, the course has been accredited by the IPHM - The International Practitioners of Holistic Medicine</p>"
+          }
+        },
+        "faq_B34NFh": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need to do any training before I take the course?",
+            "content": "<p>No, the course has no prerequisites. You can be a complete beginner or an experienced practitioner in massage, reflexology, acupuncture, energy healing etc. to study this course.</p>"
+          }
+        },
+        "faq_ktNcYe": {
+          "type": "faq",
+          "settings": {
+            "question": "How much is the course?",
+            "content": "<p>The course is £599 (inc VAT) if you pay in full or you can pay in monthly instalments. If you pay over 2 months, there will be two payments of £325 (inc VAT). If you pay over 3 months, there will be 3 payments of £230 (inc VAT).</p>"
+          }
+        },
+        "faq_UGzTDa": {
+          "type": "faq",
+          "settings": {
+            "question": "Will there be an exam at the end of the course?",
+            "content": "<p>Yes, there is a short multiple choice exam which will test your knowledge on ear seeds, the anatomy of the ear, the different points etc. Once you have passed with 70%, you will receive a certificate of completion. If you don’t pass, you can take the test again until you do. </p>"
+          }
+        },
+        "faq_CByEFx": {
+          "type": "faq",
+          "settings": {
+            "question": "Once I have completed the course, will I be able to practise on clients?",
+            "content": "<p>Yes, once you complete the course and receive the certificate, you will be able to take out insurance so that you can start practising on clients. Our recommended insurance provider in the UK is given in the course material, but there are other providers worldwide who will cover you for ear acupressure/auriculotherapy/ear seeding. </p>"
+          }
+        },
+        "faq_4DBVaW": {
+          "type": "faq",
+          "settings": {
+            "question": "How long will the course take to complete?",
+            "content": "<p>There are 5 modules and it should take 12 hours to complete the course. We recommend that you work through the course slowly rather than rushing through the content. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_bBK86k",
+        "faq_Jz9hVT",
+        "faq_XzNY3t",
+        "faq_B34NFh",
+        "faq_ktNcYe",
+        "faq_UGzTDa",
+        "faq_CByEFx",
+        "faq_4DBVaW"
+      ],
+      "settings": {
+        "title": "frequently asked questions",
+        "htags": "h2",
+        "tcolor": "#f3eeea",
+        "bgcolor": "#695450",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 100,
+        "dpadbot": 100,
+        "mpadtop": 50,
+        "mpadbot": 50
+      }
+    }
+  },
+  "order": [
+    "ms_richtext_h9drcE",
+    "ms_video_EBJpWa",
+    "ms_richtext_yheak8",
+    "ms_image_list_icon_6VcwUQ",
+    "cc_multirowdasd_PtgDLK",
+    "ms_tab_contents_6YPjQF",
+    "ms_column_price_jdPYaM",
+    "ms_richtext_JARcwK",
+    "cc_faq_wPHYzdsdasddx"
+  ]
+}

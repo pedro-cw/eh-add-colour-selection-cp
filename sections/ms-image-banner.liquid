@@ -1,0 +1,315 @@
+<div class="ms__imagebanner-container">
+  <div class="ms__imagebanner-inner-container {{ section.settings.image_height }}{% if section.settings.image == blank %} ms__imagebanner-placeholder{% endif %}">
+    {% if section.settings.image != blank or section.settings.mimage != blank %}
+    {% if section.settings.image != blank %}  
+    <img class="ms__imagebanner-inner-image{% if section.settings.mimage != blank %} ms__imagebanner-desktop{% endif %}" src="{{ section.settings.image | img_url: 'master' }}" />
+    {% endif %}
+    {% if section.settings.mimage != blank %}  
+    <img class="ms__imagebanner-inner-image{% if section.settings.mimage != blank %} ms__imagebanner-mobile{% endif %}" src="{{ section.settings.mimage | img_url: 'master' }}" />
+    {% endif %}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'ms__imagebanner-placeholder-image' }}
+    {% endif %}
+    {% if section.settings.title != blank or section.settings.linklabel != blank %}
+      <div class="ms__imagebanner-content">
+        <div class="page-width">
+          <div class="ms__imagebanner-inner">
+            {% if section.settings.title != blank %}
+              <{{ section.settings.htags }} class="ms__imagebanner-inner-heading">{{ section.settings.title }}</{{ section.settings.htags }}>
+            {% endif %}
+
+            {% if section.settings.linklabel != blank %}
+              <a class="ms__imagebanner-link" href="{{ section.settings.linkurl }}">
+                <span class="ms__imagebanner-span">{{ section.settings.linklabel }}</span>
+                <svg
+                  width="29"
+                  height="11"
+                  viewBox="0 0 29 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M28.3309 6.09117H0.669335C0.340296 6.09117 0.0744629 5.82534 0.0744629 5.4963C0.0744629 5.16726 0.340296 4.90142 0.669335 4.90142H26.8939L23.2838 1.2913C23.0514 1.05892 23.0514 0.681553 23.2838 0.449181C23.5161 0.216809 23.8935 0.216809 24.1259 0.449181L28.7529 5.07617C28.9239 5.24719 28.9741 5.50187 28.8811 5.72495C28.7882 5.94617 28.5707 6.09117 28.3309 6.09117Z" fill="currentColor" />
+                  <path d="M23.6984 10.7237C23.546 10.7237 23.3935 10.6661 23.2783 10.549C23.0459 10.3166 23.0459 9.93924 23.2783 9.70687L27.9108 5.0743C28.1432 4.84193 28.5206 4.84193 28.753 5.0743C28.9853 5.30668 28.9853 5.68405 28.753 5.91642L24.1204 10.549C24.0033 10.6661 23.8508 10.7237 23.6984 10.7237Z" fill="currentColor" />
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+<style>
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner {
+    max-width: 451px;
+    margin-right: auto;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner .ms__imagebanner-inner-heading {
+    color: {{ section.settings.tcolor }};
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    margin-bottom: 22px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-link {
+    color: {{ section.settings.tcolor }};
+    font-size: {{ section.settings.masize | append: 'px' }};
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: fit-content;
+    text-decoration: unset;
+    font-weight: 600;
+    position: relative;
+    background: linear-gradient(to right, currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 0 1px;
+    transition: all 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-link:hover {
+    background-size: 100% 1px;
+  }
+
+
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-span {
+    width: calc(100% - 40px);
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner-container {
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner-container .ms__imagebanner-placeholder-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background-color: #f3f3f3;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner-container.ms__imagebanner-placeholder {
+    height: 100vh;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner-container.image--small {
+    height: 50vh;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner-container.image--medium {
+    height: 75vh;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner-container.image--large {
+    height: 75vh;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-inner-container.image--adapt {
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagebanner-desktop{
+    display: none !important;
+  }
+
+
+    #shopify-section-{{ section.id }} .ms__imagebanner-content{
+      padding: 45px 0;
+      {% if section.settings.bgcolor == 'transparent' %}
+      {% if section.settings.bgcontentimage %}
+      background-image: url({{ section.settings.bgcontentimage | img_url: 'master'}});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      {% endif %}
+      {% else %}
+      background-color: {{ section.settings.bgcolor }};
+    {% endif %}
+    }
+
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .ms__imagebanner-inner .ms__imagebanner-inner-heading {
+      font-size: {{ section.settings.dhsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagebanner-placeholder {
+      height: 750px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagebanner-content {
+      position: absolute;
+      left: 0;
+      bottom: 60px;
+      width: 100%;
+      padding: 0;
+      background-image: unset;
+      background-color: unset;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagebanner-inner-container.image--adapt {
+      height: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagebanner-desktop{
+      display: block !important;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagebanner-mobile{
+      display: none !important;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "MS Image Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image(desktop)"
+      },
+      {
+        "type": "image_picker",
+        "id": "mimage",
+        "label": "Image(mobile)"
+      },
+      {
+        "type": "select",
+        "id": "image_height",
+        "label": "Image height",
+        "default": "image--adapt",
+        "options": [
+          {
+            "value": "image--adapt",
+            "label": "Adapt"
+          }, {
+            "value": "image--small",
+            "label": "Small"
+          }, {
+            "value": "image--medium",
+            "label": "Medium"
+          }, {
+            "value": "image--Large",
+            "label": "Large"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Heading"
+      },
+      {
+        "type": "select",
+        "id": "htags",
+        "label": "Heading Tag",
+        "default": "h2",
+        "options": [
+            {
+                "value": "h1",
+                "label": "H1"
+            },
+            {
+                "value": "h2",
+                "label": "H2"
+            },
+            {
+                "value": "h3",
+                "label": "H3"
+            },
+            {
+                "value": "h4",
+                "label": "H4"
+            },
+            {
+                "value": "h5",
+                "label": "H5"
+            },
+            {
+                "value": "h6",
+                "label": "H6"
+            }
+        ]
+    },
+      {
+        "type": "number",
+        "id": "dhsize",
+        "label": "Heading size (desktop)",
+        "default": 48,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mhsize",
+        "label": "Heading size (mobile)",
+        "default": 32,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "text",
+        "id": "linklabel",
+        "label": "Link label",
+        "default": "Link Label"
+      }, 
+      {
+        "type": "url",
+        "id": "linkurl",
+        "label": "Link url"
+      },
+      {
+        "type": "number",
+        "id": "dasize",
+        "label": "Link size (desktop)",
+        "default": 16,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "masize",
+        "label": "Link size (mobile)",
+        "default": 16,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "header",
+        "content": "Styles"
+      },
+      {
+        "type": "color",
+        "id": "tcolor",
+        "label": "Color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background color",
+        "default": "transparent",
+        "info": "This will work on mobile"
+      },
+      {
+        "type": "image_picker",
+        "id": "bgcontentimage",
+        "label": "Background image",
+        "info": "This will work on mobile"
+      }
+    ],
+    "presets": [
+      {
+        "name": "MS Image Banner"
+      }
+    ]
+  }
+{% endschema %}

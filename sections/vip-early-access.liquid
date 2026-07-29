@@ -1,0 +1,444 @@
+{% comment %}
+  Shopify Liquid Section: VIP Early Access Sale Codes
+  Tailwind CSS classes removed and converted to standard CSS rules.
+{% endcomment %}
+
+<style>
+
+
+  /*
+   ======================================
+   CSS GLOBAL & UTILITIES
+   ======================================
+*/
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+  :root {
+    --color-primary: #38a169;
+    /* Sage Green */
+    --color-accent-gold: #B8860B;
+    /* Richer Gold for Accents */
+    --color-text: #1a202c;
+    --color-light-bg: #f7fafc;
+    /* Very light gray background */
+    --color-card-bg: #ffffff;
+    --color-code-bg: #f3f3f3;
+    /* Equivalent to gray-100 */
+    --color-text-dark: #1a202c;
+    /* Equivalent to gray-900/800 */
+    --color-text-medium: #4a5568;
+    /* Equivalent to gray-600/700 */
+    --color-text-light: #718096;
+    /* Equivalent to gray-500 */
+  }
+
+  /* Scoping the styles to this section ID */
+  .shopify-section-{{ section.id }}* {
+    box-sizing: border-box;
+  }
+
+  .shopify-section-{{ section.id }}
+  body {
+    font-family: 'Inter'
+    , sans-serif;
+    background-color: var(--color-light-bg);
+    margin: 0;
+    padding: 1rem;
+    /* p-4 */
+  }
+
+  @media (min-width: 768px) {
+    .shopify-section-{{ section.id }}body {
+      padding: 2rem;
+      /* md:p-8 */
+    }
+  }
+
+  .container-wrapper {
+    max-width: 72rem;
+    /* max-w-6xl */
+    margin: 0 auto;
+    /* mx-auto */
+    padding-top: 2rem;
+    /* py-8 */
+    padding-bottom: 2rem;
+    /* py-8 */
+  }
+
+  /* Spacing utilities (simplified) */
+  .mb-12 {
+    margin-bottom: 3rem;
+  }
+  .mb-6 {
+    margin-bottom: 1.5rem;
+  }
+  .mb-3 {
+    margin-bottom: 0.75rem;
+  }
+  .mt-4 {
+    margin-top: 1rem;
+  }
+  .mt-2 {
+    margin-top: 0.5rem;
+  }
+  .mt-1 {
+    margin-top: 0.25rem;
+  }
+  .space-y-1 > * + * {
+    margin-top: 0.25rem;
+  }
+  .pl-5 {
+    padding-left: 1.25rem;
+  }
+  .p-4 {
+    padding: 1rem;
+  }
+
+  /* Text utilities */
+  .text-center {
+    text-align: center;
+  }
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  .text-lg {
+    font-size: 1.125rem;
+  }
+  .text-xl {
+    font-size: 1.25rem;
+  }
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  .text-4xl {
+    font-size: 2.25rem;
+  }
+  .text-5xl {
+    font-size: 3rem;
+  }
+  .font-extrabold {
+    font-weight: 800;
+  }
+  .font-black {
+    font-weight: 900;
+  }
+  .font-semibold {
+    font-weight: 600;
+  }
+  .font-bold {
+    font-weight: 700;
+  }
+  .tracking-tight {
+    letter-spacing: -0.025em;
+  }
+  .tracking-wider {
+    letter-spacing: 0.05em;
+  }
+  .tracking-widest {
+    letter-spacing: 0.1em;
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .select-all {
+    user-select: all;
+  }
+  .block {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .md-text-5xl {
+      font-size: 3rem;
+    }
+  }
+
+  /* Color utilities */
+  .text-gray-800 {
+    color: var(--color-text-dark);
+  }
+  .text-gray-900 {
+    color: var(--color-text-dark);
+  }
+  .text-gray-600 {
+    color: var(--color-text-medium);
+  }
+  .text-gray-700 {
+    color: var(--color-text-medium);
+  }
+  .text-gray-500 {
+    color: var(--color-text-light);
+  }
+  .text-gold-accent {
+    color: var(--color-accent-gold);
+  }
+  .text-green-700 {
+    color: #065f46;
+  } /* Tailwind green-700 */
+  .bg-white {
+    background-color: var(--color-card-bg);
+  }
+  .bg-gray-100 {
+    background-color: var(--color-code-bg);
+  }
+  .bg-green-50 {
+    background-color: #f0fdf4;
+  } /* Tailwind green-50 */
+  .bg-yellow-50 {
+    background-color: #fefce8;
+  } /* Tailwind yellow-50 */
+  .bg-green-50-50 {
+    background-color: rgba(240, 253, 244, 0.5);
+  } /* green-50/50 */
+
+  /* Layout utilities */.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .max-w-2xl {
+    max-width: 42rem;
+  }
+
+  /* Grid/Flex */
+  .grid {
+    display: grid;
+  }
+  .gap-8 {
+    gap: 2rem;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .flex {
+    display: flex;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .justify-between-y {
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1024px) {
+    .lg-grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* Other styles */
+  .rounded-xl {
+    border-radius: 0.75rem;
+  }
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1)
+    , 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+
+  /*
+   ======================================
+   CUSTOM COMPONENTS
+   ======================================
+*/
+
+  .code-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05)
+    , 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    border-top: 5px solid var(--color-accent-gold);
+    padding: 1.5rem;
+    /* p-6 */
+  }
+
+  @media (min-width: 768px) {
+    .code-card {
+      padding: 2rem;
+      /* md:p-8 */
+    }
+  }
+
+  .code-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1)
+    , 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .copy-button {
+    transition: background-color 0.2s;
+    background-color: var(--color-primary);
+    color: white;
+    /* text-white */
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    /* font-semibold */
+    font-size: 0.875rem;
+    /* text-sm */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1)
+    , 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .copy-button:hover {
+    background-color: #27794b;
+    /* Slightly darker green for hover */
+  }
+
+  .list-disc {
+    list-style-type: disc;
+  }
+
+  .border-l-4-primary {
+    border-left: 4px solid var(--color-primary);
+  }
+</style>
+
+<div class="shopify-section-{{ section.id }} body">
+  <div class="container-wrapper">
+
+    <header class="text-center mb-12">
+      <h1 class="text-4xl md-text-5xl font-extrabold text-gray-800 tracking-tight mb-3">
+        <span class="text-gold-accent">VIP EARLY ACCESS</span>
+        Sale
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Unlock exclusive savings on our Traditional Chinese Medicine (TCM) essentials and collections.
+        <span class="block mt-2 font-semibold">Manually apply the code at checkout.</span>
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg-grid-cols-2 gap-8">
+
+      <div class="code-card bg-white rounded-xl flex flex-col justify-between-y">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider rounded-full bg-green-50 text-green-700 p-4">
+            Wellness Essentials
+          </span>
+          <h2 class="text-5xl font-black text-gray-900 mt-4 mb-3" style="color: var(--color-primary);">
+            30% Off
+          </h2>
+          <p class="text-gray-500 mb-6">
+            Use this code to save on our most popular individual tools and starter kits, designed for daily balance.
+          </p>
+
+          <div class="flex items-center justify-between bg-gray-100 rounded-lg p-4 mb-6">
+            <span id="code-vip30-{{ section.id }}" class="text-2xl font-extrabold tracking-widest text-gray-800 select-all">VIP30</span>
+            <button onclick="copyCode('VIP30', '{{ section.id }}')" class="copy-button rounded-lg shadow-md">
+              Copy Code
+            </button>
+          </div>
+
+          <h3 class="font-bold text-lg text-gray-700 mb-2 text-gold-accent">Eligible Products:</h3>
+          <ul class="text-sm text-gray-600 space-y-1 list-disc pl-5">
+            <li>Acu Seeds Ear Seed Kit (24k Gold, Silver, etc.)</li>
+            <li>Acu Seeds Women's Health Ear Seed Kit</li>
+            <li>Ear Seed Refills</li>
+            <li>Bian Stone Facial Gua Sha</li>
+            <li>Gold Acupressure Magnet Patches</li>
+            <li>Acupressure Mat & Pillow</li>
+            <li>Acupressure Headband</li>
+            <li>Acupressure Foot Mat</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="code-card bg-white rounded-xl flex flex-col justify-between-y">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider rounded-full bg-yellow-50 text-gold-accent p-4">
+            Luxury Collection Exclusive
+          </span>
+          <h2 class="text-5xl font-black mt-4 mb-3 text-gold-accent">
+            50% Off
+          </h2>
+          <p class="text-gray-500 mb-6">
+            An unmissable offer on our most comprehensive and exquisite set: The complete luxury Acu Seeds collection.
+          </p>
+
+          <div class="flex items-center justify-between bg-gray-100 rounded-lg p-4 mb-6">
+            <span id="code-vip50-{{ section.id }}" class="text-2xl font-extrabold tracking-widest text-gray-800 select-all">VIP50</span>
+            <button onclick="copyCode('VIP50', '{{ section.id }}')" class="copy-button rounded-lg shadow-md">
+              Copy Code
+            </button>
+          </div>
+
+          <h3 class="font-bold text-lg text-gray-700 mb-2 text-gold-accent">Eligible Product:</h3>
+          <div class="text-sm text-gray-600 bg-green-50-50 p-4 rounded-lg border-l-4-primary">
+            <p class="font-semibold text-gray-800">Acu Seeds The Complete Collection</p>
+            <p class="mt-1">
+              *This code is valid only for the full "Acu Seeds The Complete Collection" bundle and cannot be used on individual items or other kits.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+    // Simple function to copy text to clipboard, adapted to be section-specific
+    function copyCode(code, sectionId) {
+        const codeElement = document.getElementById(`code-${code}-${sectionId}`);
+        if (!codeElement) return;
+
+        const codeToCopy = codeElement.innerText;
+        
+        const tempInput = document.createElement('input');
+        tempInput.value = codeToCopy;
+        document.body.appendChild(tempInput);
+        
+        tempInput.select();
+        
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+             navigator.clipboard.writeText(codeToCopy).catch(() => {
+                document.execCommand('copy');
+            });
+        } else {
+            document.execCommand('copy');
+        }
+        
+        document.body.removeChild(tempInput);
+
+        // Find the button that triggered the event
+        const button = event.target;
+        const originalText = button.innerText;
+        button.innerText = 'Copied!';
+        
+        // Visual feedback
+        button.style.backgroundColor = '#48bb78'; /* Equivalent to Tailwind bg-green-500 */
+        button.classList.remove('copy-button'); // Remove the normal state class
+
+        setTimeout(() => {
+            button.innerText = originalText;
+            button.style.backgroundColor = ''; /* Reset inline style */
+            button.classList.add('copy-button'); // Re-apply the primary color class
+        }, 1500);
+    }
+</script>
+
+{% schema %}
+  {
+    "name": "VIP Early Access",
+    "tag": "section",
+    "class": "section-vip-sale-codes",
+    "settings": [],
+    "presets": [
+      {
+        "name": "VIP Early Access"
+      }
+    ]
+  }
+{% endschema %}

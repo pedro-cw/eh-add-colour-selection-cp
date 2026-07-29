@@ -1,0 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ms-collection-list": {
+      "type": "ms-collection-list",
+      "blocks": {
+        "collection_8gxkmM": {
+          "type": "collection",
+          "settings": {
+            "icon": "shopify://shop_images/Earseeds.svg",
+            "customtitle": "Ear Seeds",
+            "collist": [
+              "kits",
+              "refills",
+              "acu-seeds-accessories"
+            ]
+          }
+        },
+        "collection_9rw9wR": {
+          "type": "collection",
+          "settings": {
+            "icon": "shopify://shop_images/Option_1_for_accessories.svg",
+            "customtitle": "Acupressure Products",
+            "collist": [
+              "acupressure-products"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "collection_8gxkmM",
+        "collection_9rw9wR"
+      ],
+      "settings": {
+        "bgcolor": "rgba(0,0,0,0)",
+        "tcolor": "#695450"
+      }
+    }
+  },
+  "order": [
+    "ms-collection-list"
+  ]
+}

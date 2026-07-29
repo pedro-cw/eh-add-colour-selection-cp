@@ -1,0 +1,343 @@
+<div class="ms__two-column-text-outercontainer">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <{{ section.settings.htags }} class="ms__two-column-text-header">{{ section.settings.title }}</{{ section.settings.htags }}>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+      <div class="ms__two-column-text-grid">
+        {% for block in section.blocks %}
+          {%  liquid
+                    assign image1 = block.settings.img1
+                    assign content1 = block.settings.content1
+                    assign image2 = block.settings.img2
+                    assign content2 = block.settings.content2
+                %}
+          <div class="ms__two-column-text-grid-item">
+            <div class="ms__two-column-text-grid-inner">
+              {% if image1 != blank %}
+                <img src="{{ image1 | img_url: 'master'  }}" alt="{{ image1.alt }}" />
+              {% endif %}
+              {% if content1 != blank %}
+                <div class="ms__two-column-text-rte">
+                  {{ content1 }}
+                </div>
+              {% endif %}
+              {% if image2 != blank %}
+                <img src="{{ image2 | img_url: 'master'  }}" alt="{{ image2.alt }}" />
+              {% endif %}
+              {% if content2 != blank %}
+                <div class="ms__two-column-text-rte">
+                  {{ content2 }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if section.settings.ctatitle != blank or section.settings.ctalabel != blank %}
+      <div class="ms__two-column-text-cta-container">
+        {% if section.settings.ctatitle != blank %}
+          <h3>{{ section.settings.ctatitle }}</h3>
+        {% endif %}
+        {% if section.settings.ctalabel != blank %}
+          <a class="ms__two-column-text-cta-link" href="{{ section.settings.ctalink }}">
+            <span class="ms__two-column-text-cta-span">{{ section.settings.ctalabel }}</span>
+            <svg
+              width="29"
+              height="11"
+              viewBox="0 0 29 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M28.3309 6.09117H0.669335C0.340296 6.09117 0.0744629 5.82534 0.0744629 5.4963C0.0744629 5.16726 0.340296 4.90142 0.669335 4.90142H26.8939L23.2838 1.2913C23.0514 1.05892 23.0514 0.681553 23.2838 0.449181C23.5161 0.216809 23.8935 0.216809 24.1259 0.449181L28.7529 5.07617C28.9239 5.24719 28.9741 5.50187 28.8811 5.72495C28.7882 5.94617 28.5707 6.09117 28.3309 6.09117Z" fill="currentColor" />
+              <path d="M23.6984 10.7237C23.546 10.7237 23.3935 10.6661 23.2783 10.549C23.0459 10.3166 23.0459 9.93924 23.2783 9.70687L27.9108 5.0743C28.1432 4.84193 28.5206 4.84193 28.753 5.0743C28.9853 5.30668 28.9853 5.68405 28.753 5.91642L24.1204 10.549C24.0033 10.6661 23.8508 10.7237 23.6984 10.7237Z" fill="currentColor" />
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.mpadtop | append: 'px' }};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+    background-color: {{ section.settings.bgcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__two-column-text-header {
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    color: {{ section.settings.textcolor }};
+    margin-bottom: 30px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__two-column-text-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__two-column-text-cta-link {
+    color: {{ section.settings.textcolor }};
+    font-size: {{ section.settings.masize | append: 'px' }};
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: fit-content;
+    text-decoration: unset;
+    font-weight: 600;
+    position: relative;
+    background: linear-gradient(to right, currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 0 1px;
+    transition: all 0.3s ease;
+    text-transform: UPPERCASE;
+  }
+
+  #shopify-section-{{ section.id }} .ms__two-column-text-cta-link:hover {
+    background-size: 100% 1px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__two-column-text-cta-span {
+    width: calc(100% - 40px);
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .ms__two-column-text-cta-container h3 {
+    margin-bottom: 16px;
+    font-size: {{ section.settings.mctsize | append: 'px' }};
+    color: {{ section.settings.textcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__two-column-text-grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__two-column-text-grid-inner .ms__two-column-text-rte {
+    margin-bottom: 16px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.dpadtop | append: 'px' }};
+      padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__two-column-text-header {
+      font-size: {{ section.settings.dhsize | append: 'px' }};
+      margin-bottom: 50px;
+      max-width: 85%;
+    }
+
+    #shopify-section-{{ section.id }} .ms__two-column-text-grid {
+      grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
+      gap: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__two-column-text-cta-container {
+      width: 50%;
+    }
+
+    #shopify-section-{{ section.id }} .ms__two-column-text-cta-link {
+      font-size: {{ section.settings.dasize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__two-column-text-cta-container h3 {
+      margin-bottom: 22px;
+      font-size: {{ section.settings.dctsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__two-column-text-grid-item:last-child {
+      margin-top: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__two-column-text-grid-item img {
+      margin-bottom: 30px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__two-column-text-grid-inner .ms__two-column-text-rte {
+      margin-bottom: 40px;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "MS Two Column Text",
+    "max_blocks": 2,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Title"
+      },
+      {
+          "type": "select",
+          "id": "htags",
+          "label": "Heading Tag",
+          "default": "h2",
+          "options": [
+              {
+                  "value": "h1",
+                  "label": "H1"
+              },
+              {
+                  "value": "h2",
+                  "label": "H2"
+              },
+              {
+                  "value": "h3",
+                  "label": "H3"
+              },
+              {
+                  "value": "h4",
+                  "label": "H4"
+              },
+              {
+                  "value": "h5",
+                  "label": "H5"
+              },
+              {
+                  "value": "h6",
+                  "label": "H6"
+              }
+          ]
+      },
+      {
+        "type": "number",
+        "id": "dhsize",
+        "label": "Heading size (desktop)",
+        "default": 64,
+        "info": "Unit in px"
+      },
+      {
+        "type": "number",
+        "id": "mhsize",
+        "label": "Heading size (mobile)",
+        "default": 32,
+        "info": "Unit in px"
+      },
+      {
+        "type": "header",
+        "content": "Call to Action"
+      }, {
+        "type": "text",
+        "id": "ctatitle",
+        "label": "Title",
+        "default": "CTA Title"
+      }, {
+        "type": "number",
+        "id": "dctsize",
+        "label": "Title size (desktop)",
+        "default": 48,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mctsize",
+        "label": "Title size (mobile)",
+        "default": 30,
+        "info": "Unit in px"
+      }, {
+        "type": "text",
+        "id": "ctalabel",
+        "label": "CTA Label",
+        "default": "CTA label"
+      }, {
+        "type": "url",
+        "id": "ctalink",
+        "label": "CTA Link"
+      }, {
+        "type": "number",
+        "id": "dasize",
+        "label": "Link size (desktop)",
+        "default": 16,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "masize",
+        "label": "Link size (mobile)",
+        "default": 16,
+        "info": "Unit in px"
+      }, {
+        "type": "header",
+        "content": "Styles"
+      }, {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background ",
+        "default": "transparent"
+      }, {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text",
+        "default": "#000"
+      }, {
+        "type": "number",
+        "id": "dpadtop",
+        "label": "Padding top(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "dpadbot",
+        "label": "Padding bottom(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mpadtop",
+        "label": "Padding top(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mpadbot",
+        "label": "Padding bottom(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Column",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img1",
+            "label": "Image 1"
+          }, {
+            "type": "richtext",
+            "id": "content1",
+            "label": "Content 1",
+            "default": "<p>Please update this content, this is a placeholder only.</p>"
+          }, {
+            "type": "image_picker",
+            "id": "img2",
+            "label": "Image 2"
+          }, {
+            "type": "richtext",
+            "id": "content2",
+            "label": "Content 2",
+            "default": "<p>Please update this content, this is a placeholder only.</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "MS Two Column Text",
+        "blocks": [
+          {
+            "type": "column"
+          }, {
+            "type": "column"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,153 @@
+<div class="acu-container">
+  <!-- Section Heading -->
+  <h2 class="acu-heading"
+      style="color: {{ section.settings.heading_color }};
+             font-size: {{ section.settings.heading_font_size_mobile }}px;
+             text-align: {{ section.settings.heading_text_alignment }};"
+      data-desktop-font-size="{{ section.settings.heading_font_size }}px">
+    {{ section.settings.heading }}
+  </h2>
+
+  <!-- Introductory Paragraph -->
+  <p class="section-paragraph"
+     style="color: {{ section.settings.paragraph_color }};
+            font-size: {{ section.settings.paragraph_font_size_mobile }}px;
+            text-align: {{ section.settings.intro_text_alignment }};"
+     data-desktop-font-size="{{ section.settings.paragraph_font_size }}px">
+    {{ section.settings.intro_text }}
+  </p>
+
+  <!-- Acupuncture Points Grid -->
+  <div class="acu-points-grid">
+    {% for block in section.blocks %}
+      {% assign alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+      {% assign idx = forloop.index0 %}
+      {% if idx < 26 %}
+        {% assign letter = alphabet | slice: idx, 1 %}
+      {% else %}
+        {% assign mod = idx | modulo: 26 %}
+        {% assign first = idx | minus: mod | divided_by: 26 | minus: 1 %}
+        {% assign second_letter = alphabet | slice: mod, 1 %}
+        {% assign letter = alphabet | slice: first, 1 | append: second_letter %}
+      {% endif %}
+      <button class="acu-point" data-point="{{ block.id }}" style="background-color: #695450; color: #fff;">
+        {{ letter }}
+      </button>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Modals for Each Acupuncture Point -->
+{% for block in section.blocks %}
+  {% assign alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+  {% assign idx = forloop.index0 %}
+  {% if idx < 26 %}
+    {% assign letter = alphabet | slice: idx, 1 %}
+  {% else %}
+    {% assign mod = idx | modulo: 26 %}
+    {% assign first = idx | minus: mod | divided_by: 26 | minus: 1 %}
+    {% assign second_letter = alphabet | slice: mod, 1 %}
+    {% assign letter = alphabet | slice: first, 1 | append: second_letter %}
+  {% endif %}
+
+  <div id="modal-{{ block.id }}" class="modal" style="background: {{ section.settings.modal_bg_color }};
+                                                     color: {{ section.settings.modal_text_color }};">
+    <div class="modal-content" style="font-size: {{ section.settings.modal_font_size }}px;
+                                       text-align: {{ section.settings.modal_text_alignment }};">
+      
+      <!-- Modal Heading -->
+      <h2 class="modal-heading" style="color: {{ section.settings.modal_heading_color }};
+                                       font-size: {{ section.settings.modal_heading_font_size }}px;
+                                       text-align: {{ section.settings.modal_heading_text_alignment }};">
+        Point {{ letter }}:
+      </h2>
+
+      <span class="close" style="color: {{ section.settings.close_btn_color }};" onclick="closeModal('{{ block.id }}')">&times;</span>
+
+      <!-- Video Section -->
+      {% if block.settings.video != blank and block.settings.video != "https://example.com" %}
+        <div class="video-container">
+          <iframe width="560" height="315"
+                  src="{{ block.settings.video | replace: 'watch?v=', 'embed/' }}"
+                  title="YouTube video player" frameborder="0"
+                  allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- Label under Video -->
+        {% if block.settings.video_label != blank %}
+          <p class="media-title">{{ block.settings.video_label }}</p>
+        {% endif %}
+      {% endif %}
+
+      <!-- Image Section -->
+      {% if block.settings.image %}
+        <div class="image-section">
+          <img src="{{ block.settings.image | img_url: 'large' }}" alt="Acu Point {{ letter }}">
+          <p class="media-title">{{ block.settings.image_label }}</p>
+        </div>
+      {% endif %}
+
+
+      <!-- Additional Information -->
+      {% if block.settings.additional_info != blank %}
+        <p class="acu-extra-info">
+          {{ block.settings.additional_info }}
+        </p>
+      {% endif %}
+
+    </div>
+  </div>
+{% endfor %}
+
+<!-- JavaScript for Font Size Responsiveness -->
+<script>
+  function adjustFontSizes() {
+    document.querySelectorAll('.acu-heading').forEach(function(el) {
+      el.style.fontSize = window.innerWidth >= 768 ? el.dataset.desktopFontSize : el.style.fontSize;
+    });
+  }
+  window.addEventListener('resize', adjustFontSizes);
+  adjustFontSizes();
+</script>
+
+{% schema %}
+{
+  "name": "Acu Points",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Section Heading", "default": "Find Your Acu Points" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#333333" },
+    { "type": "range", "id": "heading_font_size", "label": "Heading Font Size (Desktop)", "min": 16, "max": 60, "step": 1, "default": 32 },
+    { "type": "range", "id": "heading_font_size_mobile", "label": "Heading Font Size (Mobile)", "min": 12, "max": 40, "step": 1, "default": 24 },
+    { "type": "select", "id": "heading_text_alignment", "label": "Section Heading Text Alignment", "default": "left", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right", "label": "Right" }
+    ]},
+    { "type": "color", "id": "paragraph_color", "label": "Intro Paragraph Color", "default": "#333333" },
+    { "type": "range", "id": "paragraph_font_size", "label": "Intro Paragraph Font Size (Desktop)", "min": 10, "max": 40, "step": 1, "default": 16 },
+    { "type": "range", "id": "paragraph_font_size_mobile", "label": "Intro Paragraph Font Size (Mobile)", "min": 10, "max": 40, "step": 1, "default": 14 },
+    { "type": "text", "id": "intro_text", "label": "Intro Text", "default": "Introductory text goes here." },
+    { "type": "select", "id": "intro_text_alignment", "label": "Intro Text Alignment", "default": "center", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right", "label": "Right" }
+    ]},
+    { "type": "color", "id": "modal_bg_color", "label": "Modal Background Color", "default": "#ffffff" },
+    { "type": "color", "id": "modal_text_color", "label": "Modal Text Color", "default": "#695450" }
+  ],
+  "blocks": [
+    {
+      "type": "acu_point",
+      "name": "Acu Point",
+      "settings": [
+        { "type": "video_url", "id": "video", "label": "Point Video", "accept": [ "youtube", "vimeo" ], "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc" },
+        { "type": "text", "id": "video_label", "label": "Label under Video", "default": "Point Video" },
+        { "type": "image_picker", "id": "image", "label": "Point Image" },
+        { "type": "text", "id": "image_label", "label": "Label under Image", "default": "magnet patches" },
+        { "type": "textarea", "id": "additional_info", "label": "Additional Information" }
+      ]
+    }
+  ]
+}
+{% endschema %}

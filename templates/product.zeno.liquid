@@ -1,0 +1,27 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template/
+{% endcomment %}
+
+{% section 'product-template' %}
+        <div class="zn-content product">
+          {% assign productKey = 'zeno-product-' | append: product.id %}
+          <link rel="stylesheet" href="{{ productKey | append: '.css' | asset_url }}">
+          {% assign oriProduct = product %} 
+          {% include productKey %}
+          {% assign product = oriProduct %}
+          <script src="{{ productKey | append: '.js' | asset_url }}"></script>
+        </div>
+      
+{% render 'junip-product-review', product: product %}
+{% section 'product-recommendations' %}
+
+<script>
+  window.theme = window.theme || {};
+  window.theme.strings = window.theme.strings || {};
+
+  // Override default values of theme.strings for each template.
+  // Values are used by JavaScript only; Liquid must be updated separately
+  window.theme.strings.addToCart = {{ 'products.product.add_to_cart' | t | json }};
+  window.theme.strings.soldOut = {{ 'products.product.sold_out' | t | json }};
+  window.theme.strings.unavailable = {{ 'products.product.unavailable' | t | json }};
+</script>

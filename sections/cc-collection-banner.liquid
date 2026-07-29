@@ -1,0 +1,232 @@
+<div class="cc__collection-banner">
+  <div class="page-width">
+    {% if collection.image != blank %}
+    <img
+      class="cc__collection-featured-image"
+      src="{{ collection.image | img_url: 'master' }}"
+      alt="{{ collection.title }}" />
+    {% else %}
+      {% if section.settings.featimage != blank %}
+        {% assign featimage = section.settings.featimage %}
+        <img
+      class="cc__collection-featured-image"
+      src="{{ featimage | image_url: width: featimage.width, height: featimage.height }}"
+      alt="{{ collection.title }}" />
+      {% endif %}
+  {% endif %}
+
+  {% if collection.title != blank or collection.description != blank %}
+    <div class="cc__collection-banner-contents">
+
+        <div class="cc__collection-banner-contents-item">
+          <div class="cc__collection-inner-banner">
+            <{{ section.settings.htags }} class="cc__collection-title">{{ collection.title }}</{{ section.settings.htags }}>
+            {% if collection.description != blank %}
+              <div class="cc__collection-banner-contents-rte">
+                {{ collection.description }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+
+  {% endif %}
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    overflow: hidden;
+    padding-top: {{ section.settings.mpadtop | append: 'px'}};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px'}};
+    {% if section.settings.bg_image != blank %}
+      background-image: url({{ section.settings.bg_image | img_url: 'master' }});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+  {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .page-width{
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .cc__collection-banner-contents .cc__collection-title {
+    margin: 0;
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+  }
+
+  #shopify-section-{{ section.id }} .cc__collection-inner-banner {
+    flex-direction: column;
+    display: flex;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .cc__collection-featured-image {
+    width: 100%;
+    height: 400px;
+    display: none;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #shopify-section-{{ section.id }} .cc__collection-banner-contents p:only-child,
+  #shopify-section-{{ section.id }} .cc__collection-banner-contents p:last-child {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .cc__collection-banner {
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .cc__collection-banner-contents {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .cc__collection-banner-contents-item {
+    max-width: 100%;
+    padding: 0px;
+
+    {% if section.settings.bg_image != blank %}
+      background-image: url({{ section.settings.bg_image | img_url: 'master' }});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    {% else %}
+    background-image: url('{{ 'contentcollectionbackground.jpg' | asset_url }}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  {% endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+    overflow: hidden;
+    padding-top: {{ section.settings.dpadtop | append: 'px'}};
+        padding-bottom: {{ section.settings.dpadbot | append: 'px'}};
+    }
+    #shopify-section-{{ section.id }} .cc__collection-banner-contents .cc__collection-title {
+      font-size: {{ section.settings.dhsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__collection-featured-image {
+      height: 615px;
+      max-width: 65%;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .cc__collection-banner-contents {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 20px;
+      bottom: unset;
+    }
+
+    #shopify-section-{{ section.id }} .cc__collection-banner-contents-item {
+      max-width: 514px;
+      padding: 72px 50px;
+      margin-left: auto;
+    background-image: url('{{ 'contentcollectionbackground.jpg' | asset_url }}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  }
+</style>
+{% schema %}
+  {
+    "name": "MS Collection banner",
+    "settings": [
+      {
+          "type": "select",
+          "id": "htags",
+          "label": "Heading Tag",
+          "default": "h2",
+          "options": [
+              {
+                  "value": "h1",
+                  "label": "H1"
+              },
+              {
+                  "value": "h2",
+                  "label": "H2"
+              },
+              {
+                  "value": "h3",
+                  "label": "H3"
+              },
+              {
+                  "value": "h4",
+                  "label": "H4"
+              },
+              {
+                  "value": "h5",
+                  "label": "H5"
+              },
+              {
+                  "value": "h6",
+                  "label": "H6"
+              }
+          ]
+      },
+      {
+        "type": "image_picker",
+        "id": "featimage",
+        "label": "Image",
+        "info": "If this is empty this will get the featured image in collection if set."
+      },
+      {
+        "type": "header",
+        "content": "Styles"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background"
+      },
+      {
+        "type": "number",
+        "id": "dhsize",
+        "label": "Heading size (desktop)",
+        "default": 48,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mhsize",
+        "label": "Heading size (mobile)",
+        "default": 32,
+        "info": "Unit in px"
+      },
+      {
+        "type": "number",
+        "id": "dpadtop",
+        "label": "Padding top(desktop)",
+        "default": 46,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "dpadbot",
+        "label": "Padding bottom(desktop)",
+        "default": 46,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mpadtop",
+        "label": "Padding top(mobile)",
+        "default": 30,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mpadbot",
+        "label": "Padding bottom(mobile)",
+        "default": 30,
+        "info": "Unit in px"
+      }
+    ]
+  }
+{% endschema %}

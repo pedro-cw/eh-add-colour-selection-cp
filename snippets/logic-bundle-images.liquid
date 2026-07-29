@@ -1,0 +1,75 @@
+{% comment %} 
+                    -----------------------------------------------------------------------------
+                    SNIPPET: bundle-image-logic.liquid
+                    PURPOSE: Overrides default product images with custom PNGs/files for the bundle.
+                    HOW TO USE: Add new 'when' cases for your product handles.
+                    ----------------------------------------------------------------------------- 
+{% endcomment %}
+
+{% liquid
+  assign main_image = variant.featured_image | image_url: width: 600 | default: product.featured_image | image_url: width: 600
+  assign hover_image = product.images[1] | image_url: width: 600 | default: main_image
+
+  case product.handle
+
+    when "24k-gold-plated-ear-seed-kit"
+      if variant.title contains 'SILVER CRYSTAL'
+        assign main_image = 'silvercrystal.jpg' | file_url
+        assign hover_image = 'silvercrystal2.jpg' | file_url
+      elsif variant.title contains 'PEARL'
+        assign main_image = 'pearl.jpg' | file_url
+        assign hover_image = 'pearl2.jpg' | file_url
+      elsif variant.title contains 'GOLD CRYSTAL'
+        assign main_image = 'goldcrystal.jpg' | file_url
+        assign hover_image = 'goldcrystal2.jpg' | file_url
+      elsif variant.title contains 'NICKEL FREE'
+        assign main_image = 'nickelfree.jpg' | file_url
+        assign hover_image = 'nickelfree2.jpg' | file_url
+      elsif variant.title == 'SILVER'
+        assign main_image = 'silver.jpg' | file_url
+        assign hover_image = 'silver2.jpg' | file_url
+      else
+        assign main_image = 'ear_seed_kit.png' | file_url
+        assign hover_image = 'ear_seed_kit_2.png' | file_url
+      endif
+
+    when "gold-acupressure-ring"
+      assign main_image = 'ring.png' | file_url
+      assign hover_image = 'ring2.png' | file_url
+
+    when "acupressure-mat-pillow"
+      assign main_image = 'acu_mat.png' | file_url
+      assign hover_image = 'acu_mat_2.png' | file_url
+
+    when "acupressure-headband"
+      assign main_image = 'headband.png' | file_url
+      assign hover_image = 'headband2.png' | file_url
+
+    when "gold-acupressure-magnet-patches"
+      assign main_image = 'magnet_patches.png' | file_url
+      assign hover_image = 'magnet_patches2.png' | file_url
+
+    when "acupressure-comb"
+      assign main_image = 'comb.png' | file_url
+      assign hover_image = 'comb2.png' | file_url
+
+    when "acupressure-foot-mat"
+      assign main_image = 'footmat.png' | file_url
+      assign hover_image = 'foot_mat_2.png' | file_url
+
+    when "bian-stone-facial-gua-sha"
+      assign main_image = 'gua_sha.png' | file_url
+      assign hover_image = 'gua_sha2.png' | file_url
+
+    when "acu-seeds-the-collection"
+      assign main_image = 'acu_seeds_complete_collection.png' | file_url
+      assign hover_image = 'acu_seeds_complete_collection_2.png' | file_url
+
+    when "gold-acu-seeds-tweezers"
+      assign main_image = 'tweezers.png' | file_url
+      assign hover_image = 'tweezers_2.png' | file_url
+    when "bian-stone-scalp-gua-sha-comb"
+      assign main_image = 'scalp_comb_images_3.jpg' | file_url
+      assign hover_image = 'scalp_comb_images_3_2.png' | file_url
+  endcase
+%}

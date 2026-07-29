@@ -1,0 +1,376 @@
+<div class="cc__dualbgimage-inner">
+  <div class="page-width">
+    {% if section.settings.image1 != blank or section.settings.image2 != blank %}
+      <div class="cc__dualbgimage-image-holder">
+        <div class="cc__dualbgimage-column">
+          {% if section.settings.image1 != blank %}
+            <img src="{{ section.settings.image1 | img_url: 'master' }}" />
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+        <div class="cc__dualbgimage-column">
+          {% if section.settings.image2 != blank %}
+            <img src="{{ section.settings.image2 | img_url: 'master' }}" />
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    {% if section.settings.title != blank or section.settings.content != blank %}
+      <div class="cc__dualbgimage-content">
+        {% if section.settings.title != blank %}
+          <{{ section.settings.htags }} class="cc__dualbgimage-heading">{{ section.settings.title }}</{{ section.settings.htags }}>
+        {% endif %}
+
+        {% if section.settings.content != blank %}
+          <div class="cc__dualbgimage-contents">
+            {{ section.settings.content }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.linklabel != blank %}
+          <a href="{{ section.settings.link }}" class="cc__multirow-content-cta">{{ section.settings.linklabel }}<svg
+              width="29"
+              height="29"
+              viewBox="0 0 29 29"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M28.3309 15.0912H0.669335C0.340296 15.0912 0.0744629 14.8253 0.0744629 14.4963C0.0744629 14.1673 0.340296 13.9014 0.669335 13.9014H26.8939L23.2838 10.2913C23.0514 10.0589 23.0514 9.68155 23.2838 9.44918C23.5161 9.21681 23.8935 9.21681 24.1259 9.44918L28.7529 14.0762C28.9239 14.2472 28.9741 14.5019 28.8811 14.725C28.7882 14.9462 28.5707 15.0912 28.3309 15.0912Z" fill="#695450" />
+              <path d="M23.6984 19.7238C23.546 19.7238 23.3935 19.6662 23.2783 19.5491C23.0459 19.3167 23.0459 18.9394 23.2783 18.707L27.9108 14.0744C28.1432 13.8421 28.5206 13.8421 28.753 14.0744C28.9853 14.3068 28.9853 14.6842 28.753 14.9165L24.1204 19.5491C24.0033 19.6662 23.8508 19.7238 23.6984 19.7238Z" fill="#695450" />
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if section.settings.bgimage1 != blank or section.settings.bgimage2 != blank %}
+      <div class="cc__dualbgimage-imagebg{% if section.settings.bgimage1 != blank or section.settings.bgimage2 != blank %} cc__dualimagebackground{% endif %}">
+        {% if section.settings.bgimage1 != blank %}
+          <img src="{{ section.settings.bgimage1 | img_url:'master' }}" />
+        {% endif %}
+
+        {% if section.settings.bgimage2 != blank %}
+          <img src="{{ section.settings.bgimage2 | img_url:'master' }}" />
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }}{
+    background-color: {{ section.settings.bgcolor }};
+    padding-top: {{ section.settings.mpadtop | append: 'px'}};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px'}};
+        overflow: hidden;
+        position: relative;
+    }
+
+     #shopify-section-{{ section.id }} .cc__dualbgimage-inner {
+      position: relative;
+      padding-top: 35px;
+      padding-bottom: 35px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-content-cta {
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      color: {{ section.settings.tcolor }};
+      margin-top: {{ section.settings.mlink_top | append: 'px' }};
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      background: linear-gradient(to right, currentColor, currentColor);
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: 0 1px;
+      transition: all 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-content-cta:hover {
+      background-size: 100% 1px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-image-holder {
+      display: flex;
+      position: relative;
+      z-index: 1;
+      gap: 40px;
+    }
+
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-contents {
+      max-width: 445px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-contents > * {
+      color: {{ section.settings.tcolor }}
+      ;
+    }
+
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-column {
+      width: 50%;
+    }
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-content {
+      margin-top: 30px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-heading {
+      font-size: {{ section.settings.mhsize | append: 'px' }};
+      color: {{ section.settings.tcolor }};
+      max-width: {{ section.settings.mhwidth | append: '%' }};
+      margin: 0 auto 18px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-imagebg.cc__dualimagebackground {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-imagebg.cc__dualimagebackground img {
+      width: 50%;
+      display: block;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+
+    #shopify-section-{{ section.id }} .cc__dualbgimage-column img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @media screen and (min-width: 750px) {
+      #shopify-section-{{ section.id }}{
+        padding-top: {{ section.settings.dpadtop | append: 'px' }};
+        padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+      }
+
+      #shopify-section-{{ section.id }} .cc__dualbgimage-content {
+        margin-top: 54px;
+      }
+
+      #shopify-section-{{ section.id }} .cc__dualbgimage-heading {
+        font-size: {{ section.settings.dhsize | append: 'px' }};
+      max-width: {{ section.settings.dhwidth | append: '%' }};
+    }
+
+      #shopify-section-{{ section.id }} .cc__dualbgimage-inner {
+        position: relative;
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+
+      #shopify-section-{{ section.id }} .cc__dualbgimage-image-holder {
+        gap: 75px;
+      }
+
+      #shopify-section-{{ section.id }} .cc__multirow-content-cta {
+        margin-top: {{ section.settings.dlink_top | append: 'px' }};
+      }
+    }
+
+    @media screen and (min-width: 900px) {
+      #shopify-section-{{ section.id }} .cc__dualbgimage-image-holder {
+        gap: 128px;
+      }
+    }
+  </style>
+{% schema %}
+    {
+      "name": "MS Dual Background Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image 2"
+        },
+
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Lorem ipsum dolor itu"
+        },
+        {
+            "type": "select",
+            "id": "htags",
+            "label": "Heading Tag",
+            "default": "h2",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "H1"
+                },
+                {
+                    "value": "h2",
+                    "label": "H2"
+                },
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "h4",
+                    "label": "H4"
+                },
+                {
+                    "value": "h5",
+                    "label": "H5"
+                },
+                {
+                    "value": "h6",
+                    "label": "H6"
+                }
+            ]
+        },
+        {
+          "type": "number",
+          "id": "dhsize",
+          "label": "Heading size (desktop)",
+          "default": 48,
+          "info": "Unit in px"
+        }, 
+        {
+          "type": "number",
+          "id": "mhsize",
+          "label": "Heading size (mobile)",
+          "default": 32,
+          "info": "Unit in px"
+        },
+        {
+          "type": "range",
+          "id": "dhwidth",
+          "label": "Heading container width (desktop)",
+          "unit": "%",
+          "default": 100,
+          "min": 10,
+          "max": 100
+        },
+        {
+          "type": "range",
+          "id": "mhwidth",
+          "label": "Heading container width (mobile)",
+          "unit": "%",
+          "default": 100,
+          "min": 10,
+          "max": 100
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Lorem ipsum dolor itu co el itu em at etal.</p>"
+        }, {
+          "type": "text",
+          "id": "linklabel",
+          "label": "Link label"
+        }, 
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link Url"
+        },
+         {
+          "type": "number",
+          "id": "dlink_top",
+          "label": "Link top space(desktop)",
+          "default": 30,
+          "info": "Unit in px"
+        }, 
+        {
+          "type": "number",
+          "id": "mlink_top",
+          "label": "Link top space(mobile)",
+          "default": 30,
+          "info": "Unit in px"
+        }, 
+        {
+          "type": "image_picker",
+          "id": "bgimage1",
+          "label": "Background image 1"
+        }, 
+        {
+          "type": "image_picker",
+          "id": "bgimage2",
+          "label": "Background image 2"
+        }, 
+        {
+          "type": "header",
+          "content": "Styles"
+        }, 
+        {
+          "type": "color",
+          "id": "bgcolor",
+          "label": "Background color",
+          "default": "#F7F8F4"
+        }, 
+        {
+          "type": "color",
+          "id": "tcolor",
+          "label": "Text color",
+          "default": "#695450"
+        }, 
+        {
+          "type": "number",
+          "id": "dpadtop",
+          "label": "Padding top(desktop)",
+          "default": 70,
+          "info": "Unit in px"
+        }, 
+        {
+          "type": "number",
+          "id": "dpadbot",
+          "label": "Padding bottom(desktop)",
+          "default": 70,
+          "info": "Unit in px"
+        }, 
+        {
+          "type": "number",
+          "id": "mpadtop",
+          "label": "Padding top(mobile)",
+          "default": 35,
+          "info": "Unit in px"
+        }, 
+        {
+          "type": "number",
+          "id": "mpadbot",
+          "label": "Padding bottom(mobile)",
+          "default": 35,
+          "info": "Unit in px"
+        }
+      ],
+
+      "presets": [
+        {
+          "name": "MS Dual Background Image"
+        }
+      ]
+    }
+  {% endschema %}

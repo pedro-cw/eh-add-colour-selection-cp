@@ -1,0 +1,82 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "article": {
+      "type": "ms-article-template",
+      "settings": {
+        "uppertitle": "BLOG",
+        "htags": "h1",
+        "rhtags": "h2",
+        "rhcolor": "#695450",
+        "dhsize": 64,
+        "mhsize": 32,
+        "bgcolor": "#f7f8f4",
+        "contentbgcolor": "#ffffff",
+        "textcolor": "#695450"
+      }
+    },
+    "cc_faq_wPHYzdsdatqweasddsddx": {
+      "type": "cc-faq",
+      "blocks": {
+        "faq_bBK86k": {
+          "type": "faq",
+          "settings": {
+            "question": "What are acupuncture ear seeds, and how do they work?",
+            "content": "<p>Rooted in the principles of Chinese medicine, ear seeds are an ancient tool that may support a broad spectrum of health concerns by way of aiding restful sleep, assisting emotional well-being, helping you to relax, and supporting your immunity, focus, energy levels, and digestion. <br/><br/>Ear seeds are a form of auriculotherapy, which is the stimulation of specific points of the ear to support physical and emotional health concerns. They are a needle-free form of acupuncture that have been used in Traditional Chinese Medicine (TCM) for thousands of years. TCM teaches that the ear is a microsystem of the whole body, where certain points on the ear correspond to different organs or body parts. Energy pathways (or ‘qi’ or vital life energy) pass through the ear and ear seeds stimulate specific points which send an abundant flow of energy to the related organ or area that needs attention. Think of it like reflexology, but for the ears instead of feet.</p><p>Ear seeds also create continual, gentle pressure on nerve impulses in the ear which send messages to the brain that certain organs or systems need support. The brain will then send signals and chemicals to the rest of the body to support whatever ailments you’re experiencing, releasing endorphins into the bloodstream, relaxing the nervous system, and naturally soothing pain and discomfort. </p>"
+          }
+        },
+        "faq_Jz9hVT": {
+          "type": "faq",
+          "settings": {
+            "question": "Are acupuncture ear seeds safe to use at home?",
+            "content": "<p>Ear seeds are a non invasive treatment which is safe and effective. Since they don’t require the use of needles, there is low risk of infection or bleeding. It is also a great way to introduce the benefits of acupuncture to those with needle phobia.</p>"
+          }
+        },
+        "faq_XzNY3t": {
+          "type": "faq",
+          "settings": {
+            "question": "How should the ear seeds be applied?",
+            "content": "<p>- Clean ear thoroughly with facial cleanser or an alcohol swab - this removes natural oils, ensuring proper adhesion. Ensure the ear is dry before application.</p><p>- Focus on one protocol and identify acupoints by referencing the ear maps in your ear seed kit. You will be applying the seeds to one ear only.</p><p>- Using tweezers, carefully lift the edge of clear seed adhesive, hover over the desired area of application, and firmly press down with a finger to adhere.</p><p>- Seeds may be stimulated a few times a day by gently massaging in a circular motion. Seeds may be worn for a maximum of 5 days and cannot be reused. Remove with tweezers or fingernails. You can apply a new set on the other ear immediately or if applying to the same ear, please wait for 2 days.</p>"
+          }
+        },
+        "faq_ktNcYe": {
+          "type": "faq",
+          "settings": {
+            "question": "How long will they last?",
+            "content": "<p>Ear seeds are single-use only and can be worn up to 5 days depending on the area of the ear where they’ve been placed. Before application, we suggest cleaning the area thoroughly with an alcohol swab or facial cleanser and allowing to dry completely for maximum adhesion. When applying, avoid touching the sticky side of the ear seed as it will not adhere properly. After 5 days of wear, remove seeds with your fingers or tweezers and allow the skin to heal for 2 days before applying a new set of seeds on the same ear. Alternatively, you can reapply immediately on the other ear.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_bBK86k",
+        "faq_Jz9hVT",
+        "faq_XzNY3t",
+        "faq_ktNcYe"
+      ],
+      "settings": {
+        "title": "frequently asked questions",
+        "htags": "h2",
+        "tcolor": "#f3eeea",
+        "bgcolor": "#695450",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    }
+  },
+  "order": [
+    "article",
+    "cc_faq_wPHYzdsdatqweasddsddx"
+  ]
+}

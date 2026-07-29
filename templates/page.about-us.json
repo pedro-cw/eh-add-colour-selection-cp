@@ -1,0 +1,190 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ms_richtext_FqrNC7": {
+      "type": "ms-richtext",
+      "settings": {
+        "uppertitle": "ABOUT US",
+        "hide_pagebreadcrumbs": false,
+        "dspacebot": 30,
+        "mspacebot": 30,
+        "uppertitlecolor": "#695450",
+        "upperborder": "#dad4c5",
+        "upperborderopacity": 100,
+        "section_title": "",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "text": "",
+        "dcsize": 16,
+        "mcsize": 16,
+        "heading_width": 665,
+        "contents_width": 621,
+        "bgcolor": "rgba(0,0,0,0)",
+        "textcolor": "#000000",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_page_banner_t7PDm4": {
+      "type": "ms-page-banner",
+      "settings": {
+        "image": "shopify://shop_images/Acu-Seeds_21949.jpg",
+        "title": "About Us",
+        "htags": "h2",
+        "dhsize": 64,
+        "mhsize": 32,
+        "content": "<p>At <strong>East Healing</strong>, we believe that true wellness is achieved by harmonizing the mind, body, and spirit. Rooted in the timeless wisdom of Chinese medicine, our premium products are thoughtfully crafted to enhance your mental and physical well-being. Formerly known as <strong>Acu Seeds</strong>, we are proud to evolve into a luxurious destination for holistic health enthusiasts in the UK and beyond.<br/><br/>Our curated collection of acupressure products blends traditional healing practices with modern elegance. From our hero product, the ear seeds, to our innovative acupressure rings and combs, each item is designed to bring you closer to balance and tranquility. Backed by the trust of discerning customers and the endorsement of <strong>Steven Bartlett from Dragons' Den</strong>, East Healing is committed to providing you with a unique journey to wellness—one that is both ancient and beautifully contemporary.</p>",
+        "dcsize": 16,
+        "mcsize": 16,
+        "hcolor": "#695450",
+        "ccolor": "#695450",
+        "bgimage": "shopify://shop_images/page-banner-background.png",
+        "contentbg": "shopify://shop_images/content-bg.jpg"
+      }
+    },
+    "cc_logo_list_znUD4dsK": {
+      "type": "cc-logo-list",
+      "blocks": {
+        "image_nzFj3q": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/dragon_dens.png"
+          }
+        },
+        "image_6hEeXF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/vogue.png"
+          }
+        },
+        "image_iL7Qhd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/stylist.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_nzFj3q",
+        "image_6hEeXF",
+        "image_iL7Qhd"
+      ],
+      "settings": {
+        "header": "AS SEEN ON",
+        "htags": "h2",
+        "dhsize": 24,
+        "mhsize": 18,
+        "bgcolor": "#f7f8f4",
+        "tcolor": "#695450",
+        "dpadtop": 120,
+        "dpadbot": 30,
+        "mpadtop": 30,
+        "mpadbot": 30
+      }
+    },
+    "ms_image_with_textv2_yQderD": {
+      "type": "ms-image-with-textv2",
+      "settings": {
+        "image": "shopify://shop_images/the_woman_behind_acuseeds.png",
+        "title": "the woman behind east healing",
+        "htags": "h2",
+        "dhsize": 96,
+        "mhsize": 48,
+        "content": "<p>East Healing was founded by <strong>Giselle Boxer</strong>, who was diagnosed with Chronic Fatigue Syndrome or M.E at the age of 26.</p><p>When her GP told her that she would never recover from the condition, Giselle went on a personal healing journey using a holistic approach of diet, supplementation but most importantly Traditional Chinese Medicine (TCM).</p><p>Giselle believes that acupuncture, Chinese herbs and ear seeds played a huge role in reducing her symptoms. TCM has also been hugely beneficial for her during pregnancy and post-partum.</p><p><strong>It is now her mission to share the benefits of ear seeds and other Chinese healing modalities with the world.</strong></p>",
+        "dcsize": 16,
+        "mcsize": 16,
+        "bgimage": "shopify://shop_images/image_with_text_v2_bg.jpg",
+        "bgcolor": "rgba(0,0,0,0)",
+        "textcolor": "#eae8e3",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_two_column_text_e6tRTN": {
+      "type": "ms-two-column-text",
+      "blocks": {
+        "column_4DD6E3": {
+          "type": "column",
+          "settings": {
+            "img1": "shopify://shop_images/Acu-Seeds_12873_946f2139-5dc3-4a50-951e-ebfd691e63db.jpg",
+            "content1": "<p>Ear seeds are the oldest healing modality you’ve probably never heard of.</p><p>Rooted in the principles of Chinese medicine, ear seeds are an ancient acupressure tool that may support a broad spectrum of health concerns by way of aiding restful sleep, assisting emotional well-being, helping you to relax, and boosting focus, vitality, energy levels, tension, and digestive function.</p>",
+            "img2": "shopify://shop_images/Acu-Seeds_1707.jpg",
+            "content2": "<p>TCM teaches that the ear is a microsystem of the whole body, where certain points on the ear correspond to different organs or body parts.</p><p>Energy pathways (or ‘qi’ or vital life energy) pass through the ear and ear seeds stimulate specific points which send an abundant flow of energy to the related organ or area that needs attention. Think of it like reflexology, but for the ears instead of feet.</p>"
+          }
+        },
+        "column_Bh9nHC": {
+          "type": "column",
+          "settings": {
+            "img1": "shopify://shop_images/Acu-Seeds_12586_7b5d6971-c900-4274-b784-e1e08b6aca14.jpg",
+            "content1": "<p>They are a needle-free form of auriculotherapy (the stimulation of specific points of the ear to address physical and emotional health concerns) that have been used in Traditional Chinese Medicine (TCM) for thousands of years.</p><p>The seeds were traditionally from the flowering herb vaccaria, but our luxe, modern version uses gold or silver plated seeds that are attached to a clear adhesive sticker. So not only are they known for their healing benefits, but they look incredibly cute too!</p>",
+            "img2": "shopify://shop_images/Acu-Seeds_13046_1.jpg",
+            "content2": "<p>Ear seeds also create continual, gentle pressure on nerve impulses in the ear which send messages to the brain that certain organs or systems need support. The brain will then send signals and chemicals to the nervous system helping you relax, heal, or focus, as well as releasing endorphins into the bloodstream, naturally soothing tension and discomfort.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_4DD6E3",
+        "column_Bh9nHC"
+      ],
+      "settings": {
+        "title": "what are ear seeds and how do they work?",
+        "htags": "h2",
+        "dhsize": 64,
+        "mhsize": 32,
+        "ctatitle": "",
+        "dctsize": 48,
+        "mctsize": 30,
+        "ctalabel": "learn how to apply them",
+        "ctalink": "shopify://pages/how-to",
+        "dasize": 16,
+        "masize": 16,
+        "bgcolor": "#f7f8f4",
+        "textcolor": "#695450",
+        "dpadtop": 100,
+        "dpadbot": 100,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_featured_collection_X7PVEf": {
+      "type": "cc-featured-collection",
+      "settings": {
+        "layout": "grid",
+        "collection": "ear-seeds",
+        "productlimit": 10,
+        "heading": "Our Products",
+        "htags": "h2",
+        "dhsize": 64,
+        "mhsize": 32,
+        "bgcolor": "#f3eeea",
+        "tcolor": "#695450",
+        "arrowcolor": "#695450",
+        "dpadtop": 96,
+        "dpadbot": 96,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    }
+  },
+  "order": [
+    "ms_richtext_FqrNC7",
+    "ms_page_banner_t7PDm4",
+    "cc_logo_list_znUD4dsK",
+    "ms_image_with_textv2_yQderD",
+    "ms_two_column_text_e6tRTN",
+    "cc_featured_collection_X7PVEf"
+  ]
+}

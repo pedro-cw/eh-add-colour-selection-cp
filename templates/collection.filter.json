@@ -1,0 +1,336 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cw_multi_select_filters_jPDAhx": {
+      "type": "cw-multi-select-filters",
+      "blocks": {
+        "collection_aqJcr3": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Calm",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-mat-pillow",
+              "acupressure-headband",
+              "gold-acupressure-magnet-patches",
+              "acupressure-comb",
+              "gold-acupressure-ring"
+            ],
+            "product_image_override_1_product": "24k-gold-plated-ear-seed-kit",
+            "product_image_override_1_image": "shopify://shop_images/ear_seed_kit.png",
+            "product_image_override_2_product": "acupressure-mat-pillow",
+            "product_image_override_2_image": "shopify://shop_images/acu_mat.png",
+            "product_image_override_3_product": "acupressure-headband",
+            "product_image_override_3_image": "shopify://shop_images/headband.png",
+            "product_image_override_4_product": "gold-acupressure-magnet-patches",
+            "product_image_override_4_image": "shopify://shop_images/magnet_patches.png",
+            "product_image_override_5_product": "acupressure-comb",
+            "product_image_override_5_image": "shopify://shop_images/comb.png",
+            "product_image_override_6_product": "gold-acupressure-ring",
+            "product_image_override_6_image": "shopify://shop_images/ring.png",
+            "product_image_override_7_product": "",
+            "product_image_override_8_product": "",
+            "product_image_override_9_product": ""
+          }
+        },
+        "collection_DDP3yw": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Focus & Energy",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-foot-mat",
+              "acupressure-headband",
+              "gold-acupressure-ring"
+            ],
+            "product_image_override_1_product": "24k-gold-plated-ear-seed-kit",
+            "product_image_override_1_image": "shopify://shop_images/ear_seed_kit.png",
+            "product_image_override_2_product": "acupressure-foot-mat",
+            "product_image_override_2_image": "shopify://shop_images/footmat.png",
+            "product_image_override_3_product": "acupressure-headband",
+            "product_image_override_3_image": "shopify://shop_images/headband.png",
+            "product_image_override_4_product": "gold-acupressure-ring",
+            "product_image_override_4_image": "shopify://shop_images/ring.png",
+            "product_image_override_5_product": "",
+            "product_image_override_6_product": "",
+            "product_image_override_7_product": "",
+            "product_image_override_8_product": "",
+            "product_image_override_9_product": ""
+          }
+        },
+        "collection_c4QqPq": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Tension Relief",
+            "pdp_list": [
+              "gold-acupressure-magnet-patches",
+              "acupressure-mat-pillow",
+              "acupressure-foot-mat",
+              "acupressure-comb"
+            ],
+            "product_image_override_1_product": "gold-acupressure-magnet-patches",
+            "product_image_override_1_image": "shopify://shop_images/magnet_patches.png",
+            "product_image_override_2_product": "acupressure-mat-pillow",
+            "product_image_override_2_image": "shopify://shop_images/acu_mat.png",
+            "product_image_override_3_product": "acupressure-foot-mat",
+            "product_image_override_3_image": "shopify://shop_images/footmat.png",
+            "product_image_override_4_product": "acupressure-comb",
+            "product_image_override_4_image": "shopify://shop_images/comb.png",
+            "product_image_override_5_product": "",
+            "product_image_override_6_product": "",
+            "product_image_override_7_product": "",
+            "product_image_override_8_product": "",
+            "product_image_override_9_product": ""
+          }
+        },
+        "collection_BDPpyH": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Women's Wellness",
+            "pdp_list": [
+              "womens-health-gold-ear-seed-kit-bundle"
+            ],
+            "product_image_override_1_product": "womens-health-gold-ear-seed-kit-bundle",
+            "product_image_override_1_image": "shopify://shop_images/womens_health_ear_seed_kit.png",
+            "product_image_override_2_product": "",
+            "product_image_override_3_product": "",
+            "product_image_override_4_product": "",
+            "product_image_override_5_product": "",
+            "product_image_override_6_product": "",
+            "product_image_override_7_product": "",
+            "product_image_override_8_product": "",
+            "product_image_override_9_product": ""
+          }
+        },
+        "collection_kAezQr": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Head Tension",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-headband",
+              "gold-acupressure-magnet-patches",
+              "bian-stone-scalp-gua-sha-comb"
+            ],
+            "product_image_override_1_product": "24k-gold-plated-ear-seed-kit",
+            "product_image_override_1_image": "shopify://shop_images/ear_seed_kit.png",
+            "product_image_override_2_product": "acupressure-headband",
+            "product_image_override_2_image": "shopify://shop_images/headband.png",
+            "product_image_override_3_product": "gold-acupressure-magnet-patches",
+            "product_image_override_3_image": "shopify://shop_images/magnet_patches.png",
+            "product_image_override_4_product": "bian-stone-scalp-gua-sha-comb",
+            "product_image_override_4_image": "shopify://shop_images/scalp_comb_images_3.jpg",
+            "product_image_override_5_product": "",
+            "product_image_override_6_product": "",
+            "product_image_override_7_product": "",
+            "product_image_override_8_product": "",
+            "product_image_override_9_product": ""
+          }
+        },
+        "collection_Eyc9hc": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Digestion",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit"
+            ],
+            "product_image_override_1_product": "24k-gold-plated-ear-seed-kit",
+            "product_image_override_1_image": "shopify://shop_images/ear_seed_kit.png",
+            "product_image_override_2_product": "",
+            "product_image_override_3_product": "",
+            "product_image_override_4_product": "",
+            "product_image_override_5_product": "",
+            "product_image_override_6_product": "",
+            "product_image_override_7_product": "",
+            "product_image_override_8_product": "",
+            "product_image_override_9_product": ""
+          }
+        },
+        "collection_xGFGyG": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Skin & Hair",
+            "pdp_list": [
+              "bian-stone-facial-gua-sha"
+            ],
+            "product_image_override_1_product": "bian-stone-facial-gua-sha",
+            "product_image_override_1_image": "shopify://shop_images/gua_sha.png",
+            "product_image_override_2_product": "",
+            "product_image_override_3_product": "",
+            "product_image_override_4_product": "",
+            "product_image_override_5_product": "",
+            "product_image_override_6_product": "",
+            "product_image_override_7_product": "",
+            "product_image_override_8_product": "",
+            "product_image_override_9_product": ""
+          }
+        },
+        "collection_eKXbhz": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Sleep",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-mat-pillow",
+              "gold-acupressure-magnet-patches"
+            ],
+            "product_image_override_1_product": "24k-gold-plated-ear-seed-kit",
+            "product_image_override_1_image": "shopify://shop_images/ear_seed_kit.png",
+            "product_image_override_2_product": "acupressure-mat-pillow",
+            "product_image_override_2_image": "shopify://shop_images/acu_mat.png",
+            "product_image_override_3_product": "gold-acupressure-magnet-patches",
+            "product_image_override_3_image": "shopify://shop_images/magnet_patches.png",
+            "product_image_override_4_product": "",
+            "product_image_override_5_product": "",
+            "product_image_override_6_product": "",
+            "product_image_override_7_product": "",
+            "product_image_override_8_product": "",
+            "product_image_override_9_product": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_aqJcr3",
+        "collection_DDP3yw",
+        "collection_c4QqPq",
+        "collection_BDPpyH",
+        "collection_kAezQr",
+        "collection_Eyc9hc",
+        "collection_xGFGyG",
+        "collection_eKXbhz"
+      ],
+      "name": "CW - Collections Filter List",
+      "settings": {
+        "collection-title": "Shop by Wellness Goal",
+        "collection-subtitle": "Modern wellness rooted in Ancient Wisdom. Tools for calm, balance and everyday wellbeing.",
+        "filter_label": "Filter by goal",
+        "clear_label": "Clear Filters",
+        "empty_text": "No products found for these filters.",
+        "default_state": "first",
+        "bgcolor": "rgba(0,0,0,0)",
+        "tcolor": "#695450"
+      }
+    },
+    "ms-collection-list": {
+      "type": "ms-collection-filter-list",
+      "blocks": {
+        "collection_8tdkkt": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Stress & Anxiety",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-mat-pillow",
+              "acupressure-headband",
+              "gold-acupressure-magnet-patches",
+              "acupressure-comb",
+              "gold-acupressure-ring"
+            ]
+          }
+        },
+        "collection_ghhTLg": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Focus & Energy",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-foot-mat",
+              "acupressure-headband",
+              "gold-acupressure-ring"
+            ]
+          }
+        },
+        "collection_w3EU8J": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Pain",
+            "pdp_list": [
+              "gold-acupressure-magnet-patches",
+              "acupressure-mat-pillow",
+              "acupressure-foot-mat",
+              "acupressure-comb"
+            ]
+          }
+        },
+        "collection_fPPncw": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Hormones",
+            "pdp_list": [
+              "womens-health-gold-ear-seed-kit-bundle"
+            ]
+          }
+        },
+        "collection_wTnMBY": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Headaches",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-headband",
+              "gold-acupressure-magnet-patches",
+              "bian-stone-scalp-gua-sha-comb"
+            ]
+          }
+        },
+        "collection_RURq4B": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Digestion",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit"
+            ]
+          }
+        },
+        "collection_T3xVRQ": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Skin",
+            "pdp_list": [
+              "bian-stone-facial-gua-sha"
+            ]
+          }
+        },
+        "collection_Vzgi3W": {
+          "type": "collection",
+          "settings": {
+            "filter-title": "Sleep",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-mat-pillow",
+              "gold-acupressure-magnet-patches"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "collection_8tdkkt",
+        "collection_ghhTLg",
+        "collection_w3EU8J",
+        "collection_fPPncw",
+        "collection_wTnMBY",
+        "collection_RURq4B",
+        "collection_T3xVRQ",
+        "collection_Vzgi3W"
+      ],
+      "disabled": true,
+      "settings": {
+        "collection-title": "Shop by concern",
+        "bgcolor": "rgba(0,0,0,0)",
+        "tcolor": "#695450"
+      }
+    }
+  },
+  "order": [
+    "cw_multi_select_filters_jPDAhx",
+    "ms-collection-list"
+  ]
+}

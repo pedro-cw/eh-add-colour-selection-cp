@@ -1,0 +1,35 @@
+{%- assign w_continue = 'no' -%}
+{% assign wlmHideItem_Product = false %}{% assign wlmLockedTags242165 = false %}
+{% assign wlmLockedTags243004 = false %}
+{% assign wlmLockedTags272040 = false %}
+{% assign wlmLockedTags272041 = false %}
+{% assign wlmLockedTags272042 = false %}
+{% assign wlmLockedTags272271 = false %}
+{% for tag in customer.tags %}
+{% if tag == 'retailers' %}{% assign wlmLockedTags242165 = true %}{% endif %}
+{% if tag == 'WLMTest' %}{% assign wlmLockedTags243004 = true %}{% endif %}
+{% if tag == 'practitioners' %}{% assign wlmLockedTags272040 = true %}{% endif %}
+{% if tag == 'students' %}{% assign wlmLockedTags272041 = true %}{% endif %}
+{% if tag == 'practitioner' %}{% assign wlmLockedTags272042 = true %}{% endif %}
+{% if tag == 'WPDTest' %}{% assign wlmLockedTags272271 = true %}{% endif %}
+{% endfor %}
+
+{% if wlm-product.id == 8325108367548 %} 
+{% unless customer %}
+{% assign  wlmHideItem_Product = true %}
+{% else %}
+{% unless wlmLockedTags272040 or wlmLockedTags272041 or wlmLockedTags272042 %}{% assign  wlmHideItem_Product = true %}{% endunless %}
+{% endunless %}
+{% endif %}
+
+{% if wlm-product.id == 8325108367548 %} 
+{% if customer %}
+{% if wlmLockedTags242165 %}{% assign  wlmHideItem_Product = true %}{% else %}{% assign wlmHideItem_Product = false %}{% endif %}
+{% endif %}
+{% endif %}
+
+
+
+{% if wlmHideItem_Product == true %}{% continue %}{% endif %}
+
+{%- if wlm_is_render == 'yes' -%}{{- w_continue -}}{%-endif-%}

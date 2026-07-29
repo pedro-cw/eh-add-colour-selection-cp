@@ -1,0 +1,320 @@
+<div class="ms__imagewithtext-outer-container">
+  <div class="page-width">
+    <div class="ms__imagewithtext-inner-container">
+      <div class="ms__imagewithtext-column">
+        <div class="ms__imagewithtext-image-column">
+          <img class="ms__imagewithtextoffset" src="{{ 'acuseeds-offset-img.png' | asset_url }}" />
+          {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt }}" />
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="ms__imagewithtext-column">
+        <div class="ms__imagewithtext-content-column">
+          {% if section.settings.title != blank %}
+            <{{ section.settings.htags }} class="ms__imagewithtext-content-heading">{{ section.settings.title }}</{{ section.settings.htags }}>
+          {% endif %}
+
+          {% if section.settings.content != blank %}
+            <div class="ms__imagewithtext-content-rte">{{ section.settings.content }}</div>
+          {% endif %}
+          {% if section.blocks.size > 0 %}
+            <div class="ms__imagewithtext-content-list">
+              {% for content in section.blocks %}
+                {% if content.settings.text != blank %}
+                  <div class="ms__imagewithtext-content-list-text">
+                    <svg
+                      width="20"
+                      height="18"
+                      viewBox="0 0 20 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.14058 16.1187C4.25338 15.1219 3.53671 14.1469 2.84441 13.2027C2.21181 12.3441 1.6633 11.4266 1.20646 10.4629C0.92052 9.87823 0.793958 9.28615 1.41332 8.90548C3.18833 7.81465 3.55208 8.85621 4.51686 10.0647C5.08874 10.7809 5.93202 11.9617 6.4604 12.7078C6.9651 13.4203 7.58038 12.1344 7.826 11.7715C8.699 10.4819 10.968 7.3248 11.9056 6.1578C12.7958 5.04996 15.669 1.94637 16.2046 1.45273C16.6605 1.0324 17.6231 0.110461 18.2704 0.619055C18.9506 1.15343 19.2829 2.16921 18.8047 2.82968C17.972 3.97952 16.6641 5.07335 15.7591 6.16821C13.9271 8.38446 12.1927 10.7734 10.5278 13.152C9.9621 13.9603 9.1678 15.3141 8.67468 16.1907C7.75222 17.8307 6.94199 18.1428 5.14058 16.1187Z" fill="currentColor" />
+                    </svg>
+                    <p>{{ content.settings.text }}</p>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.mpadtop | append: 'px' }};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+    background-color: {{ section.settings.bgcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-image-column {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-image-column svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #f3f3f3;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-image-column img.ms__imagewithtextoffset {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 130px;
+    height: auto;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-content-list-text {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    text-transform: UPPERCASE;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-content-list-text p {
+    width: calc(100% - 38px);
+    font-size: {{ section.settings.mltsize | append: 'px' }};
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-content-list-text:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-content-rte {
+    margin-bottom: 30px;
+    font-size: {{ section.settings.dcsize | append: 'px' }};
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-content-column {
+    color: {{ section.settings.textcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagewithtext-content-column .ms__imagewithtext-content-heading {
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    color: inherit;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.dpadtop | append: 'px' }};
+      padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-inner-container {
+      display: flex;
+      align-items: center;
+      gap: 47px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-column {
+      width: calc(50% - 28.5px);
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-content-list-text:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-content-rte {
+      margin-bottom: 50px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-content-column .ms__imagewithtext-content-heading {
+      font-size: {{ section.settings.dhsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-content-rte {
+      font-size: {{ section.settings.mcsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-content-list-text p {
+      font-size: {{ section.settings.dltsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-image-column {
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagewithtext-image-column img.ms__imagewithtextoffset {
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: 230px;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "MS Image with text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Title"
+      },
+      {
+          "type": "select",
+          "id": "htags",
+          "label": "Heading Tag",
+          "default": "h2",
+          "options": [
+              {
+                  "value": "h1",
+                  "label": "H1"
+              },
+              {
+                  "value": "h2",
+                  "label": "H2"
+              },
+              {
+                  "value": "h3",
+                  "label": "H3"
+              },
+              {
+                  "value": "h4",
+                  "label": "H4"
+              },
+              {
+                  "value": "h5",
+                  "label": "H5"
+              },
+              {
+                  "value": "h6",
+                  "label": "H6"
+              }
+          ]
+      },
+      {
+        "type": "number",
+        "id": "dhsize",
+        "label": "Heading size (desktop)",
+        "default": 48,
+        "info": "Unit in px"
+      },
+      {
+        "type": "number",
+        "id": "mhsize",
+        "label": "Heading size (mobile)",
+        "default": 32,
+        "info": "Unit in px"
+      }, {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content",
+        "default": "<p>Please update this content with the content of your site.</p>"
+      }, {
+        "type": "number",
+        "id": "dcsize",
+        "label": "Content size (desktop)",
+        "default": 16,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mcsize",
+        "label": "Content size (mobile)",
+        "default": 16,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "dltsize",
+        "label": "List text size (desktop)",
+        "default": 16,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mltsize",
+        "label": "List text size (mobile)",
+        "default": 16,
+        "info": "Unit in px"
+      }, {
+        "type": "header",
+        "content": "Styles"
+      }, {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background ",
+        "default": "transparent"
+      }, {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text",
+        "default": "#000"
+      }, {
+        "type": "number",
+        "id": "dpadtop",
+        "label": "Padding top(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "dpadbot",
+        "label": "Padding bottom(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mpadtop",
+        "label": "Padding top(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mpadbot",
+        "label": "Padding bottom(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "listtext",
+        "name": "List text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "List text content"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "MS Image with text",
+        "blocks": [
+          {
+            "type": "listtext"
+          }, {
+            "type": "listtext"
+          }, {
+            "type": "listtext"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

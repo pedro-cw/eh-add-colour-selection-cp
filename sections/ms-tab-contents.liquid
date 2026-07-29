@@ -1,0 +1,278 @@
+<div class="ms__tabcontents-outer-container">
+    <div class="page-width">
+        {% if section.settings.title != blank %}
+        <{{ section.settings.htags }} class="ms__tabcontents-heading">{{ section.settings.title }}</{{ section.settings.htags }}>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+        <div class="ms__tabcontents-items">
+            <div class="ms__tabcontents-items-inner">
+                <div class="ms__tabcontents-item-column">
+                    {% for tab in section.blocks %}
+                        {% if tab.settings.tabtitle != blank %}
+                        <div class="ms__tabcontents-item-trigger{% if forloop.first %} ms__tabcontents-titleactive{% endif %}" data-content="tabcontents-{{ forloop.index }}{{ section.id }}">{{ tab.settings.tabtitle }}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="ms__tabcontents-item-column">
+                    {% for tab in section.blocks %}
+                        {% if tab.settings.tabcontent != blank %}
+                        <div id="tabcontents-{{ forloop.index }}{{ section.id }}" class="ms__tabcontents-item-rte{% if forloop.first %} ms__tabcontents-active{% endif %}">
+                            <div class="ms__tabcontents-item-rte-inner">
+                                {{ tab.settings.tabcontent }}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color: {{ section.settings.bgcolor }};
+        padding-top: {{ section.settings.mpadtop | append: 'px' }};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-heading{
+        font-size: {{ section.settings.mhsize | append: 'px' }};
+        text-align: center;
+        color: {{ section.settings.textcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-items{
+        margin-top: 30px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-items-inner {
+        display: grid;
+        gap: 30px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-trigger{
+        font-size: 16px;
+        font-weight: bold;
+        color: #695450;
+        position: relative;
+        display: flex;
+        align-items: center;
+        text-transform: UPPERCASE;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-trigger:not(:last-child){
+        margin-bottom:16px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-trigger.ms__tabcontents-titleactive{
+        color: {{ section.settings.textcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-trigger:before{
+        content: "";
+        width: 0px;
+        height: 2px;
+        background-color: currentColor;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-trigger.ms__tabcontents-titleactive:before{
+        width: 30px;
+        margin-right: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-rte {
+        display: none;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-rte.ms__tabcontents-active{
+        display: block;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-rte-inner ol,
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-rte-inner ul{
+        margin-top: 0;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-rte-inner{
+        color: #695450;
+        font-weight: bold;
+    }
+
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-rte-inner ol li:not(:last-child),
+    #shopify-section-{{ section.id }} .ms__tabcontents-item-rte-inner ul li:not(:last-child){
+        margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: 750px){
+        #shopify-section-{{ section.id }} {
+            padding-top: {{ section.settings.dpadtop | append: 'px' }};
+            padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+        }
+
+        #shopify-section-{{ section.id }} .ms__tabcontents-heading{
+            font-size: {{ section.settings.dhsize | append: 'px' }};
+        }
+
+        #shopify-section-{{ section.id }} .ms__tabcontents-items{
+            margin-top: 65px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__tabcontents-items-inner{
+            grid-template-columns: repeat(2, calc(50% - 15px));
+        }
+
+        #shopify-section-{{ section.id }} .ms__tabcontents-item-trigger:not(:last-child){
+            margin-bottom: 20px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__tabcontents-item-trigger.ms__tabcontents-titleactive:before{
+            margin-right: 25px;
+        }
+    }
+
+</style>
+{% schema %}
+    {
+        "name": "MS Tab Contents",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Tab Contents"
+            },
+            {
+                "type": "select",
+                "id": "htags",
+                "label": "Heading Tag",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "H6"
+                    }
+                ]
+            },
+            {
+                "type": "number",
+                "id": "dhsize",
+                "label": "Heading size (desktop)",
+                "default": 96,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mhsize",
+                "label": "Heading size (mobile)",
+                "default": 48,
+                "info": "Unit in px"
+            },
+            {
+                "type": "header",
+                "content": "Styles"
+            },
+            {
+                "type": "color",
+                "id": "bgcolor",
+                "label": "Background ",
+                "default": "transparent"
+            }, 
+            {
+                "type": "color",
+                "id": "textcolor",
+                "label": "Text/Active Tab",
+                "default": "#000"
+            }, 
+            {
+                "type": "number",
+                "id": "dpadtop",
+                "label": "Padding top(desktop)",
+                "default": 100,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "dpadbot",
+                "label": "Padding bottom(desktop)",
+                "default": 100,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mpadtop",
+                "label": "Padding top(mobile)",
+                "default": 50,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mpadbot",
+                "label": "Padding bottom(mobile)",
+                "default": 50,
+                "info": "Unit in px"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "tabitems",
+                "name": "Tab items",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "tabtitle",
+                        "label": "Title",
+                        "default": "Tab title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "tabcontent",
+                        "label": "Contents",
+                        "default": "<p>Please update this contents with your content.</p>"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "MS Tab Contents",
+                "blocks": [
+                    {
+                        "type": "tabitems"
+                    },
+                    {
+                        "type": "tabitems"
+                    },
+                    {
+                        "type": "tabitems"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

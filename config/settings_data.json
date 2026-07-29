@@ -1,0 +1,2398 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "color_primary": "#a98c6b",
+    "color_header_text": "#decfbe",
+    "color_primary_heading_text": "#977e57",
+    "color_primary_body_text": "#977e57",
+    "color_footer_text": "#695450",
+    "color_button_text": "#f7f8f4",
+    "color_header_bg": "#f3eeea",
+    "color_footer_bg": "#f7f8f4",
+    "color_main_bg": "#f3eeea",
+    "color_secondary_bg": "#f3eeea",
+    "color_product_cards": "#fff",
+    "color_form_elements": "#fff",
+    "color_cart_flag": "#665550",
+    "type_base_size": "62.5%",
+    "type_header_font": "chong_modern_n4",
+    "type_base_font": "montserrat_n5",
+    "show_cart_drawer": true,
+    "show_cart_note": true,
+    "empty_cart_image": "shopify://shop_images/image_25703_1.png",
+    "empty_cart_title": "SHOP BY WELLNESS GOAL",
+    "empty_cart_linklist": "empty-cart",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_facebook_link": "https://facebook.com/easthealing",
+    "social_instagram_link": "https://www.instagram.com/easthealing/",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "shopify://shop_images/East_Healing_icon_brown_1.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify://shop_images/Secondary-14-M.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "small",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#f7f8f4",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#decfbe",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#977e57",
+    "checkout_button_color": "#977e57",
+    "checkout_error_color": "#665550",
+    "logo_max_height": 15,
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "header_menu_image_P9XFR7": {
+            "type": "header-menu-image",
+            "settings": {
+              "menu_label": "Refills",
+              "menu_image": "shopify://shop_images/e8e67e12a45a650e90e7bff28c4f5ab44fea2cff_1.png"
+            }
+          },
+          "header_menu_image_9mgDDR": {
+            "type": "header-menu-image",
+            "settings": {
+              "menu_label": "Shop by Wellness Goal",
+              "menu_image": "shopify://shop_images/image_25703_1.png"
+            }
+          },
+          "header_menu_image_Jp3r6m": {
+            "type": "header-menu-image",
+            "settings": {
+              "menu_label": "Shop by product",
+              "menu_image": "shopify://shop_images/image_25704.png"
+            }
+          },
+          "header_menu_image_hgewzY": {
+            "type": "header-menu-image",
+            "settings": {
+              "menu_label": "bundle and save",
+              "menu_image": "shopify://shop_images/Mask_group_2.png"
+            }
+          },
+          "header_menu_image_wQqRan": {
+            "type": "header-menu-image",
+            "settings": {
+              "menu_label": "Build Your Bundle",
+              "menu_image": "shopify://shop_images/image2_1.png"
+            }
+          },
+          "header_menu_image_yFGLYA": {
+            "type": "header-menu-image",
+            "settings": {
+              "menu_label": "Shop All",
+              "menu_image": "shopify://shop_images/14.webp"
+            }
+          }
+        },
+        "block_order": [
+          "header_menu_image_P9XFR7",
+          "header_menu_image_9mgDDR",
+          "header_menu_image_Jp3r6m",
+          "header_menu_image_hgewzY",
+          "header_menu_image_wQqRan",
+          "header_menu_image_yFGLYA"
+        ],
+        "settings": {
+          "desktop_menu": "desktop-header-menu-copy",
+          "desktop_products_heading": "Products Of The Week",
+          "desktop_product_img_1": "shopify://shop_images/Acu-Seeds_12690_1.jpg",
+          "desktop_product_title_1": "Acu Seeds Ear Seed Kit",
+          "desktop_product_url_1": "shopify://products/24k-gold-plated-ear-seed-kit",
+          "desktop_product_img_2": "shopify://shop_images/Acupressure-Mat-and-Pillow.jpg",
+          "desktop_product_title_2": "Acupressure Mat & Pillow",
+          "desktop_product_url_2": "shopify://products/acupressure-mat-pillow",
+          "desktop_product_img_3": "shopify://shop_images/image_25703_1_69d185cb-5805-41ac-aee8-5fdac105cf1e.png",
+          "desktop_product_title_3": "Acupressure Headband",
+          "desktop_product_url_3": "shopify://products/acupressure-headband",
+          "icon": "bag",
+          "logo": "shopify://shop_images/Thicker_East_Healing_NAME_brown.png",
+          "logo_max_height": 45,
+          "enable_transparent": true,
+          "transparent_logo": "shopify://shop_images/Thicker_East_Healing_NAME_brown.png",
+          "transparent_text_color": "#f7f8f4",
+          "menu-btn-icon": "",
+          "menu-btn-label": "✨ Take Wellness Quiz",
+          "menu-btn-link": "shopify://pages/quiz",
+          "desktop_logo_img": "shopify://shop_images/Thicker_East_Healing_NAME_brown.png",
+          "primary_navigation": "new-megamenu-header-copy-with-build-your-bundle-copy",
+          "secondary_navigation": "new-megamenu-footer",
+          "show_announcement": true,
+          "home_page_only": false,
+          "announcement_text": "Take our wellness quiz to find your perfect healing tool",
+          "trigger_newsletter": false,
+          "announcement_link": "https://easthealing.com/pages/quiz",
+          "announcement_icon": "none",
+          "announcement_color_bg": "#695450",
+          "announcement_color_text": "#ffffff"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1486649858082": {
+            "type": "menu",
+            "settings": {
+              "link_list": "new-footer-1"
+            }
+          },
+          "menu_ax6VbU": {
+            "type": "menu",
+            "settings": {
+              "link_list": "new-footer-2"
+            }
+          }
+        },
+        "block_order": [
+          "1486649858082",
+          "menu_ax6VbU"
+        ],
+        "settings": {
+          "show_payment_icons": true,
+          "enable_parallax": false,
+          "show_newsletter": true,
+          "newsletter_heading": "join our community",
+          "newsletter_subheading": "",
+          "copyright_text": "Copyright © 2024 EAST HEALING. All rights reserved."
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "products": "2",
+          "rows": "6",
+          "product_tags_enable": false,
+          "product_sorting_enable": false,
+          "collection_hero_image": false,
+          "collection_hero_image_parallax": false,
+          "grid_style": "collage",
+          "show_spacing": false,
+          "show_vendor": false
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_payment_button": false,
+          "show_share_buttons": true,
+          "show_clearpay_messaging": true,
+          "enable_video_looping": false,
+          "hide_variant_media": true
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "grid_style": "collage",
+          "articles": "2",
+          "rows": "4",
+          "blog_show_date": false
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "1486649146314": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/shopify_banner_2450_x_1634px_7.jpg",
+              "alignment": "center center",
+              "title": "",
+              "button": "",
+              "cta": "",
+              "cta_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1486649146314"
+        ],
+        "settings": {
+          "slider_height": "full",
+          "center_cta": true,
+          "show_overlay": true,
+          "overlay_color": "#313131",
+          "overlay_text": "#ffffff",
+          "overlay_opacity": 15
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "image_parallax": false,
+          "show_date": false,
+          "show_author": false,
+          "show_share_buttons": true
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": true
+        }
+      },
+      "password-header": {
+        "type": "password-header",
+        "settings": {
+          "logo": "shopify://shop_images/Thicker_East_Healing_NAME_brown.png",
+          "logo_max_width": "300"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "header": "Something Exciting is Coming Soon...",
+          "newsletter_enable": false,
+          "newsletter_form_heading": "",
+          "newsletter_form_subheading": "<p>To join the waitlist for our 24k gold and silver plated ear seeds, leave your email below and you will be notified when we launch. </p>",
+          "newsletter_placeholder": "Email address",
+          "newsletter_button_text": "submit",
+          "show_share_buttons": false,
+          "social_message": "Discover Acu Seeds on Instagram"
+        }
+      },
+      "password-footer": {
+        "type": "password-footer",
+        "settings": {
+          "show_powered_by": false
+        }
+      },
+      "gallery": {
+        "type": "gallery",
+        "blocks": {
+          "2d39b44b-25b2-471d-b8b5-bbabf5e1a12f": {
+            "type": "image",
+            "settings": {
+              "alignment": "center center",
+              "icon": "checkmark",
+              "cta_label": "Talk about your brand",
+              "link": ""
+            }
+          },
+          "d0e02ea5-b8df-4055-b1bd-58d6eff60857": {
+            "type": "image",
+            "settings": {
+              "alignment": "center center",
+              "icon": "checkmark",
+              "cta_label": "Talk about your brand",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "2d39b44b-25b2-471d-b8b5-bbabf5e1a12f",
+          "d0e02ea5-b8df-4055-b1bd-58d6eff60857"
+        ],
+        "settings": {
+          "section_height": "medium",
+          "show_overlay": true,
+          "overlay_color": "#000000",
+          "overlay_text": "#ffffff",
+          "overlay_opacity": "0.3"
+        }
+      },
+      "custom-content": {
+        "type": "custom-content",
+        "blocks": {
+          "a553974a-cdc0-48bb-a548-15f9ceeaf2a8": {
+            "type": "text",
+            "settings": {
+              "heading_text": "",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<p>Our mission is to spread awareness of the benefits of auricular (ear) acupressure, which has been used for thousands of years but is fairly unknown in the modern, western world. Through the use of ear seeds, we are helping others take control of their own health and wellness and making this ancient Chinese medicine practice more accessible to the modern world. </p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "100%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          },
+          "6c3a12ac-781a-4f13-85ac-da54d8bb0342": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Acu-Seeds_12791.jpg",
+              "width": "100%",
+              "alignment": "bottom"
+            }
+          }
+        },
+        "block_order": [
+          "a553974a-cdc0-48bb-a548-15f9ceeaf2a8",
+          "6c3a12ac-781a-4f13-85ac-da54d8bb0342"
+        ],
+        "settings": {
+          "heading_text": "Our Mission",
+          "heading_color": "#977e57",
+          "background_color": "",
+          "top_margin": true,
+          "bottom_margin": true
+        }
+      },
+      "collection-list": {
+        "type": "collection-list",
+        "settings": {
+          "title": "Collection list",
+          "grid": 3
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "settings": {
+          "hero_size": "large",
+          "image": "shopify://shop_images/Acu-Seeds_12575.jpg",
+          "alignment": "center center",
+          "title": "About",
+          "text": "",
+          "text_size": "medium",
+          "use_second_button": true,
+          "button_label": "",
+          "button_link": "https://acuseedsonlinecertification.thinkific.com",
+          "show_overlay": true,
+          "overlay_color": "#665550",
+          "overlay_text": "#ffffff",
+          "overlay_opacity": "0.5"
+        }
+      },
+      "rich-text": {
+        "type": "rich-text",
+        "custom_css": [
+          ".rich-text__heading:before {display: none !important;}"
+        ],
+        "settings": {
+          "full_width": false,
+          "section_title": "HOW TO APPLY EAR SEEDS",
+          "text": "",
+          "text_size": "medium"
+        }
+      },
+      "our-mission": {
+        "type": "our-mission",
+        "blocks": {
+          "7b8be18e-f544-450f-a982-ae704d8ba59a": {
+            "type": "html",
+            "settings": {
+              "code": "<div class=\"ddshopfaq\" id=\"ddshopfaq-49809\"></div>",
+              "width": "100%",
+              "alignment": "top"
+            }
+          }
+        },
+        "block_order": [
+          "7b8be18e-f544-450f-a982-ae704d8ba59a"
+        ],
+        "settings": {
+          "heading_text": "FAQs",
+          "heading_color": "#977e57",
+          "background_color": "",
+          "top_margin": true,
+          "bottom_margin": true
+        }
+      },
+      "founder": {
+        "type": "founder",
+        "blocks": {
+          "a1750028-9be0-4ad1-a663-ad432981d9b4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Acu-Seeds_12771.jpg",
+              "width": "50%",
+              "alignment": "center"
+            }
+          },
+          "4143f8f1-c23f-4610-a955-a270da80bb6f": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Meet our founder",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<p>Acu Seeds was founded by Giselle Boxer, who was diagnosed with Chronic Fatigue Syndrome or M.E at the age of 26. When her GP told her that she would never recover from the condition, Giselle went on a personal healing journey using a holistic approach of diet, supplementation but most importantly Traditional Chinese Medicine (TCM). Giselle believes that acupuncture, Chinese herbs and ear seeds played a huge role in reducing her symptoms. TCM has also been hugely beneficial for her during pregnancy and post-partum. <br/><br/>It is now her mission to share the benefits of auricular acupressure with the world.</p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "50%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          }
+        },
+        "block_order": [
+          "a1750028-9be0-4ad1-a663-ad432981d9b4",
+          "4143f8f1-c23f-4610-a955-a270da80bb6f"
+        ],
+        "settings": {
+          "heading_text": "",
+          "heading_color": "#977e57",
+          "background_color": "#f7f8f4",
+          "top_margin": true,
+          "bottom_margin": true
+        }
+      },
+      "video": {
+        "type": "video",
+        "settings": {
+          "cover_text": "",
+          "video_url": "https://www.youtube.com/watch?v=C-_zZ0v-pa8",
+          "cover_image": "shopify://shop_images/3_c20c45b4-18b4-4a3f-ae4d-3275030e1ce1.png",
+          "cover_image_position": "center center",
+          "show_overlay": true,
+          "overlay_color": "#000000",
+          "overlay_text": "#ffffff",
+          "overlay_opacity": 30
+        }
+      },
+      "how-to-video": {
+        "type": "how-to-video",
+        "blocks": {
+          "79cde829-f1a6-429d-8b04-0b73cc3b7963": {
+            "type": "video",
+            "settings": {
+              "video_url": "https://vimeo.com/642245536",
+              "width": "100%",
+              "alignment": "top"
+            }
+          },
+          "b3abf07b-e7d0-4363-9f64-6f303064edaa": {
+            "type": "html",
+            "settings": {
+              "code": "<div id=\"ddshopfaq-wrapper\"></div>",
+              "width": "100%",
+              "alignment": "top"
+            }
+          }
+        },
+        "block_order": [
+          "79cde829-f1a6-429d-8b04-0b73cc3b7963",
+          "b3abf07b-e7d0-4363-9f64-6f303064edaa"
+        ],
+        "settings": {
+          "heading_text": "How to apply ear seeds",
+          "heading_color": "#977e57",
+          "background_color": "#f3eeea",
+          "top_margin": true,
+          "bottom_margin": false
+        }
+      },
+      "about-intro": {
+        "type": "about-intro",
+        "blocks": {
+          "8667c0d9-d751-472b-aa4c-dc168b97eba1": {
+            "type": "text",
+            "settings": {
+              "heading_text": "What are ear seeds and how do they work?",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<p>Ear seeds are the oldest healing modality you’ve probably never heard of. Rooted in the principles of Chinese medicine, ear seeds are an ancient tool that may support a broad spectrum of health concerns by way of aiding restful sleep, assisting emotional well-being, helping you to relax, and supporting your immunity, focus, energy levels, and digestion. </p><p><br/>They are a needle-free form of auriculotherapy (the stimulation of specific points of the ear to address physical and emotional health concerns) that have been used in Traditional Chinese Medicine (TCM) for thousands of years. The seeds were traditionally from the flowering herb vaccaria, but our luxe, modern version uses gold or silver plated seeds that are attached to a clear adhesive sticker. So not only are they known for their healing benefits, but they look incredibly cute too! <br/><br/>TCM teaches that the ear is a microsystem of the whole body, where certain points on the ear correspond to different organs or body parts. Energy pathways (or ‘qi’ or vital life energy) pass through the ear and ear seeds stimulate specific points which send an abundant flow of energy to the related organ or area that needs attention. Think of it like reflexology, but for the ears instead of feet.<br/><br/>They also create continual, gentle pressure on nerve impulses in the ear which send messages to the brain that certain organs or systems need support. The brain will then send signals and chemicals to the rest of the body to support whatever ailments you’re experiencing, releasing endorphins into the bloodstream, relaxing the nervous system, and naturally soothing pain and discomfort. <br/><br/>For more information visit our <a href=\"/pages/how-to\" title=\"How To\">How to</a> page.</p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "50%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "4e079d05-1991-4f30-9123-85d0f2bc8f04": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Acu-Seeds_12791.jpg",
+              "width": "50%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "8667c0d9-d751-472b-aa4c-dc168b97eba1",
+          "4e079d05-1991-4f30-9123-85d0f2bc8f04"
+        ],
+        "settings": {
+          "heading_text": "",
+          "heading_color": "#977e57",
+          "background_color": "#f7f8f4",
+          "top_margin": false,
+          "bottom_margin": false
+        }
+      },
+      "mission": {
+        "type": "mission",
+        "blocks": {
+          "15227e7d-6efd-460e-9fd2-837d9a7d7952": {
+            "type": "text",
+            "settings": {
+              "heading_text": "",
+              "heading_color": "#242424",
+              "heading_style": "h3",
+              "paragraph_text": "<p>Our mission is to spread awareness of the benefits of auricular (ear) acupressure, which has been used for thousands of years but is fairly unknown in the modern, western world. Through the use of ear seeds, we are helping others take control of their own health and wellness and making this ancient Chinese medicine practice more accessible to the modern world. </p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "100%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          }
+        },
+        "block_order": [
+          "15227e7d-6efd-460e-9fd2-837d9a7d7952"
+        ],
+        "settings": {
+          "heading_text": "",
+          "heading_color": "#977e57",
+          "background_color": "#f7f8f4",
+          "top_margin": true,
+          "bottom_margin": true
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "grid_style": "collage",
+          "products": "2",
+          "sort": "alphabetical",
+          "show_spacing": false,
+          "show_description": true
+        }
+      },
+      "gallery-steps": {
+        "type": "gallery-steps",
+        "blocks": {
+          "f315cd9c-e68b-4653-abda-c2dfef0b7db5": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify://shop_images/1_1.png",
+              "alignment": "top center",
+              "icon": "none",
+              "cta_label": "",
+              "link": ""
+            }
+          },
+          "f3924a20-3171-4a71-b71c-8d9b24248926": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify://shop_images/2_1.png",
+              "alignment": "top center",
+              "icon": "none",
+              "cta_label": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "f315cd9c-e68b-4653-abda-c2dfef0b7db5",
+          "f3924a20-3171-4a71-b71c-8d9b24248926"
+        ],
+        "settings": {
+          "section_height": "large",
+          "show_overlay": false,
+          "overlay_color": "#000000",
+          "overlay_text": "#ffffff",
+          "overlay_opacity": "0.3"
+        }
+      },
+      "gallery-steps-two": {
+        "type": "gallery-steps-two",
+        "blocks": {
+          "9039f3c7-d097-43fa-b788-8d257df6e285": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify://shop_images/3.png",
+              "alignment": "top center",
+              "icon": "none",
+              "cta_label": "",
+              "link": ""
+            }
+          },
+          "765c4c09-a67b-4ea8-9a7a-7e938158b5b6": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify://shop_images/4.png",
+              "alignment": "top center",
+              "icon": "none",
+              "cta_label": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "9039f3c7-d097-43fa-b788-8d257df6e285",
+          "765c4c09-a67b-4ea8-9a7a-7e938158b5b6"
+        ],
+        "settings": {
+          "section_height": "large",
+          "show_overlay": false,
+          "overlay_color": "#000000",
+          "overlay_text": "#ffffff",
+          "overlay_opacity": "0.3"
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {}
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": false,
+          "heading": "You may also like",
+          "show_spacing": false,
+          "show_vendor": true
+        }
+      },
+      "hero2": {
+        "type": "hero2",
+        "custom_css": [],
+        "settings": {
+          "hero_size": "large",
+          "image": "shopify://shop_images/Ear_seeds_course_-_banner_image-2.png",
+          "alignment": "center center",
+          "title": "Acupressure Ear Seeds Online Certification",
+          "text": "<p>Become a certified Ear Seed Practitioner</p>",
+          "text_size": "medium",
+          "use_second_button": true,
+          "button_label": "Enrol Now",
+          "button_link": "https://acuseeds.thinkific.com/courses/acupressureearseedscertification",
+          "show_overlay": true,
+          "overlay_color": "#242424",
+          "overlay_text": "#ffffff",
+          "overlay_opacity": "0.5"
+        }
+      },
+      "video-learn": {
+        "type": "video-learn",
+        "custom_css": [
+          ".div {top-padding: 40px;}"
+        ],
+        "settings": {
+          "cover_text": "",
+          "video_url": "https://youtu.be/uiYcPz58tNU",
+          "cover_image": "shopify://shop_images/cover.png",
+          "cover_image_position": "center center",
+          "show_overlay": true,
+          "overlay_color": "#000000",
+          "overlay_text": "#ffffff",
+          "overlay_opacity": 30
+        }
+      },
+      "learn-custom": {
+        "type": "learn-custom",
+        "blocks": {
+          "c64f7d86-35e9-4db7-a830-fc362be66de0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/1_d06f8fba-4443-48e0-b04a-86262cfbf01e.png",
+              "width": "50%",
+              "alignment": "center"
+            }
+          },
+          "c66d847c-9713-4895-8969-c565a19088f9": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/2_efa7a03d-5c6f-4b52-b469-480eb589a79e.png",
+              "width": "50%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "c64f7d86-35e9-4db7-a830-fc362be66de0",
+          "c66d847c-9713-4895-8969-c565a19088f9"
+        ],
+        "settings": {
+          "heading_text": "What's Included?",
+          "heading_color": "#977e57",
+          "background_color": "#f7f8f4",
+          "top_margin": true,
+          "bottom_margin": true
+        }
+      },
+      "learn-custom-2": {
+        "type": "learn-custom-2",
+        "blocks": {
+          "8cd0b60c-933f-44de-8288-c6535d71a6b2": {
+            "type": "text",
+            "settings": {
+              "heading_text": "ABOUT THE COURSE",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<p>The Acupressure Ear Seeds Online Certification will teach you everything you need to know about ear seeds, with the objective of becoming a certified ear seeds practitioner.</p><p>You will learn about the history of ear seeds, how they work, their benefits, how to use them on your clients. You will also learn how to add ear seeding into your business, with marketing tips and downloadable resources.</p><p>There are no prerequisites to the course, meaning that it is suitable for both complete beginners and experienced practitioners wanting to expand their treatment menu.</p><p></p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "50%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "c57a6a40-d2ab-4bda-b27f-bc32eea9aa60": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Untitled_design_1.png",
+              "width": "50%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "8cd0b60c-933f-44de-8288-c6535d71a6b2",
+          "c57a6a40-d2ab-4bda-b27f-bc32eea9aa60"
+        ],
+        "settings": {
+          "heading_text": "",
+          "heading_color": "#977e57",
+          "background_color": "",
+          "top_margin": false,
+          "bottom_margin": false
+        }
+      },
+      "learn-custom-3": {
+        "type": "learn-custom-3",
+        "blocks": {
+          "861554ce-671a-4b74-bd4b-c8af3231e7cf": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Instructor_Bio.png",
+              "width": "50%",
+              "alignment": "center"
+            }
+          },
+          "c77f1960-d8eb-46aa-b0ed-7efb738c85ba": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Meet your teacher",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<p>Acu Seeds was founded by Giselle Boxer, who was diagnosed with Chronic Fatigue Syndrome or M.E at the age of 26. When her GP told her that she would never recover from the condition, Giselle went on a personal healing journey using a holistic approach of diet, supplementation but most importantly Traditional Chinese Medicine (TCM). Giselle believes that acupuncture, Chinese herbs and ear seeds played a huge role in reducing her symptoms. TCM has also been hugely beneficial for her during pregnancy and post-partum.<br/><br/>It is now her mission to share the benefits of auricular acupressure with the world.</p><p>Giselle is a certified Ear Seed Practitioner and it is her mission to teach ear seeding to other wellness professionals.</p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "50%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          }
+        },
+        "block_order": [
+          "861554ce-671a-4b74-bd4b-c8af3231e7cf",
+          "c77f1960-d8eb-46aa-b0ed-7efb738c85ba"
+        ],
+        "settings": {
+          "heading_text": "",
+          "heading_color": "#242424",
+          "background_color": "",
+          "top_margin": false,
+          "bottom_margin": false
+        }
+      },
+      "learn-custom-4": {
+        "type": "learn-custom-4",
+        "blocks": {
+          "89e3c681-277e-44bf-b5fa-a24e4cba120d": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Acupressure ear seeds 101",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<ul><li>What are ear seeds?</li><li>What is auriculotherapy & how do ear seeds work?</li><li>The history of auriculotherapy</li><li>Ear seed benefits</li></ul>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "75%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "6c3e4237-4d2f-425c-8add-55e8ab4e95c9": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/2_5db08d0d-e422-4e76-905e-1628bac410d1.png",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "7c750754-7ece-4f9b-91bd-8170f3804fde": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Using Acupressure ear seeds on clients",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<ul><li>How to apply ear seeds</li><li>Who can't use ear seeds, side effects & contraindications</li><li>Client consultation & putting together a protocol </li><li>Tools for a treatment & aftercare</li><li>Ear seed tips and FAQs</li></ul>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "75%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "924e810d-c2d3-42aa-8579-72b036d11304": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/3_be1ff535-2095-44f5-a669-1abff14cac05.png",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "d915d08a-f439-4b62-b706-177df733350f": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Anatomy of the Ear",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<ul><li>The ear is a microsystem of the body</li><li>Parts of the ear & what they correspond to </li></ul>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "75%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "1c96345e-b23b-4fc6-8f33-4f8894539c86": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/4_d3c408bd-af70-4d88-a673-1a353e3c92f6.png",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "51253c3c-2879-47f6-aa77-89184c87a378": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Treatment protocols",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<ul><li>Treatment protocols for where to place ear seeds for anxiety, weight loss, tinnitus, addiction, pain & more</li></ul>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "75%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "24532213-3658-40d1-b4b1-1565f51ecb76": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/5_72624760-1e6a-4755-85c7-f6538fe7d8ee.png",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "1c9eb29e-75df-4115-82b5-8f53174a7c4a": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Your ear seeding business",
+              "heading_color": "#977e57",
+              "heading_style": "h3",
+              "paragraph_text": "<ul><li>Charging for a treatment</li><li>Marketing tips</li><li>Marketing material downloads</li><li>Consent forms & insurance</li><li>Wholesale offering</li><li>Support group</li></ul>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "75%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "fd2c8689-a0d8-4958-a5aa-8f98e8165ed8": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/6_54989c6e-d6ba-446a-9c16-b62d5d5265b8.png",
+              "width": "25%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "89e3c681-277e-44bf-b5fa-a24e4cba120d",
+          "6c3e4237-4d2f-425c-8add-55e8ab4e95c9",
+          "7c750754-7ece-4f9b-91bd-8170f3804fde",
+          "924e810d-c2d3-42aa-8579-72b036d11304",
+          "d915d08a-f439-4b62-b706-177df733350f",
+          "1c96345e-b23b-4fc6-8f33-4f8894539c86",
+          "51253c3c-2879-47f6-aa77-89184c87a378",
+          "24532213-3658-40d1-b4b1-1565f51ecb76",
+          "1c9eb29e-75df-4115-82b5-8f53174a7c4a",
+          "fd2c8689-a0d8-4958-a5aa-8f98e8165ed8"
+        ],
+        "settings": {
+          "heading_text": "Course Content",
+          "heading_color": "#977e57",
+          "background_color": "#f7f8f4",
+          "top_margin": true,
+          "bottom_margin": true
+        }
+      },
+      "learn-custom-5": {
+        "type": "learn-custom-5",
+        "blocks": {
+          "17bfe8ee-7d05-415b-a9a5-cd36bf9e1331": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Pay in full",
+              "heading_color": "#977e57",
+              "heading_style": "h4",
+              "paragraph_text": "<p>One-off payment of £300 (inc VAT)</p><p></p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "33%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          },
+          "74d355a7-4424-494c-81f8-e260803f7922": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Pay over 2 months",
+              "heading_color": "#977e57",
+              "heading_style": "h4",
+              "paragraph_text": "<p>2 monthly payments of £160 (inc VAT)</p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "33%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          },
+          "0e285f0f-2af8-4cc2-bc7c-f9b29fd28dd8": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Pay over 3 months",
+              "heading_color": "#977e57",
+              "heading_style": "h4",
+              "paragraph_text": "<p>3 monthly payments of £110 (inc VAT)</p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "33%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          },
+          "97da0fc7-d4c4-4307-b7e9-5cd33c83f26b": {
+            "type": "html",
+            "settings": {
+              "code": "<div class=\"container\"><a href=\"https://acuseeds.thinkific.com/courses/acupressureearseedscertification\" class=\"btn btn-theme\" style=\"color:#fff;\">Find Out More</a></div>",
+              "width": "100%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "17bfe8ee-7d05-415b-a9a5-cd36bf9e1331",
+          "74d355a7-4424-494c-81f8-e260803f7922",
+          "0e285f0f-2af8-4cc2-bc7c-f9b29fd28dd8",
+          "97da0fc7-d4c4-4307-b7e9-5cd33c83f26b"
+        ],
+        "custom_css": [
+          ".container {display: flex; justify-content: center;}"
+        ],
+        "settings": {
+          "heading_text": "Investment",
+          "heading_color": "#977e57",
+          "background_color": "rgba(0,0,0,0)",
+          "top_margin": true,
+          "bottom_margin": true
+        }
+      },
+      "learn-custom-6": {
+        "type": "learn-custom-6",
+        "blocks": {
+          "f5e9a6a9-2e7e-42b7-bcc3-c3554a04e9ed": {
+            "type": "text",
+            "settings": {
+              "heading_text": "Accreditation",
+              "heading_color": "#977e57",
+              "heading_style": "h2",
+              "paragraph_text": "<p>There are no prerequisites for this course. </p><p>This certification is internationally accredited with IPHM – the International Practitioners of Holistic Medicine UK.</p><p>Once complete, you will be able to take out insurance to start treating clients.</p>",
+              "paragraph_color": "#977e57",
+              "paragraph_size": "1",
+              "width": "100%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          },
+          "195c6cc7-80cb-4e1c-9e11-bc229822d0e6": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/iphm-logo-square-trainingprovider.png",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "c4531e92-111e-4229-bddb-e6e7b5468f67": {
+            "type": "html",
+            "disabled": true,
+            "settings": {
+              "code": "<h2 style=\"text-align:center;\">FAQs</h2><br><br><div class=\"ddshopfaq\" id=\"ddshopfaq-59100\"></div>",
+              "width": "100%",
+              "alignment": "center"
+            }
+          },
+          "df7954dc-d8b5-4678-971e-0adc0461e0a9": {
+            "type": "html",
+            "disabled": true,
+            "settings": {
+              "code": "<div style=\"text-align:center;\">\n<h2>Any more questions?</h2>\n<a href=\"https://acuseeds.co.uk/pages/contact-us\" class=\"btn btn-theme\" style=\"color:#fff;\">Contact Us</a>\n</div>",
+              "width": "100%",
+              "alignment": "center"
+            }
+          },
+          "9cd6f9d1-b1b7-425f-84ea-b4fe57d5ae91": {
+            "type": "html",
+            "disabled": true,
+            "settings": {
+              "code": "<div id=\"fd-form-64806cd06242f9e5ebb68ae0\"></div>\n<script>\n  window.fd('form', {\n    formId: '64806cd06242f9e5ebb68ae0',\n    containerEl: '#fd-form-64806cd06242f9e5ebb68ae0'\n  });\n</script>",
+              "width": "100%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "f5e9a6a9-2e7e-42b7-bcc3-c3554a04e9ed",
+          "195c6cc7-80cb-4e1c-9e11-bc229822d0e6",
+          "c4531e92-111e-4229-bddb-e6e7b5468f67",
+          "df7954dc-d8b5-4678-971e-0adc0461e0a9",
+          "9cd6f9d1-b1b7-425f-84ea-b4fe57d5ae91"
+        ],
+        "settings": {
+          "heading_text": "",
+          "heading_color": "#977e57",
+          "background_color": "#f7f8f4",
+          "top_margin": true,
+          "bottom_margin": true
+        }
+      },
+      "sc-recent-blogs": {
+        "type": "sc-recent-blogs",
+        "settings": {
+          "bg-color": "#ffffff",
+          "sectitle": "Our recent blogs",
+          "recentblogs": "",
+          "postlimit": 7,
+          "padding_top": 120,
+          "padding_bottom": 96,
+          "mobile_padding_top": 40,
+          "mobile_padding_bottom": 40
+        }
+      },
+      "cc-faq": {
+        "type": "cc-faq",
+        "blocks": {
+          "faq_rA6eD8": {
+            "type": "faq",
+            "settings": {
+              "question": "Question goes here?",
+              "content": "<p>You're answer goes here please update.</p>"
+            }
+          }
+        },
+        "block_order": [
+          "faq_rA6eD8"
+        ],
+        "settings": {
+          "title": "TEST",
+          "htags": "h2",
+          "tcolor": "#f3eeea",
+          "bgcolor": "#695450",
+          "dhsize": 96,
+          "mhsize": 45,
+          "dpadtop": 70,
+          "dpadbot": 70,
+          "mpadtop": 35,
+          "mpadbot": 35
+        }
+      },
+      "cw-new-footer": {
+        "type": "cw-new-footer",
+        "blocks": {
+          "menu_jdrjti": {
+            "type": "menu",
+            "settings": {
+              "add_mb_class": "cw-footer-first-box",
+              "addclass": "cw-footer-ul-first",
+              "logo_image": "shopify://shop_images/footer_logo.png",
+              "logo_link": "https://easthealing.com",
+              "link_list": "cw-new-footer-1"
+            }
+          },
+          "menu_hkicYP": {
+            "type": "menu",
+            "settings": {
+              "add_mb_class": "",
+              "addclass": "",
+              "logo_link": "",
+              "link_list": "cw-new-footer-2"
+            }
+          },
+          "menu_6e8H8A": {
+            "type": "menu",
+            "settings": {
+              "add_mb_class": "",
+              "addclass": "",
+              "logo_link": "",
+              "link_list": "cw-new-footer-3"
+            }
+          }
+        },
+        "block_order": [
+          "menu_jdrjti",
+          "menu_hkicYP",
+          "menu_6e8H8A"
+        ],
+        "settings": {
+          "show_payment_icons": true,
+          "enable_parallax": false,
+          "show_newsletter": false,
+          "newsletter_heading": "Sign up for updates",
+          "newsletter_subheading": "<p>Promotions, new products and sales. Directly to your inbox.</p>",
+          "copyright_text": "Copyright © 2024 EAST HEALING. All rights reserved."
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "1713992510208204420": {
+        "type": "shopify://apps/d-faq-page/blocks/embed-app/15724fa4-4a4a-43cb-aa91-5a5c1af5ce46",
+        "disabled": true,
+        "settings": {}
+      },
+      "7280966411886983154": {
+        "type": "shopify://apps/monk/blocks/app-embed/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
+        "disabled": false,
+        "settings": {}
+      },
+      "11532412952436166569": {
+        "type": "shopify://apps/loox-reviews/blocks/loox-inject/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+        "disabled": true,
+        "settings": {}
+      },
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "greeting_message": "Hello! Message us with any questions you may have about our products. We'd love to help!",
+          "button_color": "#695450",
+          "secondary_color": "#ffffff",
+          "ternary_color": "#695450",
+          "button_icon": "chat_bubble",
+          "button_text": "need_help",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Earthy": {
+      "checkout_sidebar_background_color": "#f3f4f3",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#3c5629",
+      "checkout_button_color": "#3c5629",
+      "checkout_error_color": "#a95232",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slide-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slide-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slide-0",
+            "slide-1"
+          ],
+          "settings": {
+            "overlay_opacity": 30
+          }
+        },
+        "feature-row-0": {
+          "type": "feature-row",
+          "settings": {
+            "size": "large",
+            "use_second_button": true,
+            "desktop_layout": "left"
+          }
+        },
+        "video": {
+          "type": "video",
+          "settings": {
+            "overlay_opacity": 25
+          }
+        },
+        "rich-text": {
+          "type": "rich-text",
+          "settings": {}
+        },
+        "gallery": {
+          "type": "gallery",
+          "blocks": {
+            "gallery-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "gallery-1": {
+              "type": "image",
+              "settings": {}
+            },
+            "gallery-2": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "gallery-0",
+            "gallery-1",
+            "gallery-2"
+          ],
+          "settings": {
+            "overlay_opacity": "0.2"
+          }
+        },
+        "feature-row-1": {
+          "type": "feature-row",
+          "settings": {
+            "background_color": "#f3f4f3",
+            "use_second_button": true
+          }
+        },
+        "featured-slider": {
+          "type": "featured-slider",
+          "blocks": {
+            "featured-slide-0": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#a0ad90"
+              }
+            },
+            "featured-slide-1": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#b7c0ac"
+              }
+            },
+            "featured-slide-2": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#d3dbca"
+              }
+            }
+          },
+          "block_order": [
+            "featured-slide-0",
+            "featured-slide-1",
+            "featured-slide-2"
+          ],
+          "settings": {
+            "cover_title_desktop_position": "center",
+            "show_overlay": false,
+            "overlay_opacity": "0.25"
+          }
+        },
+        "featured-product": {
+          "type": "featured-product",
+          "settings": {
+            "media_size": "fill"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large",
+            "show_overlay": true,
+            "overlay_opacity": "0.4"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "menu",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "footer-0"
+          ],
+          "settings": {
+            "show_social_icons": true,
+            "show_payment_icons": true,
+            "show_newsletter": true
+          }
+        }
+      },
+      "content_for_index": [
+        "slideshow",
+        "feature-row-0",
+        "video",
+        "rich-text",
+        "gallery",
+        "feature-row-1",
+        "featured-slider",
+        "featured-product",
+        "hero"
+      ]
+    },
+    "Warm": {
+      "color_primary": "#eb4f47",
+      "color_header_text": "#e1c9b4",
+      "color_primary_heading_text": "#4a4a4a",
+      "color_primary_body_text": "#4a4a4a",
+      "color_footer_text": "#4a4a4a",
+      "color_button_text": "#ffffff",
+      "color_header_bg": "#fff",
+      "color_footer_bg": "#eae7e0",
+      "color_main_bg": "#faf9f6",
+      "color_secondary_bg": "#f4f1ec",
+      "color_product_cards": "#fff",
+      "color_form_elements": "#fff",
+      "color_cart_flag": "#eb4f47",
+      "type_base_size": "62.5%",
+      "type_header_font": "monotype_baskerville_n4",
+      "type_base_font": "avenir_next_n4",
+      "show_cart_drawer": true,
+      "show_cart_note": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_tumblr_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#1990C6",
+      "checkout_button_color": "#1990C6",
+      "checkout_error_color": "#ff6d6d",
+      "logo_max_height": 15,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "icon": "bag",
+            "logo_max_height": 15,
+            "enable_transparent": true,
+            "transparent_text_color": "#ffffff",
+            "primary_navigation": "main-menu",
+            "secondary_navigation": "footer",
+            "show_social_icons": false,
+            "announcement_color_bg": "#eb4f47"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1486649858082": {
+              "type": "menu",
+              "settings": {
+                "link_list": "footer"
+              }
+            }
+          },
+          "block_order": [
+            "1486649858082"
+          ],
+          "settings": {
+            "show_social_icons": true,
+            "show_payment_icons": true,
+            "enable_parallax": true,
+            "show_newsletter": true
+          }
+        },
+        "1476381402840": {
+          "type": "video",
+          "settings": {}
+        },
+        "1476381658595": {
+          "type": "hero",
+          "settings": {
+            "hero_size": "large",
+            "image": "",
+            "alignment": "top left",
+            "text_size": "medium",
+            "use_second_button": false,
+            "button_label": "",
+            "button_link": "",
+            "show_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_text": "#3a3a3a",
+            "overlay_opacity": "0.5"
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "products": "2",
+            "rows": "6",
+            "product_tags_enable": false,
+            "product_sorting_enable": false,
+            "collection_hero_image": false,
+            "collection_hero_image_parallax": false,
+            "show_spacing": false,
+            "show_vendor": true
+          }
+        },
+        "1478026923193": {
+          "type": "feature-row",
+          "settings": {
+            "size": "large",
+            "background_color": "#faf9f6",
+            "image_crop": "circle",
+            "alignment": "top left",
+            "use_second_button": false,
+            "button_label": "",
+            "button_link": "",
+            "desktop_layout": "left",
+            "mobile_layout": "top"
+          }
+        },
+        "1478027260401": {
+          "type": "quotes",
+          "blocks": {
+            "1478027260401-0": {
+              "type": "quote",
+              "settings": {}
+            },
+            "1478027389453": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1478027260401-0",
+            "1478027389453"
+          ],
+          "settings": {
+            "color_bg": "#000000",
+            "color_text": "#ffffff",
+            "autoplay_speed": "6000"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": false,
+            "show_share_buttons": true,
+            "hide_variant_media": true
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "blog_show_date": true
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "1486649146314": {
+              "type": "image",
+              "settings": {}
+            },
+            "1486649185448": {
+              "type": "image",
+              "settings": {}
+            },
+            "1486649208703": {
+              "type": "image",
+              "settings": {}
+            },
+            "1486649267624": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1486649146314",
+            "1486649185448",
+            "1486649208703",
+            "1486649267624"
+          ],
+          "settings": {
+            "show_overlay": true,
+            "overlay_color": "#313131",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": 30
+          }
+        },
+        "1486649413883": {
+          "type": "gallery",
+          "blocks": {
+            "1486649413883-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "1486649413883-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1486649413883-0",
+            "1486649413883-1"
+          ],
+          "settings": {
+            "section_height": "medium",
+            "show_overlay": true,
+            "overlay_color": "#3b3b3b",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": "0.4"
+          }
+        },
+        "1486649522802": {
+          "type": "highlight",
+          "settings": {
+            "border_color": "#cbc8c1",
+            "content_alignment": "middle",
+            "image_position": "back",
+            "use_second_button": false
+          }
+        },
+        "1486649604878": {
+          "type": "featured-slider",
+          "blocks": {
+            "1486649604878-0": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#9d988b"
+              }
+            },
+            "1486649604878-1": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#cdcdcd"
+              }
+            },
+            "1486649604878-2": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#a7a59e"
+              }
+            },
+            "1486649769533": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#383a3c"
+              }
+            }
+          },
+          "block_order": [
+            "1486649604878-0",
+            "1486649604878-1",
+            "1486649604878-2",
+            "1486649769533"
+          ],
+          "settings": {
+            "use_second_button": false,
+            "text_color": "#ffffff",
+            "cover_title_desktop_position": "center",
+            "show_overlay": true,
+            "overlay_color": "#404040",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": "0.2"
+          }
+        },
+        "1486649811524": {
+          "type": "featured-product",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": false,
+            "show_share_buttons": true,
+            "layout": "square",
+            "media_size": "cover",
+            "background_color": "transparent"
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "image_parallax": true,
+            "show_date": true,
+            "show_author": false,
+            "show_share_buttons": true
+          }
+        },
+        "1492806970384": {
+          "type": "custom-content",
+          "blocks": {
+            "1492806970384-0": {
+              "type": "text",
+              "settings": {
+                "heading_text": "",
+                "heading_color": "#3a3a3a",
+                "heading_style": "h4",
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492806970384-0"
+          ],
+          "settings": {
+            "heading_text": "",
+            "heading_color": "#3a3a3a",
+            "background_color": "",
+            "top_margin": true,
+            "bottom_margin": false
+          }
+        }
+      },
+      "content_for_index": [
+        "slideshow",
+        "1478026923193",
+        "1476381402840",
+        "1476381658595",
+        "1486649413883",
+        "1478027260401",
+        "1492806970384",
+        "1486649522802",
+        "1486649604878",
+        "1486649811524"
+      ]
+    },
+    "Light": {
+      "color_primary": "#dfa160",
+      "color_header_text": "#dfa160",
+      "color_primary_heading_text": "#000000",
+      "color_primary_body_text": "#4a4a4a",
+      "color_footer_text": "#ffffff",
+      "color_button_text": "#ffffff",
+      "color_header_bg": "#fff",
+      "color_footer_bg": "#dfa160",
+      "color_main_bg": "#ffffff",
+      "color_secondary_bg": "#f7f7f7",
+      "color_product_cards": "#ebebeb",
+      "color_form_elements": "#f1f1f1",
+      "color_cart_flag": "#b76b50",
+      "type_base_size": "62.5%",
+      "type_header_font": "open_sans_n7",
+      "type_base_font": "open_sans_n4",
+      "show_cart_drawer": true,
+      "show_cart_note": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_tumblr_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#1990C6",
+      "checkout_button_color": "#1990C6",
+      "checkout_error_color": "#ff6d6d",
+      "transparent_logo": "",
+      "logo_max_height": 15,
+      "sections": {
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "1486583739899": {
+              "type": "video",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1486583739899"
+          ],
+          "settings": {
+            "show_overlay": true,
+            "overlay_color": "#ffffff",
+            "overlay_text": "#000000",
+            "overlay_opacity": 50
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "icon": "bag",
+            "logo_max_height": 15,
+            "enable_transparent": true,
+            "transparent_text_color": "#dfa160",
+            "primary_navigation": "main-menu",
+            "secondary_navigation": "footer",
+            "show_social_icons": true,
+            "announcement_color_bg": "#4a4a4a"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1486586799558": {
+              "type": "menu",
+              "settings": {
+                "link_list": "footer"
+              }
+            }
+          },
+          "block_order": [
+            "1486586799558"
+          ],
+          "settings": {
+            "show_social_icons": true,
+            "show_payment_icons": true,
+            "enable_parallax": true,
+            "show_newsletter": true
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {
+            "size": "large",
+            "background_color": "#fafafa",
+            "image_crop": "square",
+            "alignment": "center center",
+            "use_second_button": false,
+            "button_label": "",
+            "button_link": "",
+            "desktop_layout": "left",
+            "mobile_layout": "top"
+          }
+        },
+        "gallery": {
+          "type": "gallery",
+          "blocks": {
+            "1486502632685-0": {
+              "type": "image",
+              "settings": {
+                "alignment": "center center",
+                "icon": "checkmark",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "1486502632685-0"
+          ],
+          "settings": {
+            "section_height": "medium",
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": "0.5"
+          }
+        },
+        "featured-slider": {
+          "type": "featured-slider",
+          "blocks": {
+            "1486503036275-0": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#ebebeb",
+                "show_image": true,
+                "slide_button_text": "",
+                "slide_button_url": ""
+              }
+            },
+            "1486503036275-2": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#ebebeb",
+                "show_image": true,
+                "slide_button_text": "",
+                "slide_button_url": ""
+              }
+            },
+            "1486503036275-1": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#ebebeb",
+                "show_image": true,
+                "slide_button_text": "",
+                "slide_button_url": ""
+              }
+            },
+            "1487016418120": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#ebebeb",
+                "show_image": false,
+                "slide_image": "",
+                "slide_title": ""
+              }
+            }
+          },
+          "block_order": [
+            "1486503036275-0",
+            "1486503036275-2",
+            "1486503036275-1",
+            "1487016418120"
+          ],
+          "settings": {
+            "use_second_button": true,
+            "text_color": "#000000",
+            "cover_title_desktop_position": "center",
+            "show_overlay": true,
+            "overlay_color": "rgba(0,0,0,0)",
+            "overlay_text": "#000000",
+            "overlay_opacity": "0.5"
+          }
+        },
+        "1486583009346": {
+          "type": "feature-row",
+          "settings": {
+            "size": "large",
+            "background_color": "#ffffff",
+            "image_crop": "none",
+            "alignment": "top left",
+            "use_second_button": false,
+            "button_label": "About us",
+            "desktop_layout": "right",
+            "mobile_layout": "bottom"
+          }
+        },
+        "1486584613697": {
+          "type": "hero",
+          "settings": {
+            "hero_size": "large",
+            "alignment": "center center",
+            "text": "",
+            "text_size": "medium",
+            "use_second_button": false,
+            "button_label": "",
+            "button_link": "",
+            "show_overlay": true,
+            "overlay_color": "#ffffff",
+            "overlay_text": "#3a3a3a",
+            "overlay_opacity": "0"
+          }
+        },
+        "1486584983006": {
+          "type": "highlight",
+          "settings": {
+            "border_color": "#dfa160",
+            "content_alignment": "middle",
+            "image_position": "back",
+            "use_second_button": false,
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "products": "2",
+            "rows": "6",
+            "product_tags_enable": false,
+            "product_sorting_enable": true,
+            "collection_hero_image": true,
+            "collection_hero_image_parallax": true,
+            "show_spacing": false,
+            "show_vendor": true
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": true,
+            "show_share_buttons": true,
+            "hide_variant_media": true
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "blog_show_date": true
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "image_parallax": true,
+            "show_date": true,
+            "show_author": false,
+            "show_share_buttons": true
+          }
+        },
+        "1492008725684": {
+          "type": "hero",
+          "settings": {
+            "hero_size": "x-large",
+            "alignment": "top center",
+            "title": "",
+            "text": "",
+            "text_size": "medium",
+            "use_second_button": false,
+            "button_label": "Read our blog",
+            "show_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_text": "#3a3a3a",
+            "overlay_opacity": "0.5"
+          }
+        },
+        "1492807242211": {
+          "type": "custom-content",
+          "blocks": {
+            "1492807242211-0": {
+              "type": "text",
+              "settings": {
+                "heading_text": "",
+                "heading_color": "#3a3a3a",
+                "heading_style": "h3",
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492807242211-0"
+          ],
+          "settings": {
+            "heading_text": "",
+            "heading_color": "#3a3a3a",
+            "background_color": "",
+            "top_margin": true,
+            "bottom_margin": false
+          }
+        }
+      },
+      "content_for_index": [
+        "slideshow",
+        "feature-row",
+        "1486584613697",
+        "1486583009346",
+        "gallery",
+        "1492807242211",
+        "1486584983006",
+        "featured-slider",
+        "1492008725684"
+      ]
+    },
+    "Cold": {
+      "color_primary": "#00b490",
+      "color_header_text": "#00b490",
+      "color_primary_heading_text": "#ffffff",
+      "color_primary_body_text": "#a9a9a9",
+      "color_footer_text": "#000000",
+      "color_button_text": "#000000",
+      "color_header_bg": "#191c1b",
+      "color_footer_bg": "#00b490",
+      "color_main_bg": "#000000",
+      "color_secondary_bg": "#191c1b",
+      "color_product_cards": "#191c1b",
+      "color_form_elements": "#292c2b",
+      "color_cart_flag": "#ffffff",
+      "type_base_size": "62.5%",
+      "type_header_font": "titillium_web_n7",
+      "type_base_font": "lato_n4",
+      "show_cart_drawer": true,
+      "show_cart_note": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_tumblr_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#1990C6",
+      "checkout_button_color": "#1990C6",
+      "checkout_error_color": "#ff6d6d",
+      "transparent_logo": "",
+      "logo_max_height": 15,
+      "sections": {
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "1486663529263": {
+              "type": "video",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1486663529263"
+          ],
+          "settings": {
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": 60
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "icon": "cart",
+            "logo_max_height": 15,
+            "enable_transparent": true,
+            "transparent_text_color": "#00b490",
+            "primary_navigation": "main-menu",
+            "secondary_navigation": "footer",
+            "show_social_icons": true,
+            "announcement_color_bg": "#00b490"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1486664283354": {
+              "type": "menu",
+              "settings": {
+                "link_list": "footer"
+              }
+            }
+          },
+          "block_order": [
+            "1486664283354"
+          ],
+          "settings": {
+            "show_social_icons": true,
+            "show_payment_icons": true,
+            "enable_parallax": true,
+            "show_newsletter": true,
+            "newsletter_heading": "Sign up for updates"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {
+            "size": "large",
+            "background_color": "#191c1b",
+            "image_crop": "circle",
+            "alignment": "center center",
+            "use_second_button": false,
+            "desktop_layout": "left",
+            "mobile_layout": "top"
+          }
+        },
+        "gallery": {
+          "type": "gallery",
+          "blocks": {
+            "1486502632685-0": {
+              "type": "image",
+              "settings": {
+                "icon": "checkmark"
+              }
+            },
+            "1486502639654": {
+              "type": "image",
+              "settings": {
+                "icon": "checkmark"
+              }
+            },
+            "1486502643820": {
+              "type": "image",
+              "settings": {
+                "icon": "checkmark"
+              }
+            }
+          },
+          "block_order": [
+            "1486502632685-0",
+            "1486502639654",
+            "1486502643820"
+          ],
+          "settings": {
+            "section_height": "medium",
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": "0.5"
+          }
+        },
+        "featured-slider": {
+          "type": "featured-slider",
+          "blocks": {
+            "1486503036275-0": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#464f4e",
+                "show_image": true,
+                "slide_button_text": "View"
+              }
+            },
+            "1486503036275-1": {
+              "type": "slide",
+              "settings": {
+                "background_color": "#464f4e",
+                "show_image": true,
+                "slide_button_text": "View"
+              }
+            }
+          },
+          "block_order": [
+            "1486503036275-0",
+            "1486503036275-1"
+          ],
+          "settings": {
+            "use_second_button": true,
+            "text_color": "#ffffff",
+            "cover_title_desktop_position": "center",
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": "0.5"
+          }
+        },
+        "featured-collection": {
+          "type": "featured-collection",
+          "settings": {
+            "show_view_all": true
+          }
+        },
+        "1486664864970": {
+          "type": "hero",
+          "settings": {
+            "hero_size": "large",
+            "alignment": "top center",
+            "use_second_button": false,
+            "button_label": "",
+            "button_link": "",
+            "show_overlay": true,
+            "overlay_color": "#00b490",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": "0"
+          }
+        },
+        "1486665151632": {
+          "type": "highlight",
+          "settings": {
+            "border_color": "#00b490",
+            "content_alignment": "middle",
+            "image_position": "back",
+            "use_second_button": true
+          }
+        },
+        "1486665428106": {
+          "type": "feature-row",
+          "settings": {
+            "size": "large",
+            "background_color": "",
+            "image_crop": "none",
+            "alignment": "top left",
+            "use_second_button": false,
+            "button_label": "",
+            "button_link": "",
+            "desktop_layout": "right",
+            "mobile_layout": "bottom"
+          }
+        },
+        "1486665657092": {
+          "type": "gallery",
+          "blocks": {
+            "1486665657092-0": {
+              "type": "image",
+              "settings": {
+                "alignment": "center center",
+                "icon": "none",
+                "cta_label": "",
+                "link": ""
+              }
+            },
+            "1486665657092-1": {
+              "type": "image",
+              "settings": {
+                "alignment": "center center",
+                "icon": "none",
+                "cta_label": "",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "1486665657092-0",
+            "1486665657092-1"
+          ],
+          "settings": {
+            "section_height": "medium",
+            "show_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": "0.3"
+          }
+        },
+        "1486665735205": {
+          "type": "hero",
+          "settings": {
+            "hero_size": "medium",
+            "alignment": "center center",
+            "title": "",
+            "text_size": "large",
+            "use_second_button": true,
+            "button_label": "about us",
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_text": "#ffffff",
+            "overlay_opacity": "0.5"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": true,
+            "show_share_buttons": true,
+            "hide_variant_media": true
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "products": "2",
+            "rows": "4",
+            "product_tags_enable": false,
+            "product_sorting_enable": false,
+            "collection_hero_image": false,
+            "collection_hero_image_parallax": false,
+            "show_spacing": false,
+            "show_vendor": true
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "blog_show_date": true
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "image_parallax": false,
+            "show_date": true,
+            "show_author": false,
+            "show_share_buttons": true
+          }
+        },
+        "1492804742195": {
+          "type": "custom-content",
+          "blocks": {
+            "1492804742195-0": {
+              "type": "text",
+              "settings": {
+                "heading_text": "",
+                "heading_color": "#3a3a3a",
+                "heading_style": "h3",
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492804742195-0"
+          ],
+          "settings": {
+            "heading_text": "",
+            "heading_color": "#3a3a3a",
+            "background_color": "#00b490",
+            "top_margin": true,
+            "bottom_margin": true
+          }
+        },
+        "1492805123317": {
+          "type": "custom-content",
+          "blocks": {
+            "1492805123317-0": {
+              "type": "text",
+              "settings": {
+                "heading_text": "",
+                "heading_color": "#ffffff",
+                "heading_style": "h3",
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492805123317-0"
+          ],
+          "settings": {
+            "heading_text": "",
+            "heading_color": "#3a3a3a",
+            "background_color": "",
+            "top_margin": true,
+            "bottom_margin": false
+          }
+        }
+      },
+      "content_for_index": [
+        "slideshow",
+        "feature-row",
+        "1492804742195",
+        "1486664864970",
+        "gallery",
+        "1492805123317",
+        "1486665151632",
+        "1486665428106",
+        "1486665657092",
+        "1486665735205",
+        "featured-slider",
+        "featured-collection"
+      ]
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".custom-content {justify-content: center;}"
+    ]
+  }
+}

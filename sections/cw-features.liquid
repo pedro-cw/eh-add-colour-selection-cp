@@ -1,0 +1,128 @@
+<style>
+    .cw-feature-section {
+    background: #EFE6DAFF;
+    padding: 17px 0;
+}
+
+.cw-feature-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cw-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cw-feature-text {
+    font-size: 12px;
+    color: #695450FF;
+    font-weight: 500;
+}
+.cw-feature-icon {
+    display: flex;
+}
+.page-widthno {
+    max-width: 1390px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+@media only screen and (max-width: 600px) {
+	.cw-feature-section {
+    display: none;
+}
+.page-widthno {
+    padding: 0 15px;
+}
+}
+</style>
+
+<div class="cw-feature-section">
+  <div class="page-widthno">
+    {% if section.settings.section_heading != blank %}
+      <div class="cw-feature-heading">{{ section.settings.section_heading }}</div>
+    {% endif %}
+
+    <div class="cw-feature-container">
+      {% for block in section.blocks %}
+        <div class="cw-feature-item">
+          <div class="cw-feature-icon">
+            {{ block.settings.icon_svg }}
+          </div>
+          <div class="cw-feature-text">{{ block.settings.text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "CW Feature",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading (Optional)",
+      "default": "Our Features"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_item",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "SVG Icon Code",
+          "default": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' viewBox='0 0 16 16' width='16'><path d='M10.6667 2H0.666748V10.6667H10.6667V2Z' stroke='#695450' stroke-width='0.666667' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "Feature Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CW Feature",
+      "category": "Custom Sections",
+      "blocks": [
+        {
+          "type": "feature_item",
+          "settings": {
+            "text": "TRUSTED BY 100,000+"
+          }
+        },
+        {
+          "type": "feature_item",
+          "settings": {
+            "text": "CLINICALLY PROVEN"
+          }
+        },
+        {
+          "type": "feature_item",
+          "settings": {
+            "text": "PREMIUM QUALITY GUARANTEE"
+          }
+        },
+        {
+          "type": "feature_item",
+          "settings": {
+            "text": "FAST UK DELIVERY"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+

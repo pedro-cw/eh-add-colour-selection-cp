@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "build_your_bundle_4fVTqE": {
+      "type": "build-your-bundle",
+      "blocks": {
+        "collection_iaQgRn": {
+          "type": "collection",
+          "name": "All Products",
+          "settings": {
+            "filter-title": "All Products",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-mat-pillow",
+              "bian-stone-scalp-gua-sha-comb",
+              "acupressure-headband",
+              "bian-stone-facial-gua-sha",
+              "acupressure-foot-mat",
+              "acu-seeds-the-collection",
+              "acupressure-comb",
+              "gold-acupressure-ring",
+              "gold-acu-seeds-tweezers",
+              "sleep-support-kit",
+              "pain-relief-kit"
+            ]
+          }
+        },
+        "collection_mGHTLm": {
+          "type": "collection",
+          "name": "Stress & Anxiety",
+          "settings": {
+            "filter-title": "Calm",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-mat-pillow",
+              "acupressure-headband",
+              "gold-acupressure-magnet-patches",
+              "acupressure-comb",
+              "gold-acupressure-ring"
+            ]
+          }
+        },
+        "collection_pckKnn": {
+          "type": "collection",
+          "name": "Focus & Energy",
+          "settings": {
+            "filter-title": "Focus & Energy",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-foot-mat",
+              "acupressure-headband",
+              "gold-acupressure-ring"
+            ]
+          }
+        },
+        "collection_Qk9Cfg": {
+          "type": "collection",
+          "name": "Pain Relief",
+          "settings": {
+            "filter-title": "Tension Relief",
+            "pdp_list": [
+              "acupressure-foot-mat",
+              "acupressure-mat-pillow",
+              "acupressure-comb"
+            ]
+          }
+        },
+        "collection_DtNgPk": {
+          "type": "collection",
+          "name": "Headaches",
+          "settings": {
+            "filter-title": "Head Tension",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-headband",
+              "gold-acupressure-magnet-patches",
+              "bian-stone-scalp-gua-sha-comb"
+            ]
+          }
+        },
+        "collection_gKMr4r": {
+          "type": "collection",
+          "name": "Digestion",
+          "settings": {
+            "filter-title": "Digestion",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit"
+            ]
+          }
+        },
+        "collection_rigyPy": {
+          "type": "collection",
+          "name": "Skin",
+          "settings": {
+            "filter-title": "Skin and Hair",
+            "pdp_list": [
+              "bian-stone-facial-gua-sha",
+              "bian-stone-scalp-gua-sha-comb"
+            ]
+          }
+        },
+        "collection_FnnpjM": {
+          "type": "collection",
+          "name": "Sleep",
+          "settings": {
+            "filter-title": "Sleep",
+            "pdp_list": [
+              "24k-gold-plated-ear-seed-kit",
+              "acupressure-mat-pillow",
+              "gold-acupressure-magnet-patches"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "collection_iaQgRn",
+        "collection_mGHTLm",
+        "collection_pckKnn",
+        "collection_Qk9Cfg",
+        "collection_DtNgPk",
+        "collection_gKMr4r",
+        "collection_rigyPy",
+        "collection_FnnpjM"
+      ],
+      "name": "Build Your Bundle",
+      "settings": {
+        "collection-title": "Build Your Own Wellness Routine",
+        "subtitle": "Pick your favourite East Healing products. The more you add, the more you save.",
+        "bgcolor": "#f3eeea",
+        "tcolor": "#695450"
+      }
+    }
+  },
+  "order": [
+    "build_your_bundle_4fVTqE"
+  ]
+}

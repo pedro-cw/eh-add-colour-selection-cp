@@ -1,0 +1,304 @@
+<div class="cc__collection-grid-container">
+    <div class="page-width">
+        <div class="cc__collection-grid-items">
+            {% for product in collection.products %}
+              {%- capture wlm_check -%}{%- render 'wlm-product' with product , wlm_is_render:'yes' -%}{%- endcapture -%}{%- if wlm_check == blank -%}{%continue%}{%- endif -%}
+                {% liquid
+                    assign current_variant = product.selected_or_first_available_variant
+                %}
+
+                <div class="cc__inner-product-details">
+                    <div class="cc__inner-product-details-content" >
+                        <a href="{{ product.url }}"></a>
+                        <div class="cc__product-featured-image">
+                            <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title | append: ' image' }}" />
+                        </div>
+                        <div class="cc__product-details">
+                            <h3>{{ product.title }}</h3>
+                            <div class="cc__fc_product-price">
+                                {% if product.price_varies %}
+                                <p class="cc__product-price"
+                                data-wpd-product-handle="{{ product.handle }}"         
+                                data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+                                data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+                                data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+                                data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+                                data-wpd-product-id="{{ product.id }}">
+                                    <span class="cc__product-price-varies-info">From</span> {{ product.price | money }}
+                                </p>
+                                {% else %}
+                                {% if product.compare_at_price > product.price %}
+                                <p class="cc__product-price">
+                                    <span class="cc__product-orig-price data-wpd-hide">{{ product.compare_at_price | money }}</span>
+                                    <span class="cc__product-sale-price"
+                                    data-wpd-product-handle="{{ product.handle }}"         
+                                data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+                                data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+                                data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+                                data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+                                data-wpd-product-id="{{ product.id }}">{{ product.price | money }}</span>
+                                </p>
+                                {% else %}
+                                <p class="cc__product-price"
+                                data-wpd-product-handle="{{ product.handle }}"         
+                                data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+                                data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+                                data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+                                data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+                                data-wpd-product-id="{{ product.id }}">{{ product.price | money }}</p>
+                                {% endif %}
+                                {% endif %}
+                                {% if product.metafields.custom.quantity != blank %}
+                                | <p class="cc__productquantity-info">{{ product.metafields.custom.quantity }}</p>
+                                {% endif %}
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {% if product.available %}
+                    {% if product.variants.size > 1 %}
+                    <a class="btn btn--to-secondary btn--full btn__multiplevariants" href="{{ product.url }}">Shop Now</a>
+                    {% else %}
+                    <div data-section-type="featured-collection" data-section-id="{{ section.id }}{{ block.id }}" data-variant-id="{{ current_variant.id }}">
+                        <div class="product__form-container" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <div class="product__form-wrapper">
+                            <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                            <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+                            <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+                            {% include 'cc-product-form' %}
+                            <script type="application/json" data-product-json>
+                            {{ product | json }}
+                            </script>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% else %}
+                    <button class="btn btn--to-secondary btn--full" disabled>{{ 'products.product.sold_out' | t }}</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<style>
+    #shopify-section-{{ section.id }}{
+        padding-top: {{ section.settings.mpadtop | append: 'px' }};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+        background-color: {{ section.settings.bgcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__inner-product-details-content{
+        position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .cc__inner-product-details .cc__inner-product-details-content a{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        z-index: 5;
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-featured-image{
+        margin-bottom: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-featured-image svg{
+        width: 100%;
+        height: 294px;
+        object-fit: cover;
+        background-color: #f3f3f3;
+        display: block;
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-featured-image img{
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        display: block;
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-details h3{
+        margin-bottom: 14px;
+        font-size: clamp(1.125rem, 0.804vw + 0.964rem, 1.688rem);
+        line-height: 1.2;
+        font-weight: 400;
+        color: {{ section.settings.tcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-price{
+        font-size: 18px;
+        font-weight: 600;
+        color: {{ section.settings.tcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__product-orig-price {
+        text-decoration: line-through;
+        opacity: 0.75;
+    }
+
+    #shopify-section-{{ section.id }} .cc__fc_product-price{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__fc_product-price p{
+        margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cc__productquantity-info,
+    #shopify-section-{{ section.id }} .cc__product-price-varies-info{
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: {{ section.settings.tcolor }};
+    }
+
+
+    #shopify-section-{{ section.id }} .product__form-container{
+        width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .btn{
+        font-size: 12px;
+        text-transform: UPPERCASE;
+        background-color: #695450;
+        border: 2px solid #695450;
+        transition: all 0.3s ease;
+        line-height: 1.2;
+        padding: 10px;
+        font-weight: 600;
+        margin-top: 16px;
+    }
+
+
+
+    #shopify-section-{{ section.id }} .btn:after{
+        outline: unset !important;
+    }
+
+    #shopify-section-{{ section.id }} .btn:hover{
+        background-color: #977e57;
+        border: 2px solid #977e57;
+    }
+
+
+    #shopify-section-{{ section.id }} .cc__inner-product-details {
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+    }
+
+    #shopify-section-{{ section.id }} .product__notification:empty {
+        margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cc__collection-grid-items {
+        display: grid;
+        grid-template-columns: repeat(2, calc(50% - 10px));
+        gap: 20px;
+    }
+    #shopify-section-{{ section.id }} .cc__product-featured-image img{
+        padding: 16px;
+    }
+    #shopify-section-{{ section.id }} .cc__product-featured-image {
+        background: #fff;
+    }
+
+    @media screen and (min-width: 750px){
+        #shopify-section-{{ section.id }}{
+            padding-top: {{ section.settings.dpadtop | append: 'px' }};
+            padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-details h3{
+            font-size: clamp(1.125rem, 0.804vw + 0.964rem, 1.688rem);
+        }
+
+        #shopify-section-{{ section.id }} .cc__featured-collection-header.cc__withheading{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        #shopify-section-{{ section.id }} .cc__collection-grid-items {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 44px 30px;
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-featured-image img{
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        }
+    }
+</style>
+{% schema %}
+    {
+        "name": "MS Collection Grid",
+        "settings": [
+            {
+              "type": "header",
+              "content": "Styles"  
+            },
+            {
+                "type" : "color",
+                "id" : "bgcolor",
+                "label": "Background color",
+                "default": "transparent"
+            },
+            {
+                "type" : "color",
+                "id" : "tcolor",
+                "label": "Text color",
+                "default": "#695450"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadtop",
+                "label" : "Padding top(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadbot",
+                "label" : "Padding bottom(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadtop",
+                "label" : "Padding top(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadbot",
+                "label" : "Padding bottom(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            }
+        ]
+    }
+{% endschema %}

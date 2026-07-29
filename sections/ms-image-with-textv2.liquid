@@ -1,0 +1,213 @@
+<div class="ms__inner-imagewithtextv2">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <{{ section.settings.htags }} class="ms__inner-imagewithtextv2-header">{{ section.settings.title }}</{{ section.settings.htags }}>
+    {% endif %}
+    <div class="ms__inner-imagewithtextv2-grid">
+      <div clas="ms__inner-imagewithtextv2-column">
+        {% if section.settings.image != blank %}
+          <img
+            class="ms__inner-imagewithtextv2-image"
+            src="{{ section.settings.image | img_url: 'master' }}"
+            alt="{{ section.settings.image.alt }}" />
+        {% else %}
+          <div class="ms__inner-imagewithtextv2-placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+      <div clas="ms__inner-imagewithtextv2-column">
+        <div class="ms__inner-imagewithtextv2-rte">
+          {{ section.settings.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.mpadtop | append: 'px' }};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+    {% if section.settings.bgimage != blank %}
+      background-image: url('{{ section.settings.bgimage | img_url: 'master' }}');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    {% else %}
+      background-color: {{ section.settings.bgcolor }};
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-header {
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    color: {{ section.settings.textcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-rte {
+    font-size: {{ section.settings.mcsize | append: 'px' }};
+    color: {{ section.settings.textcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-placeholder {
+    background-color: #f3f3f3;
+  }
+
+  #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-placeholder svg, #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.dpadtop | append: 'px' }};
+      padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-header {
+      font-size: {{ section.settings.dhsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-rte {
+      font-size: {{ section.settings.dcsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__inner-imagewithtextv2-grid {
+      grid-template-columns: calc(65% - 40px) calc(35% - 40px);
+      gap: 80px;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "MS Image with text v2",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Title"
+      },
+      {
+          "type": "select",
+          "id": "htags",
+          "label": "Heading Tag",
+          "default": "h2",
+          "options": [
+              {
+                  "value": "h1",
+                  "label": "H1"
+              },
+              {
+                  "value": "h2",
+                  "label": "H2"
+              },
+              {
+                  "value": "h3",
+                  "label": "H3"
+              },
+              {
+                  "value": "h4",
+                  "label": "H4"
+              },
+              {
+                  "value": "h5",
+                  "label": "H5"
+              },
+              {
+                  "value": "h6",
+                  "label": "H6"
+              }
+          ]
+      },
+      {
+        "type": "number",
+        "id": "dhsize",
+        "label": "Heading size (desktop)",
+        "default": 96,
+        "info": "Unit in px"
+      },
+      {
+        "type": "number",
+        "id": "mhsize",
+        "label": "Heading size (mobile)",
+        "default": 48,
+        "info": "Unit in px"
+      }, {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content",
+        "default": "<p>This are changeable content, please update this with the content you need.</p>"
+      }, {
+        "type": "number",
+        "id": "dcsize",
+        "label": "Content size (desktop)",
+        "default": 16,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mcsize",
+        "label": "Content size (mobile)",
+        "default": 16,
+        "info": "Unit in px"
+      }, {
+        "type": "header",
+        "content": "Styles"
+      }, {
+        "type": "image_picker",
+        "id": "bgimage",
+        "label": "Background image"
+      }, {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background ",
+        "default": "transparent"
+      }, {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text",
+        "default": "#000"
+      }, {
+        "type": "number",
+        "id": "dpadtop",
+        "label": "Padding top(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "dpadbot",
+        "label": "Padding bottom(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mpadtop",
+        "label": "Padding top(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mpadbot",
+        "label": "Padding bottom(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "MS Image with text v2"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,440 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sc_recent_blogs_tQAhGK": {
+      "type": "sc-recent-blogs",
+      "disabled": true,
+      "name": "Recent Blogs",
+      "settings": {
+        "bg-color": "#ffffff",
+        "sectitle": "Our recent blogs",
+        "recentblogs": "articles",
+        "postlimit": 7,
+        "padding_top": 120,
+        "padding_bottom": 96,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "cw_features_meC7Nd": {
+      "type": "cw-features",
+      "blocks": {
+        "feature_item_ipgAC9": {
+          "type": "feature_item",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" height=\"16\" viewbox=\"0 0 16 16\" width=\"16\">\n<path d=\"M10.6667 2H0.666748V10.6667H10.6667V2Z\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n<path d=\"M10.6667 5.33334H13.3334L15.3334 7.33334V10.6667H10.6667V5.33334Z\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n<path d=\"M3.66667 14C4.58714 14 5.33333 13.2538 5.33333 12.3333C5.33333 11.4129 4.58714 10.6667 3.66667 10.6667C2.74619 10.6667 2 11.4129 2 12.3333C2 13.2538 2.74619 14 3.66667 14Z\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n<path d=\"M12.3334 14C13.2539 14 14.0001 13.2538 14.0001 12.3333C14.0001 11.4129 13.2539 10.6667 12.3334 10.6667C11.4129 10.6667 10.6667 11.4129 10.6667 12.3333C10.6667 13.2538 11.4129 14 12.3334 14Z\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n</svg>",
+            "text": "TRUSTED BY 100,000+"
+          }
+        },
+        "feature_item_eMjXbQ": {
+          "type": "feature_item",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" height=\"16\" viewbox=\"0 0 16 16\" width=\"16\">\n<path d=\"M15.3333 2.66666V6.66666H11.3333\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n<path d=\"M0.666748 13.3333V9.33333H4.66675\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n<path d=\"M2.34008 6C2.67819 5.04453 3.25284 4.19027 4.01039 3.51695C4.76795 2.84362 5.68373 2.37318 6.67227 2.14951C7.66082 1.92584 8.68992 1.95623 9.66354 2.23785C10.6372 2.51947 11.5236 3.04314 12.2401 3.76L15.3334 6.66667M0.666748 9.33334L3.76008 12.24C4.47658 12.9569 5.363 13.4805 6.33662 13.7622C7.31025 14.0438 8.33934 14.0742 9.32789 13.8505C10.3164 13.6268 11.2322 13.1564 11.9898 12.4831C12.7473 11.8097 13.322 10.9555 13.6601 10\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n</svg>",
+            "text": "CLINICALLY PROVEN"
+          }
+        },
+        "feature_item_LTQXHY": {
+          "type": "feature_item",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" height=\"16\" viewbox=\"0 0 16 16\" width=\"16\">\n<path d=\"M7.99992 10C10.5772 10 12.6666 7.91066 12.6666 5.33333C12.6666 2.756 10.5772 0.666664 7.99992 0.666664C5.42259 0.666664 3.33325 2.756 3.33325 5.33333C3.33325 7.91066 5.42259 10 7.99992 10Z\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n<path d=\"M5.47341 9.25999L4.66675 15.3333L8.00008 13.3333L11.3334 15.3333L10.5267 9.25333\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n</svg>",
+            "text": "PREMIUM QUALITY GUARANTEE"
+          }
+        },
+        "feature_item_JbJEMH": {
+          "type": "feature_item",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" height=\"16\" viewbox=\"0 0 16 16\" width=\"16\">\n<path d=\"M13.8933 3.07333C13.5528 2.73267 13.1485 2.46243 12.7036 2.27805C12.2586 2.09368 11.7817 1.99878 11.3 1.99878C10.8183 1.99878 10.3414 2.09368 9.89643 2.27805C9.45146 2.46243 9.04717 2.73267 8.70667 3.07333L8 3.78L7.29333 3.07333C6.60554 2.38554 5.67269 1.99914 4.7 1.99914C3.72731 1.99914 2.79446 2.38554 2.10666 3.07333C1.41887 3.76112 1.03247 4.69397 1.03247 5.66666C1.03247 6.63935 1.41887 7.5722 2.10666 8.26L2.81333 8.96666L8 14.1533L13.1867 8.96666L13.8933 8.26C14.234 7.91949 14.5042 7.51521 14.6886 7.07023C14.873 6.62526 14.9679 6.14832 14.9679 5.66666C14.9679 5.185 14.873 4.70807 14.6886 4.26309C14.5042 3.81812 14.234 3.41383 13.8933 3.07333Z\" stroke=\"#695450\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.666667\"></path>\n</svg>",
+            "text": "FAST UK DELIVERY"
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_ipgAC9",
+        "feature_item_eMjXbQ",
+        "feature_item_LTQXHY",
+        "feature_item_JbJEMH"
+      ],
+      "name": "CW Feature",
+      "settings": {
+        "section_heading": ""
+      }
+    },
+    "cw_hero_custom_9EzGX6": {
+      "type": "cw-hero-custom",
+      "name": "Hero Custom",
+      "settings": {
+        "review_text": "Rated 4.9/5 by thousands",
+        "heading": "REFER A FRIEND & GET REWARDED",
+        "heading_color": "#977e57",
+        "heading_size": 48,
+        "subtext": "Give £5. Get £5. Feel good together.",
+        "subtext_color": "#695450",
+        "paragraph": "Your friend enjoys £5 off their first East Healing order, and you earn £5 credit for your next purchase.",
+        "paragraph_color": "#695450",
+        "button_text": "Get Your Referral Link",
+        "button_link": "#shopify-section-template--26502350045566__1762952994d38d9ac5",
+        "button_bg_color": "#695450",
+        "button_text_color": "#ffffff",
+        "image": "shopify://shop_images/a1044fc4-7324-4e72-87d4-c43deddd92d2.webp"
+      }
+    },
+    "cw_how_it_works_Emg4Vf": {
+      "type": "cw-how-it-works",
+      "blocks": {
+        "step_7YjNDR": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/download_1.png",
+            "step_title": "Step 1",
+            "step_text": "Share your unique referral link with friends and family"
+          }
+        },
+        "step_egBkJJ": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/download_2.png",
+            "step_title": "Step 2",
+            "step_text": "Your friend makes a purchase using your link"
+          }
+        },
+        "step_rJ4ypB": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/download_2_1.png",
+            "step_title": "Step 3",
+            "step_text": "You both get £5 off your order!"
+          }
+        }
+      },
+      "block_order": [
+        "step_7YjNDR",
+        "step_egBkJJ",
+        "step_rJ4ypB"
+      ],
+      "name": "How It Works",
+      "settings": {
+        "background_color": "#fbfbfb",
+        "title": "HOW IT WORKS",
+        "title_color": "#8b6f47",
+        "title_size": 34,
+        "icon_bg_color": "#8b6f47",
+        "button_text": "GIVE £5 OFF",
+        "button_link": "#shopify-section-template--26502350045566__1762952994d38d9ac5",
+        "button_bg_color": "#695450",
+        "button_text_color": "#ffffff",
+        "disclaimer_text": "By accepting this offer you agree to the Terms and Conditions<br><br><span>Powered by Loox</span>",
+        "disclaimer_color": "#999999"
+      }
+    },
+    "cw_faq_custom_MRb9rm": {
+      "type": "cw-faq-custom",
+      "blocks": {
+        "faq_item_nt6zWL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "HOW DOES THE REFERRAL PROGRAM WORK?",
+            "answer": "When you refer a friend and they make a purchase using your referral link or code, they receive £5 off their order and you receive £5 credit."
+          }
+        },
+        "faq_item_W4nf4j": {
+          "type": "faq_item",
+          "settings": {
+            "question": "WHEN DO WE EACH GET OUR £5 OFF?",
+            "answer": "Your friend will get £5 off their order and once complete, you will get £5 credit to use on your next order."
+          }
+        },
+        "faq_item_Gyz6PC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "ARE THERE ANY RESTRICTIONS OR EXCLUSIONS ON THE DISCOUNT?",
+            "answer": "The discount applies to most products. Some exclusions may apply to sale items or special promotions."
+          }
+        },
+        "faq_item_cgmaGw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "IS THERE A LIMIT TO HOW MANY FRIENDS I CAN REFER?",
+            "answer": "No, there is no limit! You can refer as many friends as you like and earn rewards for each successful referral."
+          }
+        },
+        "faq_item_MMxATr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "WHAT IF MY FRIEND RETURNS THEIR ORDER? DOES THAT AFFECT MY DISCOUNT?",
+            "answer": "If your friend returns their order, the referral credit may be reversed. Please check our terms and conditions for full details."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_nt6zWL",
+        "faq_item_W4nf4j",
+        "faq_item_Gyz6PC",
+        "faq_item_cgmaGw",
+        "faq_item_MMxATr"
+      ],
+      "name": "FAQ Custom",
+      "settings": {
+        "background_color": "#ffffff",
+        "title": "FREQUENTLY ASKED QUESTIONS",
+        "title_color": "#977e57",
+        "title_size": 36,
+        "border_color": "#e0e0e0",
+        "question_color": "#695450",
+        "answer_color": "#695450",
+        "icon_color": "#333333"
+      }
+    },
+    "cw_social_videos_custom_nWai3M": {
+      "type": "cw-social-videos-custom",
+      "blocks": {
+        "video_DCMgGB": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vids1.mp4",
+            "review_text": "These are lovely and have really helped with my anxiety and stress throughout this hair loss journey",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_yNJQUr": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vids2.mp4",
+            "review_text": "So pleased and just loved them! So relaxing!",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_rmVcjU": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vids3.mp4",
+            "review_text": "When I placed the seeds in the central point of my ear, I felt calm instantly!",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_PRrhUN": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vids4.mp4",
+            "review_text": "It put me into a very deep relaxed state",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_XQM7Je": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/2a1308c6-7133-49b2-bb26-f640b16a82a6.mp4",
+            "review_text": "These are lovely and have really helped with my anxiety and stress throughout this hair loss journey",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_JJBknK": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vids1.mp4",
+            "review_text": "These are lovely and have really helped with my anxiety and stress throughout this hair loss journey",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_tc9eXy": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vids2.mp4",
+            "review_text": "So pleased and just loved them! So relaxing!",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_MLetwK": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vids3.mp4",
+            "review_text": "When I placed the seeds in the central point of my ear, I felt calm instantly!",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_CMhimP": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vids4.mp4",
+            "review_text": "It put me into a very deep relaxed state",
+            "author_name": "Tracy R."
+          }
+        },
+        "video_LWhMDj": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/2a1308c6-7133-49b2-bb26-f640b16a82a6.mp4",
+            "review_text": "These are lovely and have really helped with my anxiety and stress throughout this hair loss journey",
+            "author_name": "Tracy R."
+          }
+        }
+      },
+      "block_order": [
+        "video_DCMgGB",
+        "video_yNJQUr",
+        "video_rmVcjU",
+        "video_PRrhUN",
+        "video_XQM7Je",
+        "video_JJBknK",
+        "video_tc9eXy",
+        "video_MLetwK",
+        "video_CMhimP",
+        "video_LWhMDj"
+      ],
+      "disabled": true,
+      "name": "Social Videos",
+      "settings": {
+        "background_color": "#fcf6f1",
+        "title": "TRUSTED BY OVER<br> 100,000 CUSTOMERSS",
+        "title_color": "#977e57",
+        "title_size": 50
+      }
+    },
+    "cw_new_video_NY6Y7p": {
+      "type": "cw-new-video",
+      "blocks": {
+        "video_DUpD4r": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/f93c907543eb48488923d5cd6ca20df9/f93c907543eb48488923d5cd6ca20df9.HD-1080p-7.2Mbps-62323745.mp4?v=0",
+            "poster": "shopify://shop_images/f93c907543eb48488923d5cd6ca20df9.thumbnail.0000000000_800x_9f4402e4-2408-4556-a2ec-0878c1f25fe5.webp",
+            "autoplay": false
+          }
+        },
+        "video_aqT4DQ": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/64f387040a0f4df89537c339675e2c96/64f387040a0f4df89537c339675e2c96.HD-1080p-7.2Mbps-62323998.mp4?v=0",
+            "poster": "shopify://shop_images/video2-img.webp",
+            "autoplay": false
+          }
+        },
+        "video_PbFLtM": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/387fedf3e0024d1f8c95116011d2d085/387fedf3e0024d1f8c95116011d2d085.HD-1080p-7.2Mbps-62324208.mp4?v=0",
+            "poster": "shopify://shop_images/video3-img.webp",
+            "autoplay": false
+          }
+        },
+        "video_W6Tjed": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/530473a79df44eaba45728a5e1046d91/530473a79df44eaba45728a5e1046d91.HD-1080p-7.2Mbps-62324312.mp4?v=0",
+            "poster": "shopify://shop_images/video4-img.webp",
+            "autoplay": false
+          }
+        },
+        "video_TaD9Jx": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/3534df01f7184d818b512e1fb5ea9af1/3534df01f7184d818b512e1fb5ea9af1.HD-1080p-7.2Mbps-63753899.mp4?v=0",
+            "poster": "shopify://shop_images/video5-img.webp",
+            "autoplay": false
+          }
+        },
+        "video_HdKGJd": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/f93c907543eb48488923d5cd6ca20df9/f93c907543eb48488923d5cd6ca20df9.HD-1080p-7.2Mbps-62323745.mp4?v=0",
+            "poster": "shopify://shop_images/f93c907543eb48488923d5cd6ca20df9.thumbnail.0000000000_800x_9f4402e4-2408-4556-a2ec-0878c1f25fe5.webp",
+            "autoplay": false
+          }
+        },
+        "video_NLjm34": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/64f387040a0f4df89537c339675e2c96/64f387040a0f4df89537c339675e2c96.HD-1080p-7.2Mbps-62323998.mp4?v=0",
+            "poster": "shopify://shop_images/video2-img.webp",
+            "autoplay": false
+          }
+        },
+        "video_gMEHCc": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/387fedf3e0024d1f8c95116011d2d085/387fedf3e0024d1f8c95116011d2d085.HD-1080p-7.2Mbps-62324208.mp4?v=0",
+            "poster": "shopify://shop_images/video3-img.webp",
+            "autoplay": false
+          }
+        },
+        "video_adW8qx": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/64f387040a0f4df89537c339675e2c96/64f387040a0f4df89537c339675e2c96.HD-1080p-7.2Mbps-62323998.mp4?v=0",
+            "poster": "shopify://shop_images/video4-img.webp",
+            "autoplay": false
+          }
+        },
+        "video_XmHKmc": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://easthealing.com/cdn/shop/videos/c/vp/64f387040a0f4df89537c339675e2c96/64f387040a0f4df89537c339675e2c96.HD-1080p-7.2Mbps-62323998.mp4?v=0",
+            "poster": "shopify://shop_images/video5-img.webp",
+            "autoplay": false
+          }
+        }
+      },
+      "block_order": [
+        "video_DUpD4r",
+        "video_aqT4DQ",
+        "video_PbFLtM",
+        "video_W6Tjed",
+        "video_TaD9Jx",
+        "video_HdKGJd",
+        "video_NLjm34",
+        "video_gMEHCc",
+        "video_adW8qx",
+        "video_XmHKmc"
+      ],
+      "disabled": true,
+      "name": "CW New Videos",
+      "settings": {
+        "title": "TRUSTED BY OVER<br> 100,000 CUSTOMERSS"
+      }
+    },
+    "replo_video_section_v2_KNaUzc": {
+      "type": "replo-video-section-v2",
+      "name": "Video Section V2",
+      "settings": {}
+    },
+    "1762952994d38d9ac5": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_referrals_section_UyVFLm": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-referrals-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "max_width": 1100,
+            "layout": "without-photo",
+            "photo": "shopify://shop_images/a1044fc4-7324-4e72-87d4-c43deddd92d2.webp",
+            "primary_color": "",
+            "text_color": "#000000",
+            "text_field_border_color": "#c9cdd4",
+            "background": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_referrals_section_UyVFLm"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "sc_recent_blogs_tQAhGK",
+    "cw_features_meC7Nd",
+    "cw_hero_custom_9EzGX6",
+    "cw_how_it_works_Emg4Vf",
+    "cw_faq_custom_MRb9rm",
+    "cw_social_videos_custom_nWai3M",
+    "cw_new_video_NY6Y7p",
+    "replo_video_section_v2_KNaUzc",
+    "1762952994d38d9ac5"
+  ]
+}

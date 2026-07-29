@@ -1,0 +1,73 @@
+{% unless current_variant.available %}
+  {% assign button_text = 'products.product.sold_out' | t %}
+{% else %}
+{% if collection %}
+  {% assign button_text = 'Shop Now' %}
+{% else %}
+  {% assign button_text = 'products.product.add_to_cart' | t %}
+{% endif %}
+{% endunless %}
+
+{% form 'product', product, class:'product-form' %}
+
+
+  <select data-sectionid="{{ section.id }}" data-productid="{{ product.id }}" name="id" class="product-form__master-select supports-no-js" data-master-select>
+    {% for variant in product.variants %}
+      {% if variant.available %}
+
+        {% comment %}
+        Note: if you use option_selection.js, your select tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+        {% endcomment %}
+        
+        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+      {% else %}
+        <option disabled="disabled">
+          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+        </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
+{% render 'paywhirl-plan-selector', product: product %}
+
+    <div class="cc__product-formquantityatc">
+      {% if section.settings.show_quantity_selector %}
+        <div class="product-form__item product-form__quantity-selector">
+          <label class="product-form__quantity-label{% unless section.settings.show_variant_labels %} product-form__quantity-label--hidden{% endunless %}" for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+          <input class="product-form__quantity-input" type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" pattern="[0-9]*">
+        </div>
+      {% endif %}
+      {% if collection %}
+      <a href="{{ product.url }}" class="btn btn--to-secondary btn--full product__add-to-cart-button">{{ button_text }}</a>
+       {% else %}
+      <button class="btn btn--to-secondary btn--full product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available and product.selling_plan_groups == empty %} shopify-payment-btn{% endif %}"
+        data-cart-submit
+        type="submit" name="add"
+        {% unless current_variant.available %} disabled="true"{% endunless %}
+        aria-label="{{ button_text }}"
+      >
+        <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
+          {{ button_text }} <span class="btnsep">|</span> <span class="cc__productprice" data-wpd-product-handle="{{ product.handle }}"         
+    data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+    data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+    data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+    data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+    data-wpd-product-id="{{ product.id }}"
+    >{{ product.selected_or_first_available_variant.price | money }}</span>
+        </span>
+        <span class="secondary-text" aria-hidden=true data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
+      </button>
+    {% endif %}
+
+    </div>
+
+      
+    <p class="product__notification text-small text-center" data-cart-notification></p>
+  {% if section.settings.enable_payment_button and current_variant.available %}
+    {{ form | payment_button }}
+  {% endif %}
+  
+
+  {{ form | payment_terms }}
+{% endform %}

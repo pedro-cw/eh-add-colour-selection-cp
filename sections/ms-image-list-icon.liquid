@@ -1,0 +1,375 @@
+<div class="ms__imagelisticon-outer">
+    <div class="page-width">
+        <div class="ms__imagelisticon-inner-container">
+            <div class="ms__imagelisticon-upper-content">
+                {% if section.settings.image != blank %}
+                <img class="ms__imagelisticon-upper-image" src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt }}" />
+                {% else %}
+                <div class="ms__imagelisticon-placeholder">
+                    {{ 'image' | placeholder_svg_tag }}
+                </div>
+                {% endif %}
+                {% if section.blocks.size > 0 %}
+                <div class="ms__imagelisticon-contents">
+                    {% for block in section.blocks %}
+                    <div class="ms__imagelisticons">
+                        {% if block.settings.icon %}
+                        <img class="ms__imagelisticons-icon" src="{{ block.settings.icon | img_url: 'master' }}" />
+                        {% endif %}
+                        {% if block.settings.listext != blank %}
+                        <p>{{ block.settings.listext }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor  %}
+                </div>
+                {% endif %}
+            </div>
+    
+            {% if section.settings.title != blank or section.settings.content != blank %}
+            <div class="ms__imagelisticon-lower-content">
+                <div class="ms__imagelisticon-lower-inner">
+                    {% if section.settings.title %}
+                    <{{ section.settings.htags }} class="ms__imagelisticon-inner-heading">{{ section.settings.title }}</{{ section.settings.htags }}>
+                    {% endif %}
+                    {% if section.settings.content != blank %}
+                    <div class="ms__imagelisticon-lower-contentrte">
+                        {{ section.settings.content }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.mpadtop | append: 'px' }};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+    background-color: {{ section.settings.bgcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-upper-content{
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-upper-content svg{
+    width: 100%;
+    height: 100%;
+    background-color: #f3f3f3;
+    display: block;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-placeholder,
+  #shopify-section-{{ section.id }} .ms__imagelisticon-upper-image{
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-upper-image{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-inner-container{
+    position: relative;
+    width: 100%;
+  }
+
+
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-contents{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-image: url({{ 'listtextbackground.png' | asset_url }});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticons{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticons p{
+    margin: 0;
+    width: calc(100% - 42px);
+    color: {{ section.settings.listtextcolor }};
+    font-size: 16px;
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticons-icon{
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-lower-content{
+    margin-top: 30px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-lower-inner{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-lower-inner .ms__imagelisticon-inner-heading{
+    max-width: 100%;
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    color: {{ section.settings.tcolor }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ms__imagelisticon-lower-contentrte{
+    max-width: 100%;
+    color: {{ section.settings.tcolor }};
+    font-size: {{ section.settings.mcsize | append: 'px' }};
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.dpadtop | append: 'px' }};
+      padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticon-contents{
+        gap: 26px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 470px;
+        padding: 30px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticons{
+        gap: 22px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticons p{
+        width: calc(100% - 46px);
+        font-size: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticon-lower-inner{
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticon-lower-inner .ms__imagelisticon-inner-heading{
+        font-size: {{ section.settings.dhsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticon-lower-contentrte{
+        font-size: {{ section.settings.dcsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticon-placeholder,
+    #shopify-section-{{ section.id }} .ms__imagelisticon-upper-image{
+        height: 400px;
+        width: 75%;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticon-lower-inner{
+        grid-template-columns: 40% 60%;
+    }
+  }
+
+  @media screen and (min-width: 990px){
+    #shopify-section-{{ section.id }} .ms__imagelisticon-placeholder,
+    #shopify-section-{{ section.id }} .ms__imagelisticon-upper-image{
+        height: 615px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticon-lower-inner{
+        grid-template-columns: 236px 450px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__imagelisticon-contents{
+        padding: 46px;
+    }
+  }
+</style>
+{% schema %}
+    {
+        "name": "MS Image List Icon",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Lorem ipsum dolor itu"
+            },
+            {
+                "type": "select",
+                "id": "htags",
+                "label": "Heading Tag",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "H6"
+                    }
+                ]
+            },
+            {
+                "type": "number",
+                "id": "dhsize",
+                "label": "Heading size (desktop)",
+                "default": 48,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mhsize",
+                "label": "Heading size (mobile)",
+                "default": 32,
+                "info": "Unit in px"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content",
+                "default": "<p>Please update this content with your website content.</p>"
+            },
+            {
+                "type": "number",
+                "id": "dcsize",
+                "label": "Content size (desktop)",
+                "default": 16,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mcsize",
+                "label": "Content size (mobile)",
+                "default": 16,
+                "info": "Unit in px"
+            },
+            {
+                "type": "header",
+                "content": "Styles"
+            },
+            {
+                "type": "color",
+                "id": "bgcolor",
+                "label": "Background",
+                "default": "#695450"
+            },
+            {
+                "type": "color",
+                "id": "tcolor",
+                "label": "Content",
+                "default": "#EAE8E3"
+            },
+            {
+                "type": "color",
+                "id": "listtextcolor",
+                "label": "Content list color",
+                "default": "#695450"
+            },
+            {
+                "type": "number",
+                "id": "dpadtop",
+                "label": "Padding top(desktop)",
+                "default": 46,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "dpadbot",
+                "label": "Padding bottom(desktop)",
+                "default": 46,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mpadtop",
+                "label": "Padding top(mobile)",
+                "default": 30,
+                "info": "Unit in px"
+            }, 
+            {
+                "type": "number",
+                "id": "mpadbot",
+                "label": "Padding bottom(mobile)",
+                "default": 30,
+                "info": "Unit in px"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "listtext",
+                "name": "List text",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Icon/image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "listext",
+                        "label": "Text",
+                        "default": "Lorem ipsum dolor"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "MS Image List Icon",
+                "blocks": [
+                    {
+                        "type": "listtext"
+                    },
+                    {
+                        "type": "listtext"
+                    },
+                    {
+                        "type": "listtext"
+                    },
+                    {
+                        "type": "listtext"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

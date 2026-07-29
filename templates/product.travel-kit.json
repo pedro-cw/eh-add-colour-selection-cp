@@ -1,0 +1,240 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cc-product-template",
+      "blocks": {
+        "clearpay_on_site_messaging_payments_messaging_644NM6": {
+          "type": "shopify://apps/clearpay-on-site-messaging/blocks/payments-messaging/5d763983-d3e6-4888-9966-4e1170b26ae9",
+          "disabled": true,
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "color": "",
+            "size": "sm",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "clearpay_on_site_messaging_payments_messaging_644NM6"
+      ],
+      "settings": {
+        "show_quantity_selector": true,
+        "show_variant_labels": true,
+        "show_vendor": true,
+        "enable_payment_button": true,
+        "show_share_buttons": true,
+        "show_clearpay_messaging": true,
+        "reviews": 300,
+        "disclaimer_label": "<strong>Note:</strong> <span style=\"text-decoration:underline\">Please read our disclaimer before purchasing</span>",
+        "disclaimer": "<p>Disclaimer: Ear seeds not to be used if pregnant or allergic to metal or adhesive. Do not use the headband if you have coagulation issues, are taking anticoagulant medication, or have epilepsy. Avoid use with skin conditions such as significant damage, inflammation, large papillomas, or moles. Not suitable during fever, acute illness, cardiovascular conditions, or thrombophlebitis - consult a healthcare professional if unsure. This product is not used to treat, cure or prevent any disease. Always seek the advice of a physician or other qualified healthcare provider with any questions regarding a medical condition. Please keep in mind that reactions and results may vary from each individual due to differences in state of health.</p>",
+        "bgcolor": "#f7f8f4"
+      }
+    },
+    "ms_image_with_textv2_xTbie9": {
+      "type": "ms-image-with-textv2",
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.ms__inner-imagewithtextv2-grid {grid-template-columns: calc(55% - 20px) calc(45% - 20px); gap: 80px; align-items: center; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/IMG_5320.jpg",
+        "title": "",
+        "htags": "h2",
+        "dhsize": 50,
+        "mhsize": 25,
+        "content": "<p><br/>Thoughtfully designed to support your body and mind wherever your journey takes you, this trio is your go-to for soothing rituals on the  go.  Your curated companion for serene, feel-good travel. A more mindful way to move through summer. Small enough to slip into your carry-on. Powerful enough to shift your state.<br/><br/></p>",
+        "dcsize": 20,
+        "mcsize": 16,
+        "bgcolor": "#f7f8f4",
+        "textcolor": "#695450",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_video_VYTxzz": {
+      "type": "ms-video",
+      "disabled": true,
+      "custom_css": [
+        ".cc__dualbgimage-contents {max-width: 800px; text-align: left;}"
+      ],
+      "settings": {
+        "video_url": "",
+        "cover_image_position": "center center",
+        "show_overlay": true,
+        "overlay_color": "#000000",
+        "overlay_text": "#ffffff",
+        "overlay_opacity": 30,
+        "title": "The Kit Breakdown",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "content": "<h4><strong>1. Ease Anxiety</strong></h4><p><strong>For:</strong> Pre-flight nerves, overstimulation, flying discomfort</p><ul><li><strong>Ear Seeds</strong>: Apply using the <em>Anxiety Ear Map</em> to soothe the nervous system.<br/><br/></li><li><strong>Headband</strong>: Wear pre-flight or in-transit to gently stimulate acupressure points that promote calm.<br/><br/></li><li><strong>Comb</strong>: Press the comb into your palm during turbulence or queues to help re-centre and calm.<br/><br/></li></ul><h4><strong>2. Support Sleep</strong></h4><p><strong>For:</strong> Jet lag, restless flights, winding down in a new time zone</p><ul><li><strong>Ear Seeds</strong>: Use the <em>Sleep Ear Map</em> to support deep rest.<br/><br/></li><li><strong>Headband</strong>: Wear for 10–15 minutes before bed to settle racing thoughts.<br/><br/></li><li><strong>Comb</strong>: Use during your wind-down ritual, gently pressing into the scalp or hands to help ease into rest.<br/><br/></li></ul><h4><strong>3. Aid Digestion</strong></h4><p><strong>For:</strong> Travel-related bloating, irregular meals, late dinners</p><ul><li><strong>Ear Seeds</strong>: Apply using the <em>Digestion Ear Map</em> to gently support digestive balance and ease bloating.<br/><br/></li></ul><h4><strong>4. Restore Energy</strong></h4><p><strong>For:</strong> Jet lag, fatigue, long-haul travel, late nights</p><ul><li><strong>Ear Seeds</strong>: Use the <em>Fatigue Ear Map</em> to help lift your natural energy.</li></ul><p></p><ul><li><strong>Headband</strong>: Wear in the morning or mid-afternoon to awaken and focus the mind.</li></ul>",
+        "linklabel": "",
+        "link": "",
+        "dlink_top": 30,
+        "mlink_top": 30,
+        "bgcolor": "#f7f8f4",
+        "tcolor": "#695450",
+        "dpadtop": 0,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_multirow_PtgDLK": {
+      "type": "cc-multirow",
+      "blocks": {
+        "image_HKRQFF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12629.jpg",
+            "content": "<p>East Healing (formerly Acu Seeds) was founded by <strong>Giselle Boxer</strong>, who was diagnosed with Chronic Fatigue Syndrome or M.E at the age of 26.<br/><br/>When her GP told her that she would never recover from the condition, Giselle went on a personal healing journey using a holistic approach of diet, supplementation but most importantly Traditional Chinese Medicine (TCM).</p>",
+            "linklabel": "",
+            "link": "",
+            "image_position": "row-reverse"
+          }
+        },
+        "image_6Qw96t": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12873.jpg",
+            "content": "<p>Giselle believes that acupuncture, Chinese herbs and ear seeds played a huge role in reducing her symptoms. TCM has also been hugely beneficial for her during pregnancy and post-partum.</p><p><strong>It is now her mission to share the benefits of ear seeds and other Chinese healing modalities with the world.</strong></p>",
+            "linklabel": "",
+            "link": "",
+            "image_position": "row"
+          }
+        }
+      },
+      "block_order": [
+        "image_HKRQFF",
+        "image_6Qw96t"
+      ],
+      "settings": {
+        "title": "The Woman Behind East Healing",
+        "htags": "h2",
+        "dhsize": 96,
+        "mhsize": 28,
+        "subtitle": "meet the founder",
+        "dshsize": 10,
+        "mshsize": 10,
+        "tcolor": "#695450",
+        "bgcolor": "#f7f8f4",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "17095434310523db82": {
+      "type": "apps",
+      "custom_css": [
+        ".junip-product-review-container {max-width: 980px !important;}"
+      ],
+      "settings": {}
+    },
+    "cc_faq_wPHYzx": {
+      "type": "cc-faq",
+      "blocks": {
+        "faq_bBK86k": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s included in the Travel Kit?",
+            "content": "<p>Our Travel Kit includes gold ear seeds, an acupressure comb, and an acupressure headband – designed to support sleep, digestion, energy, and calm while on the move.</p>"
+          }
+        },
+        "faq_Jz9hVT": {
+          "type": "faq",
+          "settings": {
+            "question": "Can you take the kit on an aeroplane?",
+            "content": "<p>Yes! Everything in the kit is compact, lightweight, and approved for carry-on luggage.</p>"
+          }
+        },
+        "faq_XzNY3t": {
+          "type": "faq",
+          "settings": {
+            "question": "Can everyone use this kit?",
+            "content": "<p>Ear Seeds are not suitable for those with metal, gold or adhesive allergies. They are also not suitable during pregnancy. </p><p>The Acupressure Headband is not suitable for those with coagulation issues, taking anticoagulant medication, or with epilepsy. Avoid use with skin conditions such as significant damage, inflammation, large papillomas, or moles. Not suitable during fever, acute illness, cardiovascular conditions, or thrombophlebitis. </p>"
+          }
+        },
+        "faq_ktNcYe": {
+          "type": "faq",
+          "settings": {
+            "question": "What can the kit support?",
+            "content": "<p>The Travel Kit is designed to support you through every stage of your journey. Use it to ease travel anxiety, relieve jet lag, support digestion, boost energy, and promote restful sleep - naturally and effortlessly, wherever you are.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_bBK86k",
+        "faq_Jz9hVT",
+        "faq_XzNY3t",
+        "faq_ktNcYe"
+      ],
+      "settings": {
+        "title": "frequently asked questions",
+        "htags": "h2",
+        "tcolor": "#f3eeea",
+        "bgcolor": "#695450",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_instafeed_GMFTUK": {
+      "type": "cc-instafeed",
+      "disabled": true,
+      "settings": {
+        "title": "Follow us on Social Media",
+        "htags": "h2",
+        "insta_handle": "@acuseeds",
+        "tcolor": "#695450",
+        "bgcolor": "#f7f8f4",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ms_image_with_textv2_xTbie9",
+    "ms_video_VYTxzz",
+    "cc_multirow_PtgDLK",
+    "17095434310523db82",
+    "cc_faq_wPHYzx",
+    "cc_instafeed_GMFTUK"
+  ]
+}

@@ -1,0 +1,383 @@
+<div class="page-width">
+    {% if section.settings.title  != blank %}
+    <div class="cc__multirow-header">
+        {% if section.settings.title != blank %}
+        <{{ section.settings.htags }} class="cc__multirow-title">{{ section.settings.title }}</{{ section.settings.htags }}>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+        <p class="cc__multirow-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+    <div class="cc__multirow-contents">
+        {% for block in section.blocks %}
+            <div class="cc__multirow-content-items flex-{{ block.settings.image_position }}">
+                <div class="cc__multirow-image-column">
+                    <div class="cc__multirow-image-inner">
+                    {% if block.settings.image != blank %}
+                    <img src="{{ block.settings.image | img_url: 'master' }}" />
+                    {% else %}
+                    {{ 'image' | placeholder_svg_tag }}
+                    {% endif %}
+                    </div>
+                </div>
+
+                <div class="cc__multirow-content-column">
+                    <div class="cc__multirow-content-inner">
+                        {{ block.settings.content }}
+                        {% if block.settings.linklabel != blank %}
+                        <a href="{{ block.settings.link }}" class="cc__multirow-content-cta">{{ block.settings.linklabel }}<svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_57_154)">
+                        <g filter="url(#filter0_d_57_154)">
+                        <path d="M28.3309 15.0912H0.669335C0.340296 15.0912 0.0744629 14.8253 0.0744629 14.4963C0.0744629 14.1673 0.340296 13.9014 0.669335 13.9014H26.8939L23.2838 10.2913C23.0514 10.0589 23.0514 9.68155 23.2838 9.44918C23.5161 9.21681 23.8935 9.21681 24.1259 9.44918L28.7529 14.0762C28.9239 14.2472 28.9741 14.5019 28.8811 14.725C28.7882 14.9462 28.5707 15.0912 28.3309 15.0912Z" fill="#695450"/>
+                        <path d="M23.6984 19.7236C23.546 19.7236 23.3935 19.666 23.2783 19.5489C23.0459 19.3165 23.0459 18.9391 23.2783 18.7067L27.9108 14.0742C28.1432 13.8418 28.5206 13.8418 28.753 14.0742C28.9853 14.3066 28.9853 14.6839 28.753 14.9163L24.1204 19.5489C24.0033 19.666 23.8508 19.7236 23.6984 19.7236Z" fill="#695450"/>
+                        </g>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_57_154" x="-3.92554" y="9.2749" width="36.8528" height="18.4487" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_57_154"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_57_154" result="shape"/>
+                        </filter>
+                        <clipPath id="clip0_57_154">
+                        <rect width="29" height="29" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+<style>
+    #shopify-section-{{ section.id }}{
+        background-color: {{ section.settings.bgcolor }};
+        padding-top: {{ section.settings.mpadtop | append: 'px'}};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px'}};
+        overflow: hidden;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-header{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-title{
+        margin: 0;
+        font-size: {{ section.settings.mhsize | append: 'px' }};
+        color: {{ section.settings.tcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-subtitle{
+        text-transform: UPPERCASE;
+        font-size: {{ section.settings.mshsize | append: 'px' }};
+        font-weight: bold;
+        color: {{ section.settings.tcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-content-items{
+        display: flex;
+        align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-content-items.flex-row{
+        flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-content-items.flex-row-reverse{
+        flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-image-inner img,
+    #shopify-section-{{ section.id }} .cc__multirow-image-inner svg{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-image-inner svg{
+        background-color: #f3f3f3;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-content-cta{
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        text-decoration: none;
+        font-weight: 600;
+        color: {{ section.settings.tcolor }};
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        background: linear-gradient(to right, currentColor, currentColor);
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: 0% 1px;
+        transition: all 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-content-cta:hover{
+        background-size: 100% 1px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__multirow-content-inner > *{
+        color: {{ section.settings.tcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .flex-row .cc__multirow-content-column,
+    #shopify-section-{{ section.id }} .flex-row-reverse .cc__multirow-content-column{
+        padding: 16px 0;
+    }
+
+    @media screen and (min-width: 750px){
+        #shopify-section-{{ section.id }}{
+            padding-top: {{ section.settings.dpadtop | append: 'px' }};
+            padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+        }
+
+       #shopify-section-{{ section.id }} .cc__multirow-title {
+            font-size: {{ section.settings.dhsize | append: 'px' }};
+        }
+
+        #shopify-section-{{ section.id }} .cc__multirow-subtitle{
+            font-size: {{ section.settings.dshsize | append: 'px' }};
+        }
+
+         #shopify-section-{{ section.id }} .cc__multirow-header{
+            flex-direction: row;
+            align-items: flex-end;
+            margin-bottom: 0px;
+         }
+
+
+        #shopify-section-{{ section.id }} .cc__multirow-title + .cc__multirow-subtitle{
+            margin-bottom: 22px;
+            flex-shrink: 0;
+        }
+
+        #shopify-section-{{ section.id }} .cc__multirow-content-items.flex-row{
+            flex-direction: row;
+        }
+
+        #shopify-section-{{ section.id }} .cc__multirow-content-items.flex-row-reverse{
+            flex-direction: row-reverse;
+        }
+        #shopify-section-{{ section.id }} .cc__multirow-image-column,
+        #shopify-section-{{ section.id }} .cc__multirow-content-column{
+            width: 50%;
+        }
+
+        #shopify-section-{{ section.id }} .flex-row .cc__multirow-content-column{
+            padding: 50px 20px 50px 50px;
+        }
+
+        #shopify-section-{{ section.id }} .flex-row-reverse .cc__multirow-content-column{
+            padding: 50px 50px 50px 20px;
+        }
+    }
+
+    @media screen and (min-width: 900px){
+        #shopify-section-{{ section.id }} .flex-row .cc__multirow-content-column{
+            padding: 100px 38px 100px 100px;
+        }
+
+        #shopify-section-{{ section.id }} .flex-row-reverse .cc__multirow-content-column{
+            padding: 100px 100px 100px 38px;
+        }
+    }
+</style>
+{% schema %}
+    {
+        "name": "MS Multirow",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Title"
+            },
+            {
+                "type": "select",
+                "id": "htags",
+                "label": "Heading Tag",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "H6"
+                    }
+                ]
+            },
+            {
+                "type" :"number",
+                "id": "dhsize",
+                "label" : "Heading size (desktop)",
+                "default": 96,
+                "info" :"unit in px"
+            },
+            {
+                "type" :"number",
+                "id": "mhsize",
+                "label" : "Heading size (mobile)",
+                "default": 28,
+                "info" :"unit in px"
+            },
+            {
+                "type": "text",
+                "id": "subtitle",
+                "label": "Subtitle",
+                "default": "Sub Title"
+            },
+            {
+                "type" :"number",
+                "id": "dshsize",
+                "label" : "Subheading size (desktop)",
+                "default": 10,
+                "info" :"unit in px"
+            },
+            {
+                "type" :"number",
+                "id": "mshsize",
+                "label" : "Subheading size (mobile)",
+                "default": 10,
+                "info" :"unit in px"
+            },
+            {
+                "type": "header",
+                "content": "Styles"
+            },
+            {
+                "type" : "color",
+                "id" : "tcolor",
+                "label": "Text color",
+                "default": "#695450"
+            },
+            {
+                "type" : "color",
+                "id" : "bgcolor",
+                "label": "Background color",
+                "default": "#F7F8F4"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadtop",
+                "label" : "Padding top(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadbot",
+                "label" : "Padding bottom(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadtop",
+                "label" : "Padding top(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadbot",
+                "label" : "Padding bottom(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            }
+        ],
+        "blocks": [
+            {
+                "type" :"image",
+                "name": "Image text",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id" : "image",
+                        "label": "image"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "content",
+                        "label" :"Content",
+                        "default": "<p>You content goes here please update this part.</p>"
+                    },
+                    {
+                        "type": "text",
+                        "id": "linklabel",
+                        "label": "Label"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link",
+                        "label": "Link"
+                    },
+                    {
+                        "type": "select",
+                        "id": "image_position",
+                        "label" : "Image position",
+                        "default": "row",
+                        "options": [
+                            {
+                                "value": "row",
+                                "label": "Left"
+                            },
+                            {
+                                "value": "row-reverse",
+                                "label": "Right"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "MS Multirow",
+                "blocks": [
+                    {
+                        "type": "image"
+                    },
+                    {
+                        "type": "image"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

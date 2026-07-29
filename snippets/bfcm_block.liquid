@@ -1,0 +1,145 @@
+<div class="bfcm-card" data-bfcm-countdown>
+  <h4 class="bfcm-eyebrow">BLACK FRIDAY SALE</h4>
+  <p class="bfcm-headline">Up to 50% OFF</p>
+  <p class="bfcm-subheadline">SALE ENDS IN</p>
+
+  <div class="bfcm-grid">
+    <div class="bfcm-unit">
+      <div class="bfcm-box" data-bfcm-days>00</div>
+      <span class="bfcm-label">Days</span>
+    </div>
+    <div class="bfcm-unit">
+      <div class="bfcm-box" data-bfcm-hours>00</div>
+      <span class="bfcm-label">Hours</span>
+    </div>
+    <div class="bfcm-unit">
+      <div class="bfcm-box" data-bfcm-mins>00</div>
+      <span class="bfcm-label">Mins</span>
+    </div>
+    <div class="bfcm-unit">
+      <div class="bfcm-box" data-bfcm-secs>00</div>
+      <span class="bfcm-label">Secs</span>
+    </div>
+  </div>
+</div>
+
+<style>
+   .bfcm-card {
+    width: 100%;
+    margin: 1.5rem 0;
+    padding: 1.8rem 1.4rem;
+    border-radius: 10px;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #977E57 0%, #695450 100%);
+   }
+
+  .bfcm-eyebrow {
+    letter-spacing: 0px;
+    font-size: 36px;
+    color: #fff;
+    margin: 0;
+  }
+
+  .bfcm-headline {
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0 0 .5rem;
+  }
+
+  .bfcm-subheadline {
+    font-size: 20px;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    font-weight: 300;
+    font-family: 'Montserrat';
+  }
+
+  .bfcm-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .75rem;
+  }
+
+  .bfcm-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+  }
+
+  .bfcm-box {
+    background: #ffffff;
+    color: #5c4034;
+    padding: 6px 15px;
+    min-width: 54px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bfcm-label {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  @media(max-width: 480px) {
+
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const wrappers = document.querySelectorAll('[data-bfcm-countdown]');
+  if (!wrappers.length) return;
+
+  // ---- END DATE: Dec 1, 2025 @ 23:59 UK time (Europe/London) ----
+  function getUKDate(dateString) {
+    return new Date(
+      new Date(dateString).toLocaleString("en-US", { timeZone: "Europe/London" })
+    );
+  }
+
+  const END = getUKDate("2025-12-01T23:59:00");
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  wrappers.forEach(function(wrapper){
+    const d = wrapper.querySelector('[data-bfcm-days]');
+    const h = wrapper.querySelector('[data-bfcm-hours]');
+    const m = wrapper.querySelector('[data-bfcm-mins]');
+    const s = wrapper.querySelector('[data-bfcm-secs]');
+
+    function tick() {
+      const now = new Date(
+        new Date().toLocaleString("en-US", { timeZone: "Europe/London" })
+      );
+
+      let diff = END - now;
+
+      if (diff <= 0) {
+        d.textContent = h.textContent = m.textContent = s.textContent = "00";
+        return;
+      }
+
+      diff = Math.floor(diff / 1000); // convert ms → sec
+
+      const days  = Math.floor(diff / (60*60*24));
+      const hours = Math.floor((diff % (60*60*24)) / 3600);
+      const mins  = Math.floor((diff % 3600) / 60);
+      const secs  = diff % 60;
+
+      d.textContent = pad(days);
+      h.textContent = pad(hours);
+      m.textContent = pad(mins);
+      s.textContent = pad(secs);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  });
+});
+</script>

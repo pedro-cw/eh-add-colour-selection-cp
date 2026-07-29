@@ -1,0 +1,288 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cc-product-template",
+      "blocks": {
+        "clearpay_on_site_messaging_payments_messaging_644NM6": {
+          "type": "shopify://apps/clearpay-on-site-messaging/blocks/payments-messaging/5d763983-d3e6-4888-9966-4e1170b26ae9",
+          "disabled": true,
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "color": "",
+            "size": "sm",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "clearpay_on_site_messaging_payments_messaging_644NM6"
+      ],
+      "settings": {
+        "show_quantity_selector": true,
+        "show_variant_labels": true,
+        "show_vendor": true,
+        "enable_payment_button": true,
+        "show_share_buttons": true,
+        "show_clearpay_messaging": true,
+        "reviews": 300,
+        "disclaimer_label": "<strong>Note:</strong> <span style=\"text-decoration:underline\">Please read our disclaimer before purchasing</span>",
+        "disclaimer": "<p>Disclaimer: Not to be used if pregnant or allergic to metal or adhesive. Not for people with heart problems, a pacemaker or any medical device or condition affected by magnets. This product is not used to treat, cure or prevent any disease. Always seek the advice of a physician or other qualified healthcare provider with any questions regarding a medical condition. Please keep in mind that reactions and results may vary from each individual due to differences in state of health.</p>",
+        "bgcolor": "#f7f8f4"
+      }
+    },
+    "cc_image_badge_text_grTHxM": {
+      "type": "cc-image-badge-text",
+      "settings": {
+        "image": "shopify://shop_images/Acu-Seeds_22172_5179838e-f242-4710-91d5-7b9e98ae7855.jpg",
+        "image_position": "row",
+        "preheading": "",
+        "dphsize": 10,
+        "mphsize": 10,
+        "title": "How do Acupressure Magnet Patches work? ",
+        "htags": "h2",
+        "dhsize": 45,
+        "mhsize": 28,
+        "content": "<p></p><p>The acupuncture patches apply gentle, consistent pressure to acu-points, promoting the natural flow of Qi (life force energy) and enhancing balance in the body.</p><p>Embedded magnets interact with the body’s electromagnetic field, aligning with its natural energy to regulate cellular signals, reduce pain and inflammation, and promote relaxation.</p>",
+        "dcsize": 16,
+        "mcsize": 16,
+        "tcolor": "#695450",
+        "bgcolor": "#f7f8f4",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_slider_content_FdW7Pe": {
+      "type": "cc-slider-content",
+      "blocks": {
+        "content_3b7twg": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/East-Healing_7047_2ece76e2-de62-4348-9c83-bcadab4aebad.jpg",
+            "preheading": "STEP 1",
+            "heading": "Choose a protocol",
+            "content": "<p>Choose one protocol and find acu-points on the body maps</p>"
+          }
+        },
+        "content_ybQBK9": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_4_ebf9471d-1973-4291-8b13-b31ddb166798.png",
+            "preheading": "STEP 2",
+            "heading": "Get Prepared",
+            "content": "<p>Clean and dry the application area. Peel the magnet patch and place on acu-point</p>"
+          }
+        },
+        "content_ipNpUD": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_8_6bb7f995-47dd-4b9f-ae67-fd0329ccf59f.png",
+            "preheading": "STEP 3",
+            "heading": "Apply the patch",
+            "content": "<p>Hold onto plaster for a few seconds and repeat on other side of the body </p>"
+          }
+        },
+        "content_CjpEGH": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-29_at_12.53.24.png",
+            "preheading": "STEP 4",
+            "heading": "Reuse Magnet",
+            "content": "<p>Leave for up to 3 days. Reuse magnet up to 3 times by attaching to a new plaster.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_3b7twg",
+        "content_ybQBK9",
+        "content_ipNpUD",
+        "content_CjpEGH"
+      ],
+      "settings": {
+        "arrowalignment": "outer-position",
+        "title": "easy to apply",
+        "htags": "h2",
+        "bgcolor": "#f3eeea",
+        "cardbgcolor": "#ffffff",
+        "cardtcolor": "#695450",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_multirow_PtgDLK": {
+      "type": "cc-multirow",
+      "blocks": {
+        "image_HKRQFF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12629.jpg",
+            "content": "<p>East Healing (formerly Acu Seeds) was founded by <strong>Giselle Boxer</strong>, who was diagnosed with Chronic Fatigue Syndrome or M.E at the age of 26.<br/><br/>When her GP told her that she would never recover from the condition, Giselle went on a personal healing journey using a holistic approach of diet, supplementation but most importantly Traditional Chinese Medicine (TCM).</p>",
+            "linklabel": "",
+            "link": "",
+            "image_position": "row-reverse"
+          }
+        },
+        "image_6Qw96t": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12873.jpg",
+            "content": "<p>Giselle believes that acupuncture, Chinese herbs and ear seeds played a huge role in reducing her symptoms. TCM has also been hugely beneficial for her during pregnancy and post-partum.</p><p><strong>It is now her mission to share the benefits of ear seeds and other Chinese healing modalities with the world.</strong></p>",
+            "linklabel": "",
+            "link": "",
+            "image_position": "row"
+          }
+        }
+      },
+      "block_order": [
+        "image_HKRQFF",
+        "image_6Qw96t"
+      ],
+      "settings": {
+        "title": "The Woman Behind East Healing",
+        "htags": "h2",
+        "dhsize": 96,
+        "mhsize": 28,
+        "subtitle": "meet the founder",
+        "dshsize": 10,
+        "mshsize": 10,
+        "tcolor": "#695450",
+        "bgcolor": "#f7f8f4",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "17095434310523db82": {
+      "type": "apps",
+      "custom_css": [
+        ".junip-product-review-container {max-width: 980px !important;}"
+      ],
+      "settings": {}
+    },
+    "cc_faq_wPHYzx": {
+      "type": "cc-faq",
+      "blocks": {
+        "faq_bBK86k": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I use acupressure magnet patches?",
+            "content": "<p>To use the patches:</p><ul><li>Clean and dry the area of skin where you'll apply the patch.</li><li>Identify the acupressure point you want to target in our instruction guide.</li><li>Peel the backing and stick the patch directly onto the acupressure point.</li><li>Leave it on for up to 3 days. </li></ul>"
+          }
+        },
+        "faq_Jz9hVT": {
+          "type": "faq",
+          "settings": {
+            "question": "What conditions can they help with?",
+            "content": "<p>Acupuncture magnet patches are often used to:</p><ul><li>Relieve pain (e.g., headaches, back, neck, shoulder and knee pain) </li><li>Reduce stress and promote relaxation.</li><li>Aid with sleep. </li></ul>"
+          }
+        },
+        "faq_XzNY3t": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I wear acupressure magnet patches all day?",
+            "content": "<p>You can typically wear them for up to 3 days. Note that heavy sweating or showering may affect the adhesive. Replace the plaster should it come away from the skin before 3 days. </p>"
+          }
+        },
+        "faq_ktNcYe": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does it take to feel the effects?",
+            "content": "<p>This varies by individual. Some people experience relief within minutes, while others may need consistent use over a few days or weeks to notice significant benefits.</p>"
+          }
+        },
+        "faq_RHdbwt": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I reuse acupressure magnet patches?",
+            "content": "<p>The adhesive plasters are one-use only, but our product contains 20 replacement plasters so you can reuse the magnets. You can reuse the magnet 3 times before disposing of it. </p>"
+          }
+        },
+        "faq_dDP84w": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the difference between acupressure magnet patches and ear seeds?",
+            "content": "<p>Both stimulate acupuncture points, but acupressure magnet patches use magnets and are applied to various parts of the body, while ear seeds are small seeds or beads placed on acupressure points on the ear.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_bBK86k",
+        "faq_Jz9hVT",
+        "faq_XzNY3t",
+        "faq_ktNcYe",
+        "faq_RHdbwt",
+        "faq_dDP84w"
+      ],
+      "settings": {
+        "title": "frequently asked questions",
+        "htags": "h2",
+        "tcolor": "#f3eeea",
+        "bgcolor": "#695450",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_instafeed_GMFTUK": {
+      "type": "cc-instafeed",
+      "disabled": true,
+      "settings": {
+        "title": "Follow us on Social Media",
+        "htags": "h2",
+        "insta_handle": "@acuseeds",
+        "tcolor": "#695450",
+        "bgcolor": "#f7f8f4",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cc_image_badge_text_grTHxM",
+    "cc_slider_content_FdW7Pe",
+    "cc_multirow_PtgDLK",
+    "17095434310523db82",
+    "cc_faq_wPHYzx",
+    "cc_instafeed_GMFTUK"
+  ]
+}

@@ -1,0 +1,533 @@
+{% liquid
+    assign product = all_products[section.settings.product]
+    assign current_variant = product.selected_or_first_available_variant
+%}
+<div class="ms__featuredproduct-container">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <{{ section.settings.htags }} class="ms__featured-product-heading">{{ section.settings.heading }}</{{ section.settings.htags }}>
+    {% endif %}
+    {% if product != blank %}
+      <div class="ms__featured-product-details">
+        <div class="ms__featured-product-inner-details">
+          {% if section.settings.product_image != blank %}
+            <img
+              class="ms__featured-product-inner-image"
+              src="{{ section.settings.product_image | img_url:'master' }}"
+              alt="{{ featuredproduct.title }}" />
+          {% else %}
+            <img
+              class="ms__featured-product-inner-image"
+              src="{{ product.featured_image | img_url: 'master' }}"
+              alt="{{ featuredproduct.title }}" />
+          {% endif %}
+
+          <div
+            class="ms__featured-product-content-details"
+            data-section-id="{{ section.id }}"
+            data-section-type="featured-product"
+            data-variant-id="{{ current_variant.id }}">
+            {% render 'junip-product-summary', product: product %}
+            <h3 class="ms__featured-product-title">{{ product.title }}</h3>
+            <div class="ms__featured-product-info">
+              <div class="ms__featured-product-price ms__featured-product-price-real">
+                {% if product.price_varies %}
+                  <span class="ms__featured-product-price-details">
+                    <span class="ms__product-current-price" data-wpd-product-handle="{{ product.handle }}"         
+data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+data-wpd-product-id="{{ product.id }}"
+>From {{ product.price | money }}</span>
+                  </span>
+                {% else %}
+                {% if product.price < product.compare_at_price %}
+                  <span class="ms__featured-product-price-details">
+                    <span class="ms__product-current-price" data-wpd-product-handle="{{ product.handle }}"         
+data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+data-wpd-product-id="{{ product.id }}"
+>From {{ product.price | money }}</span>
+                  </span>
+                {% else %}
+                  <span class="ms__product-current-price" data-wpd-product-handle="{{ product.handle }}"         
+data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"         
+data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"        
+data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+data-wpd-product-collection-ids="{% assign wpdProductCollectionIds = product.collections | map:'id' %}{{ wpdProductCollectionIds | join:',' }}"        
+data-wpd-product-id="{{ product.id }}"
+>{{ product.price | money }}</span>
+                {% endif %}
+              {% endif %}
+                {% if product.metafields.custom.quantity != blank %}
+                  <span class="ms__product-separator"></span>
+                  <p class="cc__productquantity-info">{{ product.metafields.custom.quantity }}</p>
+                {% endif %}
+              </div>
+              {% if product.available %}
+                <div class="product__price-stock-info">In Stock</div>
+              {% else %}
+                <div class="product__price-stock-info">Out of Stock</div>
+              {% endif %}
+            </div>
+
+            {% if product.available %}
+              {% if product.variants.size > 1 %}
+                <a class="btn btn--to-secondary btn--full btn__multiplevariants" href="{{ product.url }}">Shop Now</a>
+              {% else %}
+                <div
+                  class="product__form-container"
+                  itemprop="offers"
+                  itemscope
+                  itemtype="http://schema.org/Offer">
+                  <div class="product__form-wrapper">
+                    <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                    <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+                    <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+                    {% include 'cc-product-form' %}
+                    <script type="application/json" data-product-json>
+                      {{ product | json }}
+                    </script>
+
+                  </div>
+                </div>
+              {% endif %}
+            {% else %}
+              <button class="btn btn--to-secondary btn--full" disabled>{{ 'products.product.sold_out' | t }}</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="ms__featured-product-details">
+        <div class="ms__featured-product-inner-details">
+          <div class="ms__featured-product-placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+
+          <div class="ms__featured-product-content-details">
+            <p class="ms__featured-product-ratings">
+              <svg
+                width="105"
+                height="21"
+                viewBox="0 0 105 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 0L12.8574 7.25532H20.4861L14.3143 11.7394L16.6717 18.9947L10.5 14.5106L4.32825 18.9947L6.68565 11.7394L0.513906 7.25532H8.1426L10.5 0Z" fill="#695450" />
+                <path d="M31.5 0L33.8574 7.25532H41.4861L35.3143 11.7394L37.6717 18.9947L31.5 14.5106L25.3283 18.9947L27.6857 11.7394L21.5139 7.25532H29.1426L31.5 0Z" fill="#695450" />
+                <path d="M52.5 0L54.8574 7.25532H62.4861L56.3143 11.7394L58.6717 18.9947L52.5 14.5106L46.3283 18.9947L48.6857 11.7394L42.5139 7.25532H50.1426L52.5 0Z" fill="#695450" />
+                <path d="M73.5 0L75.8574 7.25532H83.4861L77.3143 11.7394L79.6717 18.9947L73.5 14.5106L67.3283 18.9947L69.6857 11.7394L63.5139 7.25532H71.1426L73.5 0Z" fill="#695450" />
+                <path d="M94.5 0L96.8574 7.25532H104.486L98.3143 11.7394L100.672 18.9947L94.5 14.5106L88.3283 18.9947L90.6857 11.7394L84.5139 7.25532H92.1426L94.5 0Z" fill="#695450" />
+              </svg>
+              Product rating details |
+              <span class="ms__featured-product-pp">See all reviews</span>
+            </p>
+            <h3 class="ms__featured-product-title">Product Title</h3>
+            <div class="ms__featured-product-info">
+              <p class="ms__featured-product-price">£19,99 |
+                <span class="ms__featured-product-moq">20PCS</span>
+              </p>
+              <p class="product__price-stock-info">In Stock</p>
+            </div>
+            <div class="ms__featured-product-btn">
+              Add to Cart | £19,99
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.mpadtop | append: 'px' }};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+    background-color: {{ section.settings.bgcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-heading {
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    color: {{ section.settings.hcolor }};
+    margin-bottom: 16px;
+    max-width: {{ section.settings.mhwidth | append: '%' }};
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-inner-details {
+    width: 100%;
+    height: 557px;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-inner-details img, #shopify-section-{{ section.id }} .ms__featured-product-inner-details .ms__featured-product-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-inner-details .ms__featured-product-placeholder svg {
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-content-details {
+    position: absolute;
+    top: 52%;
+    right: 16px;
+    left: 16px;
+    padding: 25px 18px;
+    background-color: {{ section.settings.productbgcolor }};
+    max-width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-ratings {
+    font-size: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    gap: 7px;
+  }
+
+
+  #shopify-section-{{ section.id }} .junip-stars-container:after {
+    content: "Over 300 Five-Star Reviews ";
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 6px;
+    margin-top: 2px;
+    text-wrap: nowrap;
+  }
+
+
+
+  #shopify-section-{{ section.id }} .junip-product-summary-review-count {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-pp {
+    text-decoration: underline;
+    text-transform: initial !important;
+    margin-left: 5px;
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-title {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    color: {{ section.settings.ptcolor }};
+    font-weight: 400;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(151, 126, 87, 0.3);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-info p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ section.settings.pricecolor }}
+    ;
+    text-transform: UPPERCASE;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-price-real {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  #shopify-section-{{ section.id }} .ms__product-separator {
+    width: 2px;
+    height: 20px;
+    display: inline-block;
+    background-color: currentColor;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-moq, #shopify-section-{{ section.id }} .cc__productquantity-info {
+    font-size: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .product__price-stock-info {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: {{ section.settings.productstockcolor }};
+    align-items: center;
+  }
+
+
+
+  #shopify-section-{{ section.id }} .product__price-stock-info:before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: currentColor;
+    display: block;
+    border-radius: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-btn, #shopify-section-{{ section.id }} .btn {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: {{ section.settings.atcbgcolor }};
+    color: {{ section.settings.atctcolor }};
+    border: 2px solid{{ section.settings.atcbgcolor }};
+    transition: all 0.3s ease;
+    text-transform: UPPERCASE;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .btn:after {
+    outline: unset;
+  }
+
+  #shopify-section-{{ section.id }} .ms__featured-product-btn:hover,
+  #shopify-section-{{ section.id }} .btn:hover {
+    background-color: {{ section.settings.atchbgcolor }};
+    color: {{ section.settings.atchtcolor }};
+    border: 2px solid{{ section.settings.atchbgcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .product__form-container {
+    width: 100%;
+  }
+
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.dpadtop | append: 'px' }};
+      padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__featured-product-heading {
+      font-size: {{ section.settings.dhsize | append: 'px' }};
+      max-width: {{ section.settings.dhwidth | append: '%' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__featured-product-content-details {
+      padding: 62px 52px;
+      right: 60px;
+      max-width: 514px;
+      top: 50%;
+      left: unset;
+      transform: translateY(-50%);
+    }
+
+    #shopify-section-{{ section.id }} .ms__featured-product-title {
+      font-size: 30px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__featured-product-price {
+      font-size: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .junip-stars-container:after,
+    #shopify-section-{{ section.id }} .junip-product-summary-star-ratings-container:after {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .junip-stars-container:after {
+      content: "Over 300 Five-Star Reviews ";
+ 
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-right: 6px;
+      padding-right: 6px;
+      margin-left: 6px;
+      margin-top: 2px;
+      text-wrap: nowrap;
+    }
+
+  }
+</style>
+{% schema %}
+  {
+    "name": "MS Featured Product",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Featured Product"
+      },
+      {
+          "type": "select",
+          "id": "htags",
+          "label": "Heading Tag",
+          "default": "h2",
+          "options": [
+              {
+                  "value": "h1",
+                  "label": "H1"
+              },
+              {
+                  "value": "h2",
+                  "label": "H2"
+              },
+              {
+                  "value": "h3",
+                  "label": "H3"
+              },
+              {
+                  "value": "h4",
+                  "label": "H4"
+              },
+              {
+                  "value": "h5",
+                  "label": "H5"
+              },
+              {
+                  "value": "h6",
+                  "label": "H6"
+              }
+          ]
+      },
+      {
+        "type": "number",
+        "id": "dhsize",
+        "label": "Heading size (desktop)",
+        "default": 64,
+        "info": "Unit in px"
+      },
+      {
+        "type": "number",
+        "id": "mhsize",
+        "label": "Heading size (mobile)",
+        "default": 32,
+        "info": "Unit in px"
+      },
+      {
+          "type": "range",
+          "id": "dhwidth",
+          "label": "Heading container width (desktop)",
+          "unit": "%",
+          "default": 100,
+          "min": 10,
+          "max": 100
+        },
+        {
+          "type": "range",
+          "id": "mhwidth",
+          "label": "Heading container width (mobile)",
+          "unit": "%",
+          "default": 100,
+          "min": 10,
+          "max": 100
+        },
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      }, {
+        "type": "image_picker",
+        "id": "product_image",
+        "label": "Product Image",
+        "info": "This will replace the default product image"
+      }, {
+        "type": "header",
+        "content": "Styles"
+      }, {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background ",
+        "default": "transparent"
+      }, {
+        "type": "color",
+        "id": "hcolor",
+        "label": "Heading",
+        "default": "#695450"
+      }, {
+        "type": "color",
+        "id": "ptcolor",
+        "label": "Product Title",
+        "default": "#695450"
+      }, {
+        "type": "color",
+        "id": "pricecolor",
+        "label": "Price Title",
+        "default": "#695450"
+      }, {
+        "type": "color",
+        "id": "productbgcolor",
+        "label": "Product details background",
+        "default": "#fff"
+      }, {
+        "type": "color",
+        "id": "productstockcolor",
+        "label": "Product stock info",
+        "default": "#000"
+      }, {
+        "type": "color",
+        "id": "atctcolor",
+        "label": "Button text",
+        "default": "#fff"
+      }, {
+        "type": "color",
+        "id": "atchtcolor",
+        "label": "Button text(hover)",
+        "default": "#fff"
+      }, {
+        "type": "color",
+        "id": "atcbgcolor",
+        "label": "Button Background",
+        "default": "#977E57"
+      }, {
+        "type": "color",
+        "id": "atchbgcolor",
+        "label": "Button Background(hover)",
+        "default": "#695450"
+      }, {
+        "type": "number",
+        "id": "dpadtop",
+        "label": "Padding top(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "dpadbot",
+        "label": "Padding bottom(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mpadtop",
+        "label": "Padding top(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }, {
+        "type": "number",
+        "id": "mpadbot",
+        "label": "Padding bottom(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "MS Featured Product"
+      }
+    ]
+  }
+{% endschema %}

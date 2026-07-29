@@ -1,0 +1,374 @@
+<div class="page-width">
+
+    <div id="sc{{ section.id }}" class="swiper swipes" data-swiper="sc{{ section.id }}">
+        <div class="cc__sc-header-nav{{ section.settings.arrowalignment | prepend: ' ' }}">
+            {% if section.settings.title != blank %}
+            <{{ section.settings.htags }} class="cc__slider-content-heading">{{ section.settings.title }}</{{ section.settings.htags }}>
+            {% endif %}
+            <div class="cc__sc-navigation">
+                <div class="sp-button-prev-sc{{ section.id }} scswipes-button">
+                    <svg width="26" height="14" viewBox="0 0 26 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.926495 7.39212L6.48786 12.9535C6.68764 13.1868 7.03873 13.214 7.27201 13.0142C7.50529 12.8144 7.53248 12.4633 7.33266 12.23C7.31402 12.2083 7.29375 12.188 7.27201 12.1694L2.66163 7.55343L24.6792 7.55343C24.9863 7.55343 25.2354 7.30443 25.2354 6.99726C25.2354 6.69009 24.9863 6.44114 24.6792 6.44114L2.66163 6.44113L7.27201 1.83076C7.50529 1.63098 7.53248 1.27989 7.33266 1.04661C7.13283 0.813332 6.78179 0.786138 6.54851 0.985962C6.52677 1.0046 6.50646 1.02486 6.48786 1.04661L0.926447 6.60803C0.710852 6.82487 0.710852 7.17519 0.926495 7.39212Z" fill="#977E57"/>
+                    </svg>
+                </div>
+                <div class="sp-button-next-sc{{ section.id }} scswipes-button">
+                    <svg width="26" height="14" viewBox="0 0 26 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25.0735 6.60788L19.5121 1.04646C19.3124 0.813181 18.9613 0.785987 18.728 0.98581C18.4947 1.18559 18.4675 1.53668 18.6673 1.76995C18.686 1.7917 18.7062 1.81201 18.728 1.8306L23.3384 6.44658L1.32077 6.44657C1.01365 6.44657 0.764647 6.69557 0.764647 7.00274C0.764647 7.30991 1.01365 7.55886 1.32077 7.55886L23.3384 7.55887L18.728 12.1692C18.4947 12.369 18.4675 12.7201 18.6673 12.9534C18.8672 13.1867 19.2182 13.2139 19.4515 13.014C19.4732 12.9954 19.4935 12.9751 19.5121 12.9534L25.0736 7.39197C25.2891 7.17514 25.2891 6.82481 25.0735 6.60788Z" fill="#977E57"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+                <div class="swiper-slide">
+                    <div class="swiper-content-inside">
+                        {% if block.settings.image != blank %}
+                        <div class="swiper-content-image">
+                            <img src="{{ block.settings.image | img_url: 'master' }}" />
+                        </div>
+                        {% else %}
+                        <div class="swiper-content-image">
+                           {{ 'image' | placeholder_svg_tag }}
+                        </div>
+                        {% endif %}
+                        {% if block.settings.preheading != blank or block.settings.heading != blank or block.settings.content != blank %}
+                        <div class="cc_swper-content">
+                            {% if block.settings.preheading != blank %}
+                            <p class="cc__sp-preheading">{{ block.settings.preheading }}</p>
+                            {% endif %}
+                            {% if block.settings.heading != blank %}
+                            <h3 class="cc__sp-heading">{{ block.settings.heading }}</h3>
+                            {% endif %}
+                            {% if block.settings.content != blank %}
+                            <div class="cc__sp-content">{{ block.settings.content }}</div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<style>
+    #shopify-section-{{ section.id }}{
+        background-color: {{ section.settings.bgcolor }};
+        padding-top: {{ section.settings.mpadtop | append: 'px'}};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px'}};
+        overflow: hidden;
+    }
+
+    #shopify-section-{{ section.id }} .cc__sc-header-nav{
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__sc-header-nav.align-position{
+        align-items: flex-end;
+        gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__sc-header-nav.align-position h2{
+        width: calc(100% - 176px);
+    }
+
+    #shopify-section-{{ section.id }} .cc__sc-header-nav.outer-position{
+        flex-direction: column;
+    }
+
+     #shopify-section-{{ section.id }} .swiper{
+        overflow: visible;
+     }
+
+    #shopify-section-{{ section.id }} [aria-disabled="true"]{
+        opacity: 50%;
+     }
+
+    #shopify-section-{{ section.id }} .cc_swper-content{
+        padding: 16px 20px;
+        background-color: {{ section.settings.cardbgcolor }};
+        margin: -40px 20px 0;
+        position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .cc__sp-preheading{
+        margin-bottom: 18px;
+        font-size: 10px;
+        font-weight: bold;
+        color: {{ section.settings.cardtcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__sp-heading{
+        margin-bottom: 14px;
+        font-size: 24px;
+        color: {{ section.settings.cardtcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__sp-content{
+        font-size: 16px;
+        font-weight: 500;
+        color: {{ section.settings.cardtcolor }};
+    }
+
+     #shopify-section-{{ section.id }} .swiper-slides{
+        width: 70%;
+     }
+
+     #shopify-section-{{ section.id }} .cc__slider-content-heading{
+        margin: 0;
+        margin: 0;
+        font-size: {{ section.settings.mhsize | append: 'px' }};
+        color:#695450;
+     }
+
+
+    #shopify-section-{{ section.id }} .swiper-content-image{
+        width: 100%;
+     }
+
+     #shopify-section-{{ section.id }} .swiper-content-image img,
+     #shopify-section-{{ section.id }} .swiper-content-image svg{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        aspect-ratio: 4 / 3;
+     }
+
+     #shopify-section-{{ section.id }} .swiper-content-image svg{
+        background-color: #f3f3f3;
+     }
+
+     #shopify-section-{{ section.id }} .cc__sc-navigation{
+        display:  flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: flex-end;
+
+     }
+
+     #shopify-section-{{ section.id }} .scswipes-button{
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 100%;
+     }
+
+    @media screen and (min-width: 750px){
+        #shopify-section-{{ section.id }} .cc_swper-content{
+            padding: 34px 42px;
+            margin: -60px 40px 0;
+        }
+
+        #shopify-section-{{ section.id }} .cc__sp-preheading{
+            margin-bottom: 22px;
+        }
+
+        #shopify-section-{{ section.id }} .cc__sp-heading{
+            margin-bottom: 18px;
+            font-size: 32px;
+        }
+
+        #shopify-section-{{ section.id }} .cc__slider-content-heading{
+            font-size: 60px;
+        }
+
+        #shopify-section-{{ section.id }}{
+            padding-top: {{ section.settings.dpadtop | append: 'px' }};
+            padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+        }
+
+        #shopify-section-{{ section.id }} .cc__sc-navigation{
+            gap: 64px;
+        }
+
+        #shopify-section-{{ section.id }} .cc__sc-header-nav{
+            margin-bottom: 47px;
+        }
+
+        #shopify-section-{{ section.id }} .swiper-content-image{
+            width: 100%;
+            height: 548px;
+        }
+    }
+
+    @media screen and (min-width: 900px){
+        #shopify-section-{{ section.id }} .cc_swper-content{
+            padding: 48px 68px;
+            margin: -95px 60px 0;
+        }
+
+        #shopify-section-{{ section.id }} .cc__sp-preheading{
+            margin-bottom: 26px;
+        }
+
+        #shopify-section-{{ section.id }} .cc__slider-content-heading{
+            font-size: {{ section.settings.dhsize | append: 'px' }};
+        }
+    }
+</style>
+{% schema %}
+    {
+        "name": "MS Slider Content",
+        "settings": [
+            {
+                "type": "select",
+                "id": "arrowalignment",
+                "label": "Arrow alignment",
+                "default": "outer-position",
+                "options": [
+                    {
+                        "value": "outer-position",
+                        "label": "Outer Header"
+                    },
+                    {
+                        "value": "align-position",
+                        "label": "Align with Header"
+                    }
+                ]
+            },
+            {
+                "type" : "text",
+                "id" : "title",
+                "label" : "Title",
+                "default": "Title"
+            },
+            {
+                "type": "select",
+                "id": "htags",
+                "label": "Heading Tag",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "H6"
+                    }
+                ]
+            },
+            {
+                "type" : "header",
+                "content" : "Styles"
+            },
+            {
+                "type" : "color",
+                "id" : "bgcolor",
+                "label": "Background color",
+                "default": "#F3EEEA"
+            },
+            {
+                "type" : "color",
+                "id" : "cardbgcolor",
+                "label": "Card Background color",
+                "default": "#fff"
+            },
+            {
+                "type" : "color",
+                "id" : "cardtcolor",
+                "label": "Card Text color",
+                "default": "#695450"
+            },
+            {
+                "type" : "number",
+                "id" : "dhsize",
+                "label" : "Heading size (desktop)",
+                "default": 96,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mhsize",
+                "label" : "Heading size (desktop)",
+                "default": 45,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadtop",
+                "label" : "Padding top(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadbot",
+                "label" : "Padding bottom(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadtop",
+                "label" : "Padding top(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadbot",
+                "label" : "Padding bottom(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            }
+        ],
+        "blocks": [
+            {
+                "type" : "content",
+                "name" : "Content",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id" : "image",
+                        "label" : "Image"
+                    },
+                    {
+                        "type" : "text",
+                        "id" : "preheading",
+                        "label" : "Pre heading",
+                        "default": "Pre-heading"
+                    },
+                    {
+                        "type" : "text",
+                        "id" : "heading",
+                        "label" : "Heading",
+                        "default": "Heading"
+                    },
+                    {
+                        "type" : "richtext",
+                        "id" : "content",
+                        "label" : "Content",
+                        "default": "<p>Your content goes here so please update this content.</p>"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+               "name": "MS Slider Content"
+            }
+        ]
+    }
+{% endschema %}

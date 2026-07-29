@@ -1,0 +1,369 @@
+<style>
+    @font-face {
+      font-family: 'Botanica';
+      src: url('https://cdn.shopify.com/s/files/1/0588/4742/8796/files/botanica.woff2?v=1759557561') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+  
+    .cw-hero-custom {
+      padding: 60px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      font-family: 'Montserrat', sans-serif;
+     padding-top: 0;
+     padding-bottom: 0;
+    }
+  
+    .cw-hero-custom__container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+  
+    .cw-hero-custom__left {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      padding-left: 100px;
+    width: 50%;
+    }
+  
+    .cw-hero-custom__right {
+      flex: 1;
+      min-width: 50%;
+    }
+  
+    .cw-hero-custom__stars {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+  
+     .cw-hero-custom__star-rating {
+       display: flex;
+       gap: 4px;
+         color: #695450;
+       font-size: 20px;
+     }
+   
+     .cw-hero-custom__star-half {
+       position: relative;
+       display: inline-block;
+       width: 0.5em;
+       overflow: hidden;
+     }
+  
+    .cw-hero-custom__review-text {
+      font-size: 14px;
+      color: #666;
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    .cw-hero-custom__heading {
+      margin: 0 0 20px 0;
+      line-height: 1.2;
+      font-weight: 400;
+      font-family: 'Botanica', serif;
+      max-width: 400px;
+    }
+  
+    .cw-hero-custom__subtext {
+      font-size: 16px;
+      margin-bottom: 16px;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    .cw-hero-custom__paragraph {
+        font-size: 14px;
+    line-height: 140%;
+      margin-bottom: 30px;
+      color: #333;
+      font-family: 'Montserrat', sans-serif;
+      max-width: 430px;
+      font-weight:300;
+    }
+  
+     .cw-hero-custom__button {
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       gap: 10px;
+       padding: 14px 20px;
+       text-decoration: none;
+       border-radius: 0px;
+       font-size: 14px;
+       font-weight: 700;
+       letter-spacing: .5px;
+       transition: opacity 0.3s ease;
+       border: none;
+       cursor: pointer;
+       font-family: 'Montserrat', sans-serif;
+     }
+   
+     .cw-hero-custom__button-icon {
+       width: 24px;
+       height: 24px;
+       display: inline-block;
+     }
+  
+    .cw-hero-custom__button:hover {
+      opacity: 0.9;
+    }
+  
+    .cw-hero-custom__image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0px;
+    }
+  
+    @media (min-width: 1024px) {
+    .cw-hero-custom__button {
+      min-width: 420px;
+    }
+    }
+    @media (max-width: 768px) {
+      .cw-hero-custom__container {
+        flex-direction: column-reverse;
+        gap: 15px;
+      }
+  
+      .cw-hero-custom__left,
+      .cw-hero-custom__right {
+        width: 100%;
+      }
+
+      .cw-hero-custom__heading {
+        font-size: 40px !important;
+        line-height: 1;
+    }
+
+    .cw-hero-custom__subtext {
+        font-size: 16px !important;
+        margin-bottom: 6px;
+    }
+    .cw-hero-custom__button {
+        padding: 14px 12px;
+        text-align: center;
+        width: 100%;
+    }
+    .cw-hero-custom {
+    padding: 60px 0px;
+    padding-top: 0;
+    padding-bottom: 29px;
+}
+
+.cw-hero-custom__left {
+    padding: 0 15px;
+    padding-left: 15px;
+}
+    }
+
+    div:has(> .cw-hero-custom) {
+  background-color: white;
+}
+  </style>
+  
+  <section class="cw-hero-custom">
+    <div class="cw-hero-custom__container">
+      <!-- Lado Izquierdo -->
+      <div class="cw-hero-custom__left">
+         <!-- Stars y Reviews -->
+         <div class="cw-hero-custom__stars">
+           <div class="cw-hero-custom__star-rating">
+             {% for i in (1..4) %}
+               <span>★</span>
+             {% endfor %}
+             <span class="cw-hero-custom__star-half">★</span>
+           </div>
+           {% if section.settings.review_text != blank %}
+             <span class="cw-hero-custom__review-text">{{ section.settings.review_text }}</span>
+           {% endif %}
+         </div>
+  
+        <!-- Heading -->
+        {% if section.settings.heading != blank %}
+          <h1 
+            class="cw-hero-custom__heading" 
+            style="color: {{ section.settings.heading_color }}; font-size: {{ section.settings.heading_size }}px;">
+            {{ section.settings.heading }}
+          </h1>
+        {% endif %}
+  
+        <!-- Subtext -->
+        {% if section.settings.subtext != blank %}
+          <div class="cw-hero-custom__subtext" style="color: {{ section.settings.subtext_color }};">
+            {{ section.settings.subtext }}
+          </div>
+        {% endif %}
+  
+        <!-- Paragraph -->
+        {% if section.settings.paragraph != blank %}
+          <p class="cw-hero-custom__paragraph" style="color: {{ section.settings.paragraph_color }};">
+            {{ section.settings.paragraph }}
+          </p>
+        {% endif %}
+  
+         <!-- Button -->
+         {% if section.settings.button_text != blank %}
+           <a 
+             href="{{ section.settings.button_link }}" 
+             class="cw-hero-custom__button"
+             style="background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};">
+             <img 
+               src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/material-symbols_family-link-outline.svg?v=1762331022" 
+               alt="Link icon" 
+               class="cw-hero-custom__button-icon"
+               width="24"
+               height="24">
+             {{ section.settings.button_text }}
+           </a>
+         {% endif %}
+      </div>
+  
+      <!-- Lado Derecho -->
+      <div class="cw-hero-custom__right">
+        {% if section.settings.image != blank %}
+          <img 
+            src="{{ section.settings.image | image_url: width: 1000 }}" 
+            alt="{{ section.settings.image.alt | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            class="cw-hero-custom__image"
+            loading="lazy">
+        {% else %}
+          <div style="background: #f0f0f0; padding: 100px 20px; text-align: center; border-radius: 8px;">
+            <p style="color: #999;">Selecciona una imagen</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  
+  {% schema %}
+  {
+    "name": "Hero Custom",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Stars & Reviews"
+      },
+      {
+        "type": "text",
+        "id": "review_text",
+        "label": "Review Text",
+        "default": "Rated 4.9/5 by thousands"
+      },
+      {
+        "type": "header",
+        "content": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Main Heading (H1)",
+        "default": "REFER A FRIEND & GET REWARDED"
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#333333"
+      },
+      {
+        "type": "range",
+        "id": "heading_size",
+        "label": "Heading Size",
+        "min": 24,
+        "max": 72,
+        "step": 2,
+        "default": 48,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Subtext"
+      },
+      {
+        "type": "text",
+        "id": "subtext",
+        "label": "Subtext",
+        "default": "Give £5. Get £5. Feel good together."
+      },
+      {
+        "type": "color",
+        "id": "subtext_color",
+        "label": "Subtext Color",
+        "default": "#666666"
+      },
+      {
+        "type": "header",
+        "content": "Paragraph"
+      },
+      {
+        "type": "textarea",
+        "id": "paragraph",
+        "label": "Paragraph",
+        "default": "Your friend enjoys £5 off their first East Healing order, and you earn £5 credit for your next purchase."
+      },
+      {
+        "type": "color",
+        "id": "paragraph_color",
+        "label": "Paragraph Color",
+        "default": "#333333"
+      },
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Get Your Referral Link"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "color",
+        "id": "button_bg_color",
+        "label": "Button Background Color",
+        "default": "#8B6F47"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "Imagen"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Hero Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Custom",
+        "category": "Custom"
+      }
+    ]
+  }
+  {% endschema %}
+  
+  

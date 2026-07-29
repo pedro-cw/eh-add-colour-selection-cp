@@ -1,0 +1,74 @@
+<div class="page-width">
+    {%- for block in section.blocks -%}
+      {% render block %}
+    {%- endfor -%}
+  </div>
+<style>
+    #shopify-section-{{ section.id }}{
+        padding-top: {{ section.settings.mpadtop | append: 'px' }};
+        padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+        background-color: {{ section.settings.bgcolor }};
+    }
+
+    @media screen and (min-width: 750px){
+        #shopify-section-{{ section.id }}{
+            padding-top: {{ section.settings.dpadtop | append: 'px' }};
+            padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+        }
+    }
+</style>
+{% schema %}
+    {
+        "name": "MS Apps",
+        "settings": [
+            {
+              "type": "header",
+              "content": "Styles"  
+            },
+            {
+                "type" : "color",
+                "id" : "bgcolor",
+                "label": "Background color",
+                "default": "transparent"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadtop",
+                "label" : "Padding top(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "dpadbot",
+                "label" : "Padding bottom(desktop)",
+                "default": 70,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadtop",
+                "label" : "Padding top(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            },
+            {
+                "type" : "number",
+                "id" : "mpadbot",
+                "label" : "Padding bottom(mobile)",
+                "default": 35,
+                "info" : "Unit in px"
+            }
+        ],
+        "blocks": [
+            {
+            "type": "@app"
+            }
+        ],
+        "presets": [
+            {
+                "name": "MS Apps"
+            }
+        ]
+    }
+{% endschema %}

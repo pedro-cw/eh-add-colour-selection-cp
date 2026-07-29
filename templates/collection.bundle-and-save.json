@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ms-collection-list": {
+      "type": "ms-collection-list",
+      "blocks": {
+        "collection_p7zdb8": {
+          "type": "collection",
+          "settings": {
+            "customtitle": "Bundle & Save",
+            "coltitlenav": "acu-seeds-accessories",
+            "collist": [
+              "bundles"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "collection_p7zdb8"
+      ],
+      "disabled": true,
+      "settings": {
+        "bgcolor": "rgba(0,0,0,0)",
+        "tcolor": "#695450"
+      }
+    },
+    "cw_collection_jdhM3C": {
+      "type": "cw-collection",
+      "name": "CW Collection Grid",
+      "settings": {
+        "title": "Bundle and Save",
+        "text": "Discover thoughtfully curated wellness bundles built around your goals - while saving more than purchasing items individually.",
+        "collection": "bundles",
+        "products_limit": 4,
+        "rating_text": "Rated 4.9/5",
+        "add_to_cart_label": "Add To Cart",
+        "view_label": "View",
+        "background_color": "#f2eeea",
+        "title_color": "#695450",
+        "text_color": "#937f5c",
+        "border_color": "#977e57",
+        "button_color": "#695450"
+      }
+    }
+  },
+  "order": [
+    "ms-collection-list",
+    "cw_collection_jdhM3C"
+  ]
+}

@@ -1,0 +1,350 @@
+{% style %}
+  #section-{{ section.id }} {
+    background-color: {{ section.settings.bg-color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media only screen and (max-width: 767px) {
+    #section-{{ section.id }} { 
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{%- assign recentblogs = section.settings.recentblogs -%}
+{%- if recentblogs and recentblogs.articles_count > 0 -%}
+    {%- assign recentblogs_articles = recentblogs.articles -%}
+{%- else -%}
+    {%- assign recentblogs = blogs['articles'] -%}
+    {%- assign recentblogs_articles = recentblogs.articles -%}
+{%- endif -%}
+
+{% if section.settings.postlimit > 0 %}
+    {%- assign postlimit = section.settings.postlimit -%}
+{% else %}
+    {%- assign postlimit = 4 -%}
+{% endif %}
+
+<section class="sc-recent-blogs-sec" id="section-{{ section.id }}">
+    <div class="blog_container">
+        <div class="recent-blogs-slider">
+            <div class="sechead">
+                <h2 class="sectitle">{{ section.settings['sectitle'] }}</h2>
+                {% if recentblogs_articles.size > 0 %}
+                    <div class="arrow-with-dots">
+                        <div class="blog-slide-prev sliderbtn">                
+                            <svg stroke="#ffffff" fill="#ffffff" stroke-width="0" viewBox="0 0 16 16" role="presentation" style="width:var(--rsw, 100%);height:100%" class="r-1auuxlk" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"></path>
+                            </svg>
+                        </div>
+                        <div class="blog-slide-next sliderbtn">
+                            <svg stroke="#ffffff" fill="#ffffff" stroke-width="0" viewBox="0 0 16 16" role="presentation" style="width:var(--rsw, 100%);height:100%" class="r-ew1rv0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                            </svg>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="swiper-wrapper">
+
+                {%- for article in recentblogs_articles limit: postlimit -%}
+                    <div class="swiper-slide">
+                        <div class="blog-post">
+                            {% if article.image %}
+                                <a href="{{ article.url }}" class="blog-post__image">
+                                    {{ article.image | image_url: width: article.image.width | image_tag: class: 'articleimage', loading: 'lazy', decoding: 'async' }}
+                                </a>
+                            {% endif %}
+
+                            {% liquid
+                                assign read_time = article.content | strip_html | split: ' ' | size | times: 1.0 | divided_by: 250 | ceil 
+                            %}
+                            {% if read_time < 1 %}
+                                {% assign read_time = 1 %}
+                            {% endif %}
+                            <p class="blog-post__read-time">{{ read_time }} mins read</p>
+
+                            <h3 class="blog-post__title">
+                                <a href="{{ article.url }}">{{ article.title }}</a>
+                            </h3>
+
+                            {% assign content_excerpt = article.content | strip_html | truncatewords: 30, '...' %}
+                            <p class="blog-post__excerpt">{{ content_excerpt }}</p>
+
+                            <a href="{{ article.url }}" class="blog-post__read-more">
+                                Continue reading 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F2F2CBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="fill: none;stroke: #2F2F2CBF;width: 16px;height: 16px" role="presentation">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                {%- endfor -%}
+            </div>
+            <div class="blog-pagination"> </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.sc-recent-blogs-sec .blog_container {
+    max-width: 1410px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.sc-recent-blogs-sec .recent-blogs-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    overflow: hidden;
+}
+.sc-recent-blogs-sec .sechead {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: space-between;
+}
+.sc-recent-blogs-sec .sectitle {
+    color: #977E57FF;
+    margin: 0;
+    font-size: 50px;
+    letter-spacing: 0.32px;
+}
+.sc-recent-blogs-sec .arrow-with-dots {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+.sc-recent-blogs-sec .sliderbtn {
+    padding: 15px;
+    background: #695450FF;
+    width: 52px;
+    height: 52px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.sc-recent-blogs-sec .blog-pagination {
+    background: #F8F8F8FF;
+    display: flex;
+    gap: 0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.sc-recent-blogs-sec .blog-pagination .swiper-pagination-bullet {
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    height: 5px;
+    background: transparent;
+}
+.sc-recent-blogs-sec .blog-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #977E57FF;
+}
+.sc-recent-blogs-sec .swiper-notification {
+    display: none;
+}
+.sc-recent-blogs-sec .recent-blogs-slider .swiper-slide {
+    display: flex;
+    height: auto;
+}
+.sc-recent-blogs-sec .sliderbtn.swiper-button-lock,
+.sc-recent-blogs-sec .sliderbtn.swiper-button-disabled {
+    background: #977E573B;
+    display: flex;
+    color: #695450FF;
+    cursor: not-allowed;
+}
+.sc-recent-blogs-sec .sliderbtn.swiper-button-lock svg,
+.sc-recent-blogs-sec .sliderbtn.swiper-button-disabled svg {
+    fill: #695450FF;
+}
+.sc-recent-blogs-sec .blog-post {
+    display: flex;
+    flex-direction: column;
+}
+.sc-recent-blogs-sec .recent-blogs-slider .blog-post__image {
+    margin-bottom: 21px;
+}
+.sc-recent-blogs-sec .blog-post .blog-post__image img {
+    vertical-align: top;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1.2;
+    object-fit: cover;
+}
+.sc-recent-blogs-sec .blog-post__read-time {
+    color: #977E5780;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+}
+.sc-recent-blogs-sec .blog-post__title {
+    color: #977E57FF;
+    line-height: 125%;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+.sc-recent-blogs-sec  .blog-post__excerpt {
+    color: #977E57FF;
+    font-size: 16px;
+    align-self: stretch;
+    line-height: 20px;
+    overflow-wrap: break-word;
+    letter-spacing: 0px;
+    margin: 0 0 16px;
+    font-weight: 400;
+}
+.sc-recent-blogs-sec .blog-post__read-more {
+    color: #977E57FF;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    line-height: 128%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    gap: 10px;
+}
+@media screen and (max-width:767px){
+    .sc-recent-blogs-sec .recent-blogs-slider {
+        gap: 24px;
+    }
+    .sc-recent-blogs-sec .sectitle {
+        font-size: 30px;
+    }
+    .sc-recent-blogs-sec .sechead,
+    .sc-recent-blogs-sec .arrow-with-dots {
+        gap: 16px;
+        justify-content: center;
+    }
+    .sc-recent-blogs-sec .arrow-with-dots{
+        display:none;
+    }
+    .sc-recent-blogs-sec .sliderbtn {
+        padding: 8px;
+        width: 37px;
+        height: 37px;
+    }
+    .sc-recent-blogs-sec .blog-post__title {
+        font-size: 18px;
+    }
+    .sc-recent-blogs-sec .blog-post__read-more {
+        font-size: 14px;
+    }
+}
+</style>
+
+{% schema %}
+{
+    "name": "Recent Blogs",
+    "settings": [
+        {
+            "type": "color",
+            "id": "bg-color",
+            "label": "Background Color",
+            "default": "#ffffff"
+        },
+        {
+          "type":"text",
+          "id":"sectitle",
+          "label":"Section Title",
+          "default":"Our recent blogs"
+        },
+        {
+            "type": "blog",
+            "label": "Recent Blogs",
+            "id": "recentblogs"
+        },
+        {
+            "type": "number",
+            "id": "postlimit",
+            "label": "How Many Blogs do you want to Display?",
+            "default": 7
+        },
+        {
+         "type": "header",
+         "content": "Section Padding Settings"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "label": "Padding Top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "default": 120
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "label": "Padding Bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "default": 96
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "label": "Mobile Padding Top",
+            "min": 0,
+            "max": 150,
+            "step": 2,
+            "unit": "px",
+            "default": 40
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "label": "Mobile Padding Bottom",
+            "min": 0,
+            "max": 150,
+            "step": 2,
+            "unit": "px",
+            "default": 40
+        },
+    ],
+    "presets": [
+        {
+            "name": "Recent Blogs"
+        }
+    ]
+}
+{% endschema %}
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const slider = new Swiper('.recent-blogs-slider', {
+    loop: false,
+    navigation: {
+      nextEl: '.blog-slide-next',
+      prevEl: '.blog-slide-prev'
+    },
+    pagination: {
+      el: '.blog-pagination',
+      clickable: true
+    },
+    slidesPerView: 1,
+    spaceBetween: 24,
+    breakpoints: {
+      1024: {
+        slidesPerView: 3
+      },
+      640: {
+        slidesPerView: 2
+      }
+    }
+  });
+});
+</script>

@@ -1,0 +1,224 @@
+<div class="cc__logo-list-outer-container">
+  <div class="page-width">
+    <div class="cc__logo-list-inner">
+      {% if section.settings.header != blank %}
+        <{{ section.settings.htags }} class="cc__logo-header">{{ section.settings.header }}</{{ section.settings.htags }}>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="cc__logo-items">
+          {% for i in (1..5) %}
+            {% for block in section.blocks %}
+              {% if block.settings.image != blank %}
+                <img class="animate-marquee" src="{{ block.settings.image | img_url: 'master' }}" />
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.mpadtop | append: 'px' }};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+    background-color: {{ section.settings.bgcolor }};
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .cc__logo-header {
+    margin: 0;
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    color: {{ section.settings.tcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .cc__logo-list-inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  #shopify-section-{{ section.id }} .cc__logo-items {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} img {
+    display: block;
+    margin-right: 40px;
+    flex-shrink: 0;
+    width: 25%;
+  }
+
+  #shopify-section-{{ section.id }} .animate-marquee {
+    animation: slide 60s linear infinite;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(-1920px, 0, 0);
+    }
+  }
+
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.dpadtop | append: 'px' }};
+      padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .cc__logo-header {
+      font-size: {{ section.settings.dhsize | append: 'px' }};
+    }
+    #shopify-section-{{ section.id }} .cc__logo-list-inner {
+      gap: 60px;
+      flex-direction: row;
+    }
+
+    #shopify-section-{{ section.id }} img {
+      margin-right: 50px;
+    }
+
+    #shopify-section-{{ section.id }} .cc__logo-header {
+      width: 18%;
+    }
+
+    #shopify-section-{{ section.id }} .cc__logo-items {
+      width: 82%;
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    #shopify-section-{{ section.id }} img {
+      margin-right: 77px;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "MS Logo List",
+    "settings": [
+      {
+        "type": "text",
+        "id": "header",
+        "label": "Heading",
+        "default": "AS SEEN ON"
+      },
+      {
+          "type": "select",
+          "id": "htags",
+          "label": "Heading Tag",
+          "default": "h2",
+          "options": [
+              {
+                  "value": "h1",
+                  "label": "H1"
+              },
+              {
+                  "value": "h2",
+                  "label": "H2"
+              },
+              {
+                  "value": "h3",
+                  "label": "H3"
+              },
+              {
+                  "value": "h4",
+                  "label": "H4"
+              },
+              {
+                  "value": "h5",
+                  "label": "H5"
+              },
+              {
+                  "value": "h6",
+                  "label": "H6"
+              }
+          ]
+      },
+      {
+        "type": "number",
+        "id": "dhsize",
+        "label": "Heading size (desktop)",
+        "default": 24,
+        "info": "Unit in px"
+      },
+      {
+        "type": "number",
+        "id": "mhsize",
+        "label": "Heading size (mobile)",
+        "default": 18,
+        "info": "Unit in px"
+      },
+      {
+        "type": "header",
+        "content": "Styles"
+      }, 
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background color",
+        "default": "#F7F8F4"
+      }, 
+      {
+        "type": "color",
+        "id": "tcolor",
+        "label": "Text color",
+        "default": "#695450"
+      }, 
+      {
+        "type": "number",
+        "id": "dpadtop",
+        "label": "Padding top(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "dpadbot",
+        "label": "Padding bottom(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mpadtop",
+        "label": "Padding top(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mpadbot",
+        "label": "Padding bottom(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Logo item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "MS Logo List"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,401 @@
+<div class="page-width ms__pagebreadcrumbs">
+  <div class="ms__page-title">
+    <h3>{{ section.settings.uppertitle | default: page.title }}</h3>
+  </div>
+
+</div>
+{% if section.settings.section_title != blank or section.settings.text != blank %}
+<div
+  class="rich-text rich-text--{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="rich-text">
+  <div class="page-width">
+    <div class="text-center">
+      {% if section.settings.image != blank %}
+      <img class="ms__richtext-image" src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt }}" />
+      {% endif %}
+      {% if section.settings.section_title != blank %}
+        <{{ section.settings.htags }} class="rich-text__heading" data-animate>
+          {{ section.settings.section_title | escape }}
+        </{{ section.settings.htags }}>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="rich-text__body-text rte-setting">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bgcolor }};
+  }
+
+  #shopify-section-{{ section.id }} .rich-text {
+    padding-top: {{ section.settings.mpadtop | append: 'px' }};
+    padding-bottom: {{ section.settings.mpadbot | append: 'px' }};
+  }
+
+  {% if section.settings.hide_pagebreadcrumbs %}
+  #shopify-section-{{ section.id }} .ms__pagebreadcrumbs{
+    display: none;
+  }
+    {% endif %}
+
+  #shopify-section-{{ section.id }} .ms__pagebreadcrumbs{
+    padding-bottom: {{ section.settings.mspacebot | append: 'px' }};
+  }
+
+  #shopify-section-{{ section.id }} .rich-text__heading {
+    font-size: {{ section.settings.mhsize | append: 'px' }};
+    color: {{ section.settings.textcolor }};
+    max-width: {{ section.settings.heading_width | append: 'px' }};
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #shopify-section-{{ section.id }} .rich-text__heading:before {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .rich-text__body-text {
+    font-size: {{ section.settings.mcsize | append: 'px' }};
+    color: {{ section.settings.textcolor }};
+    max-width: {{ section.settings.contents_width | append: 'px' }};
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #shopify-section-{{ section.id }} .ms__page-title {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba({{ section.settings.upperborder.red }}, {{ section.settings.upperborder.green }}, {{ section.settings.upperborder.blue }}, {{ section.settings.upperborderopacity | times: 0.01  }});
+    text-transform: UPPERCASE;
+  }
+
+  #shopify-section-{{ section.id }} .ms__page-title h3 {
+    font-size: 10px;
+    font-weight: bold;
+    color: {{ section.settings.uppertitlecolor }};
+    letter-spacing: 2px;
+    margin: 0;
+    font-family: var(--font-stack-body);
+    text-transform: UPPERCASE;
+  }
+
+  #shopify-section-{{ section.id }} .ms__richtext-image{
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 0 auto 30px;
+  }
+
+  @media screen and (min-width: 750px) {
+
+    #shopify-section-{{ section.id }} .rich-text {
+      padding-top: {{ section.settings.dpadtop | append: 'px' }};
+      padding-bottom: {{ section.settings.dpadbot | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .rich-text__heading {
+      font-size: {{ section.settings.dhsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .rich-text__body-text {
+      font-size: {{ section.settings.dcsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__pagebreadcrumbs{
+      padding-bottom: {{ section.settings.dspacebot | append: 'px' }};
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "MS Rich Text",
+    "class": "index-section index-section--rich-text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "1:1 ratio preferred this will render (200x200)"
+      },
+      {
+        "type": "text",
+        "id": "uppertitle",
+        "label": "Page title",
+        "info": "If this is empty, it will default to the page title"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_pagebreadcrumbs",
+        "label": "Hide breadcrumbs",
+        "default": false
+      },
+      {
+        "type": "number",
+        "id": "dspacebot",
+        "label": "Margin bottom(desktop)",
+        "default": 0,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mspacebot",
+        "label": "Margin bottom(mobile)",
+        "default": 0,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "color",
+        "id": "uppertitlecolor",
+        "label": "Page title",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "upperborder",
+        "label": "Border",
+        "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "upperborderopacity",
+        "label": "Border Opacity",
+        "default": 100,
+        "min": 0,
+        "max": 100,
+        "unit": "%"
+      },
+       {
+        "type": "text",
+        "id": "section_title",
+        "label": {
+          "cs": "Nadpis",
+          "da": "Overskrift",
+          "de": "Titel",
+          "en": "Heading",
+          "es": "Título",
+          "fi": "Otsake",
+          "fr": "En-tête",
+          "it": "Titolo",
+          "ja": "見出し",
+          "ko": "제목",
+          "nb": "Overskrift",
+          "nl": "Kop",
+          "pl": "Nagłówek",
+          "pt-BR": "Título",
+          "pt-PT": "Título",
+          "sv": "Rubrik",
+          "th": "ส่วนหัว",
+          "tr": "Başlık",
+          "vi": "Tiêu đề",
+          "zh-CN": "标题",
+          "zh-TW": "標題"
+        },
+        "default": {
+          "cs": "Informujte o své značce",
+          "da": "Fortæl om dit brand",
+          "de": "Rede über deine Marke",
+          "en": "Talk about your brand",
+          "es": "Habla de tu marca",
+          "fi": "Kerro brändistäsi",
+          "fr": "Parlez de votre marque",
+          "it": "Parla del tuo brand",
+          "ja": "あなたのブランドについて語る",
+          "ko": "브랜드에 대해 이야기하기",
+          "nb": "Snakk om merkevaren din",
+          "nl": "Vertel over je merk",
+          "pl": "Opowiedz o swojej marce",
+          "pt-BR": "Fale sobre a sua marca",
+          "pt-PT": "Fale sobre a sua marca",
+          "sv": "Prata om ditt varumärke",
+          "th": "พูดถึงแบรนด์ของคุณ",
+          "tr": "Markanızdan bahsedin",
+          "vi": "Chia sẻ về thương hiệu của bạn",
+          "zh-CN": "介绍您的品牌",
+          "zh-TW": "描述您的品牌"
+        }
+      },
+      {
+          "type": "select",
+          "id": "htags",
+          "label": "Heading Tag",
+          "default": "h2",
+          "options": [
+              {
+                  "value": "h1",
+                  "label": "H1"
+              },
+              {
+                  "value": "h2",
+                  "label": "H2"
+              },
+              {
+                  "value": "h3",
+                  "label": "H3"
+              },
+              {
+                  "value": "h4",
+                  "label": "H4"
+              },
+              {
+                  "value": "h5",
+                  "label": "H5"
+              },
+              {
+                  "value": "h6",
+                  "label": "H6"
+              }
+          ]
+      },
+      {
+        "type": "number",
+        "id": "dhsize",
+        "label": "Heading size (desktop)",
+        "default": 48,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mhsize",
+        "label": "Heading size (mobile)",
+        "default": 32,
+        "info": "Unit in px"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": {
+          "cs": "Text",
+          "da": "Tekst",
+          "de": "Text",
+          "en": "Text",
+          "es": "Texto",
+          "fi": "Teksti",
+          "fr": "Texte",
+          "it": "Testo",
+          "ja": "テキスト",
+          "ko": "텍스트",
+          "nb": "Tekst",
+          "nl": "Tekst",
+          "pl": "Tekst",
+          "pt-BR": "Texto",
+          "pt-PT": "Texto",
+          "sv": "Text",
+          "th": "ข้อความ",
+          "tr": "Metin",
+          "vi": "Văn bản",
+          "zh-CN": "文本",
+          "zh-TW": "文字"
+        },
+        "default": {
+          "cs": "<p>Informujte zákazníky prostřednictvím tohoto textu o své značce. Zároveň můžete popsat některý z produktů, oznámit důležité informace nebo přivítat zákazníky ve svém obchodě.</p>",
+          "da": "<p>Brug denne tekst til at dele oplysninger om dit brand med dine kunder. Beskriv et produkt, del meddelelser, eller byd kunder velkommen til din butik.</p>",
+          "de": "<p>Nutze diesen Text, um Infos über deine Marke mitzuteilen. Beschreibe ein Produkt, kündige etwas an oder heiße Kunden willkommen.</p>",
+          "en": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+          "es": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.</p>",
+          "fi": "<p>Tämän tekstin avulla voit jakaa brändiäsi koskevia tietoja asiakkaille. Kuvaile tuotetta, jaa ilmoituksia tai toivota asiakkaat tervetulleiksi kauppaasi.</p>",
+          "fr": "<p>Utilisez ce texte pour partager des informations sur votre marque. Décrivez un produit, partagez des annonces, ou souhaitez la bienvenue à vos clients.</p>",
+          "it": "<p>Utilizza questo testo per condividere le informazioni sul tuo brand con i tuoi clienti. Descrivi un prodotto, condividi gli annunci o dai il benvenuto ai clienti nel tuo negozio.</p>",
+          "ja": "<p>このテキストを使用して、あなたのブランドに関する情報をお客様と共有します。商品を説明したり、告知の共有をしたり、あるいはストアのお客様を歓迎します。</p>",
+          "ko": "<p>이 텍스트를 사용하여 고객과 브랜드에 대한 정보를 공유하십시오. 제품 설명, 공지 사항 공유 또는 고객의 스토어 방문을 환영합니다.</p>",
+          "nb": "<p>Bruk denne teksten for å dele informasjon om merkevaren med kundene dine. Beskriv et produkt, del kunngjøringer eller ønsk kunder velkommen til butikken din.</p>",
+          "nl": "<p>Gebruik deze tekst om informatie over je merk te delen met je klanten. Beschrijf een product, deel aankondigingen of verwelkom klanten in je winkel.</p>",
+          "pl": "<p>Użyj tego tekstu, aby udostępnić klientom informacje o swojej marce. Opisz produkt, udostępnij ogłoszenia lub przywitaj klientów w swoim sklepie.</p>",
+          "pt-BR": "<p>Use este texto para compartilhar informações sobre sua marca com seus clientes. Descreva um produto, compartilhe comunicado ou dê boas-vindas aos clientes em sua loja.</p>",
+          "pt-PT": "<p>Utilize este texto para partilhar informações sobre a sua marca com os seus clientes. Descreva um produto, partilhe comunicados ou receba clientes na sua loja.</p>",
+          "sv": "<p>Använd den här texten för att dela information om ditt varumärke med dina kunder. Beskriv en produkt, dela meddelanden eller välkomna kunder till din butik.</p>",
+          "th": "<p>ใช้ข้อความนี้ในการแชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณกับลูกค้าของคุณ อธิบายคุณสมบัติของสินค้า แชร์ประกาศ หรือต้อนรับลูกค้าสู่ร้านค้าของคุณ</p>",
+          "tr": "<p>Müşterilerinizle markanız hakkında bilgi paylaşmak için bu metni kullanın. Ürün açıklaması girin, duyuru paylaşın veya mağazanıza gelen müşterileri karşılayın.</p>",
+          "vi": "<p>Sử dụng văn bản này để chia sẻ thông tin về thương hiệu của bạn với khách hàng. Mô tả sản phẩm, chia sẻ thông báo hoặc chào mừng khách hàng tới cửa hàng của bạn.</p>",
+          "zh-CN": "<p>使用此文本与您的客户分享有关您品牌的信息。描述产品、分享公告或欢迎客户访问您的商店。</p>",
+          "zh-TW": "<p>您可以用這段文字和顧客分享品牌資訊、描述產品、分享公告，或歡迎顧客光臨您的商店。</p>"
+        }
+      }, 
+      {
+        "type": "number",
+        "id": "dcsize",
+        "label": "Content size (desktop)",
+        "default": 16,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mcsize",
+        "label": "Content size (mobile)",
+        "default": 16,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "header",
+        "content": "Styles"
+      },
+      {
+        "type": "number",
+        "id": "heading_width",
+        "label": "Heading content width",
+        "default": 665,
+        "info": "unit in px"
+      },
+      {
+        "type": "number",
+        "id": "contents_width",
+        "label": "Contents text width",
+        "default": 621,
+        "info": "unit in px"
+      },
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background ",
+        "default": "transparent"
+      }, 
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text",
+        "default": "#000"
+      }, 
+      {
+        "type": "number",
+        "id": "dpadtop",
+        "label": "Padding top(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "dpadbot",
+        "label": "Padding bottom(desktop)",
+        "default": 70,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mpadtop",
+        "label": "Padding top(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }, 
+      {
+        "type": "number",
+        "id": "mpadbot",
+        "label": "Padding bottom(mobile)",
+        "default": 35,
+        "info": "Unit in px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "MS Rich Text",
+        "category": "text"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,588 @@
+{% if
+  request.page_type == 'blog'
+  or request.page_type == 'collection'
+  or request.page_type == 'list-collections'
+  or request.page_type == 'search'
+%}
+  {%- assign hide_footer = true -%}
+{% endif %}
+
+<!doctype html>
+<html class="supports-no-js {% if hide_footer %} site-footer--hidden{% endif %}" lang="{{ request.locale.iso_code }}">
+<link href="{{ 'swiper-bundle.min.css' | asset_url }}" rel="preload" as="style" />
+  <link href="{{ 'ms-custom.css' | asset_url }}" rel="preload" as="style" />
+  <link href="{{ 'acu-points.css' | asset_url }}" rel="preload" as="style" />
+  <link href="{{ 'new-megamenu-css.css' | asset_url }}" rel="preload" as="style" />
+  <link
+  rel="preload"
+  href="{{ 'swiper-bundle.min.js' | asset_url }}"
+  as="script"
+>
+
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
+  <meta name="google-site-verification" content="_57Q6ahJRs1T1tfYSVlwFOmaiCV2efZ-JUeSFxwZvyc" />
+  
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "sgvhvxvngz");
+</script>
+  
+<head>
+{% render 'replo-head' %}
+<!-- Preorder Panda Pixel start-->
+<script async src='https://pre.bossapps.co/js/script?shop=acuseeds-uk.myshopify.com'></script>
+<!-- Preorder Panda Pixel ended-->
+<meta name="google-site-verification" content="_57Q6ahJRs1T1tfYSVlwFOmaiCV2efZ-JUeSFxwZvyc" />
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="alternate" href="{{ canonical_url }}" hreflang="en-gb" />
+  {% if settings.favicon != blank %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {% endif %}
+
+<meta name="google-site-verification" content="TBn1aKYp-vq6GYKnWFEqJ-5FykLiJAQvsNrb7EEaE-4" />
+  
+  <title>
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% include 'social-meta-tags' %}
+  {% render 'css-variables' %}
+  {% render 'custom-css' %}
+  {% unless request.design_mode %}{% include 'wlm-head' %}{% endunless %}
+{{ content_for_header }}
+
+  {% include 'critical-css' %}
+  {% include 'load-css' %}
+
+{% if template contains 'collection' %}
+  {% if collection.handle == 'frontpage' or
+        collection.handle == 'bundles' or
+        collection.handle == 'refills' or
+        collection.handle == 'kits' or
+        collection.handle == 'acu-seeds-accessories' %}
+    <meta name="robots" content="noindex, nofollow">
+  {% endif %}
+{% elsif template contains 'page' %}
+  {% if page.handle == 'faqs' %}
+    <meta name="robots" content="noindex, nofollow">
+  {% endif %}
+{% endif %}
+  
+  <script>
+    var theme = {
+      stylesheet: "{{ 'theme.scss.css' | asset_url }}",
+      modelViewerUiSprite: "{{ 'model-viewer-ui-sprite.svg' | asset_url }}",
+      plyrSprite: "{{ 'plyr-sprite.svg' | asset_url }}",
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        addItemSuccess: {{ 'products.product.item_added_to_cart' | t | json }},
+        viewCart: {{ 'products.product.view_cart' | t | json }},
+        external: {{ 'general.accessibility.link_messages.external' | t | json }},
+        newWindow: {{ 'general.accessibility.link_messages.new_window' | t | json }},
+        newWindowExternal: {{ 'general.accessibility.link_messages.new_window_and_external' | t | json }},
+        cartError: {{ 'cart.general.cart_error' | t | json }},
+        cartQuantityError: {{ 'cart.general.cart_quantity_error_html' | t: quantity: "[quantity]", title: "[title]" | json }},
+        regularPrice: {{ 'products.product.regular_price' | t | json }},
+        salePrice: {{ 'products.product.sale_price' | t | json }},
+        unitPrice: {{ 'products.product.unit_price' | t | json }},
+        unitPriceSeparator: {{ 'general.accessibility.unit_price_separator' | t | json }},
+        newsletter: {
+          blankError: {{ 'general.newsletter_form.blank_error' | t | json }},
+          invalidError: {{ 'general.newsletter_form.invalid_error' | t | json }}
+        },
+        map: {
+          zeroResults: {{ 'sections.map.address_no_results' | t | json }},
+          overQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+          authError: {{ 'sections.map.auth_error_html' | t | json }},
+          addressError: {{ 'sections.map.address_error' | t | json }}
+        },
+        slideshow: {
+          loadSlideA11yString: {{ 'sections.slider.load_slide' | t: slide_number: '[slide_number]' | json }},
+          activeSlideA11yString: {{ 'sections.slider.active_slide' | t: slide_number: '[slide_number]' | json }}
+        }
+      },
+      isOnline: true,
+      moneyFormat: {{ shop.money_format | json }},
+      mediaQuerySmall: 750,
+      mediaQueryMedium: 990
+    };
+
+    {% if request.page_type contains 'customers/' %}
+      theme.countryOptionTags = {{ all_country_option_tags | json}};
+    {% endif %}
+
+    document.documentElement.className = document.documentElement.className.replace('supports-no-js', '');
+  </script>
+
+  <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
+  <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+
+
+	{{ shop.metafields.loox["global_html_head"] }}
+
+
+  <script>
+  (function(w, d, t, h, s, n) {
+    w.FlodeskObject = n;
+    var fn = function() {
+      (w[n].q = w[n].q || []).push(arguments);
+    };
+    w[n] = w[n] || fn;
+    var f = d.getElementsByTagName(t)[0];
+    var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+    var sm = d.createElement(t);
+    sm.async = true;
+    sm.type = 'module';
+    sm.src = h + s + '.mjs' + v;
+    f.parentNode.insertBefore(sm, f);
+    var sn = d.createElement(t);
+    sn.async = true;
+    sn.noModule = true;
+    sn.src = h + s + '.js' + v;
+    f.parentNode.insertBefore(sn, f);
+  })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+</script>
+<script>
+  window.fd('form', {
+    formId: '6220c54de4da3a4464c2fcca'
+  });
+</script>
+
+
+{{ 'ms-custom.css' | asset_url | stylesheet_tag }}
+{{ 'acu-points.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Monk start {% endcomment %}
+<script>
+  // handles the rendering of updated sections
+const renderContents = (parsedState, sectionsToRender) => {
+    sectionsToRender.forEach((section) => {
+    // get the element present in current DOM to update
+    const sectionElement = section.selector
+      ? document.querySelector(section.selector)
+      : document.getElementById(section.id);
+    if (parsedState[section.id])
+      // get the innerHTML of fetched updated element based on id and selector
+      sectionElement.innerHTML = getSectionInnerHTML(
+        parsedState[section.id],
+      section.selector
+    );
+  });
+};
+
+const getSectionInnerHTML = (html, selector) =>
+  // parses string to HTML
+  new DOMParser()
+    .parseFromString(html, "text/html")
+    .querySelector(
+         selector
+    ).innerHTML;
+
+// adds a event listener to the custom event
+document.addEventListener("cart:refresh", () => {
+  checkSectionConditionsAndUpdate();
+});
+
+// checks for all the length of sections to fetch and update
+// because max length which API can fetch is 5 only
+const checkSectionConditionsAndUpdate = () => {
+  const isCartPage = window.location.pathname.includes("/cart");
+
+  const sectionsConfig = [
+    ...getCommonSectionsToRender(),
+    ...(isCartPage
+      ? getCartPageSectionsToRender()
+      : getCartDrawerSectionsToRender()),
+  ];
+
+  const sectionUpdateConfig = {
+    sectionsLimitReached: false,
+    sectionsConfig,
+  };
+
+  // conditions for length
+  if (sectionsConfig.length > 5) {
+    let startRemovePosition = 0;
+
+    for (let i = 0; i < Math.ceil(sectionsConfig.length / 5); i += 1) {
+      getSectionsAndUpdate({
+        ...sectionUpdateConfig,
+        startRemovePosition,
+        sectionsLimitReached: true,
+      });
+      startRemovePosition += 5;
+    }
+  } else getSectionsAndUpdate(sectionUpdateConfig);
+};
+
+// fetches the sections and updates them accordingly
+const getSectionsAndUpdate = async ({
+  sectionsLimitReached,
+  startRemovePosition = 0,
+  sectionsConfig,
+}) => {
+  // concatenates sections IDs to a string
+  const sectionsToFetch = (
+    sectionsLimitReached
+      ? sectionsConfig.slice(
+          startRemovePosition,
+          sectionsConfig.length < startRemovePosition + 5
+            ? sectionsConfig.length
+            : startRemovePosition + 5
+        )
+      : sectionsConfig
+  ).reduce(
+    (curr, section, i) => (i ? `${curr},${section.id}` : curr),
+    sectionsConfig[startRemovePosition].id
+  );
+
+  const sectionData = await fetch(
+    `${window.location.pathname}?sections=${sectionsToFetch}`
+  );
+  const data = await sectionData.json();
+
+  renderContents(data, sectionsConfig);
+};
+
+const getCommonSectionsToRender = () => {
+  return [
+    {
+      id: "header",
+      selector: ".site-header__cart",
+    },
+  ];
+};
+
+const getCartDrawerSectionsToRender = () => {
+  return [
+    {
+      id: "cart-drawer",
+      selector: "#CartDrawer",
+    },
+  ];
+};
+
+const getCartPageSectionsToRender = () => {
+  return [
+    {
+      id: "cart-template",
+      selector: "#shopify-section-cart-template",
+    },
+    
+  ];
+};
+</script>
+{% comment %} Monk end {% endcomment %}
+
+</head>
+
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', '-' | handle }} template-{% if request.page_type != blank %}{{ request.page_type | handle }}{% else %}none{% endif %}{% if template.suffix == nil and template != 'index' %} page__default{% endif %} data-animations">
+
+  <a class="visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+
+  <div class="main-content{% if request.page_type == blank %} main-content--no-template{% endif %}" data-drawer-push>
+    <div class="main-content__wrapper">
+      <main class="content-for-layout" id="MainContent" role="main">
+        {% comment %}{{ content_for_layout }}{% endcomment %}{% include 'wlm-body' %}
+      </main>
+
+      {% sections 'group-prefooter' %}
+      {% comment %} {% section 'footer' %} {% endcomment %}
+     {% section 'cw-new-footer' %}
+    </div>
+  </div>
+
+  {% include 'cart-drawer' %}
+
+
+
+
+  <ul hidden>
+    <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+    <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
+  </ul>
+
+	{{ shop.metafields.loox["global_html_body"] }}
+  {% render 'junip-store-key' %}
+{% render 'paywhirl-main' %}
+{% render 'spurit_ufp2_theme_snippet' %}
+{{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag }}
+
+{% if request.page_type == 'product' %}
+<style>
+      .cc__addtocart-sticky {
+      position: fixed;
+      width: 94%;
+      height: auto;
+      bottom: 10px;
+      left: 14px;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: block;
+      z-index: 24;
+    }
+
+   .cc__addtocart-sticky.cc__atcslideup{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #cc__addtocart-sticky .btn {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+      font-size: 16px;
+      font-weight: 600 !important;
+      background-color: #695450;
+      border: unset !important;
+  }
+
+  #cc__addtocart-sticky .btn:after{
+    outline: unset;
+  }
+
+    @media screen and (min-width: 750px){
+       .cc__addtocart-sticky{
+        display: none;
+      }
+    }
+
+    
+</style>
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+  <div id="cc__addtocart-sticky" class="cc__addtocart-sticky">
+    {% unless current_variant.available %}
+  {% assign button_text = 'products.product.sold_out' | t %}
+{% else %}
+
+  {% assign button_text = 'products.product.add_to_cart' | t  %}
+{% endunless %}
+      <button class="btn btn--to-secondary btn--full triggerbutton{% if current_variant.available and product.selling_plan_groups == empty %} shopify-payment-btn btn--secondary{% endif %}"
+    {% unless current_variant.available %} disabled="true"{% endunless %}
+    aria-label="{{ button_text }}"
+  >
+    <span class="primary-text" aria-hidden="false">
+      {{ button_text }} | <span class="cc__stickyatc">{{ product.selected_or_first_available_variant.price | money }}</span>
+    </span>
+    <span class="secondary-text" aria-hidden="true" >{{ 'products.product.view_cart' | t }}</span>
+  </button>
+  </div>
+<script>
+  window.addEventListener('scroll', function() {
+    var button = document.getElementById('cc__addtocart-sticky');
+    if (window.scrollY > 100) { // Adjust 100 to your desired scroll position
+      button.classList.add('cc__atcslideup');
+    } else {
+      button.classList.remove('cc__atcslideup');
+    }
+  });
+
+  // Sticky add to cart click -> also click product-atc button
+  document.getElementById('cc__addtocart-sticky').addEventListener('click', e => {
+    const productAtcBtn = document.querySelector('[data-info="product-atc"]');
+    if (productAtcBtn) productAtcBtn.click();
+  });
+
+  document.querySelector('.triggerbutton').addEventListener('click', e => {
+    const formBtn = document.querySelector('.cc__product-form-container button');
+    if (formBtn) formBtn.click();
+
+    const targetBtn = document.querySelector('button.text.r-1fs4urg.alchemy-rte');
+    if (targetBtn) targetBtn.click();
+
+    const targetBtn2 = document.querySelector('button.text.r-yae8e4.alchemy-rte');
+    if (targetBtn2) targetBtn2.click();
+
+    const targetBtn2 = document.querySelector('button.text.r-hw0b0f.alchemy-rte');
+    if (targetBtn2) targetBtn2.click();
+  });
+</script>
+{% endif %}
+{% comment %}<!-- WPD Start -->
+                {% if customer.tags.size > 0 and template != 'cart' %}
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      let checkoutbtninterval = setInterval(function(){
+                        var x=document.querySelectorAll("input[name='checkout'], button[name='checkout'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], [href$='checkout']");
+                        var WPD_RedirectToCart = function(e) {
+                          	e.stopPropagation();
+                            e.preventDefault();
+                            window.location = '/cart';
+                            };
+                            for (var i = 0; i < x.length; i++) {
+                                x[i].addEventListener('click', WPD_RedirectToCart, false);
+                            }
+                        },500)
+                });
+              </script>
+               {% endif %}
+         
+
+               {% if customer.tags.size > 0 and template == 'cart' %}
+                 {% include 'wcp_cart' %}
+               {% endif %}
+               <!-- WPD End -->{% endcomment %}
+
+               
+<!-- Begin Shopify-Afterpay JavaScript Snippet (v1.2.1) -->
+{% if cart.currency.iso_code == 'GBP' or cart.currency.iso_code == 'USD' %}
+<script type="text/javascript">
+// Overrides:
+// var afterpay_msg_size = 'sm';  // Can be 'xs', 'sm', 'md' or 'lg'.
+// var afterpay_bold_amount = true;
+// var afterpay_logo_theme = 'colour';  // Can be 'colour', 'black' or 'white'.
+// var afterpay_modal_open_icon = true;
+// var afterpay_hide_upper_limit = false;
+// var afterpay_hide_lower_limit = true;
+// var afterpay_show_if_outside_limits = true;
+
+// var afterpay_product_integration_enabled = true;
+// var afterpay_product_selector = '#product-price-selector';
+// var afterpay_variable_price_fallback = false;
+// var afterpay_variable_price_fallback_selector = '';
+// var afterpay_variable_price_fallback_method = 'mutation';  // Can be 'mutation' or 'interval'.
+
+// var afterpay_cart_integration_enabled = true;
+// var afterpay_cart_static_selector = '#cart-subtotal-selector';
+// var afterpay_variable_subtotal_fallback = false;
+// var afterpay_variable_subtotal_fallback_selector = '';
+// var afterpay_variable_subtotal_fallback_method = 'mutation'; // Can be 'mutation' or 'interval'.
+
+// var afterpay_dynamic_cart_integration_enabled = false;
+// var afterpay_dynamic_cart_selector = '.cart-drawer__footer .totals';
+// var afterpay_dynamic_cart_observer_target = '#CartDrawer';
+
+// var afterpay_footer_logo_enabled = true;
+// var afterpay_footer_logo_format = 'icon';  // Can be 'icon', 'stacked' or 'logo'.
+// var afterpay_footer_logo_theme = 'colour'; // Can be 'colour', 'black' or 'white'.
+// var afterpay_footer_logo_background = 'border';  // Can be 'border' or 'transparent'.
+// var afterpay_footer_logo_container = 'footer ul.payment-icons';
+// var afterpay_footer_logo_template = '<li class="payment-icon"><object data="{logo_path}" type="image/svg+xml"></object></li>';
+
+// Non-editable fields:
+var afterpay_js_language = {{ localization.language.iso_code | slice: 0, 2 | json }};
+var afterpay_js_country = {{ localization.country.iso_code | json }};
+var afterpay_shop_currency = {{ shop.currency | json }};
+var afterpay_cart_currency = {{ cart.currency.iso_code | json }};
+var afterpay_shop_money_format = {{ shop.money_format | json }};
+var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
+var afterpay_theme_name = {{ theme.name | json }};
+var afterpay_product = {{ product | json }};
+var afterpay_product_collections = {{ product.collections | map: 'title' | join: ',' | json }};
+var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+var afterpay_cart_total_price = {{ cart.total_price | json }};
+var afterpay_cart_skus = {{cart.items | map: 'sku' | join: ',' | json }};
+var afterpay_cart_collections = {{cart.items | map: 'product' | map: 'collections' | map: 'title' | uniq | join: ',' | json }};
+var afterpay_js_snippet_version = '1.2.1';
+</script>
+<script type="text/javascript" src="https://static.afterpay.com/shopify-afterpay-javascript.js"></script>
+{% else %}
+<!-- Afterpay disabled: {{ cart.currency.iso_code }} != Supported Currencies -->
+{% endif %}
+<!-- End Shopify-Afterpay JavaScript Snippet (v1.2.1) -->
+
+
+{% assign wcp_wholesale_customer = false %}
+{% if shop.metafields.wcp_status.wcp_status != 'disabled' and customer %}
+{% assign active_discounts = shop.metafields.wcp_active_discounts.wcp_active_discounts %}
+{% assign active_discounts_array = active_discounts | split: ',' %}
+{% assign customer_tags = blank %}
+{% for tag in customer.tags %}
+{% assign tempTag = tag | downcase %}
+{% assign customer_tags = customer_tags | prepend:tempTag %}
+{% unless forloop.last %}
+{% assign customer_tags = customer_tags | prepend:','  %}
+{% endunless %}
+{% endfor %}
+{% assign customer_tags = customer_tags | split:',' %}
+{% assign active_discounts = active_discounts | downcase %}
+{% for discount_key in active_discounts_array %}
+{% assign key_split = discount_key | split: '-' %}
+{% assign key_split_length = key_split | size %}
+{% if key_split_length > 2 %}
+{% assign removeable_key = key_split.last | prepend: '-' %}
+{% assign wcp_customer_tag = discount_key | remove_last: removeable_key %}
+{% else %}
+{% assign wcp_customer_tag = key_split[0] %}
+{% endif %}
+{% assign wcp_customer_tag = wcp_customer_tag | downcase %}
+{% if customer_tags contains wcp_customer_tag %}
+{% assign wcp_wholesale_customer = true %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if wcp_wholesale_customer == true %}
+<style>
+.template-cart span.mr-cd-total-offer-price {
+    display: none;
+}
+</style>
+{% endif %}
+
+  {{ 'acu-points.js' | asset_url | script_tag }}
+
+
+{% render 'cw-pdp-atf-clarity' %}
+<script>
+(function () {
+  var cutAmount = 90;
+
+  function cropLooxButton() {
+    var wrapper = document.querySelector('#looxReviews');
+    var iframe = document.querySelector('#looxReviewsFrame');
+
+    if (!wrapper || !iframe) return;
+
+    var iframeHeight =
+      parseInt(iframe.getAttribute('height'), 10) ||
+      parseInt(iframe.style.height, 10) ||
+      parseInt(wrapper.style.height, 10);
+
+    if (!iframeHeight || iframeHeight <= cutAmount) return;
+
+    wrapper.style.setProperty('overflow', 'hidden', 'important');
+    wrapper.style.setProperty('height', iframeHeight - cutAmount + 'px', 'important');
+
+    iframe.style.setProperty('height', iframeHeight + 'px', 'important');
+    iframe.style.setProperty('width', '100%', 'important');
+  }
+
+  cropLooxButton();
+
+  document.addEventListener('DOMContentLoaded', cropLooxButton);
+  window.addEventListener('load', cropLooxButton);
+
+  setInterval(cropLooxButton, 500);
+
+  var observer = new MutationObserver(cropLooxButton);
+
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['style', 'height']
+  });
+})();
+</script>
+  </body>
+</html>

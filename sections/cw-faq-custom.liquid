@@ -1,0 +1,347 @@
+<style>
+    @font-face {
+      font-family: 'Botanica';
+      src: url('https://cdn.shopify.com/s/files/1/0588/4742/8796/files/botanica.woff2?v=1759557561') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+  
+    .cw-faq-custom {
+      padding: 40px 0px;
+      background-color: {{ section.settings.background_color }};
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    .cw-faq-custom__container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  
+    .cw-faq-custom__title {
+      font-family: 'Botanica', serif;
+      font-size: {{ section.settings.title_size }}px;
+      color: {{ section.settings.title_color }};
+      text-align: center;
+      margin: 0 0 60px 0;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+  
+    .cw-faq-custom__items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+  
+    .cw-faq-custom__item {
+      border-bottom: 1px solid {{ section.settings.border_color }};
+    }
+  
+    .cw-faq-custom__item:first-child {
+      border-top: 1px solid {{ section.settings.border_color }};
+    }
+  
+    .cw-faq-custom__question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: {{ section.settings.question_color }};
+      transition: background-color 0.3s ease;
+      gap: 20px;
+    }
+  
+    .cw-faq-custom__question:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+  
+    .cw-faq-custom__question-text {
+      flex: 1;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .cw-faq-custom__item.active .cw-faq-custom__question-text{
+      font-weight: 600;
+    }
+  
+     .cw-faq-custom__icon {
+       width: 20px;
+       height: 20px;
+       flex-shrink: 0;
+       transition: transform 0.3s ease;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+     }
+   
+     .cw-faq-custom__icon img {
+       width: 100%;
+       height: 100%;
+       transition: transform 0.3s ease;
+     }
+   
+     .cw-faq-custom__item.active .cw-faq-custom__icon img {
+       transform: rotate(180deg);
+     }
+  
+    .cw-faq-custom__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 20px;
+    }
+  
+    .cw-faq-custom__item.active .cw-faq-custom__answer {
+      max-height: 500px;
+      padding: 0 20px 25px 20px;
+    }
+  
+    .cw-faq-custom__answer-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: {{ section.settings.answer_color }};
+      margin: 0;
+      font-weight: 400;
+    }
+  
+    @media (max-width: 768px) {
+      .cw-faq-custom {
+        padding: 60px 20px;
+      }
+  
+      .cw-faq-custom__title {
+        font-size: 35px !important;
+        margin-bottom: 40px;
+      }
+  
+      .cw-faq-custom__question {
+        padding: 15px 0px;
+        font-size: 20px;
+      }
+  
+      .cw-faq-custom__answer {
+        padding: 0 15px;
+      }
+  
+      .cw-faq-custom__item.active .cw-faq-custom__answer {
+        padding: 0 15px 20px 0px;
+      }
+  
+      .cw-faq-custom__answer-text {
+        font-size: 14px;
+      }
+    }
+  </style>
+  
+  <section class="cw-faq-custom">
+    <div class="cw-faq-custom__container">
+      <!-- Title -->
+      {% if section.settings.title != blank %}
+        <h2 class="cw-faq-custom__title">{{ section.settings.title }}</h2>
+      {% endif %}
+  
+      <!-- FAQ Items -->
+      {% if section.blocks.size > 0 %}
+        <div class="cw-faq-custom__items">
+          {% for block in section.blocks %}
+            <div class="cw-faq-custom__item {% if forloop.first %}active{% endif %}" {{ block.shopify_attributes }}>
+              <!-- Question Button -->
+               <button 
+                 class="cw-faq-custom__question" 
+                 type="button"
+                 aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                 data-faq-toggle>
+                 <span class="cw-faq-custom__question-text">{{ block.settings.question }}</span>
+                 <span class="cw-faq-custom__icon">
+                   <img 
+                     src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/chevron-down.png?v=1762335710" 
+                     alt="Toggle" 
+                     width="20" 
+                     height="20">
+                 </span>
+               </button>
+  
+              <!-- Answer -->
+              <div class="cw-faq-custom__answer">
+                <p class="cw-faq-custom__answer-text">{{ block.settings.answer }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+  
+  <script>
+    (function() {
+      const faqItems = document.querySelectorAll('.cw-faq-custom__item');
+      
+      faqItems.forEach(item => {
+        const button = item.querySelector('[data-faq-toggle]');
+        
+        button.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          // Close all items
+          faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('[data-faq-toggle]').setAttribute('aria-expanded', 'false');
+          });
+          
+          // Toggle current item
+          if (!isActive) {
+            item.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+  </script>
+  
+  {% schema %}
+  {
+    "name": "FAQ Custom",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Settings"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "Title"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title",
+        "default": "FREQUENTLY ASKED QUESTIONS"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title Color",
+        "default": "#8B6F47"
+      },
+      {
+        "type": "range",
+        "id": "title_size",
+        "label": "Title Size",
+        "min": 24,
+        "max": 60,
+        "step": 2,
+        "default": 40,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Styling"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border Color",
+        "default": "#E0E0E0"
+      },
+      {
+        "type": "color",
+        "id": "question_color",
+        "label": "Question Text Color",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "answer_color",
+        "label": "Answer Text Color",
+        "default": "#666666"
+      },
+      {
+        "type": "color",
+        "id": "icon_color",
+        "label": "Icon Color",
+        "default": "#333333"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq_item",
+        "name": "FAQ Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "question",
+            "label": "Question",
+            "default": "HOW DOES THE REFERRAL PROGRAM WORK?"
+          },
+          {
+            "type": "textarea",
+            "id": "answer",
+            "label": "Answer",
+            "default": "When you refer a friend and they make a purchase using your referral link or code, they receive £5 off their order and you receive £5 credit."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQ Custom",
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "faq_item",
+            "settings": {
+              "question": "HOW DOES THE REFERRAL PROGRAM WORK?",
+              "answer": "When you refer a friend and they make a purchase using your referral link or code, they receive £5 off their order and you receive £5 credit."
+            }
+          },
+          {
+            "type": "faq_item",
+            "settings": {
+              "question": "WHEN DO WE EACH GET OUR 15 % OFF?",
+              "answer": "Your discount will be applied automatically when your friend makes their first purchase using your referral code."
+            }
+          },
+          {
+            "type": "faq_item",
+            "settings": {
+              "question": "ARE THERE ANY RESTRICTIONS OR EXCLUSIONS ON THE DISCOUNT?",
+              "answer": "The discount applies to most products. Some exclusions may apply to sale items or special promotions."
+            }
+          },
+          {
+            "type": "faq_item",
+            "settings": {
+              "question": "IS THERE A LIMIT TO HOW MANY FRIENDS I CAN REFER?",
+              "answer": "No, there is no limit! You can refer as many friends as you like and earn rewards for each successful referral."
+            }
+          },
+          {
+            "type": "faq_item",
+            "settings": {
+              "question": "WHAT IF MY FRIEND RETURNS THEIR ORDER? DOES THAT AFFECT MY DISCOUNT?",
+              "answer": "If your friend returns their order, the referral credit may be reversed. Please check our terms and conditions for full details."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  
+  

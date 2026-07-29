@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "contact_us_8xB6X7": {
+      "type": "contact-us",
+      "name": "Contact Form Custom",
+      "settings": {
+        "label": "Contact Us",
+        "title": "Send us a message and our team will get back to you within 48 hours.",
+        "success_message": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "first_name_placeholder": "First Name",
+        "last_name_placeholder": "Last Name",
+        "email_placeholder": "E-mail",
+        "message_placeholder": "Message",
+        "button_text": "Send Message",
+        "bg_color": "linear-gradient(0deg, rgba(247, 248, 244, 1), rgba(247, 248, 244, 1) 100%)",
+        "text_color": "#6B5A52",
+        "button_bg_color": "#6B5A52",
+        "button_text_color": "#FFFFFF",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "contact_us_8xB6X7"
+  ]
+}

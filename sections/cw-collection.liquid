@@ -1,0 +1,862 @@
+{% liquid
+  assign st = section.settings
+  assign bundle_collection = st.collection
+  assign products_limit = st.products_limit
+%}
+
+<section class="cw-collection-grid" data-cw-section-id="{{ section.id }}">
+  <div class="cw-collection-grid__inner">
+    {% if st.title != blank %}
+      <h1 class="cw-collection-grid__title">{{ st.title }}</h1>
+    {% endif %}
+
+    {% if st.text != blank %}
+      <div class="cw-collection-grid__text">
+        {{ st.text }}
+      </div>
+    {% endif %}
+
+    {% if bundle_collection != blank and bundle_collection.products_count > 0 %}
+      <div class="cw-collection-grid__items">
+        {% for product in bundle_collection.products limit: products_limit %}
+          {% liquid
+            assign current_variant = product.selected_or_first_available_variant
+            assign current_price = current_variant.price
+            assign compare_price = current_variant.compare_at_price
+            assign product_title_downcase = product.title | downcase
+            assign is_womens_kit = false
+            assign forced_description = blank
+
+            if product_title_downcase contains 'women'
+              assign is_womens_kit = true
+              assign forced_description = 'For life after 40, menstrual discomfort and more'
+            elsif product_title_downcase contains 'calm'
+              assign forced_description = 'For busy minds and overwhelm'
+            elsif product_title_downcase contains 'tension'
+              assign forced_description = 'For everyday tension and physical discomfort'
+            elsif product_title_downcase contains 'sleep'
+              assign forced_description = 'For restful sleep'
+            endif
+          %}
+
+          <article class="cw-collection-grid-card" data-product-card>
+            <div class="cw-collection-grid-card__media" data-gallery>
+              {% if product.images.size > 0 %}
+                {% for image in product.images limit: 5 %}
+                  <div class="cw-collection-grid-card__slide{% if forloop.first %} is-active{% endif %}" data-slide="{{ forloop.index0 }}">
+                    <img
+                      src="{{ image | image_url: width: 700 }}"
+                      alt="{{ image.alt | default: product.title | escape }}"
+                      width="{{ image.width }}"
+                      height="{{ image.height }}"
+                      loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                    >
+                  </div>
+                {% endfor %}
+              {% else %}
+                <div class="cw-collection-grid-card__placeholder">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+
+              {% if product.images.size > 1 %}
+                <button class="cw-collection-grid-card__arrow cw-collection-grid-card__arrow--prev is-hidden" type="button" aria-label="Previous image" data-prev>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M3.509 8.04648L8.426 12.9635L7.12983 14.2596L-6.2331e-07 7.12981L7.12983 -2.35115e-05L8.426 1.29614L3.509 6.21314L14.6667 6.21314L14.6667 8.04648L3.509 8.04648Z" fill="#695450"/>
+                  </svg>
+                </button>
+
+                <button class="cw-collection-grid-card__arrow cw-collection-grid-card__arrow--next" type="button" aria-label="Next image" data-next>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M14.825 11.9167L9.90798 16.8337L11.2042 18.1299L18.334 11.0001L11.2042 3.87022L9.90798 5.16638L14.825 10.0834L3.66732 10.0834L3.66732 11.9167L14.825 11.9167Z" fill="#695450"/>
+                  </svg>
+                </button>
+
+                <div class="cw-collection-grid-card__dots">
+                  {% for image in product.images limit: 5 %}
+                    <button class="cw-collection-grid-card__dot{% if forloop.first %} is-active{% endif %}" type="button" aria-label="Go to image {{ forloop.index }}" data-dot="{{ forloop.index0 }}"></button>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="cw-collection-grid-card__rating">
+              <span class="cw-collection-grid-card__stars" aria-hidden="true">★★★★★</span>
+              <span class="cw-collection-grid-card__rating-text">{{ st.rating_text }}</span>
+            </div>
+
+            <h2 class="cw-collection-grid-card__title">{{ product.title }}</h2>
+
+            {% if is_womens_kit %}
+              <div class="cw-collection-grid-card__colors" role="listbox" aria-label="Select color">
+                {% liquid
+                  assign gold_variant = blank
+                  assign silver_variant = blank
+                  assign nickel_variant = blank
+
+                  for variant in product.variants
+                    assign variant_title_downcase = variant.title | downcase
+
+                    if gold_variant == blank and variant_title_downcase contains 'gold'
+                      assign gold_variant = variant
+                    endif
+
+                    if silver_variant == blank and variant_title_downcase contains 'silver'
+                      assign silver_variant = variant
+                    endif
+
+                    if nickel_variant == blank and variant_title_downcase contains 'nickel'
+                      assign nickel_variant = variant
+                    endif
+                  endfor
+                %}
+
+                <button
+                  class="cw-collection-grid-card__color is-active"
+                  type="button"
+                  role="option"
+                  aria-selected="true"
+                  data-color-option
+                  data-variant-id="{% if gold_variant != blank %}{{ gold_variant.id }}{% else %}{{ current_variant.id }}{% endif %}"
+                  style="--cw-card-color: #D5C9BE;"
+                >
+                  <span>Gold</span>
+                </button>
+
+                <button
+                  class="cw-collection-grid-card__color"
+                  type="button"
+                  role="option"
+                  aria-selected="false"
+                  data-color-option
+                  data-variant-id="{% if silver_variant != blank %}{{ silver_variant.id }}{% else %}{{ current_variant.id }}{% endif %}"
+                  style="--cw-card-color: #D3D2D9;"
+                >
+                  <span>Silver</span>
+                </button>
+
+                <button
+                  class="cw-collection-grid-card__color"
+                  type="button"
+                  role="option"
+                  aria-selected="false"
+                  data-color-option
+                  data-variant-id="{% if nickel_variant != blank %}{{ nickel_variant.id }}{% else %}{{ current_variant.id }}{% endif %}"
+                  style="--cw-card-color: #4B3E46;"
+                >
+                  <span>Nickel Free</span>
+                </button>
+              </div>
+            {% endif %}
+
+            <div class="cw-collection-grid-card__price">
+              <span class="cw-collection-grid-card__price-current">{{ current_price | money }}</span>
+              {% if compare_price != blank and compare_price != current_price %}
+                <span class="cw-collection-grid-card__price-compare">{{ compare_price | money }}</span>
+              {% endif %}
+            </div>
+
+            <div class="cw-collection-grid-card__actions">
+              {% if current_variant.available %}
+                <button
+                  class="cw-collection-grid-card__button cw-collection-grid-card__button--primary"
+                  type="button"
+                  data-add-to-cart
+                  data-variant-id="{{ current_variant.id }}"
+                >
+                  {{ st.add_to_cart_label }}
+                </button>
+              {% else %}
+                <button class="cw-collection-grid-card__button cw-collection-grid-card__button--primary" type="button" disabled>
+                  Sold Out
+                </button>
+              {% endif %}
+
+              <a class="cw-collection-grid-card__button cw-collection-grid-card__button--secondary" href="{{ product.url }}">
+                {{ st.view_label }}
+              </a>
+            </div>
+
+            {% if forced_description != blank %}
+              <div class="cw-collection-grid-card__description">{{ forced_description }}</div>
+            {% elsif product.metafields.custom.bundle_card_description != blank %}
+              <div class="cw-collection-grid-card__description">{{ product.metafields.custom.bundle_card_description | metafield_tag }}</div>
+            {% elsif product.metafields.custom.card_description != blank %}
+              <div class="cw-collection-grid-card__description">{{ product.metafields.custom.card_description | metafield_tag }}</div>
+            {% elsif product.metafields.custom.short_description != blank %}
+              <div class="cw-collection-grid-card__description">{{ product.metafields.custom.short_description | metafield_tag }}</div>
+            {% elsif product.description != blank %}
+              <div class="cw-collection-grid-card__description">{{ product.description | strip_html | truncate: 88 }}</div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="cw-collection-grid__empty">Select a collection with products.</div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} .cw-collection-grid {
+    background: {{ st.background_color }};
+    padding: 37px 0 62px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid__inner {
+    width: min(100% - 36px, 1170px);
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid__title {
+    margin: 0;
+    color: {{ st.title_color }};
+    font-family: Botanica, serif;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 55px;
+    letter-spacing: 1px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid__text {
+    max-width: 801px;
+    margin-top: 28px;
+    color: {{ st.text_color }};
+    font-family: Montserrat, sans-serif;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 25.3px;
+    letter-spacing: 0.46px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid__items {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    align-items: stretch;
+    gap: 46px;
+    margin-top: 59px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card {
+    position: relative;
+    background: #fff;
+    outline: 0.3px solid #977E57;
+    outline-offset: -1px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 15px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #fff;
+    overflow: hidden;
+    flex: 0 0 auto;
+    display: grid;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__slide {
+    position: relative;
+    grid-area: 1 / 1;
+    display: none;
+    min-width: 0;
+    min-height: 0;
+  }
+
+
+
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__slide.is-active {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__placeholder,
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__placeholder svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__arrow {
+    position: relative;
+    grid-area: 1 / 1;
+    z-index: 3;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 999px;
+    background: #fff;
+    color: {{ st.title_color }};
+    box-shadow: 2px 2px 2.77px -1.83px rgba(0, 0, 0, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__arrow.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__arrow--prev {
+    justify-self: start;
+    transform: translateX(-1px);
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__arrow--next {
+    justify-self: end;
+    transform: translateX(1px);
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__dots {
+    position: relative;
+    grid-area: 1 / 1;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    align-self: end;
+    justify-self: center;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__dot {
+    width: 6px;
+    height: 6px;
+    border: 0;
+    border-radius: 999px;
+    background: #888;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__dot.is-active {
+    width: 8px;
+    height: 8px;
+    background: {{ st.border_color }};
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__rating {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 17px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__stars {
+    color: {{ st.border_color }};
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: -1px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__rating-text {
+    color: #000;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 19.2px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__title {
+    position: relative;
+    margin: 2px 0 0;
+    color: {{ st.title_color }};
+    font-family: Botanica, serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 27.5px;
+    letter-spacing: 0.5px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__colors {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    top: 20px;
+    z-index: 5;
+    pointer-events: auto;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color {
+    position: relative;
+    width: 33px;
+    height: 33px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--cw-card-color);
+    padding: 0;
+    cursor: pointer;
+    flex: 0 0 auto;
+    pointer-events: auto;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 1.5px solid transparent;
+    border-radius: inherit;
+    transition: border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color.is-active::before {
+    border-color: #000;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__price {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 4px;
+    text-align: right;
+    white-space: nowrap;
+    margin-top: auto;
+    padding-top: 7px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__price-current {
+    color: {{ st.title_color }};
+    font-family: Montserrat, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 18.7px;
+    letter-spacing: 0.34px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__price-compare {
+    color: {{ st.title_color }};
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15.4px;
+    letter-spacing: 0.28px;
+    text-decoration: line-through;
+    opacity: 0.82;
+  }
+  #shopify-section-template--28505950355838__cw_collection_jdhM3C .cw-collection-grid-card__description{color: #00000 !important;}
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__actions {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 6px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__button {
+    border: 1px solid {{ st.button_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 15.4px;
+    letter-spacing: 0.7px;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__button--primary {
+    background: {{ st.button_color }};
+    color: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__button--secondary {
+    background: #fff;
+    color: {{ st.button_color }};
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__button:hover {
+    opacity: 0.86;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__description {
+    position: relative;
+    margin: 13px 0 0;
+    color: #000000;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 13.2px;
+    letter-spacing: 0.24px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__description *,
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__description p,
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__description div,
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__description span {
+    margin: 0;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-align: inherit;
+    white-space: inherit;
+    overflow: inherit;
+    text-overflow: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid__empty {
+    margin-top: 59px;
+    color: {{ st.title_color }};
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+  }
+  .btn-primary{font-size: 14px !important;}
+
+  @media screen and (max-width: 1199px) {
+    #shopify-section-{{ section.id }} .cw-collection-grid__inner {
+      width: min(100% - 36px, 762px);
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid__items {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .cw-collection-grid {
+      padding: 26px 0 38px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid__inner {
+      width: min(100% - 36px, 354px);
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid__title {
+      font-size: 32px;
+      line-height: 35.2px;
+      letter-spacing: 0.64px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid__text {
+      max-width: 339px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 15.4px;
+      letter-spacing: 0.28px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid__items {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid-card {
+      padding: 15px 15px 16px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid-card__color {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  @media screen and (max-width: 374px) {
+    #shopify-section-{{ section.id }} .cw-collection-grid__inner {
+      width: calc(100% - 32px);
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid-card__title {
+      font-size: 22px;
+      line-height: 24.2px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid-card__price-current {
+      font-size: 15px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid-card__price-compare {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid-card__actions {
+      gap: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-collection-grid-card__button {
+      font-size: 13px;
+      padding-inline: 10px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.querySelector('#shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    const initGallery = () => {
+      section.querySelectorAll('[data-gallery]').forEach((gallery) => {
+        if (gallery.dataset.cwGalleryReady === 'true') return;
+        gallery.dataset.cwGalleryReady = 'true';
+
+        const slides = Array.from(gallery.querySelectorAll('[data-slide]'));
+        const dots = Array.from(gallery.querySelectorAll('[data-dot]'));
+        const prev = gallery.querySelector('[data-prev]');
+        const next = gallery.querySelector('[data-next]');
+        let activeIndex = 0;
+
+        const setActive = (index) => {
+          if (!slides.length) return;
+
+          activeIndex = (index + slides.length) % slides.length;
+
+          slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle('is-active', slideIndex === activeIndex);
+          });
+
+          dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle('is-active', dotIndex === activeIndex);
+          });
+
+          if (prev) {
+            prev.classList.toggle('is-hidden', activeIndex === 0);
+          }
+        };
+
+        setActive(0);
+
+        prev?.addEventListener('click', (event) => {
+          event.preventDefault();
+          setActive(activeIndex - 1);
+        });
+
+        next?.addEventListener('click', (event) => {
+          event.preventDefault();
+          setActive(activeIndex + 1);
+        });
+
+        dots.forEach((dot) => {
+          dot.addEventListener('click', (event) => {
+            event.preventDefault();
+            setActive(Number(dot.dataset.dot || 0));
+          });
+        });
+      });
+    };
+
+    initGallery();
+
+    section.addEventListener('click', async (event) => {
+      const colorOption = event.target.closest('[data-color-option]');
+
+      if (colorOption && section.contains(colorOption)) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const card = colorOption.closest('[data-product-card]');
+        if (!card) return;
+
+        const addToCartButton = card.querySelector('[data-add-to-cart]');
+        const colorOptions = Array.from(card.querySelectorAll('[data-color-option]'));
+
+        colorOptions.forEach((item) => {
+          item.classList.remove('is-active');
+          item.setAttribute('aria-selected', 'false');
+        });
+
+        colorOption.classList.add('is-active');
+        colorOption.setAttribute('aria-selected', 'true');
+
+        if (addToCartButton && colorOption.dataset.variantId) {
+          addToCartButton.dataset.variantId = colorOption.dataset.variantId;
+        }
+
+        return;
+      }
+
+      const button = event.target.closest('[data-add-to-cart]');
+
+      if (!button || !section.contains(button)) return;
+
+      event.preventDefault();
+
+      const variantId = button.dataset.variantId;
+      if (!variantId || button.classList.contains('is-loading')) return;
+
+      const originalText = button.textContent;
+      button.classList.add('is-loading');
+      button.textContent = 'Adding...';
+
+      try {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            id: Number(variantId),
+            quantity: 1
+          })
+        });
+
+        if (!response.ok) throw new Error('Cart add failed');
+
+        button.textContent = 'Added';
+
+        document.dispatchEvent(new CustomEvent('cart:refresh'));
+        document.dispatchEvent(new CustomEvent('cart:updated'));
+        document.dispatchEvent(new CustomEvent('cart:build'));
+
+        window.dispatchEvent(new CustomEvent('cart:refresh'));
+        window.dispatchEvent(new CustomEvent('cart:updated'));
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('is-loading');
+        }, 1400);
+      } catch (error) {
+        button.textContent = 'Try again';
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('is-loading');
+        }, 1400);
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "CW Collection Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Bundle and Save"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Discover thoughtfully curated wellness bundles built around your goals—while saving more than purchasing items individually."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products limit",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "Rated 4.9/5"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add to cart label",
+      "default": "Add To Cart"
+    },
+    {
+      "type": "text",
+      "id": "view_label",
+      "label": "View label",
+      "default": "View"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title and card text",
+      "default": "#695450"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Intro text",
+      "default": "#937F5C"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border and accent",
+      "default": "#977E57"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button",
+      "default": "#695450"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CW Collection Grid"
+    }
+  ]
+}
+{% endschema %}

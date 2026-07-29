@@ -1,0 +1,244 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cw_shop_all_collection_list_jD7PYt": {
+      "type": "cw-shop-all-collection-list",
+      "blocks": {
+        "tabs_N8Xi8Y": {
+          "type": "tabs",
+          "settings": {
+            "icon": "shopify://shop_images/cw-collection-list-tab-icon-1.png",
+            "title": "Ear Seeds",
+            "product_1": "24k-gold-plated-ear-seed-kit",
+            "product_1_main_image": "shopify://shop_images/ear_seed_kit.png",
+            "product_1_secondary_image": "shopify://shop_images/ear_seed_kit_2.png",
+            "product_2": "womens-health-gold-ear-seed-kit-bundle",
+            "product_2_main_image": "shopify://shop_images/womens_health_ear_seed_kit.png",
+            "product_2_secondary_image": "shopify://shop_images/womens_health_ear_seed_kit2.png",
+            "product_3": "acu-seeds-the-collection",
+            "product_3_main_image": "shopify://shop_images/acu_seeds_complete_collection.png",
+            "product_3_secondary_image": "shopify://shop_images/acu_seeds_complete_collection_2.png",
+            "product_4": "",
+            "product_5": "",
+            "product_6": "",
+            "product_7": "",
+            "product_8": "",
+            "product_9": ""
+          }
+        },
+        "tabs_QG6KEA": {
+          "type": "tabs",
+          "settings": {
+            "icon": "shopify://shop_images/cw-collection-list-tab-icon-2.png",
+            "title": "Acupressure Products",
+            "product_1": "gold-acupressure-magnet-patches",
+            "product_1_main_image": "shopify://shop_images/magnet_patches.png",
+            "product_1_secondary_image": "shopify://shop_images/magnet_patches2.png",
+            "product_2": "acupressure-mat-pillow",
+            "product_2_main_image": "shopify://shop_images/acu_mat.png",
+            "product_2_secondary_image": "shopify://shop_images/acu_mat_2.png",
+            "product_3": "acupressure-headband",
+            "product_3_main_image": "shopify://shop_images/headband.png",
+            "product_3_secondary_image": "shopify://shop_images/headband2.png",
+            "product_4": "acupressure-foot-mat",
+            "product_4_main_image": "shopify://shop_images/footmat.png",
+            "product_4_secondary_image": "shopify://shop_images/foot_mat_2.png",
+            "product_5": "",
+            "product_5_main_image": "shopify://shop_images/comb.png",
+            "product_5_secondary_image": "shopify://shop_images/comb2.png",
+            "product_6": "",
+            "product_6_main_image": "shopify://shop_images/ring.png",
+            "product_6_secondary_image": "shopify://shop_images/ring2.png",
+            "product_7": "",
+            "product_8": "",
+            "product_9": ""
+          }
+        },
+        "tabs_YpcKbP": {
+          "type": "tabs",
+          "settings": {
+            "icon": "shopify://shop_images/cw-collection-list-tab-icon-3.png",
+            "title": "Beauty Tools",
+            "product_1": "bian-stone-facial-gua-sha",
+            "product_1_main_image": "shopify://shop_images/gua_sha.png",
+            "product_1_secondary_image": "shopify://shop_images/gua_sha2.png",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": "",
+            "product_7": "",
+            "product_8": "",
+            "product_9": ""
+          }
+        },
+        "tabs_TwzQB7": {
+          "type": "tabs",
+          "disabled": true,
+          "settings": {
+            "icon": "shopify://shop_images/cw-collection-list-tab-icon-4.png",
+            "title": "Bundles and gifts",
+            "product_1": "stress-relief-kit",
+            "product_2": "pain-relief-kit",
+            "product_3": "travel-kit",
+            "product_4": "east-healing-gift-card",
+            "product_5": "",
+            "product_6": "",
+            "product_7": "",
+            "product_8": "",
+            "product_9": ""
+          }
+        },
+        "tabs_bjJN9k": {
+          "type": "tabs",
+          "settings": {
+            "icon": "shopify://shop_images/cw-collection-list-tab-icon-5.png",
+            "title": "Refills and subscription",
+            "product_1": "",
+            "product_1_main_image": "shopify://shop_images/acu_seeds_monthly_sub.png",
+            "product_1_secondary_image": "shopify://shop_images/acu_seeds_monthly_sub2.png",
+            "product_2": "24k-gold-plated-ear-seed-refills",
+            "product_2_main_image": "shopify://shop_images/acu_seeds_refills.png",
+            "product_2_secondary_image": "shopify://shop_images/acu_seeds_refills_2.png",
+            "product_3": "acu-seeds-swarovski-crystal-pearl-ear-seed-refills",
+            "product_3_main_image": "shopify://shop_images/acu_seeds_crystal_refill.png",
+            "product_3_secondary_image": "shopify://shop_images/acu_seeds_crystal_refill_2.png",
+            "product_4": "",
+            "product_5": "",
+            "product_6": "",
+            "product_7": "",
+            "product_8": "",
+            "product_9": ""
+          }
+        },
+        "tabs_DVxtKX": {
+          "type": "tabs",
+          "disabled": true,
+          "settings": {
+            "icon": "shopify://shop_images/cw-collection-list-tab-icon-6.png",
+            "title": "Ear Seed Accessories",
+            "product_1": "gold-acu-seeds-tweezers",
+            "product_1_main_image": "shopify://shop_images/tweezers.png",
+            "product_1_secondary_image": "shopify://shop_images/tweezers_2.png",
+            "product_2": "womens-health-guide",
+            "product_2_main_image": "shopify://shop_images/womens_health_guide.png",
+            "product_2_secondary_image": "shopify://shop_images/womens_health_guide2.png",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": "",
+            "product_7": "",
+            "product_8": "",
+            "product_9": ""
+          }
+        }
+      },
+      "block_order": [
+        "tabs_N8Xi8Y",
+        "tabs_QG6KEA",
+        "tabs_YpcKbP",
+        "tabs_TwzQB7",
+        "tabs_bjJN9k",
+        "tabs_DVxtKX"
+      ],
+      "name": "CW Collections List",
+      "settings": {
+        "title": "Black Friday Offers",
+        "sub_title": "Enjoy up to 50% off across our range. Add your favourites to cart to see discounts automatically applied at checkout.",
+        "vip_access": "",
+        "add_to_cart_button_text": "Add To Cart",
+        "view_button_text": "View"
+      }
+    },
+    "cw_shop_all_collection_list_community_xDrqQQ": {
+      "type": "cw-shop-all-collection-list-community",
+      "blocks": {
+        "image_fTH89T": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cw-instafeed-1.jpg",
+            "hover_image": "shopify://shop_images/cw-instafeed-1.jpg"
+          }
+        },
+        "image_cag6tG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cw-instafeed-2.jpg",
+            "hover_image": "shopify://shop_images/cw-instafeed-2.jpg"
+          }
+        },
+        "image_wmXTNA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cw-instafeed-3.jpg",
+            "hover_image": "shopify://shop_images/cw-instafeed-3.jpg"
+          }
+        },
+        "image_nEeVtD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cw-instafeed-4.jpg",
+            "hover_image": "shopify://shop_images/cw-instafeed-4.jpg"
+          }
+        },
+        "image_9tBbic": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cw-instafeed-5.jpg",
+            "hover_image": "shopify://shop_images/cw-instafeed-5.jpg"
+          }
+        },
+        "image_ji7Qbk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cw-instafeed-6.jpg",
+            "hover_image": "shopify://shop_images/cw-instafeed-6.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_fTH89T",
+        "image_cag6tG",
+        "image_wmXTNA",
+        "image_nEeVtD",
+        "image_9tBbic",
+        "image_ji7Qbk"
+      ],
+      "name": "CW Instafeed",
+      "settings": {
+        "hide_instafeed": true,
+        "title": "Join Our Community",
+        "handle": "@easthealing",
+        "handle_link": "https://www.instagram.com/easthealing",
+        "facebook_icon": "shopify://shop_images/cw-instafeed-facebook.png",
+        "facebook_link": "https://facebook.com/easthealing",
+        "instagram_icon": "shopify://shop_images/cw-instafeed-instagram.png",
+        "instagram_link": "https://www.instagram.com/easthealing"
+      }
+    },
+    "cw_shop_all_collection_list_newsletter_CKajQR": {
+      "type": "cw-shop-all-collection-list-newsletter",
+      "name": "CW Newsletter",
+      "settings": {
+        "desktop_image": "shopify://shop_images/cw-newsletter-desktop-image.jpg",
+        "mobile_image": "shopify://shop_images/cw-newsletter-mobile-image.jpg",
+        "title": "SIGN UP TO OUR NEWSLETTER",
+        "sub_title": "Receive thoughtful guidance rooted in Traditional Chinese Medicine to support your daily well-being.",
+        "klaviyo_form_id": "<div class=\"klaviyo-form-SM5RSH\"></div>"
+      }
+    }
+  },
+  "order": [
+    "cw_shop_all_collection_list_jD7PYt",
+    "cw_shop_all_collection_list_community_xDrqQQ",
+    "cw_shop_all_collection_list_newsletter_CKajQR"
+  ]
+}

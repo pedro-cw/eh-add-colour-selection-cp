@@ -1,0 +1,4 @@
+{% for product in products %}
+    {%- capture wlm_check -%}{%- render 'wlm-product' with product , wlm_is_render:'yes' -%}{%- endcapture -%}{%- if wlm_check == blank -%}{%continue%}{%- endif -%}
+    {% render 'spurit_ufp2_product_details_snippet', product: product %}
+{% endfor %}

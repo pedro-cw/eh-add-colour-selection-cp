@@ -1,0 +1,378 @@
+<div class="ms__article-container">
+    <div class="page-width">
+        <div class="ms__breadcrumbs">
+            <a href="{{ blog.url }}">{{ section.settings.uppertitle | default: blog.title }}</a>
+            <div class="ms__breadcrumbs-nav">
+                <a class="ms__breadcrumbs-previous" href="{{ blog.previous_article }}">Previous</a>
+                <span class="ms__breadcrumbs-separator">/</span>
+                <a class="ms__breadcrumbs-next" href="{{ blog.next_article }}">Next</a>
+            </div>
+        </div>
+        <div class="ms__article-contents-container">
+            <div class="ms__article-contents-featured-image">
+                <img src="{{ article.image | img_url: 'master' }}" alt="{{ article.title }}" />
+            </div>
+            <div class="ms__article-contents-rte">
+                {% liquid
+                    assign article_read_time = article.content | strip_html | split: ' ' | size | times: 1.0 | divided_by: 250 | ceil 
+                %}
+                <div class="ms__article-meta">
+                    <div class="ms__article-estimatedread">{{ article_read_time }} min read</div>
+                    <div class="ms__article-date">{{ article.published_at | date: '%m/%d/%Y' }}</div>
+                </div>
+                <{{ section.settings.htags }} class="ms__article-title">{{ article.title }}</{{ section.settings.htags }}>
+                <div class="ms__article-contents-rte-inner">
+                    {{ article.content }}
+                </div>
+            </div>
+        </div>
+        <div class="ms__article-related-posts">
+            <{{ section.settings.rhtags }} class="ms__article-related-title">You May Also Like</{{ section.settings.rhtags }}>
+            <div class="ms__article-related-post-grid">
+                {% assign currentarticle = article.handle %}
+                {% for article in blog.articles offset: 1 limit: 2 %}
+                    {% liquid
+                        assign article_read_time = article.content | strip_html | split: ' ' | size | times: 1.0 | divided_by: 250 | ceil 
+                    %}
+                    {% if currentarticle == article.handle %}
+                    {% else %}
+                    <div class="ms__article-gridlist-item">
+                        <div class="ms__article-gridlist-inner">
+                            <a href="{{ article.url }}"></a>
+                            {% if article.image != blank %}
+                            <div class="ms__blog-grid-list-featuredimage">
+                                <img src="{{ article.image | img_url: 'master' }}" alt="{{ article.title | append: ' image' }}" />
+                            </div>
+                            {% endif %}
+                            <div class="ms__article-gridlist-contents">
+                                <div class="ms__article-gridlist-meta">
+                                    <div class="ms__article-gridlist-estimatedread">{{ article_read_time }} min read</div>
+                                    <div class="ms__article-gridlist-date">{{ article.published_at | date: '%m/%d/%Y' }}</div>
+                                </div>
+                                <h3>{{ article.title }}</h3>
+                                <p class="ms__article-readmore">Read More <svg width="29" height="11" viewBox="0 0 29 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28.3309 6.09115H0.669335C0.340296 6.09115 0.0744629 5.82532 0.0744629 5.49628C0.0744629 5.16724 0.340296 4.90141 0.669335 4.90141H26.8939L23.2838 1.29128C23.0514 1.05891 23.0514 0.681538 23.2838 0.449166C23.5161 0.216794 23.8935 0.216794 24.1259 0.449166L28.7529 5.07615C28.9239 5.24718 28.9741 5.50186 28.8811 5.72494C28.7882 5.94615 28.5707 6.09115 28.3309 6.09115Z" fill="currentColor"/>
+                                <path d="M23.6984 10.7237C23.546 10.7237 23.3935 10.6661 23.2783 10.549C23.0459 10.3166 23.0459 9.93923 23.2783 9.70686L27.9108 5.0743C28.1432 4.84192 28.5206 4.84192 28.753 5.0743C28.9853 5.30667 28.9853 5.68404 28.753 5.91641L24.1204 10.549C24.0033 10.6661 23.8508 10.7237 23.6984 10.7237Z" fill="currentColor"/>
+                                </svg>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #shopify-section-{{ section.id }} .ms__breadcrumbs{
+        margin-bottom: 30px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(151, 126, 87, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #shopify-section-{{ section.id }} .ms__breadcrumbs a{
+        text-transform: UPPERCASE;
+        color: #695450;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        font-weight: bold;
+        font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__breadcrumbs-nav{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-container{
+        background-color: {{ section.settings.bgcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-contents-rte{
+        padding: 40px 20px;
+        background-color: {{ section.settings.contentbgcolor }};
+        color: {{ section.settings.textcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-contents-rte a {
+        color: {{ section.settings.textcolor }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-contents-rte-inner h2{
+        font-size: 26px;
+        margin-bottom: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-title{
+        font-family: {{ settings.type_base_font.family }}, {{ settings.type_base_font.fallback_families }};
+        font-size: 32px;
+        line-height: 1.1;
+        text-transform: none;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-meta{
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-related-posts{
+        margin-top: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-container{
+        padding-bottom: 50px;
+    }
+
+
+    #shopify-section-{{ section.id }} .ms__article-contents-featured-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    #shopify-section-{{ section.id }} .ms__article-gridlist-contents h3{
+        font-size: 20px;
+        max-height: 58px;
+        font-family: {{ settings.type_base_font.family }}, {{ settings.type_base_font.fallback_families }};
+        line-height: 1.1;
+        color: inherit;
+        text-transform: none;
+        min-height: 58px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-gridlist-inner{
+        position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-gridlist-inner a{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-readmore {
+      text-transform: UPPERCASE;
+      margin-top: 33px;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      position: relative;
+      background: linear-gradient(to right, currentColor, currentColor);
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: 0 1px;
+      transition: all 0.3s ease;
+      width: fit-content;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-gridlist-inner:hover .ms__article-readmore {
+      background-size: 100% 1px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-related-title{
+        color: {{ section.settings.rhcolor }};
+        font-size: {{ section.settings.mhsize | append: 'px' }};
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-related-post-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-gridlist-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+        color: inherit;
+    }
+
+    #shopify-section-{{ section.id }} .ms__blog-grid-list-featuredimage{
+        width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .ms__blog-grid-list-featuredimage img{
+        width: 100%;
+        height: 300px;
+        display: block;
+        object-fit: cover;
+    }
+
+    #shopify-section-{{ section.id }} .ms__article-gridlist-contents {
+        padding: 40px 16px;
+        background-color: #fff;
+        color: #695450;
+    }
+
+    @media screen and (min-width: 769px){
+        #shopify-section-{{ section.id }} .ms__article-contents-rte{
+            padding: 40px 20px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__article-contents-rte-inner h2{
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__article-meta{
+            margin-bottom: 26px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__article-container{
+            padding-bottom: 100px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__article-related-title{
+            font-size: {{ section.settings.dhsize | append: 'px' }};
+        }
+
+        #shopify-section-{{ section.id }} .ms__article-related-post-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #shopify-section-{{ section.id }} .ms__blog-grid-list-featuredimage img{
+            height: 334px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__article-gridlist-contents h3{
+            font-size: 24px;
+        }
+
+    }
+</style>
+{% schema %}
+    {
+        "name": "MS Article",
+        "settings": [
+            {
+                "type": "text",
+                "id": "uppertitle",
+                "label": "Article title",
+                "info": "If this is empty, it will default to the article title"
+            },
+            {
+                "type": "select",
+                "id": "htags",
+                "label": "Heading Tag",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "H6"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "rhtags",
+                "label": "Related Heading Tag",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "H6"
+                    }
+                ]
+            },
+            {
+                "type" :"header",
+                "content": "Styles"
+            },
+            {
+                "type": "color",
+                "id": "rhcolor",
+                "label": "Related Heading",
+                "default": "#695450"
+            },
+            {
+                "type": "number",
+                "id": "dhsize",
+                "label": "Related Heading size (desktop)",
+                "default": 64,
+                "info": "Unit in px. This is for the featured blog posts"
+            },
+            {
+                "type": "number",
+                "id": "mhsize",
+                "label": "Related Heading size (mobile)",
+                "default": 32,
+                "info": "Unit in px. This is for the featured blog posts"
+            },
+            {
+                "type": "color",
+                "id": "bgcolor",
+                "label": "Background",
+                "default": "#F7F8F4"
+            },
+            {
+                "type": "color",
+                "id": "contentbgcolor",
+                "label": "Content Background",
+                "default": "#fff"
+            },
+            {
+                "type": "color",
+                "id": "textcolor",
+                "label": "Text",
+                "default": "#695450"
+            }
+        ]
+    }
+{% endschema %}

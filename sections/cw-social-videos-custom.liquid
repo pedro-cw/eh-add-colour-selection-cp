@@ -1,0 +1,862 @@
+<style>
+    @font-face {
+      font-family: 'Botanica';
+      src: url('https://cdn.shopify.com/s/files/1/0588/4742/8796/files/botanica.woff2?v=1759557561') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+  
+    .cw-social-videos {
+      padding: 40px 0px;
+      background-color: {{ section.settings.background_color }};
+      overflow: hidden;
+    }
+  
+    .cw-social-videos__container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+        .play_pause_v3 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+
+}
+.play_pause_v3 {
+    cursor: pointer;
+}
+  
+    .cw-social-videos__title {
+      font-family: 'Botanica', serif;
+      font-size: {{ section.settings.title_size }}px;
+      color: {{ section.settings.title_color }};
+      text-align: center;
+      margin: 0 0 40px 0;
+      font-weight: 400;
+      letter-spacing: 2px;
+      line-height: 1.3;
+    }
+  
+    .cw-social-videos__carousel {
+      position: relative;
+      padding: 0px;
+    }
+  
+    .cw-social-videos__track-container {
+      overflow: hidden;
+    }
+  
+    .cw-social-videos__track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease;
+      transform: translateX(-362px);
+    }
+  
+    .cw-social-videos__slide {
+         min-width: calc(19% - 0px) !important;
+    flex-shrink: 0;
+    max-width: 19% !important;
+    }
+  
+    .cw-social-videos__video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      border-radius: 0px;
+      overflow: hidden;
+    }
+  
+    .cw-social-videos__video,
+    .cw-social-videos__video-wrapper video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  
+     .cw-social-videos__video-wrapper model-viewer,
+     .cw-social-videos__video-wrapper .media {
+       width: 100% !important;
+       height: 100% !important;
+     }
+   
+     .cw-social-videos__review {
+       display: none;
+       padding: 15px 0 0 0;
+       font-family: 'Montserrat', sans-serif;
+     }
+   
+     .cw-social-videos__stars {
+       display: flex;
+       gap: 3px;
+       margin-bottom: 10px;
+       color: #333;
+       font-size: 16px;
+     }
+   
+     .cw-social-videos__star-half {
+       position: relative;
+       display: inline-block;
+       width: 0.5em;
+       overflow: hidden;
+     }
+   
+     .cw-social-videos__review-text {
+       font-size: 14px;
+       line-height: 1.6;
+       color: #333;
+       margin: 0 0 10px 0;
+       font-style: italic;
+     }
+   
+     .cw-social-videos__review-author {
+       display: flex;
+       align-items: center;
+       gap: 8px;
+       font-size: 13px;
+       color: #666;
+     }
+   
+     .cw-social-videos__author-name {
+       font-weight: 500;
+     }
+   
+     .cw-social-videos__verified {
+       display: flex;
+       align-items: center;
+       gap: 5px;
+       color: #8B6F47;
+       font-size: 12px;
+     }
+   
+     .cw-social-videos__verified-icon {
+       width: 14px;
+       height: 14px;
+     }
+   
+     .cw-social-videos__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+      z-index: 10;
+    }
+  
+    .cw-social-videos__arrow:hover {
+      background: rgba(255, 255, 255, 1);
+    }
+  
+    .cw-social-videos__arrow--prev {
+      left: 10px;
+    }
+  
+    .cw-social-videos__arrow--next {
+      right: 10px;
+    }
+  
+    .cw-social-videos__arrow svg {
+      width: 20px;
+      height: 20px;
+      fill: #333;
+    }
+    span.cw-how-it-works__disclaimer span {
+    color: #000000;
+}
+
+.cc__instafeed-header {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h2.cc__instafeed-heading {
+    text-align: center;
+    font-size: 50px !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+.cc__instafeedsocial {width: 100%;text-align: center;display: flex;justify-content: center;align-items: center;flex-direction: row-reverse;gap: 10px;}
+
+.cc__instafeedsociallinks {
+    justify-content: center;
+}
+
+a.cc__instagramhandle {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+div#shopify-section-sections--24365174194558__cc_instafeed_GMFTUK {
+    padding: 40px 0px;
+}
+  
+    @media (max-width: 1024px) {
+      .cw-social-videos__slide {
+        min-width: calc(33.333% - 14px);
+      }
+    }
+  
+     @media (max-width: 768px) {
+      h2.cc__instafeed-heading {
+    text-align: center;
+    font-size: 36px !important;
+      }
+      
+       .cw-social-videos {
+         padding: 40px 20px;
+       }
+   
+       .cw-social-videos__title {
+         font-size: 36px !important;
+         margin-bottom: 40px;
+       }
+   
+       .cw-social-videos__carousel {
+         padding: 0 50px;
+       }
+   
+       .cw-social-videos__slide {
+         min-width: calc(50% - 10px);
+       }
+   
+       .cw-social-videos__video-wrapper {
+         aspect-ratio: 9 / 12;
+         max-height: 400px;
+       }
+   
+       .cw-social-videos__slide {
+  
+    max-width: 100% !important;
+    }
+     }
+  
+    @media (max-width: 480px) {
+      .cw-social-videos__slide {
+        min-width: calc(100% - 0px);
+      }
+  
+      .cw-social-videos__video-wrapper {
+        aspect-ratio: 4 / 11;
+        max-height: 500px;
+      }
+  
+      .cw-social-videos__carousel {
+        padding: 0 45px;
+      }
+
+      .cw-social-videos__review-text {
+        padding: 0px 10px;
+    }
+      .cw-social-videos__review {
+        width:235px
+}
+
+.cw-social-videos__track {
+    padding: 0 10px !important;
+}
+
+.cw-social-videos {
+    padding: 60px 0px;
+}
+
+.cw-social-videos__carousel {
+    padding: 0 0px;
+}
+
+    }
+  </style>
+  
+  <section class="cw-social-videos">
+    <div class="cw-social-videos__container">
+      <!-- Title -->
+      {% if section.settings.title != blank %}
+        <h2 class="cw-social-videos__title">{{ section.settings.title }}</h2>
+      {% endif %}
+  
+      <!-- Carousel -->
+      {% if section.blocks.size > 0 %}
+        <div class="cw-social-videos__carousel">
+          <!-- Previous Arrow -->
+          <button class="cw-social-videos__arrow cw-social-videos__arrow--prev" data-carousel-prev aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left" style="fill: none;stroke: #000;width: var(--rsw, 100%);height: auto" role="presentation"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+  
+          <!-- Track Container -->
+          <div class="cw-social-videos__track-container">
+            <div class="cw-social-videos__track" data-carousel-track>
+               {% for block in section.blocks %}
+                 <div class="cw-social-videos__slide" {{ block.shopify_attributes }}>
+                   <div class="cw-social-videos__video-wrapper">
+                     {% if block.settings.video != blank %}
+                       {{
+                         block.settings.video |
+                         video_tag:
+                           image_size: '800x',
+                           autoplay: false,
+                           loop: true,
+                           controls: false,
+                           muted: false,
+                           class: 'cw-social-videos__video'
+                       }}
+                           <div class="play_pause_v3">
+                        <img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/icons8-play-30.png?v=1764164985" class="play_it" alt="play_button">
+                        <img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/icons8-pause-50.png?v=1764165161" class="pause_it" style="display:none" alt="pause_button">
+                       </div>
+                     {% else %}
+                       <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #fff; font-family: 'Montserrat', sans-serif; text-align: center; padding: 20px;">
+                         <p>Select a video</p>
+                       </div>
+                     {% endif %}
+                   </div>
+                   
+                   <!-- Review (Mobile Only) -->
+                   <div class="cw-social-videos__review">
+                     <!-- Stars -->
+                     <div class="cw-social-videos__stars">
+                       {% for i in (1..4) %}
+                         <span>★</span>
+                       {% endfor %}
+                       <span class="cw-social-videos__star-half">★</span>
+                     </div>
+                     
+                     <!-- Review Text -->
+                     {% if block.settings.review_text != blank %}
+                       <p class="cw-social-videos__review-text">"{{ block.settings.review_text }}"</p>
+                     {% endif %}
+                     
+                     <!-- Author & Verified -->
+                     <div class="cw-social-videos__review-author">
+                       {% if block.settings.author_name != blank %}
+                         <span class="cw-social-videos__author-name">{{ block.settings.author_name }}</span>
+                       {% endif %}
+                       <div class="cw-social-videos__verified">
+                         <img 
+                           src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/check-icon-brown.png?v=1762339913" 
+                           alt="Verified"
+                           class="cw-social-videos__verified-icon"
+                           width="14"
+                           height="14">
+                         <span>Verified Customer</span>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               {% endfor %}
+            </div>
+          </div>
+  
+          <!-- Next Arrow -->
+          <button class="cw-social-videos__arrow cw-social-videos__arrow--next" data-carousel-next aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-4 0 28 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="fill: none;stroke: #000;width: var(--rsw, 100%);height: auto" role="presentation"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+  
+<script>
+(function () {
+  const carousel = document.querySelector('[data-carousel-track]');
+  const prevBtn = document.querySelector('[data-carousel-prev]');
+  const nextBtn = document.querySelector('[data-carousel-next]');
+
+  if (!carousel || !prevBtn || !nextBtn) return;
+
+  let currentIndex = 0;
+  const slides = Array.from(carousel.querySelectorAll('.cw-social-videos__slide'));
+  const totalSlides = slides.length;
+
+  if (!totalSlides) return;
+
+  carousel.style.display = 'flex';
+  carousel.style.willChange = 'transform';
+
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+
+  firstClone.classList.add('cw-social-videos__slide--clone');
+  lastClone.classList.add('cw-social-videos__slide--clone');
+
+  carousel.insertBefore(lastClone, slides[0]);
+  carousel.appendChild(firstClone);
+
+  const allSlides = Array.from(carousel.querySelectorAll('.cw-social-videos__slide'));
+  const totalAllSlides = allSlides.length;
+
+  let isTransitioning = false;
+
+  function getVisibleSlides() {
+    const width = window.innerWidth;
+    if (width <= 480) return 1;
+    if (width <= 768) return 2;
+    if (width <= 1024) return 3;
+    return 5;
+  }
+
+  function normalizeSlideWidths() {
+    const visibleSlides = getVisibleSlides();
+
+    allSlides.forEach(slide => {
+      slide.style.boxSizing = 'border-box';
+
+      if (visibleSlides === 1) {
+        slide.style.flex = '0 0 100%';
+        slide.style.maxWidth = '100%';
+        slide.style.marginLeft = '0';
+        slide.style.marginRight = '0';
+      } else {
+        const widthPercent = 100 / visibleSlides;
+        slide.style.flex = `0 0 ${widthPercent}%`;
+        slide.style.maxWidth = `${widthPercent}%`;
+      }
+    });
+  }
+
+  function getSlideMetrics() {
+    const slide = allSlides[0];
+    if (!slide) return { slideWidth: 0, gap: 0 };
+
+    const visibleSlides = getVisibleSlides();
+
+    if (visibleSlides === 1) {
+      return {
+        slideWidth: carousel.clientWidth,
+        gap: 0
+      };
+    }
+
+    const style = window.getComputedStyle(slide);
+    const marginRight = parseFloat(style.marginRight) || 0;
+    const marginLeft = parseFloat(style.marginLeft) || 0;
+    const gap = marginLeft + marginRight;
+
+    return {
+      slideWidth: slide.offsetWidth,
+      gap: gap
+    };
+  }
+
+  function goToIndex(index, withTransition = true) {
+    normalizeSlideWidths();
+
+    const { slideWidth, gap } = getSlideMetrics();
+    const slideSize = slideWidth + gap;
+
+    if (slideSize === 0) return;
+
+    carousel.style.transition = withTransition ? 'transform 0.3s ease' : 'none';
+
+    const offset = -(index * slideSize);
+    carousel.style.transform = `translateX(${offset}px)`;
+  }
+
+  function updateButtons() {
+    prevBtn.style.opacity = '1';
+    prevBtn.style.cursor = 'pointer';
+    nextBtn.style.opacity = '1';
+    nextBtn.style.cursor = 'pointer';
+  }
+
+  function setInitialSlide() {
+    currentIndex = 1; // because of lastClone
+    normalizeSlideWidths();
+    goToIndex(currentIndex, false);
+    updateButtons();
+  }
+
+  carousel.addEventListener('transitionend', () => {
+    if (currentIndex === 0) {
+      currentIndex = totalSlides;
+      goToIndex(currentIndex, false);
+    }
+
+    if (currentIndex === totalAllSlides - 1) {
+      currentIndex = 1;
+      goToIndex(currentIndex, false);
+    }
+
+    isTransitioning = false;
+  });
+
+  prevBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex -= 1;
+    goToIndex(currentIndex, true);
+    updateButtons();
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex += 1;
+    goToIndex(currentIndex, true);
+    updateButtons();
+  });
+
+  // --- Drag / Swipe controls ---
+  let isDragging = false;
+  let isHorizontalDrag = false;
+  let startX = 0;
+  let startY = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationFrameId = null;
+  let dragMoved = 0; // total horizontal movement
+
+  const HORIZONTAL_ACTIVATE_THRESHOLD = 10; // px
+  const CLICK_DRAG_THRESHOLD = 5; // px
+
+  function getCurrentTransformX() {
+    const style = window.getComputedStyle(carousel);
+    const transform = style.transform;
+
+    if (transform && transform !== 'none') {
+      const values = transform.match(/matrix\((.+)\)/);
+      if (values && values[1]) {
+        const parts = values[1].split(',');
+        const tx = parseFloat(parts[4]) || 0;
+        return tx;
+      }
+    }
+    return 0;
+  }
+
+  function animation() {
+    if (isDragging && isHorizontalDrag) {
+      carousel.style.transition = 'none';
+      carousel.style.transform = `translateX(${currentTranslate}px)`;
+      requestAnimationFrame(animation);
+    }
+  }
+
+  function onStart(event) {
+    isDragging = true;
+    isHorizontalDrag = false;
+    dragMoved = 0;
+    isTransitioning = false;
+    carousel.style.transition = 'none';
+
+    if (event.type === 'mousedown') {
+      startX = event.pageX;
+      startY = event.pageY;
+    } else {
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+    }
+
+    prevTranslate = getCurrentTransformX();
+    animationFrameId = requestAnimationFrame(animation);
+  }
+
+  function onMove(event) {
+    if (!isDragging) return;
+
+    let currentX, currentY;
+
+    if (event.type === 'mousemove') {
+      currentX = event.pageX;
+      currentY = event.pageY;
+    } else {
+      currentX = event.touches[0].clientX;
+      currentY = event.touches[0].clientY;
+    }
+
+    const diffX = currentX - startX;
+    const diffY = currentY - startY;
+
+    // pehle decide karte hain drag ka axis
+    if (!isHorizontalDrag) {
+      if (Math.abs(diffX) > HORIZONTAL_ACTIVATE_THRESHOLD && Math.abs(diffX) > Math.abs(diffY)) {
+        isHorizontalDrag = true;
+      } else if (Math.abs(diffY) > HORIZONTAL_ACTIVATE_THRESHOLD && Math.abs(diffY) > Math.abs(diffX)) {
+        // vertical drag hai → carousel ko chhod do
+        isDragging = false;
+        cancelAnimationFrame(animationFrameId);
+        return;
+      }
+    }
+
+    if (isHorizontalDrag) {
+      if (event.cancelable && !event.type.includes('mouse')) {
+        event.preventDefault(); // ab sirf horizontal drag pe scroll rok
+      }
+
+      dragMoved = Math.abs(diffX);
+      currentTranslate = prevTranslate + diffX;
+    }
+  }
+
+  function onEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    cancelAnimationFrame(animationFrameId);
+
+    if (!isHorizontalDrag) {
+      // horizontal drag hi nahi tha, normal click/scroll
+      return;
+    }
+
+    const { slideWidth, gap } = getSlideMetrics();
+    const slideSize = slideWidth + gap;
+    const movedBy = currentTranslate - prevTranslate;
+
+    const threshold = slideSize * 0.2;
+
+    if (movedBy < -threshold) {
+      currentIndex += 1;
+    } else if (movedBy > threshold) {
+      currentIndex -= 1;
+    }
+
+    isTransitioning = true;
+    goToIndex(currentIndex, true);
+    updateButtons();
+  }
+
+  // START listeners
+  carousel.addEventListener('mousedown', onStart);
+  carousel.addEventListener('touchstart', onStart, { passive: true });
+
+  // MOVE listeners
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('touchmove', onMove, { passive: false });
+
+  // END listeners
+  window.addEventListener('mouseup', onEnd);
+  window.addEventListener('touchend', onEnd);
+  window.addEventListener('mouseleave', () => {
+    if (isDragging) onEnd();
+  });
+
+  // click cancel on drag
+  allSlides.forEach(slide => {
+    slide.addEventListener('click', function (e) {
+      if (dragMoved > CLICK_DRAG_THRESHOLD && isHorizontalDrag) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+  });
+
+  // Resize handling
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      setInitialSlide();
+    }, 250);
+  });
+
+  setInitialSlide();
+})();
+</script>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const slides = document.querySelectorAll('.cw-social-videos__slide');
+
+  if (!slides.length) return;
+
+  function pauseAllExcept(currentVideo) {
+    slides.forEach(slide => {
+      const v = slide.querySelector('video');
+      const playIcon = slide.querySelector('.play_it');
+      const pauseIcon = slide.querySelector('.pause_it');
+
+      if (!v) return;
+
+      if (v !== currentVideo) {
+        v.pause();
+        if (playIcon) playIcon.style.display = 'block';
+        if (pauseIcon) pauseIcon.style.display = 'none';
+      }
+    });
+  }
+
+  slides.forEach(slide => {
+    const wrapper   = slide.querySelector('.play_pause_v3');
+    const video     = slide.querySelector('video');
+    const playIcon  = slide.querySelector('.play_it');
+    const pauseIcon = slide.querySelector('.pause_it');
+
+    if (!wrapper || !video || !playIcon || !pauseIcon) return;
+
+    // initial state
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+
+    wrapper.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // hard reset icons for THIS slide first (debug)
+      // console.log('before click', video.paused, playIcon.style.display, pauseIcon.style.display);
+
+      if (video.paused) {
+        // pause others
+        pauseAllExcept(video);
+
+        // play current
+        video.play();
+
+        // icons: hide play, show pause
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+      } else {
+        // pause current
+        video.pause();
+
+        // icons: show play, hide pause
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+      }
+
+      // console.log('after click', video.paused, playIcon.style.display, pauseIcon.style.display);
+    });
+
+    video.addEventListener('ended', function () {
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+    });
+  });
+});
+</script>
+
+
+  
+  {% schema %}
+  {
+    "name": "Social Videos",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Settings"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#F5EDE8"
+      },
+      {
+        "type": "header",
+        "content": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Section Title",
+        "default": "TRUSTED BY OVER 100,000 CUSTOMERS"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title Color",
+        "default": "#8B6F47"
+      },
+      {
+        "type": "range",
+        "id": "title_size",
+        "label": "Title Size",
+        "min": 24,
+        "max": 60,
+        "step": 2,
+        "default": 40,
+        "unit": "px"
+      }
+    ],
+     "blocks": [
+       {
+         "type": "video",
+         "name": "Video",
+         "settings": [
+           {
+             "type": "video",
+             "id": "video",
+             "label": "Video"
+           },
+           {
+             "type": "header",
+             "content": "Review (Mobile Only)"
+           },
+           {
+             "type": "textarea",
+             "id": "review_text",
+             "label": "Review Text",
+             "default": "These are lovely and have really helped with my anxiety and stress throughout this hair loss journey"
+           },
+           {
+             "type": "text",
+             "id": "author_name",
+             "label": "Author Name",
+             "default": "Tracy R."
+           }
+         ]
+       }
+     ],
+    "presets": [
+      {
+        "name": "Social Videos",
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "video",
+            "settings": {
+              "review_text": "These are lovely and have really helped with my anxiety and stress throughout this hair loss journey",
+              "author_name": "Tracy R."
+            }
+          },
+          {
+            "type": "video",
+            "settings": {
+              "review_text": "So pleased and just loved them! So relaxing!",
+              "author_name": "Tracy R."
+            }
+          },
+          {
+            "type": "video",
+            "settings": {
+              "review_text": "When I placed the seeds in the central point of my ear, I felt calm instantly!",
+              "author_name": "Tracy R."
+            }
+          },
+          {
+            "type": "video",
+            "settings": {
+              "review_text": "It put me into a very deep relaxed state",
+              "author_name": "Tracy R."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  
+  

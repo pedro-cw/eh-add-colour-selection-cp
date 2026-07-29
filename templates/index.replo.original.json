@@ -1,0 +1,285 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cc_dual_bgimage_UnVtyQ": {
+      "type": "cc-dual-bgimage",
+      "settings": {
+        "image1": "shopify://shop_images/ear_seeds.jpg",
+        "image2": "shopify://shop_images/Ear_seeding.jpg",
+        "title": "Acupressure ear seeds",
+        "htags": "h1",
+        "dhsize": 64,
+        "mhsize": 32,
+        "dhwidth": 100,
+        "mhwidth": 65,
+        "content": "<p>East Healing is the UK’s leading supplier of Ear Seed Kits, offering gold-standard, needle-free acupressure to boost your natural health and wellbeing at home.</p><p>SUPPORT WITH ANXIETY, INSOMNIA AND SHORT TERM RELIEF OF HEADACHES</p><p></p>",
+        "linklabel": "shop now",
+        "link": "shopify://collections/all",
+        "dlink_top": 0,
+        "mlink_top": 0,
+        "bgimage1": "shopify://shop_images/Group_11.jpg",
+        "bgimage2": "shopify://shop_images/Group_10.jpg",
+        "bgcolor": "#f7f8f4",
+        "tcolor": "#695450",
+        "dpadtop": 0,
+        "dpadbot": 0,
+        "mpadtop": 0,
+        "mpadbot": 0
+      }
+    },
+    "cc_logo_list_znUD4K": {
+      "type": "cc-logo-list",
+      "blocks": {
+        "image_CrjiDy": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_6hEeXF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/vogue.png"
+          }
+        },
+        "image_iL7Qhd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/stylist.png"
+          }
+        },
+        "image_nzFj3q": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/dragon_dens.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_CrjiDy",
+        "image_6hEeXF",
+        "image_iL7Qhd",
+        "image_nzFj3q"
+      ],
+      "custom_css": [],
+      "settings": {
+        "header": "AS SEEN ON",
+        "htags": "h2",
+        "dhsize": 24,
+        "mhsize": 18,
+        "bgcolor": "#f7f8f4",
+        "tcolor": "#695450",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_featured_collection_eP7EpJ": {
+      "type": "cc-featured-collection",
+      "custom_css": [
+        "@media only screen and (max-width: 767px) {.cc__product-details h3 {font-size: 16px !important; }}"
+      ],
+      "settings": {
+        "layout": "slider",
+        "collection": "frontpage",
+        "productlimit": 30,
+        "heading": "Our Bestsellers",
+        "htags": "h2",
+        "dhsize": 64,
+        "mhsize": 32,
+        "bgcolor": "#f3eeea",
+        "tcolor": "#695450",
+        "arrowcolor": "#695450",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_image_with_text_axUfzB": {
+      "type": "ms-image-with-text",
+      "blocks": {
+        "listtext_UTWTWC": {
+          "type": "listtext",
+          "settings": {
+            "text": "ancient acupressure tool"
+          }
+        },
+        "listtext_aAftwF": {
+          "type": "listtext",
+          "settings": {
+            "text": "Natural and side-effect free"
+          }
+        },
+        "listtext_DzrBRN": {
+          "type": "listtext",
+          "settings": {
+            "text": "easy to apply at home"
+          }
+        }
+      },
+      "block_order": [
+        "listtext_UTWTWC",
+        "listtext_aAftwF",
+        "listtext_DzrBRN"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Acu-Seeds_12722.jpg",
+        "title": "What are Ear Seeds?",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "content": "<p>Ear seeds are an ancient Chinese medicine tool which use acupressure to support physical and mental wellbeing. They may be used to support anxiety, the menopause, period pain, sleep and short term relief of headaches.</p>",
+        "dcsize": 16,
+        "mcsize": 16,
+        "dltsize": 16,
+        "mltsize": 16,
+        "bgcolor": "#977e57",
+        "textcolor": "#ffffff",
+        "dpadtop": 100,
+        "dpadbot": 100,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "ms_image_banner_dm9Cw7": {
+      "type": "ms-image-banner",
+      "settings": {
+        "image": "shopify://shop_images/quiz_banner.jpg",
+        "mimage": "shopify://shop_images/mobile_website_image.jpg",
+        "image_height": "image--adapt",
+        "title": "East Healing Wellness Quiz",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "linklabel": "Find Your Perfect Healing Tool",
+        "linkurl": "https://acuseeds-uk.myshopify.com/tools/perfect-product-finder/east-healing-wellness-quiz-find-your-perfect-healing-tool",
+        "dasize": 16,
+        "masize": 16,
+        "tcolor": "#695450",
+        "bgcolor": "rgba(0,0,0,0)"
+      }
+    },
+    "ms_image_banner_h8JBLB": {
+      "type": "ms-image-banner",
+      "settings": {
+        "image": "shopify://shop_images/step_by_step_guide.jpg",
+        "mimage": "shopify://shop_images/mobile____image.jpg",
+        "image_height": "image--adapt",
+        "title": "step by step guide on acu seeds application",
+        "htags": "h2",
+        "dhsize": 48,
+        "mhsize": 32,
+        "linklabel": "HOW DOES IT WORK?",
+        "linkurl": "shopify://pages/how-to",
+        "dasize": 16,
+        "masize": 16,
+        "tcolor": "#695450",
+        "bgcolor": "rgba(0,0,0,0)",
+        "bgcontentimage": "shopify://shop_images/content__bg.jpg"
+      }
+    },
+    "ms_blog_posts_yYBGFR": {
+      "type": "ms-blog-posts",
+      "settings": {
+        "blog": "articles",
+        "heading": "Blog",
+        "dhsize": 64,
+        "mhsize": 32,
+        "bgcolor": "#977e57",
+        "hcolor": "#ffffff",
+        "arrowcolor": "#ffffff",
+        "blogtitlecolor": "#ffffff",
+        "blogexcerptcolor": "#ffffff",
+        "blogreadmorecolor": "#ffffff",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_apps_171232350811f7c5be": {
+      "type": "cc-apps",
+      "custom_css": [
+        ".junip-product-review-container {max-width: 980px !important;}",
+        ".junip-btn {background-color: #695450;}"
+      ],
+      "settings": {
+        "bgcolor": "rgba(0,0,0,0)",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "cc_faq_wPHYzddx": {
+      "type": "cc-faq",
+      "blocks": {
+        "faq_bBK86k": {
+          "type": "faq",
+          "settings": {
+            "question": "WHAT ARE ACUPRESSURE EAR SEEDS, AND HOW DO THEY WORK?",
+            "content": "<p>Rooted in the principles of Chinese medicine, ear seeds are an ancient acupressure tool that may support a broad spectrum of health concerns by way of aiding restful sleep, assisting emotional well-being, helping you to relax, and boosting focus, vitality, energy levels, tension, and digestive function.<br/><br/>Ear seeds are a form of auriculotherapy, which is the stimulation of specific points of the ear to support physical and emotional health concerns. They are an ear acupressure tool that has been used in Traditional Chinese Medicine (TCM) for thousands of years. TCM teaches that the ear is a microsystem of the whole body, where certain points on the ear correspond to different organs or body parts. Energy pathways (or ‘qi’ or vital life energy) pass through the ear and ear seeds stimulate specific points which send an abundant flow of energy to the related organ or area that needs attention. Think of it like reflexology, but for the ears instead of feet.</p><p>Ear seeds also create continual, gentle pressure on nerve impulses in the ear which send messages to the brain that certain organs or systems need support. The brain will then send signals and chemicals to the nervous system helping you relax, heal or focus, as well as releasing endorphins into the bloodstream, naturally soothing tension and discomfort.</p>"
+          }
+        },
+        "faq_Jz9hVT": {
+          "type": "faq",
+          "settings": {
+            "question": "ARE ACUPRESSURE EAR SEEDS SAFE TO USE AT HOME?",
+            "content": "<p>Ear seeds are a non invasive treatment which is safe and effective. The tiny beads apply pressure onto points on the ear and there are no needles involved.</p>"
+          }
+        },
+        "faq_XzNY3t": {
+          "type": "faq",
+          "settings": {
+            "question": "How should the ear seeds be applied?",
+            "content": "<p>- Clean ear thoroughly with facial cleanser or an alcohol swab - this removes natural oils, ensuring proper adhesion. Ensure the ear is dry before application.</p><p>- Focus on one protocol and identify acupoints by referencing the ear maps in your ear seed kit. You will be applying the seeds to one ear only.</p><p>- Using tweezers, carefully lift the edge of clear seed adhesive, hover over the desired area of application, and firmly press down with a finger to adhere.</p><p>- Seeds may be stimulated a few times a day by gently massaging in a circular motion. Seeds may be worn for a maximum of 5 days and cannot be reused. Remove with tweezers or fingernails. You can apply a new set on the other ear immediately or if applying to the same ear, please wait for 2 days.</p>"
+          }
+        },
+        "faq_ktNcYe": {
+          "type": "faq",
+          "settings": {
+            "question": "How long will they last?",
+            "content": "<p>Ear seeds are single-use only and can be worn up to 5 days depending on the area of the ear where they’ve been placed. Before application, we suggest cleaning the area thoroughly with an alcohol swab or facial cleanser and allowing to dry completely for maximum adhesion. When applying, avoid touching the sticky side of the ear seed as it will not adhere properly. After 5 days of wear, remove seeds with your fingers or tweezers and allow the skin to heal for 2 days before applying a new set of seeds on the same ear. Alternatively, you can reapply immediately on the other ear.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_bBK86k",
+        "faq_Jz9hVT",
+        "faq_XzNY3t",
+        "faq_ktNcYe"
+      ],
+      "settings": {
+        "title": "frequently asked questions",
+        "htags": "h2",
+        "tcolor": "#f3eeea",
+        "bgcolor": "#695450",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    }
+  },
+  "order": [
+    "cc_dual_bgimage_UnVtyQ",
+    "cc_logo_list_znUD4K",
+    "cc_featured_collection_eP7EpJ",
+    "ms_image_with_text_axUfzB",
+    "ms_image_banner_dm9Cw7",
+    "ms_image_banner_h8JBLB",
+    "ms_blog_posts_yYBGFR",
+    "cc_apps_171232350811f7c5be",
+    "cc_faq_wPHYzddx"
+  ]
+}

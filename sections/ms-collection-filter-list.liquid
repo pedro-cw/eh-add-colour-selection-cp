@@ -1,0 +1,616 @@
+{% liquid
+    assign st = section.settings
+
+    assign cols = section.blocks
+%}
+
+{% if cols.size > 0 %}
+    <div class="ms__collections-list">
+        <div class="page-width">
+            <div class="ms__collections-inner-container">
+                    {% if st.collection-title != blank %}
+                        <h2 class="collection-title-ms-block">{{ st.collection-title }}</h2>
+                    {% endif %}
+                    <div class="ms__collections-nav--container">
+                        
+                        {% comment %} <div class="ms__collections-filter">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 5.49999C8.73478 5.49999 8.48043 5.60535 8.29289 5.79289C8.10536 5.98042 8 6.23478 8 6.49999C8 6.76521 8.10536 7.01956 8.29289 7.2071C8.48043 7.39464 8.73478 7.49999 9 7.49999C9.26522 7.49999 9.51957 7.39464 9.70711 7.2071C9.89464 7.01956 10 6.76521 10 6.49999C10 6.23478 9.89464 5.98042 9.70711 5.79289C9.51957 5.60535 9.26522 5.49999 9 5.49999ZM6.17 5.49999C6.3766 4.91446 6.75974 4.40743 7.2666 4.04878C7.77346 3.69014 8.37909 3.49754 9 3.49754C9.62091 3.49754 10.2265 3.69014 10.7334 4.04878C11.2403 4.40743 11.6234 4.91446 11.83 5.49999H19C19.2652 5.49999 19.5196 5.60535 19.7071 5.79289C19.8946 5.98042 20 6.23478 20 6.49999C20 6.76521 19.8946 7.01956 19.7071 7.2071C19.5196 7.39464 19.2652 7.49999 19 7.49999H11.83C11.6234 8.08553 11.2403 8.59256 10.7334 8.9512C10.2265 9.30985 9.62091 9.50244 9 9.50244C8.37909 9.50244 7.77346 9.30985 7.2666 8.9512C6.75974 8.59256 6.3766 8.08553 6.17 7.49999H5C4.73478 7.49999 4.48043 7.39464 4.29289 7.2071C4.10536 7.01956 4 6.76521 4 6.49999C4 6.23478 4.10536 5.98042 4.29289 5.79289C4.48043 5.60535 4.73478 5.49999 5 5.49999H6.17ZM15 11.5C14.7348 11.5 14.4804 11.6054 14.2929 11.7929C14.1054 11.9804 14 12.2348 14 12.5C14 12.7652 14.1054 13.0196 14.2929 13.2071C14.4804 13.3946 14.7348 13.5 15 13.5C15.2652 13.5 15.5196 13.3946 15.7071 13.2071C15.8946 13.0196 16 12.7652 16 12.5C16 12.2348 15.8946 11.9804 15.7071 11.7929C15.5196 11.6054 15.2652 11.5 15 11.5ZM12.17 11.5C12.3766 10.9145 12.7597 10.4074 13.2666 10.0488C13.7735 9.69014 14.3791 9.49754 15 9.49754C15.6209 9.49754 16.2265 9.69014 16.7334 10.0488C17.2403 10.4074 17.6234 10.9145 17.83 11.5H19C19.2652 11.5 19.5196 11.6054 19.7071 11.7929C19.8946 11.9804 20 12.2348 20 12.5C20 12.7652 19.8946 13.0196 19.7071 13.2071C19.5196 13.3946 19.2652 13.5 19 13.5H17.83C17.6234 14.0855 17.2403 14.5926 16.7334 14.9512C16.2265 15.3098 15.6209 15.5024 15 15.5024C14.3791 15.5024 13.7735 15.3098 13.2666 14.9512C12.7597 14.5926 12.3766 14.0855 12.17 13.5H5C4.73478 13.5 4.48043 13.3946 4.29289 13.2071C4.10536 13.0196 4 12.7652 4 12.5C4 12.2348 4.10536 11.9804 4.29289 11.7929C4.48043 11.6054 4.73478 11.5 5 11.5H12.17ZM9 17.5C8.73478 17.5 8.48043 17.6054 8.29289 17.7929C8.10536 17.9804 8 18.2348 8 18.5C8 18.7652 8.10536 19.0196 8.29289 19.2071C8.48043 19.3946 8.73478 19.5 9 19.5C9.26522 19.5 9.51957 19.3946 9.70711 19.2071C9.89464 19.0196 10 18.7652 10 18.5C10 18.2348 9.89464 17.9804 9.70711 17.7929C9.51957 17.6054 9.26522 17.5 9 17.5ZM6.17 17.5C6.3766 16.9145 6.75974 16.4074 7.2666 16.0488C7.77346 15.6901 8.37909 15.4975 9 15.4975C9.62091 15.4975 10.2265 15.6901 10.7334 16.0488C11.2403 16.4074 11.6234 16.9145 11.83 17.5H19C19.2652 17.5 19.5196 17.6054 19.7071 17.7929C19.8946 17.9804 20 18.2348 20 18.5C20 18.7652 19.8946 19.0196 19.7071 19.2071C19.5196 19.3946 19.2652 19.5 19 19.5H11.83C11.6234 20.0855 11.2403 20.5926 10.7334 20.9512C10.2265 21.3098 9.62091 21.5024 9 21.5024C8.37909 21.5024 7.77346 21.3098 7.2666 20.9512C6.75974 20.5926 6.3766 20.0855 6.17 19.5H5C4.73478 19.5 4.48043 19.3946 4.29289 19.2071C4.10536 19.0196 4 18.7652 4 18.5C4 18.2348 4.10536 17.9804 4.29289 17.7929C4.48043 17.6054 4.73478 17.5 5 17.5H6.17Z" fill="#695450"/>
+                            </svg>
+                        </div> {% endcomment %}
+
+                        {% for ct in cols %}
+                            {% liquid
+                                assign colitem = ct.settings.pdp_list
+                                assign title = ct.settings.filter-title
+                                assign colhandle = title | handleize
+                                assign current = collection.handle
+                            %}
+                            <div class="ms__collections-nav-item{% if forloop.first %} ms__colcurrent{% endif %}" data-tab_name="{{ title | handleize }}" data-target="tab{{ forloop.index0 }}{{ title | handleize }}">
+                                <div class="ms__collection-nav-inner">
+                                    {{ title }}
+                                </div>
+                            </div>
+                        {% endfor %} 
+                    </div> 
+                    <div class="ms__collections-products-container">
+                        {% for ctprod in cols %}
+                        {% liquid
+                            assign titles = ctprod.settings.filter-title
+                            assign colitem = ctprod.settings.pdp_list
+                            # assign colhandle = titles | handleize
+                            # assign current = collection.handle
+                        %}
+                        <div id="tab{{ forloop.index0 }}{{ titles |  handleize }}" class="ms__collections-products-items{% if forloop.first %} ms__coltabactive{% endif %}" data-tab_name="{{ titles | handleize }}" >
+                                <div class="cc__collection-grid-items">
+                                    {% for product in colitem %}
+                                        {%- capture wlm_check -%}{%- render 'wlm-product' with product , wlm_is_render:'yes' -%}{%- endcapture -%}{%- if wlm_check == blank -%}{%continue%}{%- endif -%}
+                                        {% liquid
+                                            assign current_variant = product.selected_or_first_available_variant
+                                            assign product_badges = product.metafields.custom.badges.value
+                                        %}
+                        
+                                        <div class="cc__inner-product-details">
+                                            <div class="cc__inner-product-details-content" >
+                                                <a href="{{ product.url }}"></a>
+                                                {% if product_badges != blank %}
+                                                <div class="ms__inner-badges-list">
+                                                    {% for item in product_badges %}
+                                                    <div class="ms__inner-badges">{{ item}}</div>
+                                                    {% endfor %}
+                                                </div>
+                                                {% endif %}
+                                                {% comment %}
+                                                <div class="cc__product-featured-image">
+                                                    <img width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}" src="{{ product.featured_image | image_url: width: product.featured_media.width, height: product.featured_media.height }}" alt="{{ product.title | append: ' image' }}" loading="lazy"/>
+                                                </div>
+                                                {% endcomment %}
+                                                <div class="cc__product-featured-image">
+                                                      {% assign main_image = product.featured_image | image_url: width: 920 %}
+                                                        {% assign hover_image = main_image %}
+
+                                                        {% case product.handle %}
+                                                            {% when "24k-gold-plated-ear-seed-kit" %}
+                                                            {% assign main_image = 'ear_seed_kit.png' | file_url %}
+                                                            {% assign hover_image = 'ear_seed_kit_2.png' | file_url: quality: 95 %}
+                                                            {% when "womens-health-gold-ear-seed-kit-bundle" %}
+                                                            {% assign main_image = 'womens_health_ear_seed_kit.png' | file_url %}
+                                                            {% assign hover_image = 'womens_health_ear_seed_kit2.png' | file_url %}
+                                                            {% when "acu-seeds-the-collection" %}
+                                                            {% assign main_image = 'acu_seeds_complete_collection.png' | file_url %}
+                                                            {% assign hover_image = 'acu_seeds_complete_collection_2.png' | file_url %}
+                                                            {% when "gold-acupressure-magnet-patches" %}
+                                                            {% assign main_image = 'magnet_patches.png' | file_url %}
+                                                            {% assign hover_image = 'magnet_patches2.png' | file_url %}
+                                                            {% when "acupressure-mat-pillow" %}
+                                                            {% assign main_image = 'acu_mat.png' | file_url %}
+                                                            {% assign hover_image = 'acu_mat_2.png' | file_url %}
+                                                            {% when "acupressure-headband" %}
+                                                            {% assign main_image = 'headband.png' | file_url %}
+                                                            {% assign hover_image = 'headband2.png' | file_url %}
+                                                            {% when "acupressure-foot-mat" %}
+                                                            {% assign main_image = 'footmat.png' | file_url %}
+                                                            {% assign hover_image = 'foot_mat_2.png' | file_url: quality: 95 %}
+                                                            {% when "acupressure-comb" %}
+                                                            {% assign main_image = 'comb.png' | file_url %}
+                                                            {% assign hover_image = 'comb2.png' | file_url %}
+                                                            {% when "gold-acupressure-ring" %}
+                                                            {% assign main_image = 'ring.png' | file_url %}
+                                                            {% assign hover_image = 'ring2.png' | file_url %}
+                                                            {% when "bian-stone-facial-gua-sha" %}
+                                                            {% assign main_image = 'gua_sha.png' | file_url %}
+                                                            {% assign hover_image = 'gua_sha2.png' | file_url %}
+                                                            {% when "bian-stone-scalp-gua-sha-comb" %}
+                                                            {% assign main_image = 'scalp_comb_images_3.jpg' | file_url %}
+                                                            {% assign hover_image = 'scalp_comb_images_3_2.png' | file_url %}
+                                                            {% when "ear-seed-refill-subscription" %}
+                                                            {% assign main_image = 'acu_seeds_monthly_sub.png' | file_url %}
+                                                            {% assign hover_image = 'acu_seeds_monthly_sub2.png' | file_url %}
+                                                            {% when "24k-gold-plated-ear-seed-refills" %}
+                                                            {% assign main_image = 'acu_seeds_refills.png' | file_url %}
+                                                            {% assign hover_image = 'acu_seeds_refills_2.png' | file_url %}
+                                                            {% when "acu-seeds-swarovski-crystal-pearl-ear-seed-refills" %}
+                                                            {% assign main_image = 'acu_seeds_crystal_refill.png' | file_url %}
+                                                            {% assign hover_image = 'acu_seeds_crystal_refill_2.png' | file_url %}
+                                                            {% when "gold-acu-seeds-tweezers" %}
+                                                            {% assign main_image = 'tweezers.png' | file_url %}
+                                                            {% assign hover_image = 'tweezers_2.png' | file_url %}
+                                                            {% when "womens-health-guide" %}
+                                                            {% assign main_image = 'womens_health_guide.png' | file_url %}
+                                                            {% assign hover_image = 'womens_health_guide2.png' | file_url %}
+                                                        {% endcase %}
+                                                        {% comment %} <img width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}" src="{{ main_image }}" alt="{{ product.title | append: ' image' }}" loading="lazy"/>
+                                                        <img class="hover-img" width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}" src="{{ hover_image }}" alt="{{ product.title | append: ' image' }}"/> {% endcomment %}
+                                                        {% liquid
+                                                            assign loading = 'lazy'
+                                                            assign fetchpriority = 'auto'
+                                                            if section.index < 3
+                                                                assign loading = 'eager'
+                                                                assign fetchpriority = 'high'
+                                                            endif    
+                                                        %}
+                                                        <img
+                                                            src="{{ main_image | append: '&width=428' }}"
+                                                            srcset="
+                                                                {{ main_image | append: '&width=252' }} 252w,
+                                                                {{ main_image | append: '&width=360' }} 360w,
+                                                                {{ main_image | append: '&width=428' }} 428w
+                                                            "
+                                                            sizes="(max-width: 525px) 260px, 440px"
+                                                            width="428"
+                                                            height="428"
+                                                            alt="{{ product.title | append: ' image' }}"
+                                                            loading="{{ loading }}"
+                                                            fetchpriority = "{{ fetchpriority }}"
+                                                            />
+
+                                                            <img
+                                                            class="hover-img"
+                                                            src="{{ hover_image | append: '&width=428' }}"
+                                                            srcset="
+                                                                {{ hover_image | append: '&width=252' }} 252w,
+                                                                {{ hover_image | append: '&width=360' }} 360w,
+                                                                {{ hover_image | append: '&width=428' }} 428w
+                                                            "
+                                                            sizes="(max-width: 525px) 260px, 440px"
+                                                            width="428"
+                                                            height="428"
+                                                            alt="{{ product.title | append: ' image' }}"
+                                                            
+                                                            loading="{{ loading }}"
+                                                            fetchpriority = "{{ fetchpriority }}"
+                                                            />
+                                                </div>
+                                                <div class="cc__product-details">
+                                                    <h3>{{ product.title }}</h3>
+<div class="cc__fc_product-price">
+  {%- assign wpdProductCollectionIds = product.collections | map: 'id' -%}
+  {%- capture wpd_attrs -%}
+    data-wpd-product-handle="{{ product.handle }}"
+    data-wpd-variant-id="{{ product.selected_or_first_available_variant.id }}"
+    data-wpd-variant-price="{{ product.selected_or_first_available_variant.price }}"
+    data-wpd-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}"
+    data-wpd-product-collection-ids="{{ wpdProductCollectionIds | join:',' }}"
+    data-wpd-product-id="{{ product.id }}"
+  {%- endcapture -%}
+
+    {%- if product.price_varies -%}
+      <p class="cc__product-price" {{ wpd_attrs }}>
+        <span class="cc__product-price-varies-info">From</span>
+        {{ product.price | money }}
+      </p>
+    {%- else -%}
+      {%- if product.compare_at_price > product.price -%}
+        <p class="cc__product-price">
+          <span class="cc__product-orig-price data-wpd-hide">
+            {{ product.compare_at_price | money }}
+          </span>
+          <span class="cc__product-sale-price" {{ wpd_attrs }}>
+            {{ product.price | money }}
+          </span>
+        </p>
+      {%- else -%}
+        <p class="cc__product-price" {{ wpd_attrs }}>
+          {{ product.price | money }}
+        </p>
+      {%- endif -%}
+    {%- endif -%}
+
+  {%- comment -%}
+  {% if product.metafields.custom.quantity != blank %}
+    | <p class="cc__productquantity-info">{{ product.metafields.custom.quantity }}</p>
+  {% endif %}
+  {%- endcomment -%}
+</div>
+                                                </div>
+                                            </div>
+                                            {% if product.available %}
+                                            {% if product.variants.size > 1 %}
+                                            <a class="btn btn--to-secondary btn--full btn__multiplevariants" href="{{ product.url }}">Shop Now</a>
+                                            {% else %}
+                                            <div data-section-type="featured-collection" data-section-id="{{ section.id }}{{ block.id }}" data-variant-id="{{ current_variant.id }}">
+                                                <div class="product__form-container" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                                    <div class="product__form-wrapper">
+                                                    <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                                                    <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+                                                    <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+                        
+                                                    {% include 'cc-product-form' %}
+                                                    <script type="application/json" data-product-json>
+                                                    {{ product | json }}
+                                                    </script>
+                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% else %}
+                                            <button class="btn btn--to-secondary btn--full" disabled>{{ 'products.product.sold_out' | t }}</button>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                {% comment %} {% if colbanner != blank %}
+                                    <div class="ms__collections-products-items-banner" style="background-image: url({{ colbanner.background_image | image_url: width: colbanner.background_image.width, height: colbanner.background_image.height }});"><p>{{ colbanner.title }}</p></div>
+                                    {% endif %}
+                                    {% if proditems.size > 0  %}
+                                        
+                                    {% endif %} {% endcomment %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #shopify-section-{{ section.id }} .cc__inner-product-details-content{
+            position: relative;
+        }
+
+        #shopify-section-{{ section.id }} .cc__inner-product-details .cc__inner-product-details-content a{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            z-index: 5;
+        }
+
+        #shopify-section-{{ section.id }} .ms__collections-nav-item{
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-featured-image{
+            margin-bottom: 20px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__collections-products-items{
+            display: none;
+        }
+
+        #shopify-section-{{ section.id }} .ms__collections-products-items.ms__coltabactive{
+            display: flex;
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-featured-image svg{
+            width: 100%;
+            height: 294px;
+            object-fit: cover;
+            background-color: #f3f3f3;
+            display: block;
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-featured-image img
+        {
+            display: block;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+        }
+        #shopify-section-{{ section.id }} .cc__product-featured-image img.hover-img
+        {
+            display: none;
+        }
+        @media only screen and (min-width: 992px)
+        {
+            #shopify-section-{{ section.id }} .cc__inner-product-details:hover .cc__product-featured-image img
+            {
+                display: none;
+            }
+            #shopify-section-{{ section.id }} .cc__inner-product-details:hover .cc__product-featured-image img.hover-img
+            {
+                display: block;
+            }
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-details h3{
+            margin-bottom: 14px;
+            /**font-size: clamp(1.125rem, 0.804vw + 0.964rem, 1.688rem);**/
+            font-size: clamp(1.25rem, 2vw + 1rem, 1.75rem);
+            line-height: 1.2;
+            font-weight: 400;
+            color: {{ section.settings.tcolor }};
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-price{
+            font-size: 18px;
+            font-weight: 600;
+            color: {{ section.settings.tcolor }};
+        }
+
+        #shopify-section-{{ section.id }} .cc__product-orig-price {
+            text-decoration: line-through;
+            opacity: 0.75;
+        }
+
+        #shopify-section-{{ section.id }} .cc__fc_product-price{
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        #shopify-section-{{ section.id }} .cc__fc_product-price p{
+            margin: 0;
+        }
+
+        #shopify-section-{{ section.id }} .cc__productquantity-info,
+        #shopify-section-{{ section.id }} .cc__product-price-varies-info{
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: {{ section.settings.tcolor }};
+        }
+
+
+        #shopify-section-{{ section.id }} .product__form-container{
+            width: 100%;
+        }
+
+        #shopify-section-{{ section.id }} .btn{
+            font-size: 12px;
+            text-transform: UPPERCASE;
+            background-color: #695450;
+            border: 2px solid #695450;
+            transition: all 0.3s ease;
+            line-height: 1.2;
+            padding: 10px;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+
+
+        #shopify-section-{{ section.id }} .btn:after{
+            outline: unset !important;
+        }
+
+        #shopify-section-{{ section.id }} .btn:hover{
+            background-color: #977e57;
+            border: 2px solid #977e57;
+        }
+
+
+        #shopify-section-{{ section.id }} .cc__inner-product-details {
+            height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+        }
+
+        #shopify-section-{{ section.id }} .product__notification:empty {
+            margin: 0;
+        }
+
+        #shopify-section-{{ section.id }} .cc__collection-grid-items {
+            display: grid;
+            grid-template-columns: repeat(2, calc(50% - 10px));
+            gap: 20px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__inner-badges-list{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            text-align: center;
+        }
+
+        #shopify-section-{{ section.id }} .ms__inner-badges{
+            padding: 4px 10px;
+            border-radius: 40px;
+            text-transform: uppercase;
+            border: 2px solid #977e57;
+            color: inherit;
+            background-color: #fff;
+            font-size: 12px;
+        }
+
+        #shopify-section-{{ section.id }} .ms__collection-nav-inner img{
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+         #shopify-section-{{ section.id }} .cc__product-featured-image img{
+        padding: 16px;
+    }
+    #shopify-section-{{ section.id }} .cc__product-featured-image {
+        background: #fff;
+    }
+
+        @media screen and (min-width: 750px){
+            
+            #shopify-section-{{ section.id }} .cc__product-details h3{
+                font-size: clamp(1.125rem, 0.804vw + 0.964rem, 1.688rem);
+            }
+
+            #shopify-section-{{ section.id }} .cc__featured-collection-header.cc__withheading{
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+
+            #shopify-section-{{ section.id }} .cc__collection-grid-items {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 44px 30px;
+            }
+
+            #shopify-section-{{ section.id }} .cc__product-featured-image img{
+            width: 100%;
+            height: 100%;
+            }
+        }
+        /** changes of 08/11/2025 **/
+        #shopify-section-{{ section.id }}.collection-filter-list .ms__collections-nav--container
+        {
+            overflow-x: hidden;
+        }
+        #shopify-section-{{ section.id }}.collection-filter-list .ms__collections-nav--container .ms__collections-nav-item
+        {
+            flex: 1;
+        }
+        #shopify-section-{{ section.id }}.collection-filter-list .ms__collections-nav--container .ms__collections-nav-item .ms__collection-nav-inner
+        {
+            min-width: unset;
+            padding: 5px 10px;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 991px)
+        {
+            #shopify-section-{{ section.id }}.collection-filter-list .ms__collections-nav--container
+            {
+                gap: 10px;
+            }
+        }
+        @media only screen and (max-width: 767px)
+        {
+            #shopify-section-{{ section.id }}.collection-filter-list .ms__collections-nav--container
+            {
+                flex-wrap: wrap;
+            }
+            #shopify-section-{{ section.id }}.collection-filter-list .ms__collections-nav--container .ms__collections-nav-item
+            {
+                flex: unset;
+                width: calc(50% - 12px);
+            }
+            /* #shopify-section-{{ section.id }}.collection-filter-list .ms__collections-nav--container .ms__collections-nav-item:last-child
+            {
+                width: 100%;
+            } */
+        }
+        /** changes of 08/11/2025 **/
+    </style>
+    <script>
+        const slider = document.querySelector('.ms__collections-nav--container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            slider.scrollLeft = scrollLeft - walk;
+        {% comment %} console.log(walk); {% endcomment %}
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const url = window.location.href;
+            const andIndex = url.indexOf('&');
+
+            if (andIndex !== -1) {
+            // Get the string after the '&'
+            const tabName = url.substring(andIndex + 1);
+
+            // Select all tab navigation items and product containers
+            const navItems = document.querySelectorAll('.ms__collections-nav-item');
+            const productTabs = document.querySelectorAll('.ms__collections-products-items');
+
+            // Loop through nav items
+            navItems.forEach(item => {
+                if (item.dataset.tab_name === tabName) {
+                    item.classList.add('ms__colcurrent');
+                } else {
+                    item.classList.remove('ms__colcurrent');
+                }
+            });
+
+            // Loop through product tabs
+            productTabs.forEach(tab => {
+                if (tab.dataset.tab_name === tabName) {
+                    tab.classList.add('ms__coltabactive');
+                } else {
+                    tab.classList.remove('ms__coltabactive');
+                }
+            });
+            }
+        });
+    </script>
+
+{% endif %}
+
+
+{% schema %}
+{
+    "name": "Collections Filter List",
+    "class": "collection-filter-list",
+    "settings": [
+        {
+            "type": "text",
+            "id": "collection-title",
+            "label": "Collection Title"
+        },
+        {
+            "type": "header",
+            "content": "Styles"  
+        },
+        {
+            "type" : "color",
+            "id" : "bgcolor",
+            "label": "Background color",
+            "default": "transparent"
+        },
+        {
+            "type" : "color",
+            "id" : "tcolor",
+            "label": "Text color",
+            "default": "#695450"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "collection",
+            "name": "Collection",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "filter-title",
+                    "label": "Filter Title",
+                },
+                {
+                    "type": "product_list",
+                    "id": "pdp_list",
+                    "label": "Product List"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
+
+<style>
+  .template-collection .ms__collections-list .cc__product-orig-price {
+    display: none !important;
+  }
+</style>

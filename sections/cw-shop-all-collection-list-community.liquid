@@ -1,0 +1,706 @@
+<style>
+    {% if section.settings.hide_instafeed != blank %}
+        body.template-collection-cw-shop-all .shopify-section-group-group-prefooter
+        {
+            display: none;
+        }
+    {% endif %}
+    #shopify-section-{{ section.id }} .cw-instafeed-wrapper
+    {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 45px 0px;
+        padding-bottom: 26px;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-wrapper .container
+    {
+        display: block;
+        width: 100%;
+        max-width: 1276px;
+        padding: 0px 15px;
+        margin: 0px auto;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-title
+    {
+        margin-bottom: 15px;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-title h2
+    {
+        font-family: 'Botanica', serif;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 110%;
+        letter-spacing: 2px;
+        text-align: center;
+        color: #977E57;
+        padding: 0px;
+        margin: 0px;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-links
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        line-height: 1;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-links a,
+    #shopify-section-{{ section.id }} .cw-instafeed-links a:hover,
+    #shopify-section-{{ section.id }} .cw-instafeed-links a:focus
+    {
+        display: inline-flex;
+        font-family: 'Montserrat';
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 110%;
+        letter-spacing: 0px;
+        text-transform: uppercase;
+        color: #695450;
+        outline: none;
+        text-decoration: none;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-social-media
+    {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        line-height: 1;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-social-media a,
+    #shopify-section-{{ section.id }} .cw-instafeed-social-media a:hover,
+    #shopify-section-{{ section.id }} .cw-instafeed-social-media a:focus
+    {
+        display: inline-flex;
+        outline: none;
+        text-decoration: none;
+        width: 42px;
+        line-height: 1;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-social-media a img
+    {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-images
+    {
+        margin-top: 50px;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-images.desktop-only
+    {
+        display: block;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-images.mobile-only
+    {
+        display: none;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-images-inner
+    {
+        display: flex;
+        column-gap: 19px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-image
+    {
+        cursor: pointer;
+        max-width: 278px;
+        height: 342px;
+        position: relative;
+        flex: 1;
+        margin-bottom: 19px;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-image-big
+    {
+        max-width: 652px;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-image img
+    {
+        display: inline-block;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-image img.hover-img
+    {
+        display: none;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-image:hover img
+    {
+        display: none;
+    }
+    #shopify-section-{{ section.id }} .cw-instafeed-image:hover img.hover-img
+    {
+        display: block;
+    }
+    @media only screen and (max-width: 767px)
+    {
+        #shopify-section-{{ section.id }} .cw-instafeed-wrapper
+        {
+            padding: 40px 0px;
+            background-color: #fff;
+            padding-bottom: 29px;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-title
+        {
+            margin-bottom: 5px;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-title h2
+        {
+            font-size: 36px;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-links a, #shopify-section-{{ section.id }} .cw-instafeed-links a:hover, #shopify-section-{{ section.id }} .cw-instafeed-links a:focus
+        {
+            font-size: 14px;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-social-media a, #shopify-section-{{ section.id }} .cw-instafeed-social-media a:hover, #shopify-section-{{ section.id }} .cw-instafeed-social-media a:focus
+        {
+            width: 35px;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-images
+        {
+            margin-top: 30px;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-images.desktop-only
+        {
+            display: none;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-images.mobile-only
+        {
+            display: block;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-images-inner
+        {
+            column-gap: 11px;
+        }
+        #shopify-section-{{ section.id }} .cw-instafeed-image
+        {
+            flex: unset;
+            margin-bottom: 11px;
+            width: calc(50% - 6px);
+        }
+    }
+    @media only screen and (max-width: 575px)
+    {
+        #shopify-section-{{ section.id }} .cw-instafeed-image
+        {
+            height: 185px;
+        }
+    }
+</style>
+<div class="cw-instafeed-wrapper">
+    <div class="container">
+        {% if section.settings.title != blank %}
+        <div class="cw-instafeed-title">
+            <h2>{{ section.settings.title }}</h2>
+        </div>
+        {% endif %}
+        <div class="cw-instafeed-links">
+            {% if section.settings.handle != blank and section.settings.handle_link != blank %}
+                <a href="{{ section.settings.handle_link }}" target="_blank">{{ section.settings.handle }}</a>
+            {% endif %}
+            <div class="cw-instafeed-social-media">
+                {% if section.settings.facebook_icon != blank and section.settings.facebook_link != blank %}
+                <a href="{{ section.settings.facebook_link }}" target="_blank">
+                    <img src="{{ section.settings.facebook_icon | image_url: width: 84 }}" alt="Facebook" width="42" height="42" loading="lazy">
+                </a>
+                {% endif %}
+                {% if section.settings.instagram_icon != blank and section.settings.instagram_link != blank %}
+                <a href="{{ section.settings.instagram_link }}" target="_blank">
+                    <img src="{{ section.settings.instagram_icon | image_url: width: 84 }}" alt="Instagram" width="42" height="42" loading="lazy">
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% if section.blocks.size > 0 %}
+            <div class="cw-instafeed-images desktop-only">
+                <div class="cw-instafeed-images-inner">
+                    {% if section.blocks[0].settings.image != blank %}
+                        <div class="cw-instafeed-image cw-instafeed-image-big">
+                             {{ section.blocks[0].settings.image
+                                | image_url: width: 800
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% if section.blocks[0].settings.hover_image != blank %}
+                                {{ section.blocks[0].settings.hover_image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% else %}
+                                {{ section.blocks[0].settings.image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[1].settings.image != blank %}
+                        <div class="cw-instafeed-image">
+                             {{ section.blocks[1].settings.image
+                                | image_url: width: 600
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% if section.blocks[1].settings.hover_image != blank %}
+                                {{ section.blocks[1].settings.hover_image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% else %}
+                                {{ section.blocks[1].settings.image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[2].settings.image != blank %}
+                        <div class="cw-instafeed-image">
+                             {{ section.blocks[2].settings.image
+                                | image_url: width: 600
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% if section.blocks[2].settings.hover_image != blank %}
+                                {{ section.blocks[2].settings.hover_image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% else %}
+                                {{ section.blocks[2].settings.image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="cw-instafeed-images-inner">
+                    {% if section.blocks[3].settings.image != blank %}
+                        <div class="cw-instafeed-image">
+                             {{ section.blocks[3].settings.image
+                                | image_url: width: 600
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% if section.blocks[3].settings.hover_image != blank %}
+                                {{ section.blocks[3].settings.hover_image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% else %}
+                                {{ section.blocks[3].settings.image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[4].settings.image != blank %}
+                        <div class="cw-instafeed-image">
+                             {{ section.blocks[4].settings.image
+                                | image_url: width: 600
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% if section.blocks[4].settings.hover_image != blank %}
+                                {{ section.blocks[4].settings.hover_image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% else %}
+                                {{ section.blocks[4].settings.image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[5].settings.image != blank %}
+                        <div class="cw-instafeed-image cw-instafeed-image-big">
+                             {{ section.blocks[5].settings.image
+                                | image_url: width: 800
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% if section.blocks[5].settings.hover_image != blank %}
+                                {{ section.blocks[5].settings.hover_image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% else %}
+                                {{ section.blocks[5].settings.image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="cw-instafeed-images mobile-only">
+                <div class="cw-instafeed-images-inner">
+                    {% if section.blocks[0].settings.image != blank %}
+                        <div class="cw-instafeed-image cw-instafeed-image-big">
+                            {% comment %} <img src="{{section.blocks[0].settings.image | image_url: width: 800 }}" loading="lazy" alt="" width="652" height="342">
+                            {% if section.blocks[0].settings.hover_image != blank %}
+                                <img src="{{ section.blocks[0].settings.hover_image | image_url: width: 800 }}" loading="lazy" alt="" class="hover-img" width="652" height="342">
+                            {% else %}
+                                <img src="{{section.blocks[0].settings.image | image_url: width: 800 }}" loading="lazy" alt="" width="652" height="342">
+                            {% endif %} {% endcomment %}
+                             {{ section.blocks[0].settings.image
+                                | image_url: width: 800
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% if section.blocks[0].settings.hover_image != blank %}
+                                {{ section.blocks[0].settings.hover_image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% else %}
+                                {{ section.blocks[0].settings.image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[1].settings.image != blank %}
+                        <div class="cw-instafeed-image">
+                            {% comment %} <img src="{{ section.blocks[1].settings.image | image_url: width: 350 }}" loading="lazy" alt="" class="" width="278" height="342">
+                            {% if section.blocks[1].settings.hover_image != blank %}
+                                <img src="{{ section.blocks[1].settings.hover_image | image_url: width: 350 }}" loading="lazy" alt="" class="hover-img" width="278" height="342">
+                            {% else %}
+                                <img src="{{ section.blocks[1].settings.image | image_url: width: 350 }}" loading="lazy" alt="" class="hover-img" width="278" height="342">
+                            {% endif %} {% endcomment %}
+                              {{ section.blocks[1].settings.image
+                                | image_url: width: 600
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% if section.blocks[1].settings.hover_image != blank %}
+                                {{ section.blocks[1].settings.hover_image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% else %}
+                                {{ section.blocks[1].settings.image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[2].settings.image != blank %}
+                        <div class="cw-instafeed-image">
+                            {% comment %} <img src="{{ section.blocks[2].settings.image | image_url: width: 350 }}" loading="lazy" alt="" class="" width="278" height="342">
+                            {% if section.blocks[2].settings.hover_image != blank %}
+                                <img src="{{ section.blocks[2].settings.hover_image | image_url: width: 350 }}" loading="lazy" alt="" class="hover-img" width="278" height="342">
+                            {% else %}
+                                <img src="{{ section.blocks[2].settings.image | image_url: width: 350 }}" loading="lazy" alt="" class="hover-img" width="278" height="342">
+                            {% endif %} {% endcomment %}
+                               {{ section.blocks[2].settings.image
+                                | image_url: width: 600
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% if section.blocks[2].settings.hover_image != blank %}
+                                {{ section.blocks[1].settings.hover_image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% else %}
+                                {{ section.blocks[2].settings.image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[3].settings.image != blank %}
+                        <div class="cw-instafeed-image">
+                            {% comment %} <img src="{{ section.blocks[3].settings.image | image_url: width: 350 }}" loading="lazy" alt="" class="" width="278" height="342">
+                            {% if section.blocks[3].settings.hover_image != blank %}
+                                <img src="{{ section.blocks[3].settings.hover_image | image_url: width: 350 }}" loading="lazy" alt="" class="hover-img" width="278" height="342">
+                            {% else %}
+                                <img src="{{ section.blocks[3].settings.image | image_url: width: 350 }}" loading="lazy" alt="" class="hover-img" width="278" height="342">
+                            {% endif %} {% endcomment %}
+                              {{ section.blocks[3].settings.image
+                                | image_url: width: 600
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% if section.blocks[3].settings.hover_image != blank %}
+                                {{ section.blocks[1].settings.hover_image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% else %}
+                                {{ section.blocks[3].settings.image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[4].settings.image != blank %}
+                        <div class="cw-instafeed-image">
+                            {% comment %} <img src="{{ section.blocks[4].settings.image | image_url: width: 350 }}" loading="lazy" alt="" class="" width="278" height="342">
+                            {% if section.blocks[4].settings.hover_image != blank %}
+                                <img src="{{ section.blocks[4].settings.hover_image | image_url: width: 350 }}" loading="lazy" alt="" class="hover-img" width="278" height="342">
+                            {% else %}
+                                <img src="{{ section.blocks[4].settings.image | image_url: width: 350 }}" loading="lazy" alt="" class="hover-img" width="278" height="342">
+                            {% endif %} {% endcomment %}
+                              {{ section.blocks[4].settings.image
+                                | image_url: width: 600
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% if section.blocks[4].settings.hover_image != blank %}
+                                {{ section.blocks[4].settings.hover_image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% else %}
+                                {{ section.blocks[4].settings.image
+                                    | image_url: width: 600
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 350px, 350px',
+                                    widths: '200, 278, 350, 450, 545'
+                                }}
+                                {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.blocks[5].settings.image != blank %}
+                        <div class="cw-instafeed-image cw-instafeed-image-big">
+                            {% comment %} <img src="{{section.blocks[5].settings.image | image_url: width: 800 }}" loading="lazy" alt="" width="652" height="342">
+                            {% if section.blocks[5].settings.hover_image != blank %}
+                                <img src="{{ section.blocks[5].settings.hover_image | image_url: width: 800 }}" loading="lazy" alt="" class="hover-img" width="652" height="342">
+                            {% else %}
+                                <img src="{{section.blocks[5].settings.image | image_url: width: 800 }}" loading="lazy" alt="" width="652" height="342">
+                            {% endif %} {% endcomment %}
+                            {{ section.blocks[5].settings.image
+                                | image_url: width: 800
+                                | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% if section.blocks[5].settings.hover_image != blank %}
+                                {{ section.blocks[5].settings.hover_image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    class: 'hover-img',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% else %}
+                                {{ section.blocks[5].settings.image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    loading: 'lazy',
+                                    sizes: '(max-width: 767px) 325px, 800px',
+                                    widths: '325, 400, 600, 800'
+                                }}
+                                {% endif %}
+
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% schema %}
+{
+    "name": "CW Instafeed",
+    "settings": [
+        {
+            "type" : "checkbox",
+            "id" : "hide_instafeed",
+            "label": "Hide instafeed",
+            "default": true
+        },
+        {
+            "type" : "text",
+            "id" : "title",
+            "label": "Title"
+        },
+        {
+            "type" : "text",
+            "id" : "handle",
+            "label": "Handle"
+        },
+        {
+            "type" : "url",
+            "id" : "handle_link",
+            "label": "Handle link"
+        },
+        {
+            "type" : "image_picker",
+            "id" : "facebook_icon",
+            "label": "Facebook_icon"
+        },
+        {
+            "type" : "url",
+            "id" : "facebook_link",
+            "label": "Facebook link"
+        },
+        {
+            "type" : "image_picker",
+            "id" : "instagram_icon",
+            "label": "Instagram_icon"
+        },
+        {
+            "type" : "url",
+            "id" : "instagram_link",
+            "label": "Instagram link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "image",
+            "limit": 6,
+            "name": "Image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image",
+                    "label": "Hover image"
+                }
+            ]
+        }
+    ],
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "presets": [
+        {
+            "name": "CW Instafeed"
+        }
+    ]
+}
+{% endschema %}

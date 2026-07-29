@@ -1,0 +1,134 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cc-product-template",
+      "blocks": {
+        "clearpay_on_site_messaging_payments_messaging_644NM6": {
+          "type": "shopify://apps/clearpay-on-site-messaging/blocks/payments-messaging/5d763983-d3e6-4888-9966-4e1170b26ae9",
+          "disabled": true,
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "color": "",
+            "size": "sm",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "clearpay_on_site_messaging_payments_messaging_644NM6"
+      ],
+      "settings": {
+        "show_quantity_selector": true,
+        "show_variant_labels": true,
+        "show_vendor": true,
+        "enable_payment_button": true,
+        "show_share_buttons": true,
+        "show_clearpay_messaging": true,
+        "reviews": 300,
+        "disclaimer_label": "<strong>Note:</strong> <span style=\"text-decoration:underline\">Please read our disclaimer before purchasing</span>",
+        "disclaimer": "<p><strong>Disclaimer:</strong> They are not recommended for use in pregnancy or for people with nickel or adhesive allergies. We don't recommend them to children under 8 years old. This product is not used to diagnose, treat, cure, or prevent any disease. Always seek the advice of a physician or other qualified healthcare provider with any questions regarding a medical condition.</p>",
+        "bgcolor": "#f7f8f4"
+      }
+    },
+    "cc_multirow_PtgDLK": {
+      "type": "cc-multirow",
+      "blocks": {
+        "image_HKRQFF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12629.jpg",
+            "content": "<p>East Healing (formally Acu Seeds) was founded by <strong>Giselle Boxer</strong>, who was diagnosed with Chronic Fatigue Syndrome or M.E at the age of 26.<br/><br/>When her GP told her that she would never recover from the condition, Giselle went on a personal healing journey using a holistic approach of diet, supplementation but most importantly Traditional Chinese Medicine (TCM).</p>",
+            "linklabel": "",
+            "link": "",
+            "image_position": "row-reverse"
+          }
+        },
+        "image_6Qw96t": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Acu-Seeds_12873.jpg",
+            "content": "<p>Giselle believes that acupuncture, Chinese herbs and ear seeds played a huge role in reducing her symptoms. TCM has also been hugely beneficial for her during pregnancy and post-partum.</p><p><strong>It is now her mission to share the benefits of ear seeds and other Chinese healing modalities with the world.</strong></p>",
+            "linklabel": "",
+            "link": "",
+            "image_position": "row"
+          }
+        }
+      },
+      "block_order": [
+        "image_HKRQFF",
+        "image_6Qw96t"
+      ],
+      "settings": {
+        "title": "the woman behind EAST HEALING",
+        "htags": "h2",
+        "dhsize": 96,
+        "mhsize": 28,
+        "subtitle": "meet the founder",
+        "dshsize": 10,
+        "mshsize": 10,
+        "tcolor": "#695450",
+        "bgcolor": "#f7f8f4",
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    },
+    "17095434310523db82": {
+      "type": "apps",
+      "custom_css": [
+        ".junip-product-review-container {max-width: 980px !important;}"
+      ],
+      "settings": {}
+    },
+    "cc_instafeed_GMFTUK": {
+      "type": "cc-instafeed",
+      "disabled": true,
+      "settings": {
+        "title": "Follow us on Social Media",
+        "htags": "h2",
+        "insta_handle": "@acuseeds",
+        "tcolor": "#695450",
+        "bgcolor": "#f7f8f4",
+        "dhsize": 96,
+        "mhsize": 45,
+        "dpadtop": 70,
+        "dpadbot": 70,
+        "mpadtop": 35,
+        "mpadbot": 35
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cc_multirow_PtgDLK",
+    "17095434310523db82",
+    "cc_instafeed_GMFTUK"
+  ]
+}

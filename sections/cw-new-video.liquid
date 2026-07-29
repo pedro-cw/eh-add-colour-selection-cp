@@ -1,0 +1,368 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+<style>
+  .cw-pdp-insta-section {
+   background: #FCF6F1;
+       padding: 80px 0px 60px 0px;
+  }
+
+  .cw-pdp-insta-header {
+    text-align: center;
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .cw-pdp-insta-title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 110%;
+    color: #001D1E;
+  }
+
+  .cw-pdp-insta-content {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 140%;
+    color: #2E7977;
+    padding-top: 20px;
+  }
+
+  .cw-pdp-insta-videos-parent-main {
+    width: 100%;
+  }
+
+  .cw-pdp-insta-videos-parent {
+    padding-top: 40px;
+  }
+
+  .cw-pdp-insta-video-box {
+    position: relative;
+  }
+
+  
+  .play_pause_v3 {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; 
+  }
+
+  .play_pause_v3 svg {
+  width: 60px !important;
+    height: 60px !important;
+    cursor: pointer;
+    pointer-events: auto;
+    color: #fff;
+  }
+
+  .play_pause_v3 .pause_it {
+    display: none;
+  }
+
+  .sound_control_v3 {
+    position: absolute;
+        right: 15px;
+    bottom: 0px;
+    z-index: 5;
+    cursor: pointer;
+  }
+
+  .sound_control_v3 svg {
+    width: 24px !important;
+    height: 24px !important;
+    cursor: pointer;
+    pointer-events: auto;
+    color: #fff;
+}
+
+.cw-pdp-insta-videos-parent {
+  display: flex;
+  flex-wrap: nowrap;          
+  gap: 28px;                  
+}
+
+.cw-pdp-insta-video-box {
+  position: relative;
+  flex: 0 0 260px;           
+}
+
+.cw-pdp-insta-video-poster video {
+  width: 100%;
+  height: 555px;
+  object-fit: cover;
+  display: block;
+}
+.cw-pdp-insta-header h2.cw-social-videos__title {
+    font-size: 50px;
+    line-height: 55px;
+}
+  @media only screen and (max-width: 600px) {
+    .cw-pdp-insta-video-poster video {
+      height: 444px;
+    }
+
+    .cw-pdp-insta-title {
+      font-size: 26px;
+    }
+
+    .cw-pdp-insta-content {
+      font-size: 16px;
+      padding-top: 10px;
+    }
+
+    .cw-pdp-insta-section {
+      padding: 40px 0px 40px 0px;
+    }
+    .cw-pdp-insta-header h2.cw-social-videos__title {
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 0;
+    padding: 0 15px;
+}
+.swiper.video-swiper {
+    padding: 0 60px !important;
+    padding-top: 40px !important;
+}
+  }
+</style>
+
+<div class="cw-pdp-insta-section">
+  <div class="page-widthvk">
+    <div class="cw-pdp-insta-header">
+        <h2 class="cw-social-videos__title">{{ section.settings.title }}</h2>
+    
+    </div>
+
+    <div class="cw-pdp-insta-videos-parent-main">
+      <div class="swiper video-swiper cw-pdp-insta-videos-parent">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+           
+          
+              <div class="swiper-slide">
+                <div class="cw-pdp-insta-video-box" {{ block.shopify_attributes }}>
+                  <div class="cw-pdp-insta-video-poster">
+                    <video
+                      {% if block.settings.autoplay %}
+                        autoplay muted loop playsinline
+                      {% else %}
+                        playsinline
+                      {% endif %}
+                      {% if block.settings.poster != blank %}
+                        poster="{{ block.settings.poster | img_url: 'master' }}"
+                      {% endif %}
+                    >
+                 
+                  <source src="{{ block.settings.video_url }}" type="video/mp4">
+            
+           
+               
+                    </video>
+                  </div>
+
+                  <div class="play_pause_v3">
+                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" role="presentation" aria-label="Play" class="play_it"
+                    style="width:var(--rsw, 100%);height:auto;max-height:100%" class="r-1m44xzi" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"></path>
+                </svg>
+                 
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"  class="pause_it"
+                    role="presentation" aria-label="Pause" class="r-hkuyqf" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="width: var(--rsw, 100%); height: auto; max-height: 100%;"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"></path>
+            </svg>
+                  
+                  </div>
+
+                 <div class="sound_control_v3">
+
+  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
+       class="sound_icon sound_muted"
+       role="presentation" aria-label="Mute" height="1em" width="1em"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width: var(--rsw, 100%); height: auto; max-height: 100%;">
+    <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"></path>
+    <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"></path>
+    <path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"></path>
+  </svg>
+
+  <svg stroke="currentColor" fill="currentColor"
+       class="sound-on"
+       style="display: none; width: var(--rsw, 100%); height: auto; max-height: 100%;"
+       stroke-width="0" viewBox="0 0 16 16"
+       role="presentation" aria-label="Unmute" height="1em" width="1em"
+       xmlns="http://www.w3.org/2000/svg">
+    <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0"></path>
+  </svg>
+</div>
+                </div>
+              </div>
+          
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const swiperv1 = new Swiper('.video-swiper', {
+    direction: 'horizontal',
+    slidesPerView: 1.3,
+    spaceBetween: 10,
+    loop: true,
+      autoplay: {
+    delay: 7000,      
+    disableOnInteraction: false 
+  },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+         initialSlide: 1, 
+        spaceBetween: 10
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 20
+      },
+      1024: {
+        slidesPerView: 5.6,
+        spaceBetween: 28
+      }
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+  const videoBoxes = document.querySelectorAll('.cw-pdp-insta-video-box');
+
+  function pauseAllExcept(currentVideo) {
+    document.querySelectorAll('.cw-pdp-insta-video-box video').forEach(v => {
+      if (v !== currentVideo) {
+        v.pause();
+        const box = v.closest('.cw-pdp-insta-video-box');
+        if (!box) return;
+        const playIcon = box.querySelector('.play_it');
+        const pauseIcon = box.querySelector('.pause_it');
+        if (playIcon && pauseIcon) {
+          playIcon.style.display = 'block';
+          pauseIcon.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  videoBoxes.forEach(box => {
+    const video        = box.querySelector('video');
+    const playIcon     = box.querySelector('.play_it');
+    const pauseIcon    = box.querySelector('.pause_it');
+    const soundWrapper = box.querySelector('.sound_control_v3');
+    const muteIcon     = soundWrapper ? soundWrapper.querySelector('.sound_icon.sound_muted') : null; // sound ON icon
+    const soundOffIcon = soundWrapper ? soundWrapper.querySelector('.sound-on') : null;               // muted icon
+
+    if (!video || !playIcon || !pauseIcon) return;
+
+    video.muted = false;
+
+    function setIconsByMuteState() {
+      if (!muteIcon || !soundOffIcon) return;
+
+      if (video.muted) {
+        muteIcon.style.display    = 'none';        
+        soundOffIcon.style.display = 'inline-block';
+      } else {
+        
+        muteIcon.style.display    = 'inline-block';
+        soundOffIcon.style.display = 'none';        
+      }
+    }
+
+    function setInitialIconsOverride() {
+      if (!muteIcon || !soundOffIcon) return;
+     
+      muteIcon.style.display     = 'inline-block'; 
+      soundOffIcon.style.display = 'none';        
+    }
+
+    setInitialIconsOverride();
+
+    playIcon.addEventListener('click', function (e) {
+      e.stopPropagation();
+      pauseAllExcept(video);
+
+      video.play();
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+   
+    });
+
+    pauseIcon.addEventListener('click', function (e) {
+      e.stopPropagation();
+      video.pause();
+      pauseIcon.style.display = 'none';
+      playIcon.style.display = 'block';
+    });
+
+    if (soundWrapper && muteIcon && soundOffIcon) {
+      soundWrapper.addEventListener('click', function (e) {
+        e.stopPropagation();
+
+        video.muted = !video.muted;
+        setIconsByMuteState();
+      });
+    }
+
+    video.addEventListener('ended', function () {
+      pauseIcon.style.display = 'none';
+      playIcon.style.display = 'block';
+    });
+  });
+});
+
+
+</script>
+
+{% schema %}
+{
+  "name": "CW New Videos",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Real People. Real Relief."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video Item",
+      "settings": [
+         {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL (MP4)"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Video Poster Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay (Muted Loop)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "CW New Videos",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
