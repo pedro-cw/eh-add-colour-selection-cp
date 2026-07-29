@@ -1,7 +1,4 @@
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -11,7 +8,10 @@
 %}
 
 {% if cols.size > 0 %}
-  <div class="ms__collections-list cw-filtered-collections" data-cw-filter-section="{{ section.id }}" data-default-state="{{ st.default_state }}">
+  <div
+    class="ms__collections-list cw-filtered-collections"
+    data-cw-filter-section="{{ section.id }}"
+    data-default-state="{{ st.default_state }}">
     <div class="page-width">
       <div class="ms__collections-inner-container">
         {% if st.collection-title != blank %}
@@ -24,14 +24,35 @@
         {% endif %}
 
         <div class="cw-filter-shell" data-cw-filter-shell>
-          <button type="button" class="cw-filter-toggle" data-cw-filter-toggle aria-expanded="false" aria-controls="cw-filter-panel-{{ section.id }}">
+          <button
+            type="button"
+            class="cw-filter-toggle"
+            data-cw-filter-toggle
+            aria-expanded="false"
+            aria-controls="cw-filter-panel-{{ section.id }}">
             <span>{{ st.filter_label | default: 'Filter by concern' }}</span>
-            <svg class="cw-filter-chevron" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-              <path d="M4.375 7.188L10 12.812L15.625 7.188" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              class="cw-filter-chevron"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+              focusable="false">
+              <path
+                d="M4.375 7.188L10 12.812L15.625 7.188"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </button>
 
-          <div id="cw-filter-panel-{{ section.id }}" class="cw-filter-panel" data-cw-filter-panel hidden>
+          <div
+            id="cw-filter-panel-{{ section.id }}"
+            class="cw-filter-panel"
+            data-cw-filter-panel
+            hidden>
             <div class="cw-filter-options" role="list">
               {% for ct in cols %}
                 {% liquid
@@ -39,18 +60,38 @@
                   assign filter_handle = title | handleize
                 %}
                 {% if title != blank %}
-                  <button type="button" class="cw-filter-option" data-cw-filter-option data-filter-handle="{{ filter_handle }}" aria-pressed="false">
-                    <span class="cw-filter-radio" aria-hidden="true"><span></span></span>
+                  <button
+                    type="button"
+                    class="cw-filter-option"
+                    data-cw-filter-option
+                    data-filter-handle="{{ filter_handle }}"
+                    aria-pressed="false">
+                    <span class="cw-filter-radio" aria-hidden="true">
+                      <span></span>
+                    </span>
                     <span class="cw-filter-option-label">{{ title }}</span>
                   </button>
                 {% endif %}
               {% endfor %}
             </div>
 
-            <button type="button" class="cw-filter-clear" data-cw-filter-clear>
+            <button
+              type="button"
+              class="cw-filter-clear"
+              data-cw-filter-clear>
               <span>{{ st.clear_label | default: 'Clear Filters' }}</span>
-              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-                <path d="M5 5L15 15M15 5L5 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+                focusable="false">
+                <path
+                  d="M5 5L15 15M15 5L5 15"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round" />
               </svg>
             </button>
           </div>
@@ -84,21 +125,23 @@
                       {% endfor %}
                     {% endfor %}
                   {% endcapture %}
-
                   {%- capture wlm_check -%}{%- render 'wlm-product' with product, wlm_is_render: 'yes' -%}{%- endcapture -%}
-                  {%- if wlm_check == blank -%}{% continue %}{%- endif -%}
+                  {%- if wlm_check == blank -%}
+                    {% continue %}{%- endif -%}
 
                   {% liquid
                     assign current_variant = product.selected_or_first_available_variant
                     assign product_badges = product.metafields.custom.badges.value
                   %}
 
-                  <div class="cc__inner-product-details cw-collection-list-single-tab-content-column" data-cw-product-card data-filter-handles="{{ product_filter_handles | strip }}">
+                  <div
+                    class="cc__inner-product-details cw-collection-list-single-tab-content-column"
+                    data-cw-product-card
+                    data-filter-handles="{{ product_filter_handles | strip }}">
                     <a
                       href="{{ product.url }}"
                       class="cw-card-overlay-link"
-                      aria-label="{{ product.title | escape }}"
-                    ></a>
+                      aria-label="{{ product.title | escape }}"></a>
                     {% liquid
                       assign product_image_override = blank
                       assign first_product_image = product.images.first
@@ -181,7 +224,6 @@
                       data-wpd-product-collection-ids="{{ wpdProductCollectionIds | join: ',' }}"
                       data-wpd-product-id="{{ product.id }}"
                     {%- endcapture -%}
-
                     <a class="cw-product-card__image-wrapper swiper product-slider-{{ product.id }}" href="{{ product.url }}">
                       {% if product_badges != blank %}
                         <div class="ms__inner-badges-list">
@@ -200,8 +242,7 @@
                               height="{{ product.featured_media.height }}"
                               alt="{{ product.title | escape }}"
                               class="main-img"
-                              loading="lazy"
-                            >
+                              loading="lazy">
                           </div>
                         </div>
 
@@ -210,8 +251,7 @@
                             <img
                               src="{{ first_listing_image_url }}"
                               alt="{{ product.title | escape }}"
-                              loading="lazy"
-                            >
+                              loading="lazy">
                           </div>
                         {% endif %}
 
@@ -222,8 +262,7 @@
                               <img
                                 src="{{ image | img_url: '652x652', crop: 'center' }}"
                                 alt="{{ product.title | escape }}"
-                                loading="lazy"
-                              >
+                                loading="lazy">
                             </div>
                           {% endif %}
                         {% endfor %}
@@ -249,12 +288,16 @@
 
                       <div class="r-cw-easthealing-collection-productcard-rating-box">
                         <div class="rating-stars">
-                          <img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/rating_star_img.png?v=1772017048" alt="star" class="rating-star-img">
+                          <img
+                            src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/rating_star_img.png?v=1772017048"
+                            alt="star"
+                            class="rating-star-img">
                         </div>
 
                         <div class="cw-easthealing-collection-productcard-rating-txt">
                           <span>
-                            <p>Rated {{ rating_decimal }}/5 </p>
+                            <p>Rated {{ rating_decimal }}/5
+                            </p>
                           </span>
                         </div>
                       </div>
@@ -275,9 +318,18 @@
 
                     <div class="cw-collection-list-single-product-buttons">
                       {% if current_variant.available %}
-                        <a href="#" class="btn-primary" data-cw-card-add-to-cart data-variant-id="{{ current_variant.id }}" data-quantity="1">Add to cart</a>
+                        <a
+                          href="#"
+                          class="btn-primary"
+                          data-cw-card-add-to-cart
+                          data-variant-id="{{ current_variant.id }}"
+                          data-quantity="1">Add to cart</a>
                       {% else %}
-                        <a href="#" class="btn-primary cw-card-out-of-stock" aria-disabled="true" tabindex="-1">Out of stock</a>
+                        <a
+                          href="#"
+                          class="btn-primary cw-card-out-of-stock"
+                          aria-disabled="true"
+                          tabindex="-1">Out of stock</a>
                       {% endif %}
                       <a href="{{ product.url }}" class="btn-secondary">View</a>
                     </div>
@@ -294,7 +346,10 @@
             {% endfor %}
           </div>
 
-          <div class="cw-filter-empty" data-cw-filter-empty hidden>
+          <div
+            class="cw-filter-empty"
+            data-cw-filter-empty
+            hidden>
             {{ st.empty_text | default: 'No products found for these filters.' }}
           </div>
         </div>
@@ -308,7 +363,8 @@
       max-width: 100%;
       margin: 0 0 38px;
       color: #937F5C;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 23px;
       font-style: normal;
       font-weight: 400;
@@ -319,15 +375,18 @@
       word-wrap: break-word;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-shell {
+    #shopify-section-{{ section.id }}
+    .cw-filter-shell {
       width: 950px;
       max-width: 100%;
       margin: 0 auto 32px;
       color: #695450;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-toggle {
+    #shopify-section-{{ section.id }}
+    .cw-filter-toggle {
       width: 100%;
       min-height: 40px;
       padding: 12px 16px;
@@ -340,7 +399,8 @@
       justify-content: space-between;
       gap: 16px;
       cursor: pointer;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 14px;
       font-weight: 500;
       line-height: 1.2;
@@ -349,21 +409,25 @@
       text-align: left;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-toggle[aria-expanded="true"] {
+    #shopify-section-{{ section.id }}
+    .cw-filter-toggle[aria-expanded="true"] {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-chevron {
+    #shopify-section-{{ section.id }}
+    .cw-filter-chevron {
       flex: 0 0 auto;
       transition: transform 0.2s ease;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-toggle[aria-expanded="true"] .cw-filter-chevron {
+    #shopify-section-{{ section.id }}
+    .cw-filter-toggle[aria-expanded="true"] .cw-filter-chevron {
       transform: rotate(180deg);
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-panel {
+    #shopify-section-{{ section.id }}
+    .cw-filter-panel {
       width: 100%;
       background: #F7F3F0;
       border: 1px solid #695450;
@@ -373,7 +437,8 @@
       overflow: hidden;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-option {
+    #shopify-section-{{ section.id }}
+    .cw-filter-option {
       width: 100%;
       min-height: 40px;
       padding: 12px 8px 12px 16px;
@@ -386,7 +451,8 @@
       justify-content: flex-start;
       gap: 8px;
       cursor: pointer;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 14px;
       font-weight: 500;
       line-height: 1.2;
@@ -395,11 +461,12 @@
       text-align: left;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-option:last-child {
+    #shopify-section-{{ section.id }}.cw-filter-option:last-child {
       border-bottom: 1px solid #695450;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-radio {
+    #shopify-section-{{ section.id }}
+    .cw-filter-radio {
       width: 16px;
       height: 16px;
       border: 1px solid #695450;
@@ -410,22 +477,26 @@
       flex: 0 0 16px;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-radio span {
+    #shopify-section-{{ section.id }}
+    .cw-filter-radio span {
       width: 10px;
       height: 10px;
       background: #695450;
       border-radius: 999px;
       opacity: 0;
       transform: scale(0.6);
-      transition: opacity 0.15s ease, transform 0.15s ease;
+      transition: opacity 0.15s ease
+      , transform 0.15s ease;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-option.is-active .cw-filter-radio span {
+    #shopify-section-{{ section.id }}
+    .cw-filter-option.is-active .cw-filter-radio span {
       opacity: 1;
       transform: scale(1);
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-clear {
+    #shopify-section-{{ section.id }}
+    .cw-filter-clear {
       width: 100%;
       min-height: 40px;
       padding: 12px 16px;
@@ -437,7 +508,8 @@
       justify-content: space-between;
       gap: 16px;
       cursor: pointer;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 14px;
       font-weight: 500;
       line-height: 1.2;
@@ -446,17 +518,20 @@
       text-align: left;
     }
 
-    #shopify-section-{{ section.id }} .cw-filter-empty {
+    #shopify-section-{{ section.id }}
+    .cw-filter-empty {
       width: 100%;
       padding: 24px 16px;
       color: #695450;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 14px;
       letter-spacing: 0.5px;
       text-align: center;
     }
 
-    #shopify-section-{{ section.id }} .cc__collection-grid-items {
+    #shopify-section-{{ section.id }}
+    .cc__collection-grid-items {
       display: grid;
       grid-template-columns: repeat(3, 358px);
       gap: 64px 38px;
@@ -464,7 +539,8 @@
       align-items: start;
     }
 
-    #shopify-section-{{ section.id }} .cc__inner-product-details {
+    #shopify-section-{{ section.id }}
+    .cc__inner-product-details {
       width: 358px;
       position: relative;
       background: #fff;
@@ -474,17 +550,20 @@
       display: block;
     }
 
-    #shopify-section-{{ section.id }} .cc__inner-product-details[hidden] {
+    #shopify-section-{{ section.id }}
+    .cc__inner-product-details[hidden] {
       display: none !important;
     }
 
-    #shopify-section-{{ section.id }} .cc__inner-product-details-content {
+    #shopify-section-{{ section.id }}
+    .cc__inner-product-details-content {
       position: static;
       width: 100%;
       height: 100%;
     }
 
-    #shopify-section-{{ section.id }} .cc__product-featured-image {
+    #shopify-section-{{ section.id }}
+    .cc__product-featured-image {
       width: 325px;
       height: 325px;
       position: absolute;
@@ -495,22 +574,26 @@
       background: #fff;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-image-link {
+    #shopify-section-{{ section.id }}
+    .cw-card-image-link {
       position: absolute;
       inset: 0;
       display: block;
       z-index: 2;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-slider-track {
+    #shopify-section-{{ section.id }}
+    .cw-card-slider-track {
       position: relative;
       width: 100%;
       height: 100%;
       overflow: hidden;
     }
 
-    #shopify-section-{{ section.id }} .cc__product-featured-image img,
-    #shopify-section-{{ section.id }} .cc__product-featured-image .cw-card-slide {
+    #shopify-section-{{ section.id }}
+    .cc__product-featured-image img
+    , #shopify-section-{{ section.id }}
+    .cc__product-featured-image .cw-card-slide {
       display: none;
       width: 100%;
       height: 100%;
@@ -520,11 +603,13 @@
       background: #fff;
     }
 
-    #shopify-section-{{ section.id }} .cc__product-featured-image .cw-card-slide.is-active {
+    #shopify-section-{{ section.id }}
+    .cc__product-featured-image .cw-card-slide.is-active {
       display: block;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-arrow {
+    #shopify-section-{{ section.id }}
+    .cw-card-arrow {
       width: 34px;
       height: 34px;
       position: absolute;
@@ -543,15 +628,18 @@
       cursor: pointer;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-arrow--prev {
+    #shopify-section-{{ section.id }}
+    .cw-card-arrow--prev {
       left: 0;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-arrow--next {
+    #shopify-section-{{ section.id }}
+    .cw-card-arrow--next {
       right: 0;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-slider-dots {
+    #shopify-section-{{ section.id }}
+    .cw-card-slider-dots {
       position: absolute;
       left: 50%;
       top: 317px;
@@ -563,7 +651,8 @@
       transform: translateX(-50%);
     }
 
-    #shopify-section-{{ section.id }} .cw-card-dot {
+    #shopify-section-{{ section.id }}
+    .cw-card-dot {
       width: 6px;
       height: 6px;
       padding: 0;
@@ -573,13 +662,15 @@
       cursor: pointer;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-dot.is-active {
+    #shopify-section-{{ section.id }}
+    .cw-card-dot.is-active {
       width: 8px;
       height: 8px;
       background: #977E57;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-rating {
+    #shopify-section-{{ section.id }}
+    .cw-card-rating {
       position: absolute;
       left: 16px;
       top: 357px;
@@ -588,7 +679,8 @@
       align-items: center;
       gap: 8px;
       color: #000;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 12px;
       font-weight: 600;
       line-height: 19.2px;
@@ -597,7 +689,8 @@
       white-space: nowrap;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-stars {
+    #shopify-section-{{ section.id }}
+    .cw-card-stars {
       display: inline-flex;
       align-items: center;
       justify-content: flex-start;
@@ -608,36 +701,40 @@
       letter-spacing: -2px;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-rating-text {
+    #shopify-section-{{ section.id }}
+    .cw-card-rating-text {
       display: inline-flex;
       align-items: center;
     }
-    .cw-collection-title{
-    font-size: 50px !important;
+    .cw-collection-title {
+      font-size: 50px !important;
     }
 
-    #shopify-section-{{ section.id }} .collection-title-ms-block {
+    #shopify-section-{{ section.id }}
+    .collection-title-ms-block {
       color: {{ section.settings.tcolor }};
       font-size: 25px;
       font-weight: 400;
-      line-height: 110%; /* 27.5px */
+      line-height: 110%;
+      /* 27.5px */
       letter-spacing: 0.5px;
       text-align: start;
     }
 
-    #shopify-section-{{ section.id }} .cc__product-details h3 {
+    #shopify-section-{{ section.id }}
+    .cc__product-details h3 {
       position: absolute;
       left: 16px;
       top: 381px;
       z-index: 3;
       width: 326px;
-      margin: 0;
-      margin-bottom: 14px;
+      margin: 0 0 14px;
       color: {{ section.settings.tcolor }};
       word-wrap: break-word;
     }
 
-    #shopify-section-{{ section.id }} .cc__fc_product-price {
+    #shopify-section-{{ section.id }}
+    .cc__fc_product-price {
       position: absolute;
       right: 16px;
       top: 435px;
@@ -650,14 +747,18 @@
       text-align: right;
     }
 
-    #shopify-section-{{ section.id }} .cc__fc_product-price p {
+    #shopify-section-{{ section.id }}
+    .cc__fc_product-price p {
       margin: 0;
     }
 
-    #shopify-section-{{ section.id }} .cc__product-price,
-    #shopify-section-{{ section.id }} .cc__product-sale-price {
+    #shopify-section-{{ section.id }}
+    .cc__product-price
+    , #shopify-section-{{ section.id }}
+    .cc__product-sale-price {
       color: #695450;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 17px;
       font-weight: 700;
       line-height: 18.7px;
@@ -665,10 +766,12 @@
       text-transform: uppercase;
     }
 
-    #shopify-section-{{ section.id }} .cc__product-orig-price {
+    #shopify-section-{{ section.id }}
+    .cc__product-orig-price {
       margin-right: 6px;
       color: #695450;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 13px;
       font-weight: 600;
       line-height: 1;
@@ -676,7 +779,8 @@
       text-decoration: line-through;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-actions {
+    #shopify-section-{{ section.id }}
+    .cw-card-actions {
       position: absolute;
       left: 16px;
       top: 461px;
@@ -687,20 +791,29 @@
       align-items: center;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-add-wrap,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .product__form-container,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .product__form-wrapper,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap form {
+    #shopify-section-{{ section.id }}
+    .cw-card-add-wrap
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .product__form-container
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .product__form-wrapper
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap form {
       width: 153px;
       height: 41px;
       margin: 0;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-add-btn,
-    #shopify-section-{{ section.id }} .cw-card-view-btn,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap button,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .btn,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap input[type="submit"] {
+    #shopify-section-{{ section.id }}
+    .cw-card-add-btn
+    , #shopify-section-{{ section.id }}
+    .cw-card-view-btn
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap button
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .btn
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap input[type="submit"] {
       width: 153px !important;
       height: 41px !important;
       min-height: 41px !important;
@@ -712,7 +825,8 @@
       align-items: center !important;
       justify-content: center !important;
       gap: 10px;
-      font-family: Montserrat, sans-serif !important;
+      font-family: Montserrat
+      , sans-serif !important;
       font-size: 14px !important;
       font-weight: 600 !important;
       line-height: 15.4px !important;
@@ -725,49 +839,64 @@
       appearance: none;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-add-btn,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap button,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .btn,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap input[type="submit"] {
+    #shopify-section-{{ section.id }}
+    .cw-card-add-btn
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap button
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .btn
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap input[type="submit"] {
       background: #695450 !important;
       border: 1px solid #695450 !important;
       color: #fff !important;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-view-btn {
+    #shopify-section-{{ section.id }}
+    .cw-card-view-btn {
       background: #fff !important;
       border: 1px solid #695450 !important;
       color: #695450 !important;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-add-btn[disabled] {
+    #shopify-section-{{ section.id }}
+    .cw-card-add-btn[disabled] {
       opacity: 0.6;
       cursor: not-allowed;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-add-btn.is-loading {
+    #shopify-section-{{ section.id }}
+    .cw-card-add-btn.is-loading {
       pointer-events: none;
       opacity: 0.75;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .product__notification,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .product__notification:empty,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .product__form-qty,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .product__quantity,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .quantity,
-    #shopify-section-{{ section.id }} .cw-card-add-wrap .shopify-payment-button {
+    #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .product__notification
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .product__notification: empty
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .product__form-qty
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .product__quantity
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .quantity
+    , #shopify-section-{{ section.id }}
+    .cw-card-add-wrap .shopify-payment-button {
       display: none !important;
       margin: 0 !important;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-description {
+    #shopify-section-{{ section.id }}
+    .cw-card-description {
       position: absolute;
       left: 16px;
       right: 16px;
       top: 516px;
       z-index: 3;
       color: #695450;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat
+      , sans-serif;
       font-size: 12px;
       font-weight: 400;
       line-height: 13.2px;
@@ -779,11 +908,12 @@
       -webkit-box-orient: vertical;
     }
 
-    #shopify-section-{{ section.id }} .product__notification:empty {
+    #shopify-section-{{ section.id }}.product__notification:empty {
       margin: 0;
     }
 
-    #shopify-section-{{ section.id }} .ms__inner-badges-list {
+    #shopify-section-{{ section.id }}
+    .ms__inner-badges-list {
       display: flex;
       align-items: center;
       gap: 5px;
@@ -794,7 +924,8 @@
       text-align: center;
     }
 
-    #shopify-section-{{ section.id }} .ms__inner-badges {
+    #shopify-section-{{ section.id }}
+    .ms__inner-badges {
       padding: 4px 10px;
       border-radius: 40px;
       text-transform: uppercase;
@@ -806,17 +937,19 @@
 
     @media screen and (max-width: 1180px) {
       #shopify-section-{{ section.id }} .collection-subtitle-ms-block {
-      color: #937F5C;
-      font-family: Montserrat;
-      font-size: 23px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 110%; /* 25.3px */
-      letter-spacing: 0.46px;
-      text-transform: capitalize;
+        color: #937F5C;
+        font-family: Montserrat;
+        font-size: 23px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 110%;
+        /* 25.3px */
+        letter-spacing: 0.46px;
+        text-transform: capitalize;
       }
 
-      #shopify-section-{{ section.id }} .cc__collection-grid-items {
+      #shopify-section-{{ section.id }}
+      .cc__collection-grid-items {
         grid-template-columns: repeat(2, 358px);
       }
     }
@@ -827,11 +960,13 @@
         padding-right: 16px;
       }
 
-      #shopify-section-{{ section.id }} .ms__collections-inner-container {
+      #shopify-section-{{ section.id }}
+      .ms__collections-inner-container {
         overflow: visible;
       }
 
-      #shopify-section-{{ section.id }} .cw-collection-title {
+      #shopify-section-{{ section.id }}
+      .cw-collection-title {
         font-size: 36px !important;
         line-height: 110% !important;
         letter-spacing: 0.5px !important;
@@ -839,7 +974,8 @@
         text-align: start !important;
       }
 
-      #shopify-section-{{ section.id }} .collection-subtitle-ms-block {
+      #shopify-section-{{ section.id }}
+      .collection-subtitle-ms-block {
         width: 100%;
         margin-bottom: 2px;
         font-size: 16px;
@@ -848,19 +984,24 @@
         text-align: start !important;
       }
 
-      #shopify-section-{{ section.id }} .cw-filter-shell {
+      #shopify-section-{{ section.id }}
+      .cw-filter-shell {
         width: 100%;
         margin-bottom: 24px;
       }
 
-      #shopify-section-{{ section.id }} .cw-filter-toggle,
-      #shopify-section-{{ section.id }} .cw-filter-option,
-      #shopify-section-{{ section.id }} .cw-filter-clear {
+      #shopify-section-{{ section.id }}
+      .cw-filter-toggle
+      , #shopify-section-{{ section.id }}
+      .cw-filter-option
+      , #shopify-section-{{ section.id }}
+      .cw-filter-clear {
         min-height: 48px;
         font-size: 14px;
       }
 
-      #shopify-section-{{ section.id }} .cc__collection-grid-items {
+      #shopify-section-{{ section.id }}
+      .cc__collection-grid-items {
         width: 100%;
         grid-template-columns: minmax(0, 1fr);
         gap: 32px;
@@ -868,21 +1009,24 @@
         overflow: visible;
       }
 
-      #shopify-section-{{ section.id }} .cc__inner-product-details {
+      #shopify-section-{{ section.id }}
+      .cc__inner-product-details {
         width: 100%;
         max-width: 358px;
         height: 547px;
         box-sizing: border-box;
       }
 
-      #shopify-section-{{ section.id }} .cc__product-featured-image {
+      #shopify-section-{{ section.id }}
+      .cc__product-featured-image {
         width: calc(100% - 32px);
         height: 325px;
         left: 16px;
         right: 16px;
       }
 
-      #shopify-section-{{ section.id }} .cc__product-details h3.collection-title-ms-block {
+      #shopify-section-{{ section.id }}
+      .cc__product-details h3.collection-title-ms-block {
         left: 16px;
         right: 16px;
         width: auto;
@@ -895,16 +1039,19 @@
         word-break: normal;
       }
 
-      #shopify-section-{{ section.id }} .cw-card-rating {
+      #shopify-section-{{ section.id }}
+      .cw-card-rating {
         left: 16px;
         max-width: calc(100% - 32px);
       }
 
-      #shopify-section-{{ section.id }} .cc__fc_product-price {
+      #shopify-section-{{ section.id }}
+      .cc__fc_product-price {
         right: 16px;
       }
 
-      #shopify-section-{{ section.id }} .cw-card-actions {
+      #shopify-section-{{ section.id }}
+      .cw-card-actions {
         left: 16px;
         right: 16px;
         width: auto;
@@ -912,15 +1059,21 @@
         gap: 18px;
       }
 
-      #shopify-section-{{ section.id }} .cw-card-add-btn,
-      #shopify-section-{{ section.id }} .cw-card-view-btn,
-      #shopify-section-{{ section.id }} .cw-card-add-wrap button,
-      #shopify-section-{{ section.id }} .cw-card-add-wrap .btn,
-      #shopify-section-{{ section.id }} .cw-card-add-wrap input[type="submit"] {
+      #shopify-section-{{ section.id }}
+      .cw-card-add-btn
+      , #shopify-section-{{ section.id }}
+      .cw-card-view-btn
+      , #shopify-section-{{ section.id }}
+      .cw-card-add-wrap button
+      , #shopify-section-{{ section.id }}
+      .cw-card-add-wrap .btn
+      , #shopify-section-{{ section.id }}
+      .cw-card-add-wrap input[type="submit"] {
         width: 100% !important;
       }
 
-      #shopify-section-{{ section.id }} .cw-card-description {
+      #shopify-section-{{ section.id }}
+      .cw-card-description {
         left: 16px;
         right: 16px;
         font-size: 12px;
@@ -928,11 +1081,11 @@
       }
     }
 
-    .template-collection #shopify-section-{{ section.id }} .cc__product-orig-price {
+    .template-collection #shopify-section-{{ section.id }}
+    .cc__product-orig-price {
       display: none !important;
     }
   </style>
-
 
 
   <style>
@@ -944,7 +1097,8 @@
       align-items: start !important;
     }
 
-    #shopify-section-{{ section.id }} .cc__inner-product-details.cw-collection-list-single-tab-content-column {
+    #shopify-section-{{ section.id }}
+    .cc__inner-product-details.cw-collection-list-single-tab-content-column {
       width: 358px !important;
       position: relative !important;
       padding: 16px !important;
@@ -958,11 +1112,13 @@
       box-sizing: border-box !important;
     }
 
-    #shopify-section-{{ section.id }} .cc__inner-product-details[hidden] {
+    #shopify-section-{{ section.id }}
+    .cc__inner-product-details[hidden] {
       display: none !important;
     }
 
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper {
+    #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper {
       padding-bottom: 36px;
       position: relative;
       width: 325px;
@@ -971,12 +1127,15 @@
       overflow: hidden;
     }
 
-    #shopify-section-{{ section.id }} .swiper-slide.cw-easthealing-collection-product-slide {
+    #shopify-section-{{ section.id }}
+    .swiper-slide.cw-easthealing-collection-product-slide {
       height: 325px;
     }
 
-    #shopify-section-{{ section.id }} .swiper-slide.cw-easthealing-collection-product-slide img,
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper img {
+    #shopify-section-{{ section.id }}
+    .swiper-slide.cw-easthealing-collection-product-slide img
+    , #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper img {
       display: block;
       width: 100%;
       max-width: 100%;
@@ -985,20 +1144,26 @@
       object-position: center;
     }
 
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .cw-easthealing-swiper-button-next::after,
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .cw-easthealing-swiper-button-prev::after {
+    #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .cw-easthealing-swiper-button-next::after
+    , #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .cw-easthealing-swiper-button-prev::after {
       display: none;
     }
 
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .cw-easthealing-swiper-button-next,
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .cw-easthealing-swiper-button-prev {
+    #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .cw-easthealing-swiper-button-next
+    , #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .cw-easthealing-swiper-button-prev {
       width: 34px;
       height: 34px;
       margin-top: -17px;
     }
 
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .cw-easthealing-swiper-button-next img,
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .cw-easthealing-swiper-button-prev img {
+    #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .cw-easthealing-swiper-button-next img
+    , #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .cw-easthealing-swiper-button-prev img {
       width: 34px;
       height: 34px;
       box-shadow: 2px 2px 2.77px -1.83px #00000029;
@@ -1007,23 +1172,29 @@
       object-fit: contain;
     }
 
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .cw-easthealing-swiper-button-next.swiper-button-disabled img,
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .cw-easthealing-swiper-button-prev.swiper-button-disabled img {
+    #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .cw-easthealing-swiper-button-next.swiper-button-disabled img
+    , #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .cw-easthealing-swiper-button-prev.swiper-button-disabled img {
       display: none !important;
     }
 
-    #shopify-section-{{ section.id }} .cw-easthealing-swiper-button-next.swiper-button-disabled,
-    #shopify-section-{{ section.id }} .cw-easthealing-swiper-button-prev.swiper-button-disabled {
+    #shopify-section-{{ section.id }}
+    .cw-easthealing-swiper-button-next.swiper-button-disabled
+    , #shopify-section-{{ section.id }}
+    .cw-easthealing-swiper-button-prev.swiper-button-disabled {
       cursor: default;
       pointer-events: none;
     }
 
-    #shopify-section-{{ section.id }} .swiper-pagination.cw-easthealing-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+    #shopify-section-{{ section.id }}
+    .swiper-pagination.cw-easthealing-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
       position: absolute;
       bottom: 4px;
     }
 
-    #shopify-section-{{ section.id }} .swiper-pagination.cw-easthealing-pagination.swiper-pagination-clickable span.swiper-pagination-bullet {
+    #shopify-section-{{ section.id }}
+    .swiper-pagination.cw-easthealing-pagination.swiper-pagination-clickable span.swiper-pagination-bullet {
       background: #888888;
       opacity: 1;
       margin: 0 2px;
@@ -1031,14 +1202,16 @@
       height: 7px;
     }
 
-    #shopify-section-{{ section.id }} .swiper-pagination.cw-easthealing-pagination.swiper-pagination-clickable span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    #shopify-section-{{ section.id }}
+    .swiper-pagination.cw-easthealing-pagination.swiper-pagination-clickable span.swiper-pagination-bullet.swiper-pagination-bullet-active {
       background: #977E57 !important;
       width: 9px;
       height: 9px;
       transform: translate(0px, 1px);
     }
 
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .ms__inner-badges-list {
+    #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .ms__inner-badges-list {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -1057,7 +1230,8 @@
       z-index: 1111;
     }
 
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper .ms__inner-badges {
+    #shopify-section-{{ section.id }}
+    .cw-product-card__image-wrapper .ms__inner-badges {
       padding: 0;
       border: 0;
       border-radius: 0;
@@ -1067,26 +1241,31 @@
       text-transform: inherit;
     }
 
-    #shopify-section-{{ section.id }} .r-cw-easthealing-collection-productcard-rating-box {
+    #shopify-section-{{ section.id }}
+    .r-cw-easthealing-collection-productcard-rating-box {
       display: flex;
       align-items: center;
       gap: 6px;
       margin-bottom: 9px;
     }
 
-    #shopify-section-{{ section.id }} .r-cw-easthealing-collection-productcard-rating-box .rating-stars {
+    #shopify-section-{{ section.id }}
+    .r-cw-easthealing-collection-productcard-rating-box .rating-stars {
       display: flex;
       line-height: 1;
     }
 
-    #shopify-section-{{ section.id }} .r-cw-easthealing-collection-productcard-rating-box .rating-stars img {
+    #shopify-section-{{ section.id }}
+    .r-cw-easthealing-collection-productcard-rating-box .rating-stars img {
       max-width: 80px;
       height: auto;
       object-fit: contain;
     }
 
-    #shopify-section-{{ section.id }} .cw-easthealing-collection-productcard-rating-txt p {
-      font-family: Montserrat, sans-serif;
+    #shopify-section-{{ section.id }}
+    .cw-easthealing-collection-productcard-rating-txt p {
+      font-family: Montserrat
+      , sans-serif;
       font-weight: 600;
       font-size: 12px;
       line-height: 19.2px;
@@ -1099,21 +1278,23 @@
       padding: 0;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-title {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-title {
       margin-bottom: 16px;
       line-height: 1;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-title a,
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-title a:hover,
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-title a:focus {
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-title a,
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-title a:hover,
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-title a:focus {
       display: inline-block;
       vertical-align: top;
       width: auto;
       height: auto;
       outline: none;
       text-decoration: none;
-      font-family: 'Botanica', serif;
+      font-family: 'Botanica'
+      , serif;
       font-weight: 400;
       font-size: 22px;
       line-height: 100%;
@@ -1124,7 +1305,8 @@
       text-transform: none;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-price {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-price {
       width: 100%;
       max-width: 100%;
       margin-bottom: 6px;
@@ -1134,7 +1316,8 @@
       justify-content: end;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-price p {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-price p {
       font-family: 'Montserrat';
       font-weight: 700;
       font-size: 16px;
@@ -1146,21 +1329,23 @@
       text-align: right;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-price p.price-item--compare {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-price p.price-item--compare {
       text-decoration: line-through;
       opacity: 0.8;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-buttons {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-primary,
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-primary:hover,
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-primary:focus {
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-buttons a.btn-primary,
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-buttons a.btn-primary:hover,
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-buttons a.btn-primary:focus {
       flex: 1;
       padding: 5px;
       display: flex;
@@ -1180,9 +1365,9 @@
       margin: 0;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-secondary,
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-secondary:hover,
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-secondary:focus {
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-buttons a.btn-secondary,
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-buttons a.btn-secondary:hover,
+    #shopify-section-{{ section.id }}.cw-collection-list-single-product-buttons a.btn-secondary:focus {
       flex: 1;
       padding: 5px;
       display: flex;
@@ -1202,21 +1387,25 @@
       margin: 0;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-primary.is-loading {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-buttons a.btn-primary.is-loading {
       pointer-events: none;
       opacity: 0.75;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-primary.cw-card-out-of-stock {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-buttons a.btn-primary.cw-card-out-of-stock {
       pointer-events: none;
       cursor: default;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-description {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-description {
       margin-top: 16px;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-description p {
+    #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-description p {
       font-family: 'Montserrat';
       font-weight: 400;
       font-size: 12px !important;
@@ -1228,7 +1417,7 @@
       margin: 0;
     }
 
-    @media only screen and (min-width: 768px) and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and(max-width: 991px) {
       #shopify-section-{{ section.id }} .cc__collection-grid-items {
         grid-template-columns: repeat(2, 358px) !important;
       }
@@ -1242,7 +1431,8 @@
         justify-items: center !important;
       }
 
-      #shopify-section-{{ section.id }} .cc__inner-product-details.cw-collection-list-single-tab-content-column {
+      #shopify-section-{{ section.id }}
+      .cc__inner-product-details.cw-collection-list-single-tab-content-column {
         width: 100% !important;
         max-width: 358px !important;
         height: auto !important;
@@ -1251,52 +1441,64 @@
         overflow: visible !important;
       }
 
-      #shopify-section-{{ section.id }} .swiper-slide.cw-easthealing-collection-product-slide,
-      #shopify-section-{{ section.id }} .swiper-slide.cw-easthealing-collection-product-slide img,
-      #shopify-section-{{ section.id }} .cw-product-card__image-wrapper img {
+      #shopify-section-{{ section.id }}
+      .swiper-slide.cw-easthealing-collection-product-slide
+      , #shopify-section-{{ section.id }}
+      .swiper-slide.cw-easthealing-collection-product-slide img
+      , #shopify-section-{{ section.id }}
+      .cw-product-card__image-wrapper img {
         height: 325px;
       }
 
-      #shopify-section-{{ section.id }} .cw-product-card__image-wrapper {
+      #shopify-section-{{ section.id }}
+      .cw-product-card__image-wrapper {
         width: 325px;
         max-width: 100%;
         padding-bottom: 30px;
       }
 
-      #shopify-section-{{ section.id }} .swiper-pagination.cw-easthealing-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+      #shopify-section-{{ section.id }}
+      .swiper-pagination.cw-easthealing-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
         bottom: 2px;
       }
 
-      #shopify-section-{{ section.id }} .cw-easthealing-collection-productcard-rating-txt p {
+      #shopify-section-{{ section.id }}
+      .cw-easthealing-collection-productcard-rating-txt p {
         font-size: 10.6px;
       }
 
-      #shopify-section-{{ section.id }} .r-cw-easthealing-collection-productcard-rating-box .rating-stars img {
+      #shopify-section-{{ section.id }}
+      .r-cw-easthealing-collection-productcard-rating-box .rating-stars img {
         max-width: 73px;
       }
 
-      #shopify-section-{{ section.id }} .cw-easthealing-collection-productcard-rating-container {
+      #shopify-section-{{ section.id }}
+      .cw-easthealing-collection-productcard-rating-container {
         margin-top: 8px;
       }
 
-      #shopify-section-{{ section.id }} .cw-collection-list-single-product-description {
+      #shopify-section-{{ section.id }}
+      .cw-collection-list-single-product-description {
         display: block !important;
         margin-top: 14px !important;
         padding-bottom: 2px !important;
       }
 
-      #shopify-section-{{ section.id }} .cw-collection-list-single-product-description p {
+      #shopify-section-{{ section.id }}
+      .cw-collection-list-single-product-description p {
         display: block !important;
         overflow: visible !important;
       }
     }
 
 
-    #shopify-section-{{ section.id }} .cc__inner-product-details {
+    #shopify-section-{{ section.id }}
+    .cc__inner-product-details {
       position: relative;
     }
 
-    #shopify-section-{{ section.id }} .cw-card-overlay-link {
+    #shopify-section-{{ section.id }}
+    .cw-card-overlay-link {
       position: absolute;
       inset: 0;
       z-index: 2;
@@ -1304,16 +1506,20 @@
     }
 
     /* Keep interactive elements above overlay */
-    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper,
-    #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons,
-    #shopify-section-{{ section.id }} .swiper-pagination {
+    #shopify-section-{{ section.id }} .cw-product-card__image-wrapper
+    , #shopify-section-{{ section.id }}
+    .cw-collection-list-single-product-buttons
+    , #shopify-section-{{ section.id }}
+    .swiper-pagination {
       position: relative;
       z-index: 3;
     }
 
-    #shopify-section-{{ section.id }} .swiper-button-next,
-    #shopify-section-{{ section.id }} .swiper-button-prev{
-      z-index: 3; 
+    #shopify-section-{{ section.id }}
+    .swiper-button-next
+    , #shopify-section-{{ section.id }}
+    .swiper-button-prev {
+      z-index: 3;
     }
   </style>
   <script>
@@ -1607,7 +1813,6 @@
   </script>
 
 
-
   <script>
     (function () {
       const root = document.querySelector('[data-cw-filter-section="{{ section.id }}"]');
@@ -1694,188 +1899,165 @@
 {% endif %}
 
 {% schema %}
-{
-  "name": "Collections Filter List",
-  "class": "collection-filter-list",
-  "settings": [
-    {
-      "type": "text",
-      "id": "collection-title",
-      "label": "Collection Title"
-    },
-    {
-      "type": "textarea",
-      "id": "collection-subtitle",
-      "label": "Collection Subtitle",
-      "default": "Needle free acupressure, facial gua sha and purposeful wellness tools crafted to support stress, sleep, hormones and vitality."
-    },
-    {
-      "type": "text",
-      "id": "filter_label",
-      "label": "Filter Label",
-      "default": "Filter by concern"
-    },
-    {
-      "type": "text",
-      "id": "clear_label",
-      "label": "Clear Label",
-      "default": "Clear Filters"
-    },
-    {
-      "type": "text",
-      "id": "empty_text",
-      "label": "Empty State Text",
-      "default": "No products found for these filters."
-    },
-    {
-      "type": "select",
-      "id": "default_state",
-      "label": "Default State",
-      "default": "first",
-      "options": [
-        {
-          "value": "first",
-          "label": "First filter selected"
-        },
-        {
-          "value": "all",
-          "label": "All products visible"
-        }
-      ]
-    },
-    {
-      "type": "header",
-      "content": "Styles"
-    },
-    {
-      "type": "color",
-      "id": "bgcolor",
-      "label": "Background color",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "tcolor",
-      "label": "Text color",
-      "default": "#695450"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "collection",
-      "name": "Collection",
-      "settings": [
-        {
-          "type": "text",
-          "id": "filter-title",
-          "label": "Filter Title"
-        },
-        {
-          "type": "product_list",
-          "id": "pdp_list",
-          "label": "Product List"
-        },
-        {
-          "type": "header",
-          "content": "Custom Card Images"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_1_product",
-          "label": "Image Override 1 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_1_image",
-          "label": "Image Override 1 Image"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_2_product",
-          "label": "Image Override 2 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_2_image",
-          "label": "Image Override 2 Image"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_3_product",
-          "label": "Image Override 3 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_3_image",
-          "label": "Image Override 3 Image"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_4_product",
-          "label": "Image Override 4 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_4_image",
-          "label": "Image Override 4 Image"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_5_product",
-          "label": "Image Override 5 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_5_image",
-          "label": "Image Override 5 Image"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_6_product",
-          "label": "Image Override 6 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_6_image",
-          "label": "Image Override 6 Image"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_7_product",
-          "label": "Image Override 7 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_7_image",
-          "label": "Image Override 7 Image"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_8_product",
-          "label": "Image Override 8 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_8_image",
-          "label": "Image Override 8 Image"
-        },
-        {
-          "type": "product",
-          "id": "product_image_override_9_product",
-          "label": "Image Override 9 Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_override_9_image",
-          "label": "Image Override 9 Image"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "CW - Collections Filter List"
-    }
-  ]
-}
+  {
+    "name": "Collections Filter List",
+    "class": "collection-filter-list",
+    "settings": [
+      {
+        "type": "text",
+        "id": "collection-title",
+        "label": "Collection Title"
+      },
+      {
+        "type": "textarea",
+        "id": "collection-subtitle",
+        "label": "Collection Subtitle",
+        "default": "Needle free acupressure, facial gua sha and purposeful wellness tools crafted to support stress, sleep, hormones and vitality."
+      },
+      {
+        "type": "text",
+        "id": "filter_label",
+        "label": "Filter Label",
+        "default": "Filter by concern"
+      },
+      {
+        "type": "text",
+        "id": "clear_label",
+        "label": "Clear Label",
+        "default": "Clear Filters"
+      }, {
+        "type": "text",
+        "id": "empty_text",
+        "label": "Empty State Text",
+        "default": "No products found for these filters."
+      }, {
+        "type": "select",
+        "id": "default_state",
+        "label": "Default State",
+        "default": "first",
+        "options": [
+          {
+            "value": "first",
+            "label": "First filter selected"
+          }, {
+            "value": "all",
+            "label": "All products visible"
+          }
+        ]
+      }, {
+        "type": "header",
+        "content": "Styles"
+      }, {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background color",
+        "default": "transparent"
+      }, {
+        "type": "color",
+        "id": "tcolor",
+        "label": "Text color",
+        "default": "#695450"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "filter-title",
+            "label": "Filter Title"
+          },
+          {
+            "type": "product_list",
+            "id": "pdp_list",
+            "label": "Product List"
+          },
+          {
+            "type": "header",
+            "content": "Custom Card Images"
+          },
+          {
+            "type": "product",
+            "id": "product_image_override_1_product",
+            "label": "Image Override 1 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_1_image",
+            "label": "Image Override 1 Image"
+          }, {
+            "type": "product",
+            "id": "product_image_override_2_product",
+            "label": "Image Override 2 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_2_image",
+            "label": "Image Override 2 Image"
+          }, {
+            "type": "product",
+            "id": "product_image_override_3_product",
+            "label": "Image Override 3 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_3_image",
+            "label": "Image Override 3 Image"
+          }, {
+            "type": "product",
+            "id": "product_image_override_4_product",
+            "label": "Image Override 4 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_4_image",
+            "label": "Image Override 4 Image"
+          }, {
+            "type": "product",
+            "id": "product_image_override_5_product",
+            "label": "Image Override 5 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_5_image",
+            "label": "Image Override 5 Image"
+          }, {
+            "type": "product",
+            "id": "product_image_override_6_product",
+            "label": "Image Override 6 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_6_image",
+            "label": "Image Override 6 Image"
+          }, {
+            "type": "product",
+            "id": "product_image_override_7_product",
+            "label": "Image Override 7 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_7_image",
+            "label": "Image Override 7 Image"
+          }, {
+            "type": "product",
+            "id": "product_image_override_8_product",
+            "label": "Image Override 8 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_8_image",
+            "label": "Image Override 8 Image"
+          }, {
+            "type": "product",
+            "id": "product_image_override_9_product",
+            "label": "Image Override 9 Product"
+          }, {
+            "type": "image_picker",
+            "id": "product_image_override_9_image",
+            "label": "Image Override 9 Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "CW - Collections Filter List"
+      }
+    ]
+  }
 {% endschema %}
