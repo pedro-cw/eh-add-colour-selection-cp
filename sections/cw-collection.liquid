@@ -87,73 +87,90 @@
 
             <h2 class="cw-collection-grid-card__title">{{ product.title }}</h2>
 
-            {% if is_womens_kit %}
-              <div class="cw-collection-grid-card__colors" role="listbox" aria-label="Select color">
-                {% liquid
-                  assign gold_variant = blank
-                  assign silver_variant = blank
-                  assign nickel_variant = blank
+            {%- liquid
+              # Dynamic variant selector: show one swatch per variant for any
+              # product that has more than one variant (not just the women's kit).
+              assign has_multiple_variants = false
+              if product.variants.size > 1
+                assign has_multiple_variants = true
+              endif
+            -%}
 
-                  for variant in product.variants
-                    assign variant_title_downcase = variant.title | downcase
+            <div class="cw-collection-grid-card__bottom-wrapper">
+              <div class="cw-collection-grid-card__variants-wrapper">
+                {% if has_multiple_variants %}
+                  <div class="cw-collection-grid-card__style-label" data-style-label>
+                    {{ st.style_label_text | default: 'choose your style' }} - <span data-style-name>{{ current_variant.title }}</span>
+                  </div>
 
-                    if gold_variant == blank and variant_title_downcase contains 'gold'
-                      assign gold_variant = variant
-                    endif
+                  <div class="cw-collection-grid-card__colors" role="listbox" aria-label="Select variant">
+                    {% for variant in product.variants %}
+                      {%- liquid
+                        # Detect a known color from the variant title to paint the swatch.
+                        assign variant_title_downcase = variant.title | downcase
+                        assign swatch_color = ''
+                        assign has_swatch_color = false
 
-                    if silver_variant == blank and variant_title_downcase contains 'silver'
-                      assign silver_variant = variant
-                    endif
+                        if variant_title_downcase contains 'gold crystal'
+                          assign swatch_color = '#866858'
+                          assign has_swatch_color = true
+                        elsif variant_title_downcase contains 'silver crystal'
+                          assign swatch_color = '#C5C9D1'
+                          assign has_swatch_color = true
+                        elsif variant_title_downcase contains 'gold'
+                          assign swatch_color = '#D5C9BE'
+                          assign has_swatch_color = true
+                        elsif variant_title_downcase contains 'silver'
+                          assign swatch_color = '#D3D2D9'
+                          assign has_swatch_color = true
+                        elsif variant_title_downcase contains 'nickel'
+                          assign swatch_color = '#4B3E46'
+                          assign has_swatch_color = true
+                        elsif variant_title_downcase contains 'pearl'
+                          assign swatch_color = '#C4BFC5'
+                          assign has_swatch_color = true
+                        elsif variant_title_downcase contains 'rose'
+                          assign swatch_color = '#E7BCB1'
+                          assign has_swatch_color = true
+                        elsif variant_title_downcase contains 'black'
+                          assign swatch_color = '#2B2B2B'
+                          assign has_swatch_color = true
+                        endif
 
-                    if nickel_variant == blank and variant_title_downcase contains 'nickel'
-                      assign nickel_variant = variant
-                    endif
-                  endfor
-                %}
+                        assign is_current_variant = false
+                        if variant.id == current_variant.id
+                          assign is_current_variant = true
+                        endif
+                      -%}
 
-                <button
-                  class="cw-collection-grid-card__color is-active"
-                  type="button"
-                  role="option"
-                  aria-selected="true"
-                  data-color-option
-                  data-variant-id="{% if gold_variant != blank %}{{ gold_variant.id }}{% else %}{{ current_variant.id }}{% endif %}"
-                  style="--cw-card-color: #D5C9BE;"
-                >
-                  <span>Gold</span>
-                </button>
-
-                <button
-                  class="cw-collection-grid-card__color"
-                  type="button"
-                  role="option"
-                  aria-selected="false"
-                  data-color-option
-                  data-variant-id="{% if silver_variant != blank %}{{ silver_variant.id }}{% else %}{{ current_variant.id }}{% endif %}"
-                  style="--cw-card-color: #D3D2D9;"
-                >
-                  <span>Silver</span>
-                </button>
-
-                <button
-                  class="cw-collection-grid-card__color"
-                  type="button"
-                  role="option"
-                  aria-selected="false"
-                  data-color-option
-                  data-variant-id="{% if nickel_variant != blank %}{{ nickel_variant.id }}{% else %}{{ current_variant.id }}{% endif %}"
-                  style="--cw-card-color: #4B3E46;"
-                >
-                  <span>Nickel Free</span>
-                </button>
+                      <button
+                        class="cw-collection-grid-card__color{% if is_current_variant %} is-active{% endif %}{% unless has_swatch_color %} cw-collection-grid-card__color--label{% endunless %}{% unless variant.available %} cw-collection-grid-card__color--sold-out{% endunless %}"
+                        type="button"
+                        role="option"
+                        aria-selected="{% if is_current_variant %}true{% else %}false{% endif %}"
+                        data-color-option
+                        data-variant-id="{{ variant.id }}"
+                        data-variant-title="{{ variant.title | escape }}"
+                        {% if has_swatch_color %}style="--cw-card-color: {{ swatch_color }};"{% endif %}
+                        title="{{ variant.title | escape }}"
+                      >
+                        {% if has_swatch_color %}
+                          <span>{{ variant.title }}</span>
+                        {% else %}
+                          <span class="cw-collection-grid-card__color-text">{{ variant.title }}</span>
+                        {% endif %}
+                      </button>
+                    {% endfor %}
+                  </div>
+                {% endif %}
               </div>
-            {% endif %}
 
-            <div class="cw-collection-grid-card__price">
-              <span class="cw-collection-grid-card__price-current">{{ current_price | money }}</span>
-              {% if compare_price != blank and compare_price != current_price %}
-                <span class="cw-collection-grid-card__price-compare">{{ compare_price | money }}</span>
-              {% endif %}
+              <div class="cw-collection-grid-card__price">
+                <span class="cw-collection-grid-card__price-current">{{ current_price | money }}</span>
+                {% if compare_price != blank and compare_price != current_price %}
+                  <span class="cw-collection-grid-card__price-compare">{{ compare_price | money }}</span>
+                {% endif %}
+              </div>
             </div>
 
             <div class="cw-collection-grid-card__actions">
@@ -269,9 +286,6 @@
     min-width: 0;
     min-height: 0;
   }
-
-
-
 
   #shopify-section-{{ section.id }} .cw-collection-grid-card__slide.is-active {
     display: block;
@@ -391,20 +405,38 @@
     letter-spacing: 0.5px;
   }
 
+  /* Novo Wrapper para Variantes e Preço estarem na mesma linha */
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__bottom-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: auto;
+    gap: 10px;
+    padding-top: 14px;
+    z-index: 5;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__variants-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
   #shopify-section-{{ section.id }} .cw-collection-grid-card__colors {
     position: relative;
     display: flex;
     align-items: center;
     gap: 9px;
-    top: 20px;
-    z-index: 5;
+    margin-top: 8px;
     pointer-events: auto;
+    flex-wrap: wrap;
   }
 
   #shopify-section-{{ section.id }} .cw-collection-grid-card__color {
     position: relative;
-    width: 33px;
-    height: 33px;
+    width: 24px;
+    height: 24px;
     border: 0;
     border-radius: 999px;
     background: var(--cw-card-color);
@@ -436,6 +468,67 @@
     white-space: nowrap;
   }
 
+  /* Style indicator label shown above the variant swatches */
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__style-label {
+    position: relative;
+    color: {{ st.text_color }};
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__style-label [data-style-name] {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* When a swatch has no detected color, render it as a labeled pill instead */
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color--label {
+    width: auto;
+    height: auto;
+    min-height: 33px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid {{ st.button_color }};
+    padding: 6px 12px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color--label::before {
+    inset: -3px;
+    border-radius: 6px;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color--label.is-active {
+    background: {{ st.button_color }};
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color-text {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    color: {{ st.button_color }};
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color--label.is-active .cw-collection-grid-card__color-text {
+    color: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid-card__color--sold-out {
+    opacity: 0.45;
+  }
+
   #shopify-section-{{ section.id }} .cw-collection-grid-card__price {
     position: relative;
     display: flex;
@@ -444,8 +537,7 @@
     gap: 4px;
     text-align: right;
     white-space: nowrap;
-    margin-top: auto;
-    padding-top: 7px;
+    flex-shrink: 0;
   }
 
   #shopify-section-{{ section.id }} .cw-collection-grid-card__price-current {
@@ -467,6 +559,7 @@
     text-decoration: line-through;
     opacity: 0.82;
   }
+
   #shopify-section-template--28505950355838__cw_collection_jdhM3C .cw-collection-grid-card__description{color: #00000 !important;}
 
   #shopify-section-{{ section.id }} .cw-collection-grid-card__actions {
@@ -474,7 +567,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
-    margin-top: 6px;
+    margin-top: 14px; /* Ajuste se necessário devido a nova div acima */
   }
 
   #shopify-section-{{ section.id }} .cw-collection-grid-card__button {
@@ -550,6 +643,7 @@
     font-family: Montserrat, sans-serif;
     font-size: 16px;
   }
+
   .btn-primary{font-size: 14px !important;}
 
   @media screen and (max-width: 1199px) {
@@ -714,6 +808,12 @@
           addToCartButton.dataset.variantId = colorOption.dataset.variantId;
         }
 
+        // Update the "choose your style - X" label with the selected variant title.
+        const styleNameEl = card.querySelector('[data-style-name]');
+        if (styleNameEl && colorOption.dataset.variantTitle) {
+          styleNameEl.textContent = colorOption.dataset.variantTitle;
+        }
+
         return;
       }
 
@@ -738,8 +838,7 @@
             'Accept': 'application/json'
           },
           body: JSON.stringify({
-            id: Number(variantId),
-            quantity: 1
+            items: [{ id: Number(variantId), quantity: 1 }]
           })
         });
 
@@ -747,17 +846,53 @@
 
         button.textContent = 'Added';
 
-        document.dispatchEvent(new CustomEvent('cart:refresh'));
-        document.dispatchEvent(new CustomEvent('cart:updated'));
-        document.dispatchEvent(new CustomEvent('cart:build'));
-
-        window.dispatchEvent(new CustomEvent('cart:refresh'));
-        window.dispatchEvent(new CustomEvent('cart:updated'));
+        // Lógica Exata do Código Anterior (Code A) para forçar/abrir o Cart Drawer
+        (async function() {
+          function forceVisibleCart() {
+            const cartForm = document.querySelector('.cart-drawer.cart-drawer--empty');
+            const content = document.querySelector('.cart-drawer__content');
+            
+            if (cartForm) {
+              cartForm.classList.remove('cart-drawer--empty');
+            }
+            if (content) {
+              content.style.display = 'block';
+              content.style.height = 'auto';
+            }
+          }
+          
+          if (window.theme && window.theme.sections) {
+            try {
+              const instances = await window.theme.sections.getInstances('cart-drawer');
+              const cartDrawer = instances[0];
+              if (cartDrawer) {
+                const cartData = await fetch('/cart.js').then(r => r.json());
+                
+                if (cartData.item_count > 0) {
+                  forceVisibleCart();
+                  await cartDrawer.refresh();
+                  forceVisibleCart(); 
+                }
+                cartDrawer._openCartDrawer({
+                  preventDefault: function() {}
+                });
+              } else {
+                document.querySelector('.ajax-cart__toggle')?.click();
+              }
+            } catch (err) {
+              console.error("Replo Cart Fix Error:", err);
+              document.querySelector('.ajax-cart__toggle')?.click();
+            }
+          } else {
+            document.querySelector('.ajax-cart__toggle')?.click();
+          }
+        })();
 
         setTimeout(() => {
           button.textContent = originalText;
           button.classList.remove('is-loading');
         }, 1400);
+
       } catch (error) {
         button.textContent = 'Try again';
 
@@ -805,6 +940,12 @@
       "id": "rating_text",
       "label": "Rating text",
       "default": "Rated 4.9/5"
+    },
+    {
+      "type": "text",
+      "id": "style_label_text",
+      "label": "Variant selector label",
+      "default": "choose your style"
     },
     {
       "type": "text",
