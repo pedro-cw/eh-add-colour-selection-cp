@@ -276,71 +276,81 @@
                     -%}
 
                     {% if has_multiple_variants %}
-                      <div class="cw-card-colors" role="listbox" aria-label="Select variant" data-cw-card-colors>
-                        {% for variant in product_variants %}
-                          {%- liquid
-                            # Try to detect a known color from the variant title to paint the swatch.
-                            assign variant_title_downcase = variant.title | downcase
-                            assign swatch_color = ''
-                            assign has_swatch_color = false
-
-                            if variant_title_downcase contains 'gold'
-                              assign swatch_color = '#D5C9BE'
-                              assign has_swatch_color = true
-                            elsif variant_title_downcase contains 'silver'
-                              assign swatch_color = '#D3D2D9'
-                              assign has_swatch_color = true
-                            elsif variant_title_downcase contains 'nickel'
-                              assign swatch_color = '#4B3E46'
-                              assign has_swatch_color = true
-                            elsif variant_title_downcase contains 'gold crystal'
-                              assign swatch_color = '#866858'
-                              assign has_swatch_color = true
-                            elsif variant_title_downcase contains 'silver crystal'
-                              assign swatch_color = '#C5C9D1'
-                              assign has_swatch_color = true
-                            elsif variant_title_downcase contains 'pearl'
-                              assign swatch_color = '#C4BFC5'
-                              assign has_swatch_color = true
-                            endif
-
-                            # Mark the currently selected variant as active by default.
-                            assign is_current_variant = false
-                            if variant.id == current_variant.id
-                              assign is_current_variant = true
-                            endif
-                          -%}
-
-                          <button
-                            class="cw-card-color{% if is_current_variant %} is-active{% endif %}{% unless has_swatch_color %} cw-card-color--label{% endunless %}{% unless variant.available %} cw-card-color--sold-out{% endunless %}"
-                            type="button"
-                            role="option"
-                            aria-selected="{% if is_current_variant %}true{% else %}false{% endif %}"
-                            data-cw-color-option
-                            data-variant-id="{{ variant.id }}"
-                            data-variant-available="{{ variant.available }}"
-                            data-variant-price="{{ variant.price }}"
-                            data-variant-compare-at-price="{{ variant.compare_at_price }}"
-                            {% if has_swatch_color %}style="--cw-card-color: {{ swatch_color }};"{% endif %}
-                            title="{{ variant.title | escape }}"
-                          >
-                            {% if has_swatch_color %}
-                              <span class="visually-hidden">{{ variant.title }}</span>
-                            {% else %}
-                              <span class="cw-card-color-text">{{ variant.title }}</span>
-                            {% endif %}
-                          </button>
-                        {% endfor %}
+                      {%- comment -%} Style indicator label above the swatches. The variant name updates via JS. {%- endcomment -%}
+                      <div class="cw-card-style-label" data-cw-style-label>
+                        {{ st.style_label_text | default: 'choose your style' }} - <span data-cw-style-name>{{ current_variant.title }}</span>
                       </div>
                     {% endif %}
 
-                    <div class="cw-collection-list-single-product-price">
-                      {% if product.handle == 'stress-relief-kit' or product.handle == 'pain-relief-kit' %}
-                        <p class="price-item--compare" data-cw-compare-price>{{ current_variant.compare_at_price | money }}</p>
-                        <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
-                      {% else %}
-                        <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
+                    <div class="cw-card-price-row">
+                      {% if has_multiple_variants %}
+                        <div class="cw-card-colors" role="listbox" aria-label="Select variant" data-cw-card-colors>
+                          {% for variant in product_variants %}
+                            {%- liquid
+                              # Try to detect a known color from the variant title to paint the swatch.
+                              assign variant_title_downcase = variant.title | downcase
+                              assign swatch_color = ''
+                              assign has_swatch_color = false
+
+                              if variant_title_downcase contains 'gold'
+                                assign swatch_color = '#D5C9BE'
+                                assign has_swatch_color = true
+                              elsif variant_title_downcase contains 'silver'
+                                assign swatch_color = '#D3D2D9'
+                                assign has_swatch_color = true
+                              elsif variant_title_downcase contains 'nickel'
+                                assign swatch_color = '#4B3E46'
+                                assign has_swatch_color = true
+                              elsif variant_title_downcase contains 'gold crystal'
+                                assign swatch_color = '#866858'
+                                assign has_swatch_color = true
+                              elsif variant_title_downcase contains 'silver crystal'
+                                assign swatch_color = '#C5C9D1'
+                                assign has_swatch_color = true
+                              elsif variant_title_downcase contains 'pearl'
+                                assign swatch_color = '#C4BFC5'
+                                assign has_swatch_color = true
+                              endif
+
+                              # Mark the currently selected variant as active by default.
+                              assign is_current_variant = false
+                              if variant.id == current_variant.id
+                                assign is_current_variant = true
+                              endif
+                            -%}
+
+                            <button
+                              class="cw-card-color{% if is_current_variant %} is-active{% endif %}{% unless has_swatch_color %} cw-card-color--label{% endunless %}{% unless variant.available %} cw-card-color--sold-out{% endunless %}"
+                              type="button"
+                              role="option"
+                              aria-selected="{% if is_current_variant %}true{% else %}false{% endif %}"
+                              data-cw-color-option
+                              data-variant-id="{{ variant.id }}"
+                              data-variant-title="{{ variant.title | escape }}"
+                              data-variant-available="{{ variant.available }}"
+                              data-variant-price="{{ variant.price }}"
+                              data-variant-compare-at-price="{{ variant.compare_at_price }}"
+                              {% if has_swatch_color %}style="--cw-card-color: {{ swatch_color }};"{% endif %}
+                              title="{{ variant.title | escape }}"
+                            >
+                              {% if has_swatch_color %}
+                                <span class="visually-hidden">{{ variant.title }}</span>
+                              {% else %}
+                                <span class="cw-card-color-text">{{ variant.title }}</span>
+                              {% endif %}
+                            </button>
+                          {% endfor %}
+                        </div>
                       {% endif %}
+
+                      <div class="cw-collection-list-single-product-price">
+                        {% if product.handle == 'stress-relief-kit' or product.handle == 'pain-relief-kit' %}
+                          <p class="price-item--compare" data-cw-compare-price>{{ current_variant.compare_at_price | money }}</p>
+                          <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
+                        {% else %}
+                          <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
+                        {% endif %}
+                      </div>
                     </div>
 
                     <div class="cw-collection-list-single-product-buttons">
@@ -1195,6 +1205,37 @@
     }
 
     /* ===== Dynamic variant / color selector ===== */
+
+    /* Style indicator label above the swatches */
+    #shopify-section-{{ section.id }} .cw-card-style-label {
+      position: relative;
+      z-index: 5;
+      margin-bottom: 14px;
+
+      color: #977E57;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 8.955px; /* 63.963% */
+      text-transform: lowercase;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-style-label [data-cw-style-name] {
+      text-transform: uppercase;
+    }
+
+    /* Row that holds the swatches (left) and the price (right) on the same line */
+    #shopify-section-{{ section.id }} .cw-card-price-row {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
     #shopify-section-{{ section.id }} .cw-card-colors {
       position: relative;
       z-index: 5; /* keep swatches above the full-card overlay link */
@@ -1202,7 +1243,6 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 9px;
-      margin-bottom: 16px;
     }
 
     #shopify-section-{{ section.id }} .cw-card-color {
@@ -1281,13 +1321,14 @@
     /* ===== End variant / color selector ===== */
 
     #shopify-section-{{ section.id }} .cw-collection-list-single-product-price {
-      width: 100%;
       max-width: 100%;
-      margin-bottom: 6px;
+      margin: 0;
       display: flex;
       flex-direction: row-reverse;
       gap: 7px;
       justify-content: end;
+      flex: 0 0 auto;
+      white-space: nowrap;
     }
 
     #shopify-section-{{ section.id }} .cw-collection-list-single-product-price p {
@@ -1463,6 +1504,8 @@
     /* Keep interactive elements above overlay */
     #shopify-section-{{ section.id }} .cw-product-card__image-wrapper,
     #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons,
+    #shopify-section-{{ section.id }} .cw-card-style-label,
+    #shopify-section-{{ section.id }} .cw-card-price-row,
     #shopify-section-{{ section.id }} .cw-card-colors,
     #shopify-section-{{ section.id }} .swiper-pagination {
       position: relative;
@@ -1607,8 +1650,7 @@
 
         const swatches = Array.from(card.querySelectorAll('[data-cw-color-option]'));
         const addToCartButton = card.querySelector('[data-cw-card-add-to-cart]');
-        const currentPriceEl = card.querySelector('[data-cw-current-price]');
-        const comparePriceEl = card.querySelector('[data-cw-compare-price]');
+        const styleNameEl = card.querySelector('[data-cw-style-name]');
 
         // Update the active state on every swatch of this card.
         swatches.forEach(function (item) {
@@ -1622,6 +1664,12 @@
         const variantId = colorOption.dataset.variantId;
         if (addToCartButton && variantId) {
           addToCartButton.setAttribute('data-variant-id', variantId);
+        }
+
+        // Update the style indicator label with the selected variant title.
+        const variantTitle = colorOption.dataset.variantTitle;
+        if (styleNameEl && variantTitle) {
+          styleNameEl.textContent = variantTitle;
         }
 
         // Reflect variant availability on the add-to-cart button.
@@ -1644,19 +1692,7 @@
             addToCartButton.textContent = 'Out of stock';
           }
         }
-
       });
-
-      // Minimal money formatter using the shop currency format when available.
-      function formatMoney(cents) {
-        const amount = Number(cents);
-        if (isNaN(amount)) return '';
-
-        const value = (amount / 100).toFixed(2);
-        const format = (window.Shopify && window.Shopify.money_format) ? window.Shopify.money_format : '${{amount}}';
-
-        return format.replace(/\{\{\s*amount\s*\}\}/, value);
-      }
     })();
   </script>
 
@@ -1951,6 +1987,12 @@
       "id": "clear_label",
       "label": "Clear Label",
       "default": "Clear Filters"
+    },
+    {
+      "type": "text",
+      "id": "style_label_text",
+      "label": "Variant Selector Label",
+      "default": "choose your style"
     },
     {
       "type": "text",
