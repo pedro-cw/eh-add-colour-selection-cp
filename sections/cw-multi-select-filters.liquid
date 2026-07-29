@@ -264,12 +264,82 @@
                       <a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title | downcase }}</a>
                     </div>
 
+                    {%- liquid
+                      # Show a dynamic variant/color selector for any product that has more than one variant.
+                      # We render one swatch per variant, paint it when we can detect a known color name,
+                      # and fall back to a labeled pill otherwise.
+                      assign product_variants = product.variants
+                      assign has_multiple_variants = false
+                      if product_variants.size > 1
+                        assign has_multiple_variants = true
+                      endif
+                    -%}
+
+                    {% if has_multiple_variants %}
+                      <div class="cw-card-colors" role="listbox" aria-label="Select variant" data-cw-card-colors>
+                        {% for variant in product_variants %}
+                          {%- liquid
+                            # Try to detect a known color from the variant title to paint the swatch.
+                            assign variant_title_downcase = variant.title | downcase
+                            assign swatch_color = ''
+                            assign has_swatch_color = false
+
+                            if variant_title_downcase contains 'gold'
+                              assign swatch_color = '#D5C9BE'
+                              assign has_swatch_color = true
+                            elsif variant_title_downcase contains 'silver'
+                              assign swatch_color = '#D3D2D9'
+                              assign has_swatch_color = true
+                            elsif variant_title_downcase contains 'nickel'
+                              assign swatch_color = '#4B3E46'
+                              assign has_swatch_color = true
+                            elsif variant_title_downcase contains 'gold crystal'
+                              assign swatch_color = '#866858'
+                              assign has_swatch_color = true
+                            elsif variant_title_downcase contains 'silver crystal'
+                              assign swatch_color = '#C5C9D1'
+                              assign has_swatch_color = true
+                            elsif variant_title_downcase contains 'pearl'
+                              assign swatch_color = '#C4BFC5'
+                              assign has_swatch_color = true
+                            endif
+
+                            # Mark the currently selected variant as active by default.
+                            assign is_current_variant = false
+                            if variant.id == current_variant.id
+                              assign is_current_variant = true
+                            endif
+                          -%}
+
+                          <button
+                            class="cw-card-color{% if is_current_variant %} is-active{% endif %}{% unless has_swatch_color %} cw-card-color--label{% endunless %}{% unless variant.available %} cw-card-color--sold-out{% endunless %}"
+                            type="button"
+                            role="option"
+                            aria-selected="{% if is_current_variant %}true{% else %}false{% endif %}"
+                            data-cw-color-option
+                            data-variant-id="{{ variant.id }}"
+                            data-variant-available="{{ variant.available }}"
+                            data-variant-price="{{ variant.price }}"
+                            data-variant-compare-at-price="{{ variant.compare_at_price }}"
+                            {% if has_swatch_color %}style="--cw-card-color: {{ swatch_color }};"{% endif %}
+                            title="{{ variant.title | escape }}"
+                          >
+                            {% if has_swatch_color %}
+                              <span class="visually-hidden">{{ variant.title }}</span>
+                            {% else %}
+                              <span class="cw-card-color-text">{{ variant.title }}</span>
+                            {% endif %}
+                          </button>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+
                     <div class="cw-collection-list-single-product-price">
                       {% if product.handle == 'stress-relief-kit' or product.handle == 'pain-relief-kit' %}
-                        <p class="price-item--compare">{{ current_variant.compare_at_price | money }}</p>
-                        <p {{ wpd_attrs }}>{{ current_variant.price | money }}</p>
+                        <p class="price-item--compare" data-cw-compare-price>{{ current_variant.compare_at_price | money }}</p>
+                        <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
                       {% else %}
-                        <p {{ wpd_attrs }}>{{ current_variant.price | money }}</p>
+                        <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
                       {% endif %}
                     </div>
 
@@ -277,7 +347,7 @@
                       {% if current_variant.available %}
                         <a href="#" class="btn-primary" data-cw-card-add-to-cart data-variant-id="{{ current_variant.id }}" data-quantity="1">Add to cart</a>
                       {% else %}
-                        <a href="#" class="btn-primary cw-card-out-of-stock" aria-disabled="true" tabindex="-1">Out of stock</a>
+                        <a href="#" class="btn-primary cw-card-out-of-stock" data-cw-card-add-to-cart data-variant-id="{{ current_variant.id }}" data-quantity="1" aria-disabled="true" tabindex="-1">Out of stock</a>
                       {% endif %}
                       <a href="{{ product.url }}" class="btn-secondary">View</a>
                     </div>
@@ -1124,6 +1194,92 @@
       text-transform: none;
     }
 
+    /* ===== Dynamic variant / color selector ===== */
+    #shopify-section-{{ section.id }} .cw-card-colors {
+      position: relative;
+      z-index: 5; /* keep swatches above the full-card overlay link */
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--cw-card-color, #d9d9d9);
+      padding: 0;
+      cursor: pointer;
+      flex: 0 0 auto;
+      pointer-events: auto;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border: 1.5px solid transparent;
+      border-radius: inherit;
+      transition: border-color 0.2s ease;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color.is-active::before {
+      border-color: #000;
+    }
+
+    /* Labeled fallback pill when no known color could be detected */
+    #shopify-section-{{ section.id }} .cw-card-color--label {
+      width: auto;
+      height: auto;
+      min-height: 33px;
+      border-radius: 4px;
+      background: #fff;
+      border: 1px solid #695450;
+      padding: 6px 12px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color--label::before {
+      inset: -3px;
+      border-radius: 6px;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color--label.is-active {
+      background: #695450;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color--label.is-active .cw-card-color-text {
+      color: #fff;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color-text {
+      font-family: Montserrat, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      color: #695450;
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color--sold-out {
+      opacity: 0.45;
+    }
+
+    #shopify-section-{{ section.id }} .cw-card-color .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    /* ===== End variant / color selector ===== */
+
     #shopify-section-{{ section.id }} .cw-collection-list-single-product-price {
       width: 100%;
       max-width: 100%;
@@ -1210,6 +1366,7 @@
     #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons a.btn-primary.cw-card-out-of-stock {
       pointer-events: none;
       cursor: default;
+      opacity: 0.6;
     }
 
     #shopify-section-{{ section.id }} .cw-collection-list-single-product-description {
@@ -1306,6 +1463,7 @@
     /* Keep interactive elements above overlay */
     #shopify-section-{{ section.id }} .cw-product-card__image-wrapper,
     #shopify-section-{{ section.id }} .cw-collection-list-single-product-buttons,
+    #shopify-section-{{ section.id }} .cw-card-colors,
     #shopify-section-{{ section.id }} .swiper-pagination {
       position: relative;
       z-index: 3;
@@ -1434,6 +1592,79 @@
       const root = document.querySelector('[data-cw-filter-section="{{ section.id }}"]');
       if (!root) return;
 
+      // Handle variant/color swatch selection with event delegation so it keeps
+      // working after filtering hides/shows cards.
+      root.addEventListener('click', function (event) {
+        const colorOption = event.target.closest('[data-cw-color-option]');
+        if (!colorOption || !root.contains(colorOption)) return;
+
+        // Stop the full-card overlay link from navigating away.
+        event.preventDefault();
+        event.stopPropagation();
+
+        const card = colorOption.closest('[data-cw-product-card]');
+        if (!card) return;
+
+        const swatches = Array.from(card.querySelectorAll('[data-cw-color-option]'));
+        const addToCartButton = card.querySelector('[data-cw-card-add-to-cart]');
+        const currentPriceEl = card.querySelector('[data-cw-current-price]');
+        const comparePriceEl = card.querySelector('[data-cw-compare-price]');
+
+        // Update the active state on every swatch of this card.
+        swatches.forEach(function (item) {
+          item.classList.remove('is-active');
+          item.setAttribute('aria-selected', 'false');
+        });
+        colorOption.classList.add('is-active');
+        colorOption.setAttribute('aria-selected', 'true');
+
+        // Swap the variant id used by the add-to-cart button.
+        const variantId = colorOption.dataset.variantId;
+        if (addToCartButton && variantId) {
+          addToCartButton.setAttribute('data-variant-id', variantId);
+        }
+
+        // Reflect variant availability on the add-to-cart button.
+        if (addToCartButton) {
+          const isAvailable = colorOption.dataset.variantAvailable === 'true';
+          if (isAvailable) {
+            addToCartButton.classList.remove('cw-card-out-of-stock');
+            addToCartButton.removeAttribute('aria-disabled');
+            addToCartButton.removeAttribute('tabindex');
+            if (addToCartButton.dataset.cwLabel) {
+              addToCartButton.textContent = addToCartButton.dataset.cwLabel;
+            }
+          } else {
+            if (!addToCartButton.dataset.cwLabel) {
+              addToCartButton.dataset.cwLabel = addToCartButton.textContent;
+            }
+            addToCartButton.classList.add('cw-card-out-of-stock');
+            addToCartButton.setAttribute('aria-disabled', 'true');
+            addToCartButton.setAttribute('tabindex', '-1');
+            addToCartButton.textContent = 'Out of stock';
+          }
+        }
+
+      });
+
+      // Minimal money formatter using the shop currency format when available.
+      function formatMoney(cents) {
+        const amount = Number(cents);
+        if (isNaN(amount)) return '';
+
+        const value = (amount / 100).toFixed(2);
+        const format = (window.Shopify && window.Shopify.money_format) ? window.Shopify.money_format : '${{amount}}';
+
+        return format.replace(/\{\{\s*amount\s*\}\}/, value);
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const root = document.querySelector('[data-cw-filter-section="{{ section.id }}"]');
+      if (!root) return;
+
       const buttons = Array.from(root.querySelectorAll('[data-cw-card-add-to-cart]'));
 
       function dispatchCartEvents(cart, item) {
@@ -1500,7 +1731,7 @@
           event.preventDefault();
           event.stopPropagation();
 
-          if (button.disabled || button.classList.contains('is-loading')) return;
+          if (button.getAttribute('aria-disabled') === 'true' || button.classList.contains('is-loading')) return;
 
           const variantId = button.getAttribute('data-variant-id');
           const quantity = Number(button.getAttribute('data-quantity') || 1);
