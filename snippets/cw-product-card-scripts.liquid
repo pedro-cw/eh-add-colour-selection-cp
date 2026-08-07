@@ -1,0 +1,229 @@
+{%- comment -%}
+  Behavior for snippets/cw-product-card.liquid: image gallery (Swiper),
+  variant swatch selection (updates price + style label + add-to-cart state)
+  and add-to-cart with cart-drawer opening.
+
+  Required param:
+    section_id - the section's section.id, used to scope all queries to
+                 `#shopify-section-{{ section_id }}` so multiple sections on
+                 the same page don't interfere with each other.
+{%- endcomment -%}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var root = document.getElementById({{ 'shopify-section-' | append: section_id | json }});
+    if (!root) return;
+    {% raw %}
+
+    // Image gallery
+    if (typeof Swiper !== 'undefined') {
+      root.querySelectorAll('.cw-product-card__image-wrapper.swiper').forEach(function (slider) {
+        if (slider.classList.contains('swiper-initialized')) return;
+
+        new Swiper(slider, {
+          slidesPerView: 1,
+          spaceBetween: 5,
+          loop: false,
+          threshold: 6,
+          pagination: {
+            el: slider.querySelector('.cw-easthealing-pagination'),
+            clickable: true
+          },
+          navigation: {
+            nextEl: slider.querySelector('.cw-easthealing-swiper-button-next'),
+            prevEl: slider.querySelector('.cw-easthealing-swiper-button-prev')
+          }
+        });
+      });
+    }
+
+    // Formats a cents amount using the shop's money format (theme.moneyFormat
+    // is the only globally exposed money setting; theme.js's own currency
+    // helper lives inside its own IIFE and isn't reachable from here).
+    function formatVariantMoney(cents) {
+      var format = (window.theme && window.theme.moneyFormat) || '${{amount}}';
+      var placeholderMatch = format.match(/\{\{\s*(\w+)\s*\}\}/);
+      var placeholder = placeholderMatch ? placeholderMatch[1] : 'amount';
+
+      var precision = 2;
+      var thousands = ',';
+      var decimal = '.';
+      if (placeholder === 'amount_no_decimals') {
+        precision = 0;
+      } else if (placeholder === 'amount_with_comma_separator') {
+        thousands = '.';
+        decimal = ',';
+      } else if (placeholder === 'amount_no_decimals_with_comma_separator') {
+        precision = 0;
+        thousands = '.';
+        decimal = ',';
+      } else if (placeholder === 'amount_no_decimals_with_space_separator') {
+        precision = 0;
+        thousands = ' ';
+      } else if (placeholder === 'amount_with_apostrophe_separator') {
+        thousands = "'";
+      }
+
+      var amount = (Number(cents) / 100).toFixed(precision);
+      var parts = amount.split('.');
+      var dollarsAmount = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands);
+      var centsAmount = parts[1] ? decimal + parts[1] : '';
+      var value = dollarsAmount + centsAmount;
+
+      return format.replace(/\{\{\s*(\w+)\s*\}\}/, value);
+    }
+
+    // Variant swatch selection: swaps active state, style label, price and
+    // add-to-cart variant id/availability for the card the swatch belongs to.
+    root.addEventListener('click', function (event) {
+      var colorOption = event.target.closest('[data-cw-color-option]');
+      if (!colorOption || !root.contains(colorOption)) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      var card = colorOption.closest('[data-cw-product-card]');
+      if (!card) return;
+
+      var swatches = Array.from(card.querySelectorAll('[data-cw-color-option]'));
+      var addToCartButton = card.querySelector('[data-cw-card-add-to-cart]');
+      var styleNameEl = card.querySelector('[data-cw-style-name]');
+
+      swatches.forEach(function (item) {
+        item.classList.remove('is-active');
+        item.setAttribute('aria-selected', 'false');
+      });
+      colorOption.classList.add('is-active');
+      colorOption.setAttribute('aria-selected', 'true');
+
+      var variantId = colorOption.dataset.variantId;
+      if (addToCartButton && variantId) {
+        addToCartButton.setAttribute('data-variant-id', variantId);
+      }
+
+      var variantTitle = colorOption.dataset.variantTitle;
+      if (styleNameEl && variantTitle) {
+        styleNameEl.textContent = variantTitle;
+      }
+
+      var priceEl = card.querySelector('[data-cw-current-price]');
+      var comparePriceEl = card.querySelector('[data-cw-compare-price]');
+      var variantPrice = colorOption.dataset.variantPrice;
+      var variantCompareAtPrice = colorOption.dataset.variantCompareAtPrice;
+
+      if (priceEl && variantPrice) {
+        priceEl.textContent = formatVariantMoney(variantPrice);
+      }
+
+      if (comparePriceEl) {
+        var hasCompareAtPrice = variantCompareAtPrice && Number(variantCompareAtPrice) > Number(variantPrice);
+        if (hasCompareAtPrice) {
+          comparePriceEl.textContent = formatVariantMoney(variantCompareAtPrice);
+          comparePriceEl.style.display = '';
+        } else {
+          comparePriceEl.style.display = 'none';
+        }
+      }
+
+      if (addToCartButton) {
+        var isAvailable = colorOption.dataset.variantAvailable === 'true';
+        if (isAvailable) {
+          addToCartButton.classList.remove('cw-card-out-of-stock');
+          addToCartButton.removeAttribute('aria-disabled');
+          addToCartButton.removeAttribute('tabindex');
+          if (addToCartButton.dataset.cwLabel) {
+            addToCartButton.textContent = addToCartButton.dataset.cwLabel;
+          }
+        } else {
+          if (!addToCartButton.dataset.cwLabel) {
+            addToCartButton.dataset.cwLabel = addToCartButton.textContent;
+          }
+          addToCartButton.classList.add('cw-card-out-of-stock');
+          addToCartButton.setAttribute('aria-disabled', 'true');
+          addToCartButton.setAttribute('tabindex', '-1');
+          addToCartButton.textContent = 'Out of stock';
+        }
+      }
+    });
+
+    // Add to cart
+    function forceVisibleCart() {
+      var cartForm = document.querySelector('.cart-drawer.cart-drawer--empty');
+      var content = document.querySelector('.cart-drawer__content');
+
+      if (cartForm) cartForm.classList.remove('cart-drawer--empty');
+      if (content) {
+        content.style.display = 'block';
+        content.style.height = 'auto';
+      }
+    }
+
+    async function openThemeCartDrawer() {
+      if (window.theme && window.theme.sections) {
+        try {
+          var instances = await window.theme.sections.getInstances('cart-drawer');
+          var cartDrawer = instances[0];
+
+          if (cartDrawer) {
+            var cartData = await fetch('/cart.js').then(function (r) { return r.json(); });
+
+            if (cartData.item_count > 0) {
+              forceVisibleCart();
+              await cartDrawer.refresh();
+              forceVisibleCart();
+            }
+
+            cartDrawer._openCartDrawer({ preventDefault: function () {} });
+            return;
+          }
+        } catch (err) {
+          console.error('Cart drawer open error:', err);
+        }
+      }
+
+      var toggle = document.querySelector('.ajax-cart__toggle');
+      if (toggle) toggle.click();
+    }
+
+    root.querySelectorAll('[data-cw-card-add-to-cart]').forEach(function (button) {
+      button.addEventListener('click', async function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (button.getAttribute('aria-disabled') === 'true' || button.classList.contains('is-loading')) return;
+
+        var variantId = button.getAttribute('data-variant-id');
+        var quantity = Number(button.getAttribute('data-quantity') || 1);
+
+        if (!variantId) {
+          console.error('Variant ID not found');
+          return;
+        }
+
+        var originalText = button.textContent;
+        button.classList.add('is-loading');
+        button.textContent = 'Adding...';
+
+        try {
+          var addResponse = await fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart/add.js' : '/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ items: [{ id: Number(variantId), quantity: quantity }] })
+          });
+
+          if (!addResponse.ok) throw new Error('Add to cart failed');
+
+          await openThemeCartDrawer();
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+        } finally {
+          button.classList.remove('is-loading');
+          button.textContent = originalText;
+        }
+      });
+    });
+    {% endraw %}
+  });
+</script>

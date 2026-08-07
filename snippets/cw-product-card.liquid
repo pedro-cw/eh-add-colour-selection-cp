@@ -1,0 +1,229 @@
+{%- comment -%}
+  Shared product card markup for collection-style sections (cw-collection,
+  cw-multi-select-filters). Renders the image gallery, rating, variant
+  swatches, price, add-to-cart/view actions and a description line.
+
+  Required:
+    product              - Product object
+
+  Optional:
+    description           - Description string/HTML shown at the bottom of the card
+    gallery_images         - Array of 652x652 image URLs for the swiper gallery; falls back to the product's own images
+    badges                  - Array of badge label strings shown over the image
+    style_label_text         - Label above the variant swatches (default: "choose your style")
+    add_to_cart_label         - Add-to-cart button label (default: "Add to cart")
+    view_label                 - View button label (default: "View")
+    filter_handles               - Space-separated string consumed by multi-select filter sections
+    wpd_attrs                     - Raw HTML attribute string merged onto the price element (pixel/personalization hook)
+{%- endcomment -%}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_variants = product.variants
+  assign has_multiple_variants = false
+  if product_variants.size > 1
+    assign has_multiple_variants = true
+  endif
+
+  assign card_badges = badges
+  if card_badges == blank and product.metafields.custom.badges.value != blank
+    assign card_badges = product.metafields.custom.badges.value
+  endif
+
+  assign rating_decimal = 4.9
+  if product.metafields.reviews.rating.value != blank
+    assign rating_value = product.metafields.reviews.rating.value
+    assign rating_decimal = rating_value.rating | round: 1
+  endif
+
+  assign card_style_label = style_label_text | default: 'choose your style'
+  assign card_add_to_cart_label = add_to_cart_label | default: 'Add to cart'
+  assign card_view_label = view_label | default: 'View'
+-%}
+
+<div
+  class="cw-product-card cc__inner-product-details cw-collection-list-single-tab-content-column"
+  data-cw-product-card
+  {% if filter_handles != blank %}data-filter-handles="{{ filter_handles | strip }}"{% endif %}
+>
+  <a
+    href="{{ product.url }}"
+    class="cw-card-overlay-link"
+    aria-label="{{ product.title | escape }}"
+  ></a>
+
+  <a class="cw-product-card__image-wrapper swiper product-slider-{{ product.id }}" href="{{ product.url }}">
+    {% if card_badges != blank %}
+      <div class="ms__inner-badges-list">
+        {% for item in card_badges %}
+          <div class="ms__inner-badges">{{ item }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="swiper-wrapper">
+      {% if gallery_images.size > 0 %}
+        {% assign gallery_slide_index = 0 %}
+        {% for raw_url in gallery_images %}
+          {% assign url = raw_url | strip %}
+          {% if url != blank %}
+            <div class="swiper-slide cw-easthealing-collection-product-slide">
+              <div class="product-card__image-wrapper">
+                <img
+                  src="{{ url }}"
+                  width="652"
+                  height="652"
+                  alt="{{ product.title | escape }}"
+                  class="main-img"
+                  loading="{% if gallery_slide_index == 0 %}eager{% else %}lazy{% endif %}"
+                >
+              </div>
+            </div>
+            {% assign gallery_slide_index = gallery_slide_index | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      {% elsif product.images.size > 0 %}
+        {% for image in product.images limit: 5 %}
+          <div class="swiper-slide cw-easthealing-collection-product-slide">
+            <div class="product-card__image-wrapper">
+              <img
+                src="{{ image | image_url: width: 652, height: 652 }}"
+                width="652"
+                height="652"
+                alt="{{ image.alt | default: product.title | escape }}"
+                class="main-img"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              >
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="swiper-slide cw-easthealing-collection-product-slide">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="swiper-pagination cw-easthealing-pagination"></div>
+    <div class="swiper-button-next cw-easthealing-swiper-button-next"><img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/cw-easthealing-next-arrow.png?v=1772010489" width="34" height="34" alt="next"></div>
+    <div class="swiper-button-prev cw-easthealing-swiper-button-prev"><img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/cw-easthealing-prev-arrow.png?v=1772010488" width="34" height="34" alt="prev"></div>
+  </a>
+
+  <div class="cw-easthealing-collection-productcard-rating-container">
+    <div class="r-cw-easthealing-collection-productcard-rating-box">
+      <div class="rating-stars">
+        <img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/rating_star_img.png?v=1772017048" width="80" height="16" alt="star" class="rating-star-img">
+      </div>
+
+      <div class="cw-easthealing-collection-productcard-rating-txt">
+        <span>
+          <p>Rated {{ rating_decimal }}/5 </p>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cw-collection-list-single-product-title">
+    <a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title | downcase }}</a>
+  </div>
+
+  {% if has_multiple_variants %}
+    <div class="cw-card-style-label" data-cw-style-label>
+      {{ card_style_label }} - <span data-cw-style-name>{{ current_variant.title }}</span>
+    </div>
+  {% endif %}
+
+  <div class="cw-card-price-row" style="{% unless has_multiple_variants %} justify-content: end !important; {% endunless %}">
+    {% if has_multiple_variants %}
+      <div class="cw-card-colors" role="listbox" aria-label="Select variant" data-cw-card-colors>
+        {% for variant in product_variants %}
+          {%- liquid
+            # Detect a known color from the variant title to paint the swatch.
+            # Specific combos (e.g. "gold crystal") are checked before their
+            # generic counterpart ("gold") so the more precise match wins.
+            assign variant_title_downcase = variant.title | downcase
+            assign swatch_color = ''
+            assign has_swatch_color = false
+
+            if variant_title_downcase contains 'gold crystal'
+              assign swatch_color = '#866858'
+              assign has_swatch_color = true
+            elsif variant_title_downcase contains 'silver crystal'
+              assign swatch_color = '#C5C9D1'
+              assign has_swatch_color = true
+            elsif variant_title_downcase contains 'gold'
+              assign swatch_color = '#D5C9BE'
+              assign has_swatch_color = true
+            elsif variant_title_downcase contains 'silver'
+              assign swatch_color = '#D3D2D9'
+              assign has_swatch_color = true
+            elsif variant_title_downcase contains 'nickel'
+              assign swatch_color = '#4B3E46'
+              assign has_swatch_color = true
+            elsif variant_title_downcase contains 'pearl'
+              assign swatch_color = '#C4BFC5'
+              assign has_swatch_color = true
+            elsif variant_title_downcase contains 'rose'
+              assign swatch_color = '#E7BCB1'
+              assign has_swatch_color = true
+            elsif variant_title_downcase contains 'black'
+              assign swatch_color = '#2B2B2B'
+              assign has_swatch_color = true
+            endif
+
+            assign is_current_variant = false
+            if variant.id == current_variant.id
+              assign is_current_variant = true
+            endif
+          -%}
+
+          <button
+            class="cw-card-color{% if is_current_variant %} is-active{% endif %}{% unless has_swatch_color %} cw-card-color--label{% endunless %}{% unless variant.available %} cw-card-color--sold-out{% endunless %}"
+            type="button"
+            role="option"
+            aria-selected="{% if is_current_variant %}true{% else %}false{% endif %}"
+            data-cw-color-option
+            data-variant-id="{{ variant.id }}"
+            data-variant-title="{{ variant.title | escape }}"
+            data-variant-available="{{ variant.available }}"
+            data-variant-price="{{ variant.price }}"
+            data-variant-compare-at-price="{{ variant.compare_at_price }}"
+            {% if has_swatch_color %}style="--cw-card-color: {{ swatch_color }};"{% endif %}
+            title="{{ variant.title | escape }}"
+          >
+            {% if has_swatch_color %}
+              <span class="visually-hidden">{{ variant.title }}</span>
+            {% else %}
+              <span class="cw-card-color-text">{{ variant.title }}</span>
+            {% endif %}
+          </button>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="cw-collection-list-single-product-price">
+      {% if current_variant.compare_at_price > current_variant.price %}
+        <p class="price-item--compare" data-cw-compare-price>{{ current_variant.compare_at_price | money }}</p>
+        <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
+      {% else %}
+        <p class="price-item--compare" data-cw-compare-price style="display: none;">{{ current_variant.compare_at_price | money }}</p>
+        <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="cw-collection-list-single-product-buttons">
+    {% if current_variant.available %}
+      <a href="#" class="btn-primary" data-cw-card-add-to-cart data-variant-id="{{ current_variant.id }}" data-quantity="1">{{ card_add_to_cart_label }}</a>
+    {% else %}
+      <a href="#" class="btn-primary cw-card-out-of-stock" data-cw-card-add-to-cart data-variant-id="{{ current_variant.id }}" data-quantity="1" aria-disabled="true" tabindex="-1">Out of stock</a>
+    {% endif %}
+    <a href="{{ product.url }}" class="btn-secondary">{{ card_view_label }}</a>
+  </div>
+
+  {% if description != blank %}
+    <div class="cw-collection-list-single-product-description">
+      <p>{{ description }}</p>
+    </div>
+  {% endif %}
+</div>

@@ -11,6 +11,8 @@
 %}
 
 {% if cols.size > 0 %}
+  {% render 'cw-product-card-styles' %}
+
   <div class="ms__collections-list cw-filtered-collections" data-cw-filter-section="{{ section.id }}" data-default-state="{{ st.default_state }}">
     <div class="page-width">
       <div class="ms__collections-inner-container">
@@ -92,14 +94,7 @@
                     assign current_variant = product.selected_or_first_available_variant
                     assign product_badges = product.metafields.custom.badges.value
                   %}
-
-                  <div class="cc__inner-product-details cw-collection-list-single-tab-content-column" data-cw-product-card data-filter-handles="{{ product_filter_handles | strip }}">
-                    <a
-                      href="{{ product.url }}"
-                      class="cw-card-overlay-link"
-                      aria-label="{{ product.title | escape }}"
-                    ></a>
-                    {% liquid
+                  {% liquid
                       assign product_image_override = blank
                       assign first_product_image = product.images.first
                       assign first_listing_image_url = blank
@@ -182,192 +177,29 @@
                       data-wpd-product-id="{{ product.id }}"
                     {%- endcapture -%}
 
-                    <a class="cw-product-card__image-wrapper swiper product-slider-{{ product.id }}" href="{{ product.url }}">
-                      {% if product_badges != blank %}
-                        <div class="ms__inner-badges-list">
-                          {% for item in product_badges %}
-                            <div class="ms__inner-badges">{{ item }}</div>
-                          {% endfor %}
-                        </div>
+                    {%- capture gallery_images_raw -%}
+                      {{ main_image }}
+                      {% if product_image_override != blank and first_listing_image_url != blank and first_listing_image_url != main_image %}
+                        {{ first_listing_image_url }}
                       {% endif %}
-
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide cw-easthealing-collection-product-slide">
-                          <div class="product-card__image-wrapper">
-                            <img
-                              src="{{ main_image }}"
-                              width="{{ product.featured_media.width }}"
-                              height="{{ product.featured_media.height }}"
-                              alt="{{ product.title | escape }}"
-                              class="main-img"
-                              loading="lazy"
-                            >
-                          </div>
-                        </div>
-
-                        {% if product_image_override != blank and first_listing_image_url != blank and first_listing_image_url != main_image %}
-                          <div class="swiper-slide cw-easthealing-collection-product-slide">
-                            <img
-                              src="{{ first_listing_image_url }}"
-                              alt="{{ product.title | escape }}"
-                              loading="lazy"
-                            >
-                          </div>
+                      {% for image in product.images offset: 1 limit: extra_product_image_limit %}
+                        {% assign current_img_url = image | image_url: width: 652, height: 652 %}
+                        {% if current_img_url != main_image and current_img_url != hover_image %}
+                          {{ current_img_url }}
                         {% endif %}
+                      {% endfor %}
+                    {%- endcapture -%}
+                    {%- assign gallery_images = gallery_images_raw | newline_to_br | split: '<br />' -%}
 
-                        {% for image in product.images offset: 1 limit: extra_product_image_limit %}
-                          {% assign current_img_url = image | image_url: width: 652, height: 652 %}
-                          {% if current_img_url != main_image and current_img_url != hover_image %}
-                            <div class="swiper-slide cw-easthealing-collection-product-slide">
-                              <img
-                                src="{{ image | img_url: '652x652', crop: 'center' }}"
-                                alt="{{ product.title | escape }}"
-                                loading="lazy"
-                              >
-                            </div>
-                          {% endif %}
-                        {% endfor %}
-                      </div>
-
-                      <div class="swiper-pagination cw-easthealing-pagination"></div>
-                      <div class="swiper-button-next cw-easthealing-swiper-button-next"><img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/cw-easthealing-next-arrow.png?v=1772010489" alt="next"></div>
-                      <div class="swiper-button-prev cw-easthealing-swiper-button-prev"><img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/cw-easthealing-prev-arrow.png?v=1772010488" alt="prev"></div>
-                    </a>
-
-                    <div class="cw-easthealing-collection-productcard-rating-container">
-                      {%- liquid
-                        assign rating_decimal = 0
-                        if product.metafields.reviews.rating.value != blank
-                          assign rating_value = product.metafields.reviews.rating.value
-                          assign rating_decimal = rating_value.rating | round: 1
-                          assign review_count = product.metafields.reviews.rating_count
-                        else
-                          assign rating_decimal = 4.9
-                          assign review_count = 'thousands'
-                        endif
-                      -%}
-
-                      <div class="r-cw-easthealing-collection-productcard-rating-box">
-                        <div class="rating-stars">
-                          <img src="https://cdn.shopify.com/s/files/1/0588/4742/8796/files/rating_star_img.png?v=1772017048" alt="star" class="rating-star-img">
-                        </div>
-
-                        <div class="cw-easthealing-collection-productcard-rating-txt">
-                          <span>
-                            <p>Rated {{ rating_decimal }}/5 </p>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="cw-collection-list-single-product-title">
-                      <a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title | downcase }}</a>
-                    </div>
-
-                    {%- liquid
-                      # Show a dynamic variant/color selector for any product that has more than one variant.
-                      # We render one swatch per variant, paint it when we can detect a known color name,
-                      # and fall back to a labeled pill otherwise.
-                      assign product_variants = product.variants
-                      assign has_multiple_variants = false
-                      if product_variants.size > 1
-                        assign has_multiple_variants = true
-                      endif
-                    -%}
-
-                    {% if has_multiple_variants %}
-                      {%- comment -%} Style indicator label above the swatches. The variant name updates via JS. {%- endcomment -%}
-                      <div class="cw-card-style-label" data-cw-style-label>
-                        {{ st.style_label_text | default: 'choose your style' }} - <span data-cw-style-name>{{ current_variant.title }}</span>
-                      </div>
-                    {% endif %}
-
-                    <div class="cw-card-price-row" style="{% unless has_multiple_variants %} justify-content: end !important; {% endunless %}">
-                      {% if has_multiple_variants %}
-                        <div class="cw-card-colors" role="listbox" aria-label="Select variant" data-cw-card-colors>
-                          {% for variant in product_variants %}
-                            {%- liquid
-                              # Try to detect a known color from the variant title to paint the swatch.
-                              assign variant_title_downcase = variant.title | downcase
-                              assign swatch_color = ''
-                              assign has_swatch_color = false
-
-                              if variant_title_downcase contains 'gold'
-                                assign swatch_color = '#D5C9BE'
-                                assign has_swatch_color = true
-                              elsif variant_title_downcase contains 'silver'
-                                assign swatch_color = '#D3D2D9'
-                                assign has_swatch_color = true
-                              elsif variant_title_downcase contains 'nickel'
-                                assign swatch_color = '#4B3E46'
-                                assign has_swatch_color = true
-                              elsif variant_title_downcase contains 'gold crystal'
-                                assign swatch_color = '#866858'
-                                assign has_swatch_color = true
-                              elsif variant_title_downcase contains 'silver crystal'
-                                assign swatch_color = '#C5C9D1'
-                                assign has_swatch_color = true
-                              elsif variant_title_downcase contains 'pearl'
-                                assign swatch_color = '#C4BFC5'
-                                assign has_swatch_color = true
-                              endif
-
-                              # Mark the currently selected variant as active by default.
-                              assign is_current_variant = false
-                              if variant.id == current_variant.id
-                                assign is_current_variant = true
-                              endif
-                            -%}
-
-                            <button
-                              class="cw-card-color{% if is_current_variant %} is-active{% endif %}{% unless has_swatch_color %} cw-card-color--label{% endunless %}{% unless variant.available %} cw-card-color--sold-out{% endunless %}"
-                              type="button"
-                              role="option"
-                              aria-selected="{% if is_current_variant %}true{% else %}false{% endif %}"
-                              data-cw-color-option
-                              data-variant-id="{{ variant.id }}"
-                              data-variant-title="{{ variant.title | escape }}"
-                              data-variant-available="{{ variant.available }}"
-                              data-variant-price="{{ variant.price }}"
-                              data-variant-compare-at-price="{{ variant.compare_at_price }}"
-                              {% if has_swatch_color %}style="--cw-card-color: {{ swatch_color }};"{% endif %}
-                              title="{{ variant.title | escape }}"
-                            >
-                              {% if has_swatch_color %}
-                                <span class="visually-hidden">{{ variant.title }}</span>
-                              {% else %}
-                                <span class="cw-card-color-text">{{ variant.title }}</span>
-                              {% endif %}
-                            </button>
-                          {% endfor %}
-                        </div>
-                      {% endif %}
-
-                      <div class="cw-collection-list-single-product-price">
-                        {% if product.handle == 'stress-relief-kit' or product.handle == 'pain-relief-kit' %}
-                          <p class="price-item--compare" data-cw-compare-price>{{ current_variant.compare_at_price | money }}</p>
-                          <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
-                        {% else %}
-                          <p {{ wpd_attrs }} data-cw-current-price>{{ current_variant.price | money }}</p>
-                        {% endif %}
-                      </div>
-                    </div>
-
-                    <div class="cw-collection-list-single-product-buttons">
-                      {% if current_variant.available %}
-                        <a href="#" class="btn-primary" data-cw-card-add-to-cart data-variant-id="{{ current_variant.id }}" data-quantity="1">Add to cart</a>
-                      {% else %}
-                        <a href="#" class="btn-primary cw-card-out-of-stock" data-cw-card-add-to-cart data-variant-id="{{ current_variant.id }}" data-quantity="1" aria-disabled="true" tabindex="-1">Out of stock</a>
-                      {% endif %}
-                      <a href="{{ product.url }}" class="btn-secondary">View</a>
-                    </div>
-
-                    <div class="cw-collection-list-single-product-description">
-                      {% if cw_card_description != blank %}
-                        <p>{{ cw_card_description }}</p>
-                      {% endif %}
-                    </div>
-                  </div>
+                    {% render 'cw-product-card',
+                      product: product,
+                      description: cw_card_description,
+                      gallery_images: gallery_images,
+                      badges: product_badges,
+                      style_label_text: st.style_label_text,
+                      filter_handles: product_filter_handles,
+                      wpd_attrs: wpd_attrs
+                    %}
 
                 {% endunless %}
               {% endfor %}
@@ -1630,235 +1462,7 @@
     })();
   </script>
 
-  <script>
-    (function () {
-      const root = document.querySelector('[data-cw-filter-section="{{ section.id }}"]');
-      if (!root) return;
-
-      // Handle variant/color swatch selection with event delegation so it keeps
-      // working after filtering hides/shows cards.
-      root.addEventListener('click', function (event) {
-        const colorOption = event.target.closest('[data-cw-color-option]');
-        if (!colorOption || !root.contains(colorOption)) return;
-
-        // Stop the full-card overlay link from navigating away.
-        event.preventDefault();
-        event.stopPropagation();
-
-        const card = colorOption.closest('[data-cw-product-card]');
-        if (!card) return;
-
-        const swatches = Array.from(card.querySelectorAll('[data-cw-color-option]'));
-        const addToCartButton = card.querySelector('[data-cw-card-add-to-cart]');
-        const styleNameEl = card.querySelector('[data-cw-style-name]');
-
-        // Update the active state on every swatch of this card.
-        swatches.forEach(function (item) {
-          item.classList.remove('is-active');
-          item.setAttribute('aria-selected', 'false');
-        });
-        colorOption.classList.add('is-active');
-        colorOption.setAttribute('aria-selected', 'true');
-
-        // Swap the variant id used by the add-to-cart button.
-        const variantId = colorOption.dataset.variantId;
-        if (addToCartButton && variantId) {
-          addToCartButton.setAttribute('data-variant-id', variantId);
-        }
-
-        // Update the style indicator label with the selected variant title.
-        const variantTitle = colorOption.dataset.variantTitle;
-        if (styleNameEl && variantTitle) {
-          styleNameEl.textContent = variantTitle;
-        }
-
-        // Reflect variant availability on the add-to-cart button.
-        if (addToCartButton) {
-          const isAvailable = colorOption.dataset.variantAvailable === 'true';
-          if (isAvailable) {
-            addToCartButton.classList.remove('cw-card-out-of-stock');
-            addToCartButton.removeAttribute('aria-disabled');
-            addToCartButton.removeAttribute('tabindex');
-            if (addToCartButton.dataset.cwLabel) {
-              addToCartButton.textContent = addToCartButton.dataset.cwLabel;
-            }
-          } else {
-            if (!addToCartButton.dataset.cwLabel) {
-              addToCartButton.dataset.cwLabel = addToCartButton.textContent;
-            }
-            addToCartButton.classList.add('cw-card-out-of-stock');
-            addToCartButton.setAttribute('aria-disabled', 'true');
-            addToCartButton.setAttribute('tabindex', '-1');
-            addToCartButton.textContent = 'Out of stock';
-          }
-        }
-      });
-    })();
-  </script>
-
-  <script>
-  (function () {
-    const root = document.querySelector('[data-cw-filter-section="{{ section.id }}"]');
-    if (!root) return;
-
-    const buttons = Array.from(root.querySelectorAll('[data-cw-card-add-to-cart]'));
-
-    // Force the drawer out of its "empty" visual state (needed right after the
-    // first item is added, before the theme finishes re-rendering).
-    function forceVisibleCart() {
-      const cartForm = document.querySelector('.cart-drawer.cart-drawer--empty');
-      const content = document.querySelector('.cart-drawer__content');
-
-      if (cartForm) {
-        cartForm.classList.remove('cart-drawer--empty');
-      }
-      if (content) {
-        content.style.display = 'block';
-        content.style.height = 'auto';
-      }
-    }
-
-    // Open the cart drawer using this theme's native API, with a safe fallback
-    // to clicking the header cart toggle.
-    async function openThemeCartDrawer() {
-      if (window.theme && window.theme.sections) {
-        try {
-          const instances = await window.theme.sections.getInstances('cart-drawer');
-          const cartDrawer = instances[0];
-
-          if (cartDrawer) {
-            const cartData = await fetch('/cart.js').then((r) => r.json());
-
-            if (cartData.item_count > 0) {
-              forceVisibleCart();
-              await cartDrawer.refresh();
-              forceVisibleCart();
-            }
-
-            cartDrawer._openCartDrawer({
-              preventDefault: function () {}
-            });
-            return;
-          }
-        } catch (err) {
-          console.error('Cart drawer open error:', err);
-        }
-      }
-
-      // Fallback: click the header cart toggle so the theme opens it for us.
-      const toggle = document.querySelector('.ajax-cart__toggle');
-      if (toggle) toggle.click();
-    }
-
-    buttons.forEach((button) => {
-      button.addEventListener('click', async function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        if (button.getAttribute('aria-disabled') === 'true' || button.classList.contains('is-loading')) return;
-
-        const variantId = button.getAttribute('data-variant-id');
-        const quantity = Number(button.getAttribute('data-quantity') || 1);
-        const sellingPlanId = button.getAttribute('data-selling-plan-id');
-
-        if (!variantId) {
-          console.error('Variant ID not found');
-          return;
-        }
-
-        const originalText = button.textContent;
-        button.classList.add('is-loading');
-        button.textContent = 'Adding...';
-
-        try {
-          const item = { id: Number(variantId), quantity: quantity };
-          if (sellingPlanId) item.selling_plan = Number(sellingPlanId);
-
-          const addResponse = await fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart/add.js' : '/cart/add.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({ items: [item] })
-          });
-
-          if (!addResponse.ok) {
-            throw new Error('Add to cart failed');
-          }
-
-          await openThemeCartDrawer();
-        } catch (error) {
-          console.error('Error adding to cart:', error);
-        } finally {
-          button.classList.remove('is-loading');
-          button.textContent = originalText;
-        }
-      });
-    });
-  })();
-</script>
-
-  <script>
-    (function () {
-      const root = document.querySelector('[data-cw-filter-section="{{ section.id }}"]');
-      if (!root) return;
-
-      const sliders = Array.from(root.querySelectorAll('[data-cw-card-slider]'));
-
-      sliders.forEach((slider) => {
-        const slides = Array.from(slider.querySelectorAll('[data-cw-card-slide]'));
-        const dots = Array.from(slider.querySelectorAll('[data-cw-card-dot]'));
-        const prev = slider.querySelector('[data-cw-card-prev]');
-        const next = slider.querySelector('[data-cw-card-next]');
-        let activeIndex = 0;
-
-        if (slides.length <= 1) {
-          if (prev) prev.hidden = true;
-          if (next) next.hidden = true;
-          return;
-        }
-
-        function showSlide(index) {
-          activeIndex = (index + slides.length) % slides.length;
-
-          slides.forEach((slide, slideIndex) => {
-            slide.classList.toggle('is-active', slideIndex === activeIndex);
-          });
-
-          dots.forEach((dot, dotIndex) => {
-            dot.classList.toggle('is-active', dotIndex === activeIndex);
-          });
-        }
-
-        if (prev) {
-          prev.addEventListener('click', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            showSlide(activeIndex - 1);
-          });
-        }
-
-        if (next) {
-          next.addEventListener('click', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            showSlide(activeIndex + 1);
-          });
-        }
-
-        dots.forEach((dot, dotIndex) => {
-          dot.addEventListener('click', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            showSlide(dotIndex);
-          });
-        });
-
-        showSlide(0);
-      });
-    })();
-  </script>
+  {% render 'cw-product-card-scripts', section_id: section.id %}
 
 
 
@@ -1922,29 +1526,6 @@
     })();
   </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof Swiper === 'undefined') return;
-
-      document.querySelectorAll('#shopify-section-{{ section.id }} .cw-product-card__image-wrapper.swiper').forEach(function (slider) {
-        if (slider.classList.contains('swiper-initialized')) return;
-
-        new Swiper(slider, {
-          slidesPerView: 1,
-          spaceBetween: 5,
-          loop: false,
-          pagination: {
-            el: slider.querySelector('.cw-easthealing-pagination'),
-            clickable: true
-          },
-          navigation: {
-            nextEl: slider.querySelector('.cw-easthealing-swiper-button-next'),
-            prevEl: slider.querySelector('.cw-easthealing-swiper-button-prev')
-          }
-        });
-      });
-    });
-  </script>
 {% endif %}
 
 {% schema %}
