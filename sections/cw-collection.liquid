@@ -9,17 +9,19 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <section class="cw-collection-grid" data-cw-section-id="{{ section.id }}">
+  <div class="page-width">
+    <div class="ms__collections-inner-container">
+      {% if st.title != blank %}
+        <h2 class="collection-title-ms-block cw-collection-title">{{ st.title }}</h2>
+      {% endif %}
+
+      {% if st.text != blank %}
+        <div class="collection-subtitle-ms-block">{{ st.text }}</div>
+      {% endif %}
+    </div>
+  </div>
+
   <div class="cw-collection-grid__inner">
-    {% if st.title != blank %}
-      <h1 class="cw-collection-grid__title">{{ st.title }}</h1>
-    {% endif %}
-
-    {% if st.text != blank %}
-      <div class="cw-collection-grid__text">
-        {{ st.text }}
-      </div>
-    {% endif %}
-
     {% if bundle_collection != blank and bundle_collection.products_count > 0 %}
       {% render 'cw-product-card-styles' %}
       <div class="cw-collection-grid__items">
@@ -80,30 +82,39 @@
     overflow: hidden;
   }
 
-  #shopify-section-{{ section.id }} .cw-collection-grid__inner {
-    width: min(100% - 36px, 1170px);
-    margin: 0 auto;
+  #shopify-section-{{ section.id }} .cw-collection-title {
+    font-size: 50px !important;
   }
 
-  #shopify-section-{{ section.id }} .cw-collection-grid__title {
+  #shopify-section-{{ section.id }} .collection-title-ms-block {
     margin: 0;
     color: {{ st.title_color }};
     font-family: Botanica, serif;
-    font-size: 50px;
+    font-size: 25px;
     font-weight: 400;
-    line-height: 55px;
-    letter-spacing: 1px;
+    line-height: 110%;
+    letter-spacing: 0.5px;
+    text-align: start;
   }
 
-  #shopify-section-{{ section.id }} .cw-collection-grid__text {
-    max-width: 801px;
-    margin-top: 28px;
+  #shopify-section-{{ section.id }} .collection-subtitle-ms-block {
+    width: 801px;
+    max-width: 100%;
+    margin: 28px 0 0;
     color: {{ st.text_color }};
     font-family: Montserrat, sans-serif;
     font-size: 23px;
+    font-style: normal;
     font-weight: 400;
     line-height: 25.3px;
     letter-spacing: 0.46px;
+    text-align: start !important;
+    word-wrap: break-word;
+  }
+
+  #shopify-section-{{ section.id }} .cw-collection-grid__inner {
+    width: min(100% - 36px, 1170px);
+    margin: 0 auto;
   }
 
   #shopify-section-{{ section.id }} .cw-collection-grid__items {
@@ -144,18 +155,26 @@
       width: min(100% - 36px, 354px);
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-grid__title {
-      font-size: 32px;
-      line-height: 35.2px;
-      letter-spacing: 0.64px;
+    #shopify-section-{{ section.id }} .page-width {
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
-    #shopify-section-{{ section.id }} .cw-collection-grid__text {
-      max-width: 339px;
-      margin-top: 20px;
-      font-size: 14px;
-      line-height: 15.4px;
-      letter-spacing: 0.28px;
+    #shopify-section-{{ section.id }} .cw-collection-title {
+      font-size: 36px !important;
+      line-height: 110% !important;
+      letter-spacing: 0.5px !important;
+      margin-bottom: 1px !important;
+      text-align: start !important;
+    }
+
+    #shopify-section-{{ section.id }} .collection-subtitle-ms-block {
+      width: 100%;
+      margin: 20px 0 2px;
+      font-size: 16px;
+      line-height: 100%;
+      letter-spacing: 0.24px;
+      text-align: start !important;
     }
 
     #shopify-section-{{ section.id }} .cw-collection-grid__items {
