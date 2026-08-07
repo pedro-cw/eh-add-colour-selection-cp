@@ -127,6 +127,7 @@
     <a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title | downcase }}</a>
   </div>
 
+  <div class="cw-product-card__footer">
   {% if has_multiple_variants %}
     <div class="cw-card-style-label" data-cw-style-label>
       {{ card_style_label }} - <span data-cw-style-name>{{ current_variant.title }}</span>
@@ -226,4 +227,5 @@
       <p>{{ description }}</p>
     </div>
   {% endif %}
+  </div>
 </div>

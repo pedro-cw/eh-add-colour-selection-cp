@@ -13,11 +13,23 @@
     outline-offset: -1px;
     padding: 16px;
     box-sizing: border-box;
-    display: block;
+    /* !important needed: this snippet can be rendered inside pages that
+       still carry legacy #shopify-section-{id} .cc__inner-product-details
+       rules (higher specificity via the ID) forcing display:block/height:auto. */
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .cw-product-card[hidden] {
     display: none !important;
+  }
+
+  /* Everything from the style label down (variants, price, buttons,
+     description) is pinned to the bottom so cards of equal height keep
+     their actions/price aligned regardless of title/description length. */
+  .cw-product-card__footer {
+    margin-top: auto;
   }
 
   .cw-product-card .cw-card-overlay-link {

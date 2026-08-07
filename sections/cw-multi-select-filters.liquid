@@ -373,7 +373,7 @@
       grid-template-columns: repeat(3, 358px);
       gap: 64px 38px;
       justify-content: center;
-      align-items: start;
+      align-items: stretch;
     }
 
     #shopify-section-{{ section.id }} .cc__inner-product-details {
@@ -853,20 +853,21 @@
       grid-template-columns: repeat(3, 358px) !important;
       gap: 45px !important;
       justify-content: center !important;
-      align-items: start !important;
+      align-items: stretch !important;
     }
 
     #shopify-section-{{ section.id }} .cc__inner-product-details.cw-collection-list-single-tab-content-column {
       width: 358px !important;
+      height: 100% !important;
       position: relative !important;
       padding: 16px !important;
       border: 0.3px solid #977E57 !important;
       outline: none !important;
       outline-offset: 0 !important;
       background: #FFFFFF !important;
-      margin-bottom: 32px !important;
       overflow: hidden !important;
-      display: block !important;
+      display: flex !important;
+      flex-direction: column !important;
       box-sizing: border-box !important;
     }
 
